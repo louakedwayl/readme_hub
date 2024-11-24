@@ -25,7 +25,7 @@ SIGNAUX pendant un heredoc :
 
 SIGINT -> affiche un nouveau prompt ce qui a deja ete taper nest pas a prendre a compte.
 SIGQUIT -> Ne fais rien
-EOF	-> affiche un nouveau prompt ce qui a deja ete taper nest pas a prendre a compte.
+EOF	-> affiche un nouveau prompt ce qui a deja ete taper est a prendre a compte.
 	   et un message d'erreur.
 
 *************************************************************************************************
