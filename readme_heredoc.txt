@@ -20,6 +20,12 @@ respectivement, Bash va demander a l 'utilisateur de remplir tous les heredoc av
 rediriger leurs chaines vers l'entree standart de leur commandes respectives.
 
 
+SIGNAUX pendant un heredoc :
+----------------------------
 
-	?/ Voir pour gerer les signaux dans le heredoc
+SIGINT -> affiche un nouveau prompt ce qui a deja ete taper nest pas a prendre a compte.
+SIGQUIT -> Ne fais rien
+EOF	-> affiche un nouveau prompt ce qui a deja ete taper nest pas a prendre a compte.
+	   et un message d'erreur.
+
 *************************************************************************************************
