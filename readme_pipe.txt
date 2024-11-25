@@ -32,5 +32,12 @@ Pourquoi fermer rapidement dans le parent ?
 
 Si le processus parent garde l’extrémité d’écriture (pipefd[1]) ouverte, le processus lecteur (le deuxième enfant exécutant wc -l) n’obtient jamais l’EOF et attend indéfiniment des données.
 
+******************************************************************************************************
+
+Fermer le descripteur d'écriture immédiatement dans le parent est une bonne pratique pour :
+
+    Prévenir les deadlocks.
+    Signaler la fin des données (EOF) aux lecteurs.
+    Gérer efficacement les ressources.
 
 ******************************************************************************************************
