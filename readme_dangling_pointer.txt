@@ -1,7 +1,7 @@
 								Dangling pointer
 *************************************************************************************
-Un dangling pointer (ou "pointeur suspendu") est un pointeur en programmation
-qui fait référence à une zone de mémoire qui a été libérée ou n'est plus valide.
+Un dangling pointer (ou "pointeur suspendu") est un pointeur qui pointe
+sur zone de mémoire qui a été libérée ou n'est plus valide.
 Utiliser un dangling pointer peut entraîner des comportements indéterminés,
 des crashs, ou des failles de sécurité.
 
