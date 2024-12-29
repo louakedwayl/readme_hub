@@ -1,0 +1,12 @@
+									Thread
+**********************************************************************************
+
+	Un thread, ou fil d'exécution, est une séquence d'instructions qui peut être
+exécutée de manière indépendante par le processeur.
+Un processus contient au minimum un thread, appelé le thread principal,
+mais il peut en contenir plusieurs.
+
+	Ces threads partagent les mêmes ressources (mémoire, fichiers ouverts, etc.)
+du processus, ce qui permet une exécution parallèle ou concurrente des tâches.
+
+***********************************************************************************
