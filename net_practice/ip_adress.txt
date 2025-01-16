@@ -1,0 +1,6 @@
+					Internet Protocol Adress
+******************************************************************************************************
+
+	Une adresse Ip est une suite de 4 nombres de 0 a 255 separe par un point.
+On dit adresse Ip et non numero Ip car cette suite de nombre doit permettre d identifier un appareil
+de maniere unique sur le reseau.
