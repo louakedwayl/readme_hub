@@ -19,8 +19,13 @@ git reset [<mode>] [<commit>]
 <commit> : Le commit vers lequel HEAD doit être déplacé. Par défaut, HEAD est réinitialisé à HEAD~1 (le commit précédent).
 
 
+1/ git reset :
+--------------
 
-1/ git reset soft :  git reset --soft <commit>
+	Cela déplace les fichiers de la zone de staging vers l'espace de travail (working directory),
+ les rendant à nouveau non suivis ou modifiés selon leur état initial.
+
+2/ git reset soft :  git reset --soft <commit>
 -------------------
 	
 	--soft : Conserve tout, ne touche qu'à HEAD.
