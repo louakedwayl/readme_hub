@@ -40,7 +40,23 @@ Plage d'adresses dans un sous-réseau :
 --------------------------------------
 
     Première adresse : Adresse réseau (non assignable aux hôtes, ex. : 192.168.1.0)
+    -----------------
+
+	L’adresse réseau identifie le sous-réseau dans son ensemble. Elle est utilisée pour représenter un groupe d’hôtes (ordinateurs, imprimantes, etc.) qui partagent le même sous-réseau.
+
+    C'est la première adresse dans un sous-réseau.
+    Non assignable aux hôtes : elle est réservée à l’identification du réseau.
+    En binaire, tous les bits de la partie hôte de l'adresse IP sont mis à 0.
+
     Dernière adresse : Adresse de diffusion ou broadcast (ex. : 192.168.1.255)
-    Adresses utilisables : Entre les deux (ex. : 192.168.1.1 à 192.168.1.254).
+    ------------------
+
+    L'adresse de diffusion permet d'envoyer un message à tous les hôtes d’un sous-réseau. Elle est utilisée pour la communication broadcast.
+    C'est la dernière adresse dans un sous-réseau.
+    Non assignable aux hôtes : elle est exclusivement utilisée pour la diffusion.
+    En binaire, tous les bits de la partie hôte de l'adresse IP sont mis à 1.
+   
+ Adresses utilisables : Entre les deux (ex. : 192.168.1.1 à 192.168.1.254).
+ ----------------------
 
 *****************************************************************************************************************************************
