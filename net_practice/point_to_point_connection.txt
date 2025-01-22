@@ -1,6 +1,37 @@
 						point to point connection
 **************************************************************************************************************************
 
+subnet mask /30 :
+-----------------
+
+	Le masque /30 est un masque de sous-réseau couramment utilisé pour créer de petits sous-réseaux.
+Ce masque divise un réseau en sous-réseaux avec 4 adresses IP chacune, dont 2 sont assignables aux hôtes.
+
+En notation décimale : 255.255.255.252
+En binaire : 11111111.11111111.11111111.11111100
+
+Exemple de sous-réseau /30:
+------------------------------
+
+Prenons une plage d'adresses 192.168.1.0/30 :
+
+    Adresse réseau : 192.168.1.0 (non assignable, identifie le sous-réseau)
+    Première adresse utilisable : 192.168.1.1
+    Deuxième adresse utilisable : 192.168.1.2
+    Adresse de diffusion : 192.168.1.3 (non assignable, utilisée pour envoyer des messages à tous les hôtes du sous-réseau)
+
+Structure en binaire :
+----------------------
+
+--------------------------------------------------------------------------------
+|  Adresse IP |	              Binaire                 |         Rôle	       |
+--------------------------------------------------------------------------------
+| 192.168.1.0 |	11000000.10101000.00000001.000000000  |	Adresse réseau         |
+| 192.168.1.1 |	11000000.10101000.00000001.00000001   |	Hôte utilisable 1      |
+| 192.168.1.2 |	11000000.10101000.00000001.00000010   |	Hôte utilisable 2      |
+| 192.168.1.3 |	11000000.10101000.00000001.00000011   |	Adresse de diffusion   |
+--------------------------------------------------------------------------------
+
 subnet mask /31 :
 -----------------
 
@@ -50,4 +81,4 @@ Le masque /31 ne peut être utilisé que pour des liens point-à-point. Pour des
 
 En résumé, le masque /31 est une solution efficace et économique pour les connexions point-à-point, permettant d'économiser des adresses IP dans des environnements limités en espace d'adressage.
 
-*************************************************************************************************************
+***************************************************************************************************************************
