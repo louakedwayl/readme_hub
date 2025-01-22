@@ -4,6 +4,13 @@
 	Une table de routage est une structure de données stockée dans un routeur ou un hôte réseau qui répertorie 
 les itinéraires vers des destinations réseau particulières. Dans NetPractice, la table de routage se compose de 2 éléments :
 
+	La notation 0.0.0.0/0 désigne une route par défaut ou une route qui couvre l'intégralité de l'espace d'adressage IPv4.
+
+Voici quelques détails :
+Elle est souvent utilisée dans les tables de routage pour désigner la route par défaut, c'est-à-dire la route à utiliser si aucune autre route plus spécifique ne correspond à la destination.
+
+Typiquement, elle redirige le trafic vers une passerelle par défaut ou un périphérique réseau.
+
 Destination :
 -------------
 
@@ -15,7 +22,7 @@ les paquets sans donner de destination spécifique. La route par défaut corresp
 Saut suivant :
 --------------
 
-Le "saut suivant" désigne le routeur le plus proche par lequel un paquet peut passer. 
+	Le "saut suivant" désigne le routeur le plus proche par lequel un paquet peut passer. 
 Il s'agit de l'adresse IP du routeur suivant sur le chemin du paquet. Chaque routeur maintient sa 
 table de routage avec une adresse de "saut suivant".
 
