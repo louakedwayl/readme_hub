@@ -1,0 +1,16 @@
+						 insertion_and_extraction_operator
+**************************************************************************************************************************
+
+	En C++, la gestion des entrées/sorties est facilitée grâce à des flux (streams). Les deux opérateurs fondamentaux qui permettent de travailler avec ces flux sont :
+
+1/ L'opérateur d'insertion (<<) :
+---------------------------------
+
+	Il permet d'envoyer (ou d'insérer) des données dans un flux de sortie, comme std::cout.
+
+L'opérateur d'extraction (>>) :
+-------------------------------
+
+	Il permet de lire (ou d'extraire) des données depuis un flux d'entrée, comme std::cin.
+
+**************************************************************************************************************************
