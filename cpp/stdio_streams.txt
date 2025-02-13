@@ -1,0 +1,31 @@
+								stdio streams
+**************************************************************************************************************************************
+
+	stdio vient de "Standard Input/Output" (Entrée/Sortie Standard).
+
+1/ Stdio en C :
+---------------
+
+En C, la bibliothèque stdio.h (Standard Input Output Header) fournit des fonctions pour gérer l’entrée et la sortie, comme :
+
+    printf() → afficher du texte
+    scanf() → lire une entrée utilisateur
+    fopen() → ouvrir un fichier
+    fgets() → lire une ligne
+
+2/ Stdio en C++ :
+-----------------
+
+En C++, on n'utilise plus stdio.h mais plutôt iostream, qui offre des alternatives modernes comme :
+
+    std::cout (remplace printf())
+    std::cin (remplace scanf())
+    std::ifstream et std::ofstream (remplacent fopen())
+
+	Les nouvelles bibliothèques de C++ (introduites avec le standard C++98) n'utilisent pas l'extension .h pour différencier 
+les fichiers C++ modernes des anciens fichiers C hérités.
+
+*****************************************************************************************************************************************
+
+
+
