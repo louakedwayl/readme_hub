@@ -25,7 +25,13 @@ Types de flux en informatique :
 	---------------------------------
 
 Entrée standard (stdin) : données lues depuis le clavier.
+Dans le cas d’un flux d’entrée standard (stdin), l’émetteur est généralement l’utilisateur (ou un programme) 
+qui fournit des données, et le récepteur est le programme qui les reçoit.
+
 Sortie standard (stdout) : données affichées sur l’écran.
+Dans le cas d’un flux de sortie standard (stdout), l’émetteur est le programme qui génère des données,
+et le récepteur est généralement l’écran (le terminal) ou un autre programme si la sortie est redirigée.
+
 Sortie d’erreur (stderr) : messages d'erreur affichés séparément de la sortie standard.
 
 	2/Flux de fichiers :
