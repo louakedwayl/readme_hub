@@ -4,7 +4,8 @@
 🔗 Voir flux : https://github.com/louakedwayl/readme_hub
 --------------
 
-	En C++, la gestion des entrées/sorties est facilitée grâce à des flux (streams). Les deux opérateurs fondamentaux qui permettent de travailler avec ces flux sont :
+	En C++, la gestion des entrées/sorties est facilitée grâce à des flux (streams). Les deux opérateurs fondamentaux 
+qui permettent de travailler avec ces flux sont :
 
 1/ L'opérateur d'insertion (<<) :
 ---------------------------------
