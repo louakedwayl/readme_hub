@@ -11,10 +11,13 @@ Caractéristiques d’un flux :
 Un flux présente généralement les propriétés suivantes :
 
 Séquentiel : Les données sont lues ou écrites dans un ordre précis.
+
 Unidirectionnel ou bidirectionnel :
+
 Un flux d'entrée permet de lire des données (ex : clavier, réseau, fichier).
 Un flux de sortie permet d'écrire des données (ex : console, fichier, socket).
 Certains flux sont bidirectionnels (ex : sockets réseau, flux de fichiers en mode lecture/écriture).
+
 Bufferisation : Un flux peut être bufferisé (stocké temporairement en mémoire avant traitement)
 ou non bufferisé (traité immédiatement).
 
