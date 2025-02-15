@@ -1,7 +1,7 @@
 						 insertion_and_extraction_operator
 **************************************************************************************************************************
 
-🔗 Voir flux : [GitHub - louakedwayl/readme_hub](https://github.com/louakedwayl/readme_hub)
+🔗 Voir flux : https://github.com/louakedwayl/readme_hub
 --------------
 
 	En C++, la gestion des entrées/sorties est facilitée grâce à des flux (streams). Les deux opérateurs fondamentaux qui permettent de travailler avec ces flux sont :
