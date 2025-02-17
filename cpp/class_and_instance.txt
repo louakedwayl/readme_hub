@@ -32,7 +32,7 @@ entre {}. Elle peut etre definie dans un fichier header ou directement dans un f
 class Warrior 
 {
 private:
-    string name;
+    std::string name;
     int pv;
     int mana;
 };
