@@ -1,4 +1,4 @@
-						 insertion_and_extraction_operator
+						 insertion and extraction operator
 **************************************************************************************************************************
 
 🔗 Voir flux : https://github.com/louakedwayl/readme_hub
