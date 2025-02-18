@@ -4,7 +4,7 @@
 1/ Introduction aux classes et instances :
 ------------------------------------------
 
-	En C++, une classe est un modèle qui définit les attributs et les methodes d'un objet. Une instance est un objet créé à partir de cette classe.
+	En C++, une classe est un modèle qui définit les attributs et les méthodes d'un objet. Une instance est un objet créé à partir de cette classe.
 
 On peut l'assimiler à un plan de construction qui spécifie :
 
