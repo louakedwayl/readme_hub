@@ -37,6 +37,19 @@ Exemple :
 
    std::cout << "Bonjour, voici un exemple en C++!\n" << std::endl;
 
+std::cout peut écrire sur la console en utilisant la méthode write(), qui appartient 
+à la classe std::ostream.
+
+std::ostream::write() :
+-----------------------
+
+La méthode write() est une fonction membre de std::ostream permettant d'écrire des blocs de données brutes, principalement utilisées pour manipuler des chaînes de caractères en mode binaire.
+
+Ces deux lignes font exactement la même chose :
+
+std::cout << "Hello, world!";
+std::cout.write("Hello, world!", 13);
+
 4/std::cin : character input :
 ------------------------------
 
