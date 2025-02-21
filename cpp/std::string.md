@@ -4,9 +4,9 @@
 1/ Introduction à std::string :
 -------------------------------
 
-    std::string est une classe de la bibliothèque standard C++ (déclarée dans l’en-tête <string>) qui permet
-de manipuler des chaînes de caractères de façon dynamique. Contrairement aux chaînes de caractères C 
-traditionnelles (tableaux de char terminés par un caractère nul), std::string offre de nombreux avantages :
+    std::string est une classe de la bibliothèque standard C++ qui encapsule un tableau dynamique 
+de caractères (char * en interne). Elle offre une gestion automatique de la mémoire et fournit diverses 
+fonctionnalités pour manipuler des chaînes de caractères plus facilement qu'avec des char *.
 
  1/ Gestion automatique de la mémoire : La taille de la chaîne s’ajuste dynamiquement selon le contenu.
  2/ Fonctions membres riches : Des méthodes pour la modification, la recherche, la comparaison et la conversion.
