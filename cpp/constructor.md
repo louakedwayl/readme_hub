@@ -1,5 +1,5 @@
-					        constructor
-********************************************************************************************************
+					                                     constructor
+*****************************************************************************************************************************
 
 1. Introduction :
 -----------------
@@ -9,6 +9,18 @@ de gérer la création des objets d'une classe.
 
 Il est appelé automatiquement lors de la création d'un objet. Sa mission principale 
 est d'initialiser les attributs de l'objet.
+
+Caractéristiques des Constructeurs :
+------------------------------------
+
+    Nom identique à la classe : Le constructeur porte le même nom que la classe.
+
+    Pas de type de retour : Contrairement aux autres fonctions, les constructeurs ne retournent rien, pas même void.
+    
+    Appel automatique : Lorsqu’un objet est instancié, le constructeur est appelé automatiquement.
+
+    Surcharge possible : Une classe peut définir plusieurs constructeurs, chacun acceptant un nombre et/ou type 
+    d’arguments différent (surcharge de constructeurs).
 
 2/ Constructeur non definit :
 ----------------------------
@@ -76,3 +88,24 @@ public:
     }
 };
 
+4/ Constructeur parametré :
+----------------------------
+
+Ce constructeur permet d’initialiser un objet avec des valeurs spécifiques.
+
+Exemple de constructeur parametré :
+-----------------------------------
+
+class Point {
+public:
+    int x, y;
+
+    // Constructeur paramétré
+    Point(int x_val, int y_val) : x(x_val), y(y_val) { }
+};
+
+Ainsi, la création d’un point se fait avec des valeurs précises :
+
+Point p(10, 20);
+
+****************************************************************************************************************************
