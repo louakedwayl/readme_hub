@@ -50,6 +50,9 @@ int main() {
     return 0;
 }
 
+	Pour accéder à un attribut privé, il est nécessaire d'utiliser des accesseurs 
+(méthodes getter et setter).
+
 2.3 protected :
 ---------------
 
