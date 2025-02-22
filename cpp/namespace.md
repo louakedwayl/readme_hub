@@ -1,7 +1,8 @@
 					Namespace
 ***************************************************************************************************
 
-En C++, un namespace est un espace de noms qui permet d'organiser le code et d'eviter les conflits de noms entre differentes parties d'un programme, Un namespace peut contenir des variables, 
+En C++, un namespace est un espace de noms qui permet d'organiser le code et d'eviter les conflits 
+de noms entre differentes parties d'un programme, Un namespace peut contenir des variables, 
 des fonctions, des classes et d'autres éléments du programme.
 
 1/ Déclaration d'un Namespace :
@@ -42,5 +43,20 @@ namespace
 }
 
 // `value` ne sera pas accessible depuis un autre fichier source.
+
+4/ Using namespace :
+--------------------
+
+L'utilisation de using namespace std; permet d'éviter d'écrire std:: devant chaque élément :
+
+#include <iostream>
+using namespace std;
+
+int main() 
+{
+    cout << "Bonjour, C++ !" << endl;
+    return 0;
+}
+
 
 *****************************************************************************************************
