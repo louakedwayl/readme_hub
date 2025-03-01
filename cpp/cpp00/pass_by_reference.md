@@ -98,4 +98,19 @@ Avantages :
     Utilisation indispensable : Utile pour travailler avec des tableaux, la gestion dynamique 
 				de la mémoire ou pour représenter l'absence de valeur (pointeur nul).
 
+Pour bien clarifier :
+---------------------
+
+1/ Passage par adresse (int* ptr) :
+------------------------------------
+
+On passe une copie de l'adresse de la variable. La fonction peut modifier la valeur pointée mais 
+ne peut pas modifier l'adresse contenue dans le pointeur puisque c'est une copie.
+
+2/ Passage par référence (int& ref) :
+-------------------------------------
+
+On passe directement la variable elle-même. La fonction agit sur la variable 
+d'origine sans passer par un pointeur.
+
 *******************************************************************************************************
