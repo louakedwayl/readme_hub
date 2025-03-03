@@ -65,4 +65,15 @@ Exemple :
 std::cin récupère une entrée utilisateur et l’assigne à la variable nom.
 Attention : std::cin ne prend qu'un seul mot (pour une phrase entière, utiliser std::getline()).
 
+4/ std::cin.eof() :
+-------------------
+
+std::cin.eof() est une méthode qui permet de détecter la fin d'entrée d'un flux de données standard (std::cin). 
+Elle est particulièrement utile lors de la lecture de fichiers ou d'entrées utilisateur lorsque l'on ne sait pas 
+à l'avance combien de données seront fournies.
+
+La méthode std::cin.eof() retourne un booléen : true si la fin du flux d'entrée a été atteinte.
+
+                                                false sinon.
+
 ********************************************************************************************************
