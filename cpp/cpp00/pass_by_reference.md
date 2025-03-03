@@ -113,4 +113,26 @@ ne peut pas modifier l'adresse contenue dans le pointeur puisque c'est une copie
 On passe directement la variable elle-même. La fonction agit sur la variable 
 d'origine sans passer par un pointeur.
 
+3/Qu’est-ce qu’une référence ? :
+--------------------------------
+
+Une référence est un alias d’une variable existante. Elle permet d’accéder à la variable sans utiliser 
+son adresse explicitement.
+
+Différence entre Référence et Pointeur :
+-----------------------------------------
+Aspect	Référence (&)	Pointeur (*)
+
+Syntaxe	int& ref = x;	int* ptr = &x;
+
+Doit être initialisée ?	Oui, immédiatement	Non (peut être nullptr)
+
+Peut changer de cible ?	Non, une fois assignée elle est fixe	Oui, un pointeur peut être réassigné à une autre adresse
+
+Accès à la valeur	Directement (ref = 10;)	Indirection (*ptr = 10;)
+
+Nullabilité	Impossible d’avoir une référence null	Possible (nullptr)
+
+Allocation mémoire	Pas de mémoire supplémentaire	Occupe de la mémoire (stocke une adresse)
+
 *******************************************************************************************************
