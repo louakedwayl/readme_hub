@@ -1,2 +1,1 @@
-A comprehensive collection of revision notes and study guides for various topics, all neatly organized and easy to navigate.
-Perfect for students, developers, and lifelong learners looking for quick, reliable, and concise references. 🚀
+Bonjour et bienvenue sur mon dépôt GitHub ! Vous y trouverez une large gamme de cours couvrant divers sujets en informatique. Que vous débutiez ou que vous souhaitiez approfondir vos compétences, j'espère que ces ressources vous seront utiles. Si vous appréciez le contenu ou le trouvez utile, n'hésitez pas à donner une étoile au dépôt. Merci pour votre soutien ! 🚀
