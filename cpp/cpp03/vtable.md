@@ -38,7 +38,8 @@ public:
     void makeSound() const override;
 };
 
-📦 En mémoire :
+En mémoire :
+-------------
 
 Animal a une vtable contenant l'adresse de Animal::makeSound().
 Dog hérite d’Animal, mais sa vtable remplace l’adresse par celle de Dog::makeSound().
