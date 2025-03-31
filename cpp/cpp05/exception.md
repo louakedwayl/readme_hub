@@ -29,6 +29,20 @@ catch la traite ou, à défaut, jusqu’à la fin du programme .
 Syntaxe de base (try, throw, catch) :
 -------------------------------------
 
+try
+{
+    // Code à risque
+    throw exception;  // exception lancée en cas d'erreur
+}
+catch (TypeExc const & e)
+{
+    // Traitement de l'erreur
+}
+catch (...)
+{
+    // Capture toutes autres exceptions
+}
+
     try { ... } : définit un bloc de code protégé où des exceptions peuvent se produire. 
 On y place le code "à risque".
 
@@ -187,4 +201,26 @@ const char* GradeTooHighException::what() const throw()
     Rien de plus.
     C’est juste un moyen d’obtenir un message que tu peux afficher ou logguer.
 
-************************************************************************************
+Quand utiliser les exceptions en C++ :
+--------------------------------------
+
+Pour gérer des erreurs inattendues ou exceptionnelles à l'exécution.
+
+Lorsqu'une fonction ne peut pas gérer une erreur elle-même et souhaite signaler le problème à l'appelant.
+
+Pour rendre le code plus clair en séparant la logique normale de la logique de gestion d’erreurs.
+
+Pour centraliser le traitement d'erreurs, évitant ainsi de disperser la gestion des erreurs partout dans le code.
+
+Exemple fréquent :
+
+Problème d’allocation mémoire.
+
+Erreurs d'ouverture ou d'accès à un fichier.
+
+Validation de données incorrectes ou inattendues.
+
+En clair : Utilise les exceptions quand une erreur imprévue survient, pour séparer nettement le
+ traitement des cas normaux des cas d'erreurs, tout en gardant le code lisible.
+
+****************************************************************************************************************
