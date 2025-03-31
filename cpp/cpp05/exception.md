@@ -81,4 +81,110 @@ catch (const runtime_error &e)
     cout << "Fin du programme." << endl;                   // Le programme continue
 }
 
+La méthode what() :
+-------------------
+
+what() est une méthode membre de la classe std::exception et de toutes les classes qui en héritent 
+(comme std::runtime_error, std::invalid_argument, etc.).
+
+Elle sert à récupérer un message d’erreur sous forme de chaîne de caractères (C-string).
+
+📌 Définition :
+---------------
+
+virtual const char* what() const throw();
+
++--------------+---------------------------------------------------------------+
+| Élément      | Signification                                                 |
++--------------+---------------------------------------------------------------+
+| virtual      | Permet la redéfinition dans les classes filles.               |
+| const        | Ne modifie pas l'objet.                                       |
+| throw()      | Garantie que la fonction ne lance pas d'exception.            |
+| const char*  | Retourne un C-string (chaîne de caractères).                  |
++--------------+---------------------------------------------------------------+
+
+Exemple simple :
+----------------
+
+#include <iostream>
+#include <exception>
+
+int main()
+{
+    try
+    {
+        throw std::runtime_error("Erreur critique !");
+    }
+    catch (const std::exception &e)
+    {
+        std::cerr << "Exception : " << e.what() << std::endl;
+    }
+}
+
+
+Résultat :
+
+Exception : Erreur critique !
+
+🚀 Quand l’utiliser ?
+
+Tu utilises what() quand tu veux : 
+
+✅ Afficher un message d'erreur propre
+✅ Connaître la cause de l'exception
+✅ Logger des erreurs ou les transmettre
+
+Exemple avec exception personnalisée :
+--------------------------------------
+
+#include <exception>
+
+class MyException : public std::exception
+{
+public:
+    const char* what() const noexcept override
+    {
+        return "Ceci est une exception personnalisée.";
+    }
+};
+
+Attention :
+-----------
+
+what() retourne un const char*, donc :
+
+    Il vaut mieux l’utiliser immédiatement (std::cerr << e.what();)
+
+    Il ne faut pas essayer de modifier le résultat
+
+Pour résumer simplement :
+-------------------------
+
+Si c’est une exception native du C++ (std::exception, std::runtime_error, std::invalid_argument, etc.) →
+---------------------------------------------------------------------------------------------------------
+
+La méthode what() retourne un message que tu as passé lors du throw :
+
+throw std::runtime_error("Erreur critique");
+
+→ what() renverra "Erreur critique"
+
+Si c’est une exception personnalisée (comme GradeTooHighException) →
+---------------------------------------------------------------------
+
+La méthode what() retourne la chaîne que tu as définie toi-même dans la redéfinition de la fonction :
+
+const char* GradeTooHighException::what() const throw()
+{
+    return "Grade trop élevé !";
+}
+
+→ what() renverra "Grade trop élevé !"
+
+🔥 Donc, en clair :
+
+    La seule mission de what() → fournir une explication textuelle sur l'erreur.
+    Rien de plus.
+    C’est juste un moyen d’obtenir un message que tu peux afficher ou logguer.
+
 ************************************************************************************
