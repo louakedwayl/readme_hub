@@ -41,5 +41,49 @@ Après exécution :
 
     mot contient "hello"
 
+En clair :
+----------
+
+std::istringstream permet de découper (parser) une std::string mot par mot (ou valeur par valeur),
+en utilisant l’opérateur d’extraction >>.
+
+À retenir :
+-----------
+
+    Le découpage se fait automatiquement par espace (ou séparateurs blancs comme tabulations, retours à la ligne).
+
+    Tu peux chaîner les >> pour récupérer plusieurs valeurs facilement.
+
+Exemple complet :
+-----------------
+
+#include <iostream>
+#include <sstream>
+#include <string>
+
+int main() 
+{
+    std::string input = "21 3.14 Hello";
+    std::istringstream iss(input);
+
+    int i;
+    float f;
+    std::string s;
+
+    iss >> i >> f >> s;
+
+    std::cout << "Int: " << i << "\n";
+    std::cout << "Float: " << f << "\n";
+    std::cout << "String: " << s << "\n";
+
+    return 0;
+}
+
+Sortie :
+--------
+
+Int: 21
+Float: 3.14
+String: Hello
 
 ******************************************************************************************************************
