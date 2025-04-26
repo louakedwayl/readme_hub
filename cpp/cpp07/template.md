@@ -15,6 +15,11 @@ C++ offre deux grands types de templates :
 
 Cela évite la duplication du code avec différents types.
 
+    typename sert à créer un type générique (T) qui sera remplacé automatiquement par le vrai type que tu passes 
+    quand tu appelles la fonction.
+
+Le compilateur fait tout le boulot pour toi, il déduit le bon type en fonction des paramètres que tu lui donnes.
+
 2/ Templates de fonctions :
 -----------------------------
 
