@@ -212,7 +212,63 @@ int main()
     std::cout << std::endl;
 }
 
-7/ Conclusion :
+7/std::min_element & std::max_element :
+---------------------------------------
+
+Description :
+-------------
+
+Ces deux fonctions font partie de l’en-tête <algorithm> et permettent de trouver l’élément minimal 
+ou maximal dans une plage d’éléments.
+
+Syntaxe :
+---------
+
+#include <algorithm>
+
+// Trouve le plus petit élément
+auto min_it = std::min_element(begin, end);
+
+// Trouve le plus grand élément
+auto max_it = std::max_element(begin, end);
+
+// Avec un comparateur personnalisé
+auto min_it = std::min_element(begin, end, comp);
+auto max_it = std::max_element(begin, end, comp);
+
+Paramètres
+
+    begin, end : Itérateurs délimitant la plage à examiner.
+
+    comp (optionnel) : Fonction ou lambda de comparaison binaire personnalisée (comme pour std::sort).
+
+Retour
+
+    Un itérateur pointant vers l’élément min ou max.
+
+    Si la plage est vide, retourne end.
+
+Exemple simple :
+-----------------
+
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+int main() {
+    std::vector<int> v = {4, 2, 9, 1, 5};
+
+    auto min_it = std::min_element(v.begin(), v.end());
+    auto max_it = std::max_element(v.begin(), v.end());
+
+    std::cout << "Min: " << *min_it << "\n";  // 1
+    std::cout << "Max: " << *max_it << "\n";  // 9
+
+    return 0;
+}
+
+
+8/ Conclusion :
 ---------------
 
 Les algorithmes de la bibliothèque <algorithm> en C++ sont des outils puissants pour manipuler 
