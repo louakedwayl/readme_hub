@@ -29,6 +29,8 @@ catch la traite ou, à défaut, jusqu’à la fin du programme .
 Syntaxe de base (try, throw, catch) :
 -------------------------------------
 
+La syntaxe de gestion des exceptions repose sur trois éléments principaux : try, throw et catch.
+
 try
 {
     // Code à risque
@@ -140,7 +142,8 @@ Résultat :
 
 Exception : Erreur critique !
 
-🚀 Quand l’utiliser ?
+🚀 Quand l’utiliser ? :
+-----------------------
 
 Tu utilises what() quand tu veux : 
 
@@ -156,7 +159,7 @@ Exemple avec exception personnalisée :
 class MyException : public std::exception
 {
 public:
-    const char* what() const noexcept override
+    const char* what() const throw ()
     {
         return "Ceci est une exception personnalisée.";
     }
