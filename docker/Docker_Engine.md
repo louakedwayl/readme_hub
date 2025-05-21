@@ -7,11 +7,16 @@
 Docker Engine est le moteur principal qui permet de créer, gérer et exécuter des conteneurs Docker.
 C’est une application client-serveur qui contient :
 
-    Un daemon (dockerd) qui fait tout le travail lourd : construire, exécuter et gérer les conteneurs.
+Docker Engine est composé de plusieurs parties :
 
-    Une interface en ligne de commande (docker) pour communiquer avec le daemon.
+        Docker Daemon (le serveur) : C’est le service principal qui tourne en arrière-plan sur ta machine. Il crée, exécute, et gère les conteneurs Docker.
 
-    Une API REST pour automatiser les interactions.
+        Docker CLI (le client) : C’est l’interface en ligne de commande que tu utilises pour envoyer des commandes au daemon.
+
+        API REST : Le client (CLI) communique avec le daemon via une API.
+
+Donc Docker Engine = client + serveur.
+
 
 	2/ Concepts clés :
 	------------------
