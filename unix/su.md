@@ -52,4 +52,16 @@ Fonctionnement :
 | Utile pour avoir une session root complète | Utile pour exécuter une commande ponctuelle    |
 | Session continue jusqu’à `exit`    | Commande unique et retour au shell normal  |
 
+
+su - signifie "substituer l’utilisateur et charger son environnement".
+
+Détail :
+--------
+
+    su tout seul te connecte à un autre utilisateur (par défaut root) mais sans charger 
+son environnement (comme les variables PATH).
+
+    su - est équivalent à ouvrir une nouvelle session de login comme si tu te connectais 
+directement avec cet utilisateur.
+
 *************************************************************************************************************
