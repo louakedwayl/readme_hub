@@ -108,4 +108,51 @@ sudo apt install --reinstall <nom_du_paquet>
 
     Ne pas éditer manuellement les fichiers de sources sans comprendre leur format.
 
+	2/ Le cache dans APT (gestionnaire de paquets Linux) :
+	------------------------------------------------------
 
+APT utilise un cache pour stocker deux types de données :
+
+	2.1 Cache des métadonnées :
+	----------------------------
+
+    Stocké dans : /var/lib/apt/lists/
+
+    Contient : la liste des paquets disponibles, versions, descriptions, dépendances.
+
+    Mise à jour avec la commande :
+    ------------------------------
+
+    sudo apt update
+
+    Sert à savoir quels paquets sont disponibles sans avoir à interroger le serveur à chaque fois.
+
+	2.2 Cache des paquets téléchargés :
+	-----------------------------------
+
+    Stocké dans : /var/cache/apt/archives/
+
+    Contient : les fichiers .deb des paquets que tu as téléchargés.
+
+    Utilisé pour : installer les paquets sans retélécharger si déjà présent, ou réinstaller sans connexion Internet.
+
+    Nettoyage avec :
+
+    sudo apt clean
+
+	3/ Gestion du cache :
+	---------------------
+
+Pourquoi nettoyer le cache ?
+
+    Pour libérer de l’espace disque.
+
+    Pour éviter les conflits avec des paquets obsolètes.
+
+Commandes utiles :
+Commande	Effet
+sudo apt clean	Supprime tous les paquets téléchargés du cache
+sudo apt autoclean	Supprime les paquets obsolètes (anciens fichiers)
+sudo rm -rf /var/lib/apt/lists/*	Supprime les métadonnées, forçant apt update à les refaire
+
+**********************************************************************************
