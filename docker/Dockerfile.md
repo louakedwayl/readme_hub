@@ -108,7 +108,8 @@ RUN g++ main.cpp -o hello
 
 CMD ["./hello"]
 
-🧼 Bonnes pratiques
+	Bonnes pratiques :
+	------------------
 
     Utilise des images légères si possible (alpine).
 
@@ -118,9 +119,93 @@ CMD ["./hello"]
 
     Gère les permissions correctement (évite root si possible).
 
-🔚 Conclusion
+	Conclusion :
+	------------
 
-Un Dockerfile est la base de toute image Docker personnalisée. Il te permet de reproduire un environnement exactement de la même manière 
-sur n'importe quelle machine.
+Un Dockerfile est la base de toute image Docker personnalisée. Il te permet de reproduire un environnement 
+exactement de la même manière sur n'importe quelle machine.
 
-*****************************************************************************************************************************************
+	Différence entre ENTRYPOINT et CMD dans un Dockerfile :
+	--------------------------------------------------------
+
+Les deux instructions ENTRYPOINT et CMD sont utilisées pour définir ce qui s’exécute lorsque le conteneur démarre,
+mais elles ont des rôles différents et complémentaires :
+
+	ENTRYPOINT :
+	------------
+
+    But : Définit le programme principal du conteneur, qui ne changera pas, peu importe les arguments passés à docker run.
+
+    Exécution : Toujours exécuté.
+
+    Remplacé uniquement avec --entrypoint dans docker run.
+
+Dans ton Dockerfile :
+
+ENTRYPOINT ["/entrypoint.sh"]
+
+Cela signifie que quand tu fais :
+
+docker run mon_image
+
+c’est /entrypoint.sh qui est obligatoirement exécuté.
+
+	CMD :
+	-----
+
+    But : Fournit les arguments par défaut à ENTRYPOINT, ou le programme à exécuter s’il n’y a pas de ENTRYPOINT.
+
+    Remplaçable : Si tu passes des arguments à docker run, ils écrasent CMD.
+
+	Résumé :
+	--------
+ 
+ENTRYPOINT :
+------------
+
+    Rôle : Définit le programme principal qui sera toujours exécuté quand le conteneur démarre.
+
+    Remplaçable ? : Non, sauf si on utilise l’option --entrypoint lors de l’exécution du conteneur (docker run).
+
+    Peut être combiné avec CMD ? : ✅ Oui
+
+    Exemple :
+
+ENTRYPOINT ["/entrypoint.sh"]
+
+	Exemple pour bien comprendre :
+	------------------------------
+
+ENTRYPOINT ["/entrypoint.sh"]
+CMD ["--default-arg"]
+
+    docker run mon_image
+    -> lance /entrypoint.sh --default-arg
+
+    docker run mon_image --custom-arg
+    -> lance /entrypoint.sh --custom-arg
+
+CMD :
+-----
+
+    Rôle : Fournit des valeurs par défaut (arguments) au programme défini par ENTRYPOINT,
+ou bien une commande à exécuter si ENTRYPOINT est absent.
+
+    Remplaçable ? : Oui, il est automatiquement remplacé si des arguments sont fournis à docker run.
+
+    Peut être combiné avec ENTRYPOINT ? : ✅ Oui
+
+    Exemple :
+
+CMD ["arg1", "arg2"]
+
+	Pour résumer simplement :
+	-------------------------
+
+    ENTRYPOINT → c’est le programme principal à exécuter quand le conteneur démarre.
+
+    CMD → ce sont les arguments par défaut qu’on passe à ce programme.
+
+Si tu ne définis pas de ENTRYPOINT, Docker utilise le CMD comme commande complète.
+
+*************************************************************************************************************
