@@ -160,8 +160,8 @@ c’est /entrypoint.sh qui est obligatoirement exécuté.
 	Résumé :
 	--------
  
-ENTRYPOINT :
-------------
+	ENTRYPOINT :
+	------------
 
     Rôle : Définit le programme principal qui sera toujours exécuté quand le conteneur démarre.
 
@@ -185,8 +185,8 @@ CMD ["--default-arg"]
     docker run mon_image --custom-arg
     -> lance /entrypoint.sh --custom-arg
 
-CMD :
------
+	CMD :
+	-----
 
     Rôle : Fournit des valeurs par défaut (arguments) au programme défini par ENTRYPOINT,
 ou bien une commande à exécuter si ENTRYPOINT est absent.
@@ -207,5 +207,67 @@ CMD ["arg1", "arg2"]
     CMD → ce sont les arguments par défaut qu’on passe à ce programme.
 
 Si tu ne définis pas de ENTRYPOINT, Docker utilise le CMD comme commande complète.
+
+	Qu’est-ce que la directive EXPOSE ?
+	-----------------------------------
+
+    EXPOSE est une instruction que l’on met dans un Dockerfile.
+
+    Elle sert à documenter quel(s) port(s) le conteneur utilise en interne.
+
+    Exemple dans un Dockerfile :
+
+    EXPOSE 80
+
+    Cela signifie que le service dans le conteneur écoute sur le port 80.
+
+    EXPOSE n’ouvre pas ce port vers l’extérieur, il sert juste à indiquer ce port dans l’image.
+
+	2/ Comment ouvrir un port vers l’extérieur ?
+	--------------------------------------------
+
+Pour que le port du conteneur soit accessible depuis ta machine ou ton réseau, il faut faire du port mapping.
+
+    Avec la commande docker run, on utilise -p ou --publish :
+
+docker run -p 8080:80 nom_de_l_image
+
+Ici, le port 8080 de ta machine sera redirigé vers le port 80 dans le conteneur.
+
+Avec un fichier docker-compose.yml, on écrit :
+
+    services:
+      mon_service:
+        image: mon_image
+        ports:
+          - "8080:80"
+
+	3/ Pourquoi cette séparation ?
+	------------------------------
+
+    EXPOSE est un moyen de documenter l’image pour savoir quel port elle utilise.
+
+    Le mapping de port (-p ou ports:) est ce qui permet réellement d’ouvrir la communication entre la machine hôte et le conteneur.
+
+	4/ Exemple concret :
+	--------------------
+
+Imaginons un conteneur avec un serveur web qui écoute sur le port 80.
+
+    Dockerfile :
+
+FROM nginx
+EXPOSE 80
+
+Pour exécuter et rendre ce serveur accessible sur ta machine via le port 8080 :
+
+    docker run -p 8080:80 nginx
+
+    Tu peux alors accéder à http://localhost:8080 depuis ton navigateur.
+
+Résumé rapide
+Directive	Rôle
+EXPOSE 80	Documente que le conteneur écoute sur le port 80 (interne)
+-p 8080:80	Ouvre le port 80 du conteneur vers le port 8080 de la machine hôte
 
 *************************************************************************************************************
