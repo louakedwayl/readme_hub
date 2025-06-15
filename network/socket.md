@@ -86,10 +86,15 @@ Côté serveur (très simplifié) :
 -------------------------------
 
 int server_fd = socket(AF_INET, SOCK_STREAM, 0);
+
 bind(server_fd, ...);
+
 listen(server_fd, 1);
+
 int client_fd = accept(server_fd, NULL, NULL);
+
 read(client_fd, buffer, sizeof(buffer));
+
 write(client_fd, "Reçu !", 6);
 
 	5/ Les étapes d’utilisation d’un socket :
