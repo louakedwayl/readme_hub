@@ -48,59 +48,59 @@ crw-rw-rw- 1 root root 5, 1 Jun 19 20:00 /dev/tty
 brw-rw---- 1 root disk 8, 0 Jun 19 20:00 /dev/sda
 ```
 
-    Le premier caractère :
+Le premier caractère :
 
-        c = character device
+c = character device
 
-        b = block device
+b = block device
 
-    Les chiffres 5, 1 sont les major et minor numbers qui identifient le driver matériel.
+Les chiffres 5, 1 sont les major et minor numbers qui identifient le driver matériel.
 
 ## 6. Major et Minor Numbers
 
-    Major number : identifie le driver associé au périphérique.
+Major number : identifie le driver associé au périphérique.
 
-    Minor number : identifie une instance spécifique du périphérique.
+Minor number : identifie une instance spécifique du périphérique.
 
 Exemple :
 
-    Major 8 → driver pour disque dur
+Major 8 → driver pour disque dur
 
-    Minor 0 → premier disque /dev/sda
+Minor 0 → premier disque /dev/sda
 
-    Minor 1 → première partition /dev/sda1
+Minor 1 → première partition /dev/sda1
 
 ## 7. Utilisation des device files
 
-    Les programmes ouvrent ces fichiers via open().
+Les programmes ouvrent ces fichiers via open().
 
-    Puis lisent ou écrivent avec read() et write().
+Puis lisent ou écrivent avec read() et write().
 
-    Les appels système sont interceptés par le driver correspondant qui contrôle le périphérique réel.
+Les appels système sont interceptés par le driver correspondant qui contrôle le périphérique réel.
 
 ## 8. Exemple : /dev/tty
 
-    Device file caractère.
+Device file caractère.
 
-    Représente le terminal du processus courant.
+Représente le terminal du processus courant.
 
-    Permet d’écrire ou lire directement sur le terminal, même si les flux standards sont redirigés.
+Permet d’écrire ou lire directement sur le terminal, même si les flux standards sont redirigés.
 
 ## 9. Créer un device file (rarement nécessaire)
 
-    Commande mknod permet de créer un device file (exige droits root).
+Commande mknod permet de créer un device file (exige droits root).
 
-    Syntaxe :
+Syntaxe :
 ```bash
 mknod /dev/mondevice c 240 0
 ```
-    Ici c = caractère, 240 = major, 0 = minor.
+Ici c = caractère, 240 = major, 0 = minor.
 
 ## 10. Conclusion
 
-    Les device files sont essentiels dans Unix/Linux.
+Les device files sont essentiels dans Unix/Linux.
 
-    Ils permettent d’interagir simplement avec le matériel.
+Ils permettent d’interagir simplement avec le matériel.
 
-    Connaître leur fonctionnement est fondamental pour programmer au niveau système.
+ Connaître leur fonctionnement est fondamental pour programmer au niveau système.
 
