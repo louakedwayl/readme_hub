@@ -70,3 +70,8 @@ int is_little_endian()
     return *((uint8_t*)&x) == 1;
 }
 ```
+
+Si la fonction retourne 1, ta machine est little-endian.
+
+Sinon, elle est big-endian.
+
