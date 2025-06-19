@@ -75,3 +75,35 @@ Si la fonction retourne 1, ta machine est little-endian.
 
 Sinon, elle est big-endian.
 
+## 8. Exemple d’utilisation en réseau
+
+```c
+struct sockaddr_in addr;
+addr.sin_family = AF_INET;
+addr.sin_port = htons(4243);                    // Port en format réseau (big-endian)
+addr.sin_addr.s_addr = inet_addr("127.0.0.1");  // IP déjà au bon format
+```
+
+Sans htons(), le port pourrait être mal interprété par les clients
+
+## 9. Résumé final
+
+| Concept         | À retenir                                   |
+|-----------------|---------------------------------------------|
+| **Big-endian**      | Octets les plus significatifs en premier   |
+| **Little-endian**   | Octets les moins significatifs en premier  |
+| **Ta machine (x86)**| Little-endian                              |
+| **Réseau**          | Big-endian (standard)                      |
+| **htons/htonl**     | Convertissent tes nombres pour le réseau   |
+
+---
+
+## 📝 Notes
+
+- L’**endianness** est **indépendante du système d’exploitation** : elle dépend du **processeur**.
+- On la retrouve sur toutes les plateformes :
+  - **Linux**
+  - **Windows**
+  - **macOS**
+  - **Systèmes embarqués**
+
