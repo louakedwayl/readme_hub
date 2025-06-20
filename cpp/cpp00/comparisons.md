@@ -1,32 +1,30 @@
-					Comparison
-*************************************************************************************************
+# Comparison en C++
 
-1/ Introduction :
------------------
+---
 
-	En C++, la comparaison d'objets est un concept essentiel lorsque vous souhaitez comparer 
-deux instances de la même classe. Par défaut, les objets sont comparés par leur adresse mémoire, 
-ce qui signifie que deux objets sont considérés égaux uniquement si ce sont exactement les mêmes
-objets en mémoire.
+## 1. Introduction
 
-	Cependant, dans la plupart des cas, vous voulez comparer les valeurs ou les attributs 
-de ces objets, et non pas leur adresse mémoire. Pour cela, C++ fournit des mécanismes pour 
-surcharger les opérateurs de comparaison et comparer les objets en fonction de leurs membres.
+En C++, la comparaison d'objets est essentielle quand on veut comparer deux instances d'une même classe.  
+Par défaut, les objets sont comparés par leur **adresse mémoire**, donc deux objets sont égaux uniquement s’ils sont le même objet en mémoire.
 
-2/ Surcharge de l'opérateur == :
---------------------------------
+Mais la plupart du temps, on veut comparer les **valeurs ou attributs** des objets, pas leur adresse mémoire.
 
-	Pour surcharger l'opérateur == (égal à), vous devez définir une méthode membre ou une 
-fonction non membre qui compare les attributs des objets.
+C++ permet de **surcharger les opérateurs de comparaison** pour comparer les objets selon leurs membres.
 
-	Pour surcharger un opérateur en C++, il faut définir l'opérateur dans la définition 
-de la méthode (dans la classe) ou dans une fonction non membre (en dehors de la classe). 
-La surcharge permet de spécifier comment un opérateur standard (comme +, ==, <, etc.) 
-se comporte lorsqu'il est appliqué à des objets de votre propre classe.
+---
 
-Exemple de surcharge de == :
-----------------------------
+## 2. Surcharge de l'opérateur `==`
 
+Pour surcharger l'opérateur `==`, on définit une méthode membre ou une fonction non membre qui compare les attributs.
+
+- Cette surcharge peut se faire dans la classe (méthode membre) ou en dehors (fonction amie ou libre).
+- La surcharge définit comment l’opérateur standard `==` agit sur les objets de ta classe.
+
+---
+
+### Exemple
+
+```cpp
 #include <iostream>
 
 class Point 
@@ -38,12 +36,12 @@ public:
     // Constructeur
     Point(int _x, int _y) : x(_x), y(_y) {}
 
-    // Surcharge de l'opérateur == pour comparer deux objets Point
+    // Surcharge de l'opérateur ==
     bool operator==(const Point& other) const {
         return (x == other.x && y == other.y);
     }
 
-    // Méthode pour afficher un point
+    // Affichage
     void afficher() const {
         std::cout << "(" << x << ", " << y << ")";
     }
@@ -55,24 +53,17 @@ int main()
     Point p2(3, 4);
     Point p3(5, 6);
 
-    if (p1 == p2) 
-{
+    if (p1 == p2) {
         std::cout << "p1 et p2 sont égaux." << std::endl;
-    } 
-else 
-{
+    } else {
         std::cout << "p1 et p2 ne sont pas égaux." << std::endl;
     }
 
-    if (p1 == p3) 
-{
+    if (p1 == p3) {
         std::cout << "p1 et p3 sont égaux." << std::endl;
-    } else 
-{
+    } else {
         std::cout << "p1 et p3 ne sont pas égaux." << std::endl;
     }
 
     return 0;
 }
-
-***************************************************************************************************

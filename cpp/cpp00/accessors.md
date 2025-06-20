@@ -1,40 +1,40 @@
-				  	Accesors
-*******************************************************************************************
+# Accesseurs en C++
 
-1/ Introduction :
------------------
+---
 
-	En C++, les accessors (ou accesseurs) sont des méthodes d'une classe utilisées pour
-obtenir (getter) ou modifier (setter) la valeur d'un attribut privé ou protégé. 
-Ils permettent d'encapsuler les données et de contrôler leur accès, conformément au principe 
-de l'encapsulation en programmation orientée objet (POO).
+## 1. Introduction
 
+En C++, les *accessors* (ou accesseurs) sont des méthodes d'une classe utilisées pour :
 
-2/ Pourquoi utiliser des accessors ? :
---------------------------------------
+- Obtenir (**getter**)  
+- Modifier (**setter**)  
 
-	L'encapsulation protège les données d'une classe en limitant leur accès direct. 
+la valeur d'un attribut privé ou protégé.  
+Ils permettent **d'encapsuler les données** et de contrôler leur accès, conformément au principe de **l'encapsulation** en programmation orientée objet (POO).
+
+---
+
+## 2. Pourquoi utiliser des accessors ?
+
+L'encapsulation protège les données d'une classe en limitant leur accès direct.  
 Les accessors offrent plusieurs avantages :
 
-Protection des données : Empêche l'accès direct aux attributs.
+- **Protection des données** : Empêche l'accès direct aux attributs.
+- **Validation des valeurs** : Vérifie les données avant modification.
+- **Maintenance facilitée** : Permet de modifier l'implémentation sans impacter le code utilisateur.
+- **Contrôle d'accès** : Autorise uniquement la lecture ou restreint certaines modifications.
 
-Validation des valeurs : Vérifie les données avant modification.
+---
 
-Maintenance facilitée : Permet de modifier l'implémentation sans impacter le code utilisateur.
+## 3. Déclaration et implémentation des Accessors
 
-Contrôle d'accès : Autorise uniquement la lecture ou restreint certaines modifications.
+### 3.1 Getters (Accesseurs en lecture)
 
-3/ Déclaration et implémentation des Accessors :
------------------------------------------------
+Un *getter* permet d'accéder à la valeur d'un attribut privé.
 
-	3.1 Getters (Accesseurs en lecture) :
-	------------------------------------
+#### Exemple :
 
-Un getter permet d'accéder à la valeur d'un attribut privé.
-
-Exemple d'utilisation d'un getter :
------------------------------------
-
+```cpp
 #include <iostream>
 using namespace std;
 
@@ -51,17 +51,16 @@ int main() {
     cout << "Nom : " << p.getNom() << endl;
     return 0;
 }
+```
+## 3.2 Setters (Accesseurs en écriture)
 
-	3.2 Setters (Accesseurs en écriture) :
-	-------------------------------------
+Un setter modifie la valeur d'un attribut privé, souvent avec une validation.
+Exemple :
+```c
+#include <iostream>
+using namespace std;
 
-Un setter modifie la valeur d'un attribut privé avec validation.
-
-Exemple d'utilisation d'un setter :
------------------------------------
-
-class Personne 
-{
+class Personne {
 private:
     string nom;
 public:
@@ -73,13 +72,11 @@ public:
     }
 };
 
-int main() 
-{
+int main() {
     Personne p("Alice");
     p.setNom("Bob");
     cout << "Nom : " << p.getNom() << endl;
-    p.setNom("");
+    p.setNom(""); // Tentative d'affecter un nom invalide
     return 0;
 }
-
-*************************************************************************************************
+```
