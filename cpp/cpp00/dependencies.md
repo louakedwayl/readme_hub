@@ -1,104 +1,81 @@
-                                                dependances
-*****************************************************************************************************************
+# Dépendances en C et C++
 
-1/ Introduction :
------------------
+---
 
-En programmation C et C++, une dépendance désigne un fichier, une bibliothèque ou un module externe dont un 
-programme a besoin pour fonctionner correctement. Une bonne gestion des dépendances est essentielle pour assurer 
-la portabilité, la maintenabilité et la robustesse du code.
+## 1. Introduction
 
-2/ Types de Dépendances :
--------------------------
+En programmation C et C++, une **dépendance** désigne un fichier, une bibliothèque ou un module externe dont un programme a besoin pour fonctionner correctement.  
+Une bonne gestion des dépendances est essentielle pour assurer la **portabilité**, la **maintenabilité** et la **robustesse** du code.
 
-On distingue plusieurs types de dépendances en C et C++ :
+---
 
-1/ Dépendances internes : fichiers d'en-tête (.h) et fichiers sources (.c/.cpp) du projet.
+## 2. Types de dépendances
 
-2/ Dépendances externes : bibliothèques tierces comme OpenSSL, Boost, SDL, etc.
+1. **Dépendances internes** : fichiers d'en-tête (`.h`) et fichiers sources (`.c`/`.cpp`) du projet.  
+2. **Dépendances externes** : bibliothèques tierces comme OpenSSL, Boost, SDL, etc.  
+3. **Dépendances du système** : bibliothèques standard (`stdio.h`, `iostream`, etc.).
 
-3/ Dépendances du système : bibliothèques standard (stdio.h, iostream, etc ).
+---
 
-3/ Gestion des Dépendances :
-----------------------------
+## 3. Gestion des dépendances
 
-3.1 /Inclusion de fichiers d'en-tête :
---------------------------------------
+### 3.1 Inclusion de fichiers d'en-tête
 
-En C et C++, on inclut les fichiers d'en-tête avec la directive #include :
+En C et C++, on inclut les headers avec la directive `#include` :
 
-#include <stdio.h> // Bibliothèque standard
-#include "monfichier.h" // Fichier interne au projet
+```cpp
+#include <stdio.h>      // bibliothèque standard
+#include "monfichier.h" // fichier interne au projet
 
-Il est important d'utiliser des gardes d'inclusion pour éviter les inclusions multiples :
-
->#ifndef MONFICHIER_H
-#define MONFICHIER_H
-
-// Contenu du fichier d'en-tête
+Pour éviter les inclusions multiples, on utilise des gardes d’inclusion :
 
 #ifndef MONFICHIER_H
 #define MONFICHIER_H
 
-// Contenu du fichier d'en-tête
+// contenu du fichier d'en-tête
 
 #endif
-
-Ou en C++ :
-
+```
+Ou en C++ moderne :
+```cpp
 #pragma once
-
-3.2 Utilisation de Bibliothèques Externes :
--------------------------------------------
+```
+## 3.2 Utilisation de bibliothèques externes
 
 Certaines bibliothèques doivent être installées et liées au projet.
 
-Installation sous Linux (ex: SDL2) : sudo apt install libsdl2-dev
+    Exemple sous Linux (SDL2) :
+```bash
+sudo apt install libsdl2-dev
+gcc monprogramme.c -o monprogramme -lSDL2
+```
+## 4. Génération automatique des dépendances
+### 4.1 Option -MM
 
-Compilation avec GCC : gcc monprogramme.c -o monprogramme -lSDL2
+    Génère la liste des fichiers .h inclus dans un fichier source, sans prendre en compte les fichiers système.
 
-4/ Génération Automatique des Dépendances :
--------------------------------------------
+    Utile pour avoir une vue claire des dépendances internes.
 
-Pour gérer les dépendances de manière efficace, on peut utiliser GCC avec les options -MM et -MD.
-
-4.1 Option -MM :
-----------------
-
-L'option -MM permet de générer la liste des fichiers .h inclus dans le projet, sans prendre en compte 
-les fichiers système comme stdio.h ou iostream. Cela permet d'obtenir une vue simplifiée des dépendances internes.
-
-Exemple d'utilisation : 
------------------------
-
+Exemple :
+```bash
 gcc -MM monfichier.c
-
-Exemple de sortie :
--------------------
-
+```
+Sortie typique :
+```bash
 monfichier.o: monfichier.c monfichier.h util.h
+```
+### 4.2 Option -MD
 
-Utilité : Idéal pour générer un Makefile propre et ne pas inclure de dépendances inutiles aux bibliothèques du système.
+    Génère un fichier .d listant toutes les dépendances, y compris système.
 
+    Permet une compilation normale et facilite la recompilation automatique.
 
-4.2 Option -MD :
-----------------
-
-L'option -MD génère un fichier .d contenant toutes les dépendances, y compris les fichiers système, 
-tout en permettant une compilation normale.
-
-Exemple d'utilisation :
------------------------
-
+Exemple :
+```bash
 gcc -MD -c monfichier.c -o monfichier.o
-
-Utilité : Utile pour automatiser la recompilation des fichiers modifiés en fonction de leurs dépendances.
-
-4.3 Exemple d'Utilisation dans un Makefile :
---------------------------------------------
-
-Un Makefile peut utiliser -MD pour suivre automatiquement les dépendances :
-
+```
+### 4.3 Exemple dans un Makefile
+```makefile
 CC = gcc
 CFLAGS = -Wall -MD
 
@@ -111,46 +88,26 @@ monprogramme: $(OBJ)
 
 clean:
 	rm -f $(OBJ) monprogramme *.d
+```
+## 5. Le flag -MMD en C++
 
-5/ le flag de compilation -MMD en C++ :
----------------------------------------
+    Génère les dépendances des fichiers .cpp sans inclure les headers système (/usr/include/...).
 
-Objectif du flag -MMD :
------------------------
+    Très utile dans un Makefile pour recompilation efficace après modification des fichiers .hpp.
 
-Le flag -MMD est utilisé pour générer automatiquement les dépendances des fichiers .cpp, sans inclure les 
-fichiers système (/usr/include/...). Il est très utile dans un Makefile pour assurer une recompilation efficace 
-en cas de modification d’un fichier .hpp.
+## 6. Conclusion
 
-6 /Conclusion :
----------------
+Le Makefile, par défaut, ne recompile qu’un fichier source modifié directement.
+Mais si un fichier d'en-tête inclus change, il faut aussi recompiler les sources qui l’incluent.
 
-Le Makefile, par défaut, vérifie uniquement les fichiers explicitement indiqués dans ses règles 
-(par exemple, les fichiers source .c ou .cpp). Cependant, dans un programme en C/C++, un fichier source peut 
-inclure un ou plusieurs fichiers d'en-tête (headers) qui contiennent des déclarations ou des définitions cruciales. 
-Si l'un de ces fichiers d'en-tête change, le fichier source qui l'inclut doit être recompilé, même si sa date de 
-modification directe n'a pas changé.
+L’utilisation d’options comme -MM ou -MD permet d’automatiser cette détection, garantissant ainsi que :
 
-En Resumé :
------------
+    Toute modification d’un header entraîne la recompilation des fichiers concernés.
 
-Sans dépendances générées : Le Makefile ne sait que recompiler un fichier source que si ce fichier source a été modifié.
-Avec les dépendances (générées par -MM par exemple) : Le Makefile connaît également les fichiers d'en-tête dont dépend 
-chaque fichier source. Ainsi, si un header change, le Makefile recompile automatiquement le ou les fichiers source concernés.
+    Le code reste cohérent sans intervention manuelle dans le Makefile.
 
-C'est pour cela que l'utilisation d'options comme -MM est cruciale : elle permet d'automatiser la détection des dépendances 
-internes (les headers de ton projet) afin que tout changement dans ces fichiers entraîne la recompilation des fichiers qui 
-les incluent. Cela garantit que ton code reste cohérent et à jour, sans nécessiter une intervention manuelle dans le Makefile.
+Résumé :
 
-J'espère que cette explication te permet de mieux comprendre l'intérêt des dépendances !
+    Sans dépendances générées : recompilation uniquement si fichier source modifié.
 
-***************************************************************************************************************************
-
-
-
-
-
-
-
-**************************************************************************************************************************
-
+    Avec dépendances générées : recompilation automatique aussi si un header change.

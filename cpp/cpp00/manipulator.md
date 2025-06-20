@@ -1,27 +1,30 @@
-                                            manipulateur 
-*******************************************************************************************************
+# Manipulateurs en C++
 
-Introduction :
---------------
+---
 
-Les manipulateurs en C++ sont des fonctions utilisées pour organiser l'affichage des données sur la 
-sortie standard (cout) ou la lecture depuis l'entrée standard (cin). Ils permettent d'améliorer 
-la lisibilité des sorties et de contrôler la mise en forme des données.
+## Introduction
 
-Manipulateurs Courants:
-----------------------
+Les **manipulateurs** sont des fonctions qui contrôlent la mise en forme des flux d'entrée/sortie (`std::cin`, `std::cout`).  
+Ils améliorent la lisibilité des données affichées ou lues.
 
-Ces manipulateurs ne nécessitent pas d'argument et sont directement utilisés avec 
-les flux d'entrée/sortie.
+---
 
-endl : Insère un retour à la ligne et vide le tampon de sortie.
+## Manipulateurs courants (sans arguments)
+
+- **`endl`** :  
+Insère un retour à la ligne **et vide** le tampon de sortie.
+
+  ```cpp
 std::cout << "Bonjour" << std::endl;
-
-flush : Vider immédiatement le tampon de sortie.
+  ```
+    flush
+Vide immédiatement le tampon de sortie (sans saut de ligne).
+```cpp
 std::cout << "Texte affiché immédiatement" << std::flush;
-
-ws : Ignore les espaces blancs au début de l'entrée.
+```
+    ws
+Ignore les espaces blancs au début de l’entrée (utile avec std::cin).
+```cpp
 std::string nom;
 std::cin >> std::ws >> nom;
-
-*******************************************************************************************************
+```

@@ -1,55 +1,50 @@
-                                                    initialization list
-***************************************************************************************************************************
+# Initialization List en C++
 
-1/ Introduction :
------------------
+---
 
-    En C++, une liste d'initialisation dans un constructeur permet d'initialiser directement les membres d'une classe 
-avant l'exécution du corps du constructeur. Cette méthode est plus efficace que l'affectation classique 
-dans le corps du constructeur, surtout pour les constantes, les références et les objets complexes.
+## 1. Introduction
 
-2/ Syntaxe des Listes d'Initialisation :
-----------------------------------------
+En C++, une **liste d'initialisation** dans un constructeur permet d'initialiser directement les membres d'une classe **avant** l'exécution du corps du constructeur.  
+Cette méthode est plus efficace que l'affectation dans le corps, surtout pour les **constantes**, les **références** et les objets complexes.
 
-    Une liste d'initialisation se place après la signature du constructeur, séparée par :.
+---
 
+## 2. Syntaxe des listes d'initialisation
+
+La liste d'initialisation se place **après la signature du constructeur**, séparée par `:`.
+
+```cpp
 class Exemple 
 {
 private:
     int a;
     double b;
 public:
-    Exemple(int x, double y) : a{x}, b{y} { // Liste d'initialisation
+    Exemple(int x, double y) : a{x}, b{y} {
         std::cout << "Constructeur appelé !" << std::endl;
     }
 };
+```
 
-Dans cet exemple, a est initialisé avec x et b avec y avant l'exécution du corps du constructeur.
+Ici, a est initialisé avec x et b avec y avant l'exécution du corps du constructeur.
+## 3. Pourquoi utiliser une liste d'initialisation ?
+### a) Amélioration des performances
 
-3/ Pourquoi utiliser une Liste d'Initialisation ? :
----------------------------------------------------
-
-a) Amélioration des Performances :
-----------------------------------
-
-    Sans liste d'initialisation, les membres sont d'abord initialisés par défaut avant d'être réaffectés 
-dans le corps du constructeur, ce qui entraîne un double travail inutile.
-
-Exemple :
----------
-
+Sans liste d'initialisation, les membres sont initialisés par défaut puis réaffectés, ce qui fait un double travail inutile.
+Exemple mauvais
+```cpp
 class MauvaisExemple 
 {
 private:
     int a;
 public:
     MauvaisExemple(int x) {
-        a = x; // Affectation après une initialisation par défaut
+        a = x;  // Affectation après initialisation par défaut
     }
 };
-
-Avec une liste d'initialisation, a est directement initialisé avec x, ce qui évite une étape supplémentaire.
-
+```
+Exemple bon
+```cpp
 class BonExemple 
 {
 private:
@@ -57,13 +52,11 @@ private:
 public:
     BonExemple(int x) : a{x} {}
 };
+```
+### b) Initialisation des constantes et références
 
-b) Initialisation des Constantes et des Références :
-----------------------------------------------------
-
-    Les membres const et les références doivent obligatoirement être initialisés dans une liste d'initialisation, 
-car ils ne peuvent pas être modifiés après leur déclaration.
-
+Les membres const et les références doivent être initialisés dans la liste, car ils ne peuvent pas être modifiés après déclaration.
+```cpp
 class ExempleConstRef 
 {
 private:
@@ -72,5 +65,4 @@ private:
 public:
     ExempleConstRef(int x, int& y) : c{x}, ref{y} {}
 };
-
-**************************************************************************************************************************
+```

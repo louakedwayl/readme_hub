@@ -1,34 +1,33 @@
-						 insertion and extraction operator
-**************************************************************************************************************************
+# Opérateurs d'insertion (<<) et d'extraction (>>) en C++
 
-🔗 Voir flux : https://github.com/louakedwayl/readme_hub
---------------
+---
 
-	En C++, la gestion des entrées/sorties est facilitée grâce à des flux (streams). Les deux opérateurs fondamentaux 
-qui permettent de travailler avec ces flux sont :
+## 1. Introduction aux flux (streams)
 
-1/ L'opérateur d'insertion (<<) :
----------------------------------
+En C++, la gestion des entrées/sorties se fait via des **flux** (`streams`).  
+Les opérateurs fondamentaux pour travailler avec ces flux sont :
 
-	Il permet d'envoyer (ou d'insérer) des données dans un flux de sortie, comme std::cout.
+---
 
-Exemple :  
----------
+## 2. L'opérateur d'insertion `<<`
 
+- Permet **d’envoyer** (insérer) des données dans un flux de sortie, comme `std::cout`.
+
+### Exemple :
+
+```cpp
 int main() 
 {
     std::cout << "Bonjour, utilisateur !" << std::endl;
     return 0;
 }
+```
+## 3. L'opérateur d'extraction >>
 
-2/ L'opérateur d'extraction (>>) :
-----------------------------------
-
-	Il permet de lire (ou d'extraire) des données depuis un flux d'entrée, comme std::cin.
+    Permet de lire (extraire) des données depuis un flux d'entrée, comme std::cin.
 
 Exemple :
----------
-
+```cpp
 int main() 
 {
     int age;
@@ -37,10 +36,7 @@ int main()
     std::cout << "Vous avez " << age << " ans." << std::endl;
     return 0;   
 }
+```
+## 4. Remarque
 
-3/ Remarque :
--------------
-
-Ces opérateurs peuvent aussi être redéfinis pour travailler avec des objets personnalisés (surcharge d'opérateurs).
-
-**************************************************************************************************************************
+Ces opérateurs peuvent être surchargés pour fonctionner avec des objets personnalisés, ce qui facilite la gestion des entrées/sorties pour tes propres classes.

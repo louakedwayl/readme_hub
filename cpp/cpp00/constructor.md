@@ -1,34 +1,36 @@
-					                                     constructor
-*****************************************************************************************************************************
+# Constructor en C++
 
-1. Introduction :
------------------
+---
 
-En C++, les constructeurs sont des fonctions membres spéciales qui permettent 
-de gérer la création des objets d'une classe.
+## 1. Introduction
 
-Il est appelé automatiquement lors de la création d'un objet. Sa mission principale 
-est d'initialiser les attributs de l'objet.
+En C++, les **constructeurs** sont des fonctions membres spéciales qui gèrent la création des objets d'une classe.  
+Ils sont **appelés automatiquement** lors de l'instanciation d'un objet.  
+Leur rôle principal : **initialiser les attributs** de l'objet.
 
-Caractéristiques des Constructeurs :
-------------------------------------
+---
 
-    Nom identique à la classe : Le constructeur porte le même nom que la classe.
+### Caractéristiques des constructeurs
 
-    Pas de type de retour : Contrairement aux autres fonctions, les constructeurs ne retournent rien, pas même void.
-    
-    Appel automatique : Lorsqu’un objet est instancié, le constructeur est appelé automatiquement.
+- **Nom identique à la classe** : le constructeur porte le même nom que la classe.
+- **Pas de type de retour** : contrairement aux fonctions classiques, il ne retourne rien, même pas `void`.
+- **Appel automatique** : appelé dès la création d’un objet.
+- **Surcharge possible** : une classe peut avoir plusieurs constructeurs avec différents paramètres.
 
-    Surcharge possible : Une classe peut définir plusieurs constructeurs, chacun acceptant un nombre et/ou type 
-    d’arguments différent (surcharge de constructeurs).
+---
 
-2/ Constructeur non definit :
-----------------------------
+## 2. Constructeur non défini
 
-Si aucun constructeur est definit dans une classe, le compilateur génère automatiquement un constructeur par défaut. Ce constructeur par défaut sera très simple : il ne fait rien de spécial, sauf initialiser les membres de données avec des valeurs par défaut (comme 0 pour les types numériques, ou un constructeur par défaut pour les objets).
+Si aucun constructeur n’est défini, le compilateur génère un **constructeur par défaut** automatiquement.
 
-Par exemple, si tu as cette classe sans définir de constructeur :
+Ce constructeur :
 
+- Ne fait rien de spécial.
+- Initialise les membres avec des valeurs par défaut (`0` pour les numériques, constructeur par défaut pour les objets).
+
+### Exemple sans constructeur défini
+
+```cpp
 class Warrior 
 {
 private:
@@ -36,44 +38,25 @@ private:
     int pv;
     int mana;
 };
-
-Le compilateur va générer en arrière-plan un constructeur par défaut similaire à ceci :
-
+```
+Le compilateur crée automatiquement :
+```cpp
 Warrior() : name(""), pv(0), mana(0) {}
+```
+Donc :
+```cpp
+Warrior w1;  // w1.name == "", w1.pv == 0, w1.mana == 0
+```
+## 3. Constructeur par défaut
 
-	Cela veut dire que si tu crées un objet sans lui fournir de valeurs spécifiques 
-(c'est-à-dire sans utiliser de constructeur paramétré), le compilateur va "automatiquement" 
-attribuer des valeurs par défaut à ses membres.
+Dès qu’un constructeur est défini explicitement dans la classe, le compilateur ne génère plus de constructeur par défaut automatique.
 
-Exemple :
----------
+Un constructeur par défaut est un constructeur qui prend zéro argument ou dont tous les arguments ont des valeurs par défaut.
+Utilité
 
-Warrior w1;
-
-Ici, le constructeur par défaut que le compilateur génère va initialiser w1 avec un nom vide, des pointsde vie à 0, et du mana à 0.
-
-3/ Constructeur par default :
-----------------------------
-
-	Si au moins un constructeur est definit dans une classe , le compilateur ne génère plus 
-de constructeur automatique.
-
-	Un constructeur par défaut est un constructeur spécial d'une classe en C++ qui ne prend 
-aucun argument ou dont tous les arguments ont des valeurs par défaut. Il est appelé automatiquement 
-lorsque tu crées un objet de cette classe sans fournir d'arguments.
-
-Pourquoi utiliser un constructeur par défaut ? :
-------------------------------------------------
-
-	Un constructeur par défaut est utile lorsqu'on souhaite initialiser un objet avec 
-des valeurs par défaut ou faire certaines initialisations sans avoir besoin de passer des paramètres 
-à chaque fois que l'on crée l'objet.
-
-Exemple de constructeur par défaut:
------------------------------------
-
-Voici un exemple de la façon dont tu peux définir un constructeur par défaut dans une classe :
-
+Permet d'initialiser un objet avec des valeurs par défaut sans fournir d’arguments.
+Exemple
+```cpp
 class Warrior 
 {
 private:
@@ -87,15 +70,12 @@ public:
         std::cout << "Constructeur par défaut de Warrior appelé" << std::endl;
     }
 };
+```
+## 4. Constructeur paramétré
 
-4/ Constructeur parametré :
-----------------------------
-
-Ce constructeur permet d’initialiser un objet avec des valeurs spécifiques.
-
-Exemple de constructeur parametré :
------------------------------------
-
+Permet d'initialiser un objet avec des valeurs spécifiques au moment de la création.
+Exemple
+```cpp
 class Point {
 public:
     int x, y;
@@ -104,8 +84,7 @@ public:
     Point(int x_val, int y_val) : x(x_val), y(y_val) { }
 };
 
-Ainsi, la création d’un point se fait avec des valeurs précises :
-
-Point p(10, 20);
-
-****************************************************************************************************************************
+int main() {
+    Point p(10, 20);  // p.x == 10, p.y == 20
+}
+``
