@@ -13,16 +13,15 @@ Ils améliorent la lisibilité des données affichées ou lues.
 
 - **`endl`** :  
 Insère un retour à la ligne **et vide** le tampon de sortie.
-
-  ```cpp
+```cpp
 std::cout << "Bonjour" << std::endl;
-  ```
-    flush
+```
+- **`flush`** :
 Vide immédiatement le tampon de sortie (sans saut de ligne).
 ```cpp
 std::cout << "Texte affiché immédiatement" << std::flush;
 ```
-    ws
+- **`ws`** :
 Ignore les espaces blancs au début de l’entrée (utile avec std::cin).
 ```cpp
 std::string nom;
