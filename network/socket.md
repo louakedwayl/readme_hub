@@ -1,43 +1,46 @@
-		Les Sockets en Programmation Réseau (en C)
-************************************************************************************
+# Les Sockets en Programmation Réseau (en C)
 
-	#1 C’est quoi un socket ?
-	#-------------------------
+---
 
-Un socket est une interface logicielle qui permet à un programme de communiquer avec un autre programme, soit :
+## 1/ C’est quoi un socket ?
 
-    sur la même machine (localhost),
+Un socket est une interface logicielle qui permet à un programme de communiquer avec un autre programme, soit :  
+- sur la même machine (localhost),  
+- soit sur une autre machine via un réseau (LAN ou Internet).  
 
-    soit sur une autre machine via un réseau (LAN ou Internet).
+Il permet d’envoyer/recevoir des données entre un client et un serveur, à travers des protocoles réseau comme TCP ou UDP.
 
-    Il permet d’envoyer/recevoir des données entre un client et un serveur, à travers des protocoles réseau comme TCP ou UDP.
+---
 
-	2/ Les types de sockets :
-	-------------------------
+## 2/ Les types de sockets :
 
-Type		Description					Exemple
-SOCK_STREAM	Socket de type TCP (connexion fiable)		Web, SSH
-SOCK_DGRAM	Socket de type UDP (non connecté, rapide)	DNS, jeux en ligne
+| Type         | Description                     | Exemple            |
+|--------------|--------------------------------|--------------------|
+| SOCK_STREAM  | Socket de type TCP (connexion fiable) | Web, SSH           |
+| SOCK_DGRAM   | Socket de type UDP (non connecté, rapide) | DNS, jeux en ligne |
 
-	3/ Le modèle client-serveur :
-	-----------------------------
+---
 
-    Serveur : attend une connexion.
+## 3/ Le modèle client-serveur :
 
-    Client : initie la connexion.
+- Serveur : attend une connexion.  
+- Client : initie la connexion.
 
 Schéma simplifié :
 
 [Client] <-------> [Serveur]
-   connect()          accept()
-     write()  ---->    read()
-     read()   <----    write()
+connect() accept()
+write() ----> read()
+read() <---- write()
 
-	4/ Création d’un socket (TCP) :
-	-------------------------------
 
-Code minimal du côté client (en C - Linux) :
+---
 
+## 4/ Création d’un socket (TCP) :
+
+### Code minimal côté client (en C - Linux) :
+
+```c
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -81,10 +84,9 @@ int main()
     close(sock);
     return 0;
 }
-
+```
 Côté serveur (très simplifié) :
--------------------------------
-
+```c
 int server_fd = socket(AF_INET, SOCK_STREAM, 0);
 
 bind(server_fd, ...);
@@ -96,12 +98,9 @@ int client_fd = accept(server_fd, NULL, NULL);
 read(client_fd, buffer, sizeof(buffer));
 
 write(client_fd, "Reçu !", 6);
-
-	5/ Les étapes d’utilisation d’un socket :
-	-----------------------------------------
-
-	Serveur TCP :
-	-------------
+```
+## 5/ Les étapes d’utilisation d’un socket :
+Serveur TCP :
 
     socket() — créer un socket
 
@@ -115,8 +114,7 @@ write(client_fd, "Reçu !", 6);
 
     close() — fermer
 
-	Client TCP :
-	------------
+Client TCP :
 
     socket() — créer un socket
 
@@ -126,8 +124,7 @@ write(client_fd, "Reçu !", 6);
 
     close() — fermer
 
-	6/ Structures de données importantes :
-	--------------------------------------
+## 6/ Structures de données importantes :
 
     struct sockaddr_in → pour spécifier l'adresse et le port (IPv4)
 
@@ -135,8 +132,7 @@ write(client_fd, "Reçu !", 6);
 
     inet_pton() / inet_ntop() → pour convertir adresse IP texte ↔ binaire
 
-	7/ Erreurs courantes :
-	----------------------
+## 7/ Erreurs courantes :
 
     Ne pas vérifier les retours de socket(), bind(), connect(), etc.
 
@@ -146,10 +142,7 @@ write(client_fd, "Reçu !", 6);
 
     Mauvaise gestion du format d'adresse (AF_INET vs AF_INET6)
 
-	Conclusion :
-	------------
+## Conclusion :
 
-    Les sockets sont la base de toute communication réseau en bas niveau.
-    C’est un sujet fondamental si tu veux comprendre comment fonctionnent les applications comme les navigateurs, les serveurs web, les messageries, etc.
-
-
+Les sockets sont la base de toute communication réseau bas niveau.
+C’est un sujet fondamental si tu veux comprendre comment fonctionnent les applications comme les navigateurs, les serveurs web, les messageries, etc.

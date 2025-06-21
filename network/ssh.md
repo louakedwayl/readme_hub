@@ -58,7 +58,7 @@ scp fichier.txt user@host:/chemin/
 ```bash
 ssh -L 8080:localhost:80 user@host
 ```
-    Permet d’accéder localement au port 80 du serveur via ton port 8080.
+Permet d’accéder localement au port 80 du serveur via ton port 8080.
 
 ## 4/ Générer une paire de clés
 ```bash
@@ -118,9 +118,10 @@ ssh vm42
 sshd_config – Serveur SSH
 
 Fichier :
-````bash
+```bash
  /etc/ssh/sshd_config
 ```
+
 Configure le serveur SSH (réception des connexions entrantes)
 
 Exemples d’options :
