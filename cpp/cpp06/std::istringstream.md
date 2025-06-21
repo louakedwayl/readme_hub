@@ -1,26 +1,28 @@
-						std::istringstream
-************************************************************************************************************************
 
- Définition :
---------------
+# `std::istringstream`
 
-std::istringstream est une classe du C++ qui permet de traiter une chaîne de caractères (std::string) comme un flux d'entrée,
-similaire à la lecture depuis std::cin. Elle est définie dans l'en-tête <sstream>.
+---
 
-🧠 Utilité principale :
------------------------
+## 🧾 Définition
 
-std::istringstream est particulièrement utile pour :
+`std::istringstream` est une classe du C++ qui permet de traiter une chaîne de caractères (`std::string`) comme un flux d'entrée, similaire à la lecture depuis `std::cin`.  
+Elle est définie dans l'en-tête `<sstream>`.
 
-    Analyser une chaîne de caractères contenant des données formatées.
+---
 
-    Extraire des valeurs de types différents (int, float, etc.) à partir d'une chaîne.
+## 🧠 Utilité principale
 
-    Diviser une chaîne en mots ou en éléments individuels.
+`std::istringstream` est particulièrement utile pour :
 
-⚙️ Syntaxe de base :
--------------------
+- Analyser une chaîne de caractères contenant des données formatées.
+- Extraire des valeurs de types différents (`int`, `float`, etc.) à partir d'une chaîne.
+- Diviser une chaîne en mots ou en éléments individuels.
 
+---
+
+## ⚙️ Syntaxe de base
+
+```cpp
 #include <sstream>
 #include <string>
 
@@ -31,32 +33,35 @@ float reel;
 std::string mot;
 
 iss >> entier >> reel >> mot;
+```
 
-Après exécution :
------------------
+---
 
-    entier contient 42
+## ✅ Après exécution :
 
-    reel contient 3.14
+- `entier` contient `42`
+- `reel` contient `3.14`
+- `mot` contient `"hello"`
 
-    mot contient "hello"
+---
 
-En clair :
-----------
+## 💡 En clair
 
-std::istringstream permet de découper (parser) une std::string mot par mot (ou valeur par valeur),
-en utilisant l’opérateur d’extraction >>.
+`std::istringstream` permet de découper (parser) une `std::string` mot par mot (ou valeur par valeur),  
+en utilisant l’opérateur d’extraction `>>`.
 
-À retenir :
------------
+---
 
-    Le découpage se fait automatiquement par espace (ou séparateurs blancs comme tabulations, retours à la ligne).
+## 📌 À retenir
 
-    Tu peux chaîner les >> pour récupérer plusieurs valeurs facilement.
+- Le découpage se fait automatiquement par espace (ou séparateurs blancs comme tabulations, retours à la ligne).
+- Tu peux chaîner les `>>` pour récupérer plusieurs valeurs facilement.
 
-Exemple complet :
------------------
+---
 
+## 🧪 Exemple complet
+
+```cpp
 #include <iostream>
 #include <sstream>
 #include <string>
@@ -78,12 +83,12 @@ int main()
 
     return 0;
 }
+```
 
-Sortie :
---------
+### 🔽 Sortie
 
-Int: 21
-Float: 3.14
+```
+Int: 21  
+Float: 3.14  
 String: Hello
-
-******************************************************************************************************************
+```
