@@ -102,45 +102,45 @@ write(client_fd, "Reçu !", 6);
 ## 5/ Les étapes d’utilisation d’un socket :
 Serveur TCP :
 
-    socket() — créer un socket
+socket() — créer un socket
 
-    bind() — lier à une IP + port
+bind() — lier à une IP + port
 
-    listen() — écouter les connexions entrantes
+listen() — écouter les connexions entrantes
 
-    accept() — accepter une connexion
+accept() — accepter une connexion
 
-    read()/write() — communiquer
+read()/write() — communiquer
 
-    close() — fermer
+close() — fermer
 
 Client TCP :
 
-    socket() — créer un socket
+socket() — créer un socket
 
-    connect() — se connecter au serveur
+connect() — se connecter au serveur
 
-    read()/write() — communiquer
+read()/write() — communiquer
 
-    close() — fermer
+close() — fermer
 
 ## 6/ Structures de données importantes :
 
-    struct sockaddr_in → pour spécifier l'adresse et le port (IPv4)
+struct sockaddr_in → pour spécifier l'adresse et le port (IPv4)
 
-    htons() / htonl() → pour convertir en format réseau (endianess)
+htons() / htonl() → pour convertir en format réseau (endianess)
 
-    inet_pton() / inet_ntop() → pour convertir adresse IP texte ↔ binaire
+inet_pton() / inet_ntop() → pour convertir adresse IP texte ↔ binaire
 
 ## 7/ Erreurs courantes :
 
-    Ne pas vérifier les retours de socket(), bind(), connect(), etc.
+Ne pas vérifier les retours de socket(), bind(), connect(), etc.
 
-    Oublier de fermer les sockets avec close()
+Oublier de fermer les sockets avec close()
 
-    Utiliser des ports réservés (< 1024) sans droits root
+Utiliser des ports réservés (< 1024) sans droits root
 
-    Mauvaise gestion du format d'adresse (AF_INET vs AF_INET6)
+Mauvaise gestion du format d'adresse (AF_INET vs AF_INET6)
 
 ## Conclusion :
 
