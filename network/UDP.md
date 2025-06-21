@@ -1,125 +1,117 @@
-		UDP (User Datagram Protocol)
-************************************************************************************
-	
-	Définition :
-	------------
+# UDP (User Datagram Protocol)
 
-UDP est un protocole de communication non fiable, mais rapide. Il envoie des paquets sans vérifier s’ils arrivent bien ou dans le bon ordre.
-	
-	Fonctionnement :
-	----------------
+---
 
-    Pas de connexion :
+## Définition :
 
-        UDP n’établit pas de lien entre l’émetteur et le récepteur.
+UDP est un protocole de communication non fiable, mais rapide.  
+Il envoie des paquets sans vérifier s’ils arrivent bien ou dans le bon ordre.
 
-        Il envoie directement les données sous forme de datagrammes.
+---
 
-    Pas de contrôle d’erreur :
+## Fonctionnement :
 
-        Pas d’accusé de réception.
+### Pas de connexion :
 
-        Pas de retransmission automatique en cas de perte.
+- UDP n’établit pas de lien entre l’émetteur et le récepteur.  
+- Il envoie directement les données sous forme de datagrammes.
 
-    Chaque paquet est indépendant :
+### Pas de contrôle d’erreur :
 
-        Pas de suivi d’ordre ou de cohérence entre les paquets.
+- Pas d’accusé de réception.  
+- Pas de retransmission automatique en cas de perte.
 
-Utilisations courantes :
-------------------------
+### Chaque paquet est indépendant :
 
-Application	Protocole utilisé
-Streaming vidéo/audio (Live)	UDP
-Appels VoIP (Skype, WhatsApp)	UDP
-Jeux en ligne	UDP
-DNS, DHCP	UDP
+- Pas de suivi d’ordre ou de cohérence entre les paquets.
 
-Avantages :
------------
+---
 
-    Très rapide (moins de traitement).
+## Utilisations courantes :
 
-    Moins de ressources utilisées (CPU, bande passante).
+| Application                    | Protocole utilisé |
+|-------------------------------|-------------------|
+| Streaming vidéo/audio (Live)  | UDP               |
+| Appels VoIP (Skype, WhatsApp) | UDP               |
+| Jeux en ligne                 | UDP               |
+| DNS, DHCP                    | UDP               |
 
-Inconvénients :
----------------
+---
 
-    Pas fiable (paquets peuvent être perdus ou dans le désordre).
+## Avantages :
 
-    Pas d’assurance que le message arrive.
+- Très rapide (moins de traitement).  
+- Moins de ressources utilisées (CPU, bande passante).
 
-⚖️ Résumé : TCP vs UDP
-Caractéristique	TCP	UDP
-Fiabilité	✅ Oui	❌ Non
-Ordre des données	✅ Oui	❌ Non
-Vitesse	❌ Plus lent	✅ Plus rapide
-Connexion requise	✅ Oui (handshake)	❌ Non
-Utilisations typiques	Web, email, fichiers	Streaming, VoIP, jeux
+---
 
-	Est-ce que YouTube utilise TCP pour le site et UDP pour la vidéo ?
-	------------------------------------------------------------------
+## Inconvénients :
 
-	Oui, au début : TCP pour le site
+- Pas fiable (paquets peuvent être perdus ou dans le désordre).  
+- Pas d’assurance que le message arrive.
 
-Quand tu ouvres YouTube dans ton navigateur :
+---
 
-    Le chargement de la page (HTML, CSS, images, etc.) se fait en HTTP/HTTPS, qui utilise TCP.
+## ⚖️ Résumé : TCP vs UDP
 
-    Cela garantit que tout le contenu du site arrive sans erreur et dans le bon ordre.
+| Caractéristique    | TCP          | UDP          |
+|-------------------|--------------|--------------|
+| Fiabilité         | ✅ Oui       | ❌ Non       |
+| Ordre des données | ✅ Oui       | ❌ Non       |
+| Vitesse           | ❌ Plus lent | ✅ Plus rapide |
+| Connexion requise | ✅ Oui (handshake) | ❌ Non |
 
-	 Et le flux vidéo ? UDP ou TCP ?
+| Utilisations typiques  | Web, email, fichiers | Streaming, VoIP, jeux |
+
+---
+
+## Est-ce que YouTube utilise TCP pour le site et UDP pour la vidéo ?
+
+Oui, au début : TCP pour le site
+
+Quand tu ouvres YouTube dans ton navigateur :  
+- Le chargement de la page (HTML, CSS, images, etc.) se fait en HTTP/HTTPS, qui utilise TCP.  
+- Cela garantit que tout le contenu du site arrive sans erreur et dans le bon ordre.
+
+### Et le flux vidéo ? UDP ou TCP ?
+
 En réalité : YouTube utilise encore TCP pour la vidéo, pas UDP.
 
-Pourquoi ?
+Pourquoi ?  
+- YouTube utilise le protocole HTTPS, même pour les vidéos (donc TCP).  
+- Grâce au buffering (mise en mémoire tampon), YouTube peut se permettre un léger délai pour garantir zéro perte de données.  
+- YouTube privilégie la fiabilité à la vitesse brute, contrairement à des outils comme Zoom ou les jeux vidéo.
 
-    YouTube utilise le protocole HTTPS, même pour les vidéos (donc TCP).
+---
 
-    Grâce au buffering (mise en mémoire tampon), YouTube peut se permettre un léger délai pour garantir zéro perte de données.
+## Mais alors, qui utilise UDP pour les vidéos ?
 
-    YouTube privilégie la fiabilité à la vitesse brute, contrairement à des outils comme Zoom ou les jeux vidéo.
-
-	Mais alors, qui utilise UDP pour les vidéos ?
-	---------------------------------------------
-
-Des applis comme :
-
-    Zoom, Skype, Google Meet
-
-    Twitch en direct (dans certains cas)
-
-    Apps de streaming en direct "faible latence"
+Des applis comme :  
+- Zoom, Skype, Google Meet  
+- Twitch en direct (dans certains cas)  
+- Apps de streaming en direct "faible latence"
 
 Ces services ont besoin de vitesse maximale, donc ils utilisent souvent UDP via des protocoles comme RTP (Real-time Transport Protocol).
 
- Que se passe-t-il en cas de perte de données ?
------------------------------------------------
+---
 
-	1/ Avec TCP (comme sur YouTube) :
-	---------------------------------
+## Que se passe-t-il en cas de perte de données ?
 
-    Si un paquet est perdu, TCP le renvoie automatiquement.
+### 1/ Avec TCP (comme sur YouTube) :
 
-    Tu ne perds donc aucune image, mais la vidéo peut :
+- Si un paquet est perdu, TCP le renvoie automatiquement.  
+- Tu ne perds donc aucune image, mais la vidéo peut :  
+  - mettre en pause pour charger ("buffering"),  
+  - prendre un peu de temps à démarrer.  
+- L’objectif est : qualité maximale, même avec un petit délai.
 
-        mettre en pause pour charger ("buffering"),
+### Avec UDP (comme sur Zoom, Skype, les jeux) :
 
-        prendre un peu de temps à démarrer.
+- Si un paquet est perdu, il n’est pas renvoyé.  
+- Résultat :  
+  - Image sautée ou floue.  
+  - Micro-coupures de son.  
+  - Moins de latence, mais qualité variable.  
+- L’objectif est : vitesse maximale, même si tout n’arrive pas parfaitement.
 
-    L’objectif est : qualité maximale, même avec un petit délai.
-
-	Avec UDP (comme sur Zoom, Skype, les jeux) :
-	--------------------------------------------
-
-    Si un paquet est perdu, il n’est pas renvoyé.
-
-    Résultat :
-
-        Image sautée ou floue.
-
-        Micro-coupures de son.
-
-        Moins de latence, mais qualité variable.
-
-    L’objectif est : vitesse maximale, même si tout n’arrive pas parfaitement.
-
-*****************************************************************************************
+---

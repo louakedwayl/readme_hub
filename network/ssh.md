@@ -1,155 +1,142 @@
-						SSH – Secure Shell
-******************************************************************************************************
+# SSH – Secure Shell
 
-	1/ Définition :
-	---------------
+---
 
-SSH (Secure Shell) est un protocole de communication sécurisé utilisé pour :
+## 1/ Définition :
 
-    Se connecter à un système distant via le terminal (CLI),
+SSH (Secure Shell) est un protocole sécurisé utilisé pour :  
+- Se connecter à un système distant via terminal (CLI)  
+- Transférer des fichiers de manière sécurisée (scp, sftp)  
+- Exécuter des commandes à distance  
+- Créer des tunnels chiffrés (port forwarding)  
 
-    Transférer des fichiers de manière sécurisée (scp, sftp),
+> CLI (Command Line Interface) : interaction par commandes texte, sans interface graphique.  
 
-    Exécuter des commandes à distance,
+SSH chiffre toutes les données pour éviter interceptions ou attaques "man-in-the-middle".
 
-    Créer des tunnels chiffrés (port forwarding).
+---
 
-La CLI (Command Line Interface) est un moyen d’interagir avec un ordinateur en tapant des commandes texte dans un terminal,
-au lieu d’utiliser une interface graphique (GUI = Graphical User Interface).
+## 2/ Fonctionnement général :
 
-SSH chiffre toutes les données échangées pour empêcher l'interception ou les attaques type "man-in-the-middle".
+### a/ Architecture Client / Serveur :
 
-	2/ Fonctionnement général :
-	---------------------------
-
-	a/ Architecture Client / Serveur :
-	----------------------------------
-
-    Client SSH : envoie une demande de connexion (commande ssh)
-
-    Serveur SSH : écoute sur le port 22 (par défaut) et gère l’authentification
+- Client SSH : envoie la demande de connexion (commande `ssh`)  
+- Serveur SSH : écoute sur le port 22 (par défaut), gère l’authentification  
 
 [Client] --connexion SSH--> [Serveur distant]
 
-	b/ Authentification :
-	---------------------
 
-Deux types principaux :
+### b/ Authentification :
 
-    Par mot de passe
-    ➜ Moins sécurisé, car il faut taper le mot de passe à chaque connexion.
+Deux méthodes principales :  
+- **Mot de passe** : moins sûr, demande saisie à chaque connexion  
+- **Clé publique/privée** : recommandée, plus sécurisée  
 
-    Par clé publique/privée
-    ➜ Méthode recommandée et plus sécurisée.
+Fonctionnement des clés :  
+- Génère clé privée (`~/.ssh/id_rsa`) et clé publique (`~/.ssh/id_rsa.pub`)  
+- Place la clé publique sur le serveur dans `~/.ssh/authorized_keys`  
+- Seule la clé privée peut déchiffrer la connexion → seul toi peux te connecter
 
-Fonctionnement des clés :
+---
 
-    Tu génères une clé privée (~/.ssh/id_rsa) et une clé publique (~/.ssh/id_rsa.pub)
+## 3/ Commandes principales :
 
-    Tu places la clé publique sur le serveur distant dans ~/.ssh/authorized_keys
+### a/ Se connecter à un serveur :
 
-    Seule la clé privée peut déchiffrer les connexions, donc seul toi peux te connecter.
-
-	3/ Commandes principales :
-	--------------------------
-
-	a/ Se connecter à un serveur :
-	------------------------------
-
+```bash
 ssh user@host
-
+```
 Exemple :
-
+```bash
 ssh wayl@192.168.1.50
-
-	b/ Copier un fichier via SSH (avec SCP) :
-
+```
+### b/ Copier un fichier via SSH (SCP) :
+```bash
 scp fichier.txt user@host:/chemin/
-
-	c/ Tunnel SSH (port forwarding) :
-
+```
+### c/ Tunnel SSH (port forwarding) :
+```bash
 ssh -L 8080:localhost:80 user@host
+```
+    Permet d’accéder localement au port 80 du serveur via ton port 8080.
 
-➜ Permet d'accéder localement au port 80 du serveur via ton port 8080.
-
-4/ Générer une paire de clés
-
+## 4/ Générer une paire de clés
+```bash
 ssh-keygen
-
-Puis copier la clé publique sur un serveur :
-
+```
+Copier la clé publique sur un serveur :
+```bash
 ssh-copy-id user@host
+```
+## 5/ Sécurité
 
-5/ Sécurité
+Préfère les clés SSH aux mots de passe.
 
-    Utilise des clés SSH plutôt que des mots de passe.
+Ne partage jamais ta clé privée (id_rsa).
 
-    Ne donne jamais ta clé privée (id_rsa) à quelqu’un.
+Utilise fail2ban sur le serveur pour bloquer les IP suspectes.
 
-    Utilise fail2ban sur ton serveur pour bloquer les IP suspectes.
+## 6/ Résumé :
+| Élément           | Détail                                  |
+|-------------------|----------------------------------------|
+| Port par défaut    | 22                                     |
+| Protocole         | TCP                                    |
+| Sécurité          | Chiffrement, authentification par clé  |
+| Utilisation       | Connexion distante, transfert de fichiers |
+| Outils liés       | ssh, scp, sftp, ssh-keygen, ssh-agent  |
+| ssh_config – Client SSH | Configuration du client SSH          |
 
-6/ Résumé :
+Fichier :
+```bash
+/etc/ssh/ssh_config ou ~/.ssh/config (utilisateur)
+```
 
-Élément	Détail
-Port par défaut	22
-Protocole	TCP
-Sécurité	Chiffrement, authentification par clé
-Utilisation	Connexion distante, transfert de fichier
-Outils liés	ssh, scp, sftp, ssh-keygen, ssh-agent
+Configure le comportement des connexions SSH sortantes
 
+Exemples d’options :
 
-	ssh_config – Client SSH :
-	-------------------------
+| Option       | Description                          |
+|--------------|------------------------------------|
+| Host         | Nom ou motif d'hôte                |
+| Port         | Port distant par défaut (souvent 22) |
+| User         | Nom utilisateur distant par défaut  |
+| IdentityFile | Fichier de clé privée à utiliser    |
+| ForwardAgent | Transfert de l’agent SSH            |
 
-    Fichier : /etc/ssh/ssh_config (ou ~/.ssh/config pour l’utilisateur)
-
-   C’est pour le client SSH (quand tu te connectes vers une autre machine).
-
-    Définit le comportement des connexions sortantes SSH.
-
-Exemples de choses que tu peux configurer dedans :
-
-Option	Description
-Host	Nom ou motif d'hôte
-Port	Port distant à utiliser par défaut (souvent 22)
-User	Nom d'utilisateur distant par défaut
-IdentityFile	Fichier de clé privée à utiliser
-ForwardAgent	Transfert de l’agent SSH
 
 Exemple :
-
+```bash
 Host vm42
     HostName 127.0.0.1
     Port 4243
     User wayl
+```
+Puis connecte-toi simplement avec :
+```bash
+ssh vm42
+```
+sshd_config – Serveur SSH
 
-Ensuite tu peux juste faire :
+Fichier :
+````bash
+ /etc/ssh/sshd_config
+```
+Configure le serveur SSH (réception des connexions entrantes)
 
-	ssh vm42
+Exemples d’options :
 
-	sshd_config – Serveur SSH :
-	---------------------------
+| Option                 | Description                          |
+|------------------------|------------------------------------|
+| Port                   | Port d’écoute (ex: 22 ou 4242)     |
+| PermitRootLogin        | Autoriser ou non root à se connecter|
+| PasswordAuthentication | Autoriser ou non les mots de passe  |
+| AllowUsers             | Qui peut se connecter               |
+| UsePAM                 | Utiliser PAM pour authentification  |
 
-    Fichier : /etc/ssh/sshd_config
+---
 
-    C’est pour le serveur SSH (quand ta machine reçoit une connexion SSH).
+| Fichier      | Rôle    | Utilisé par | Direction                      |
+|--------------|---------|-------------|-------------------------------|
+| ssh_config   | Client  | ssh         | Tu → une autre machine         |
+| sshd_config  | Serveur | sshd        | Une autre machine → toi        |
 
-    Définit comment le serveur SSH se comporte.
-
-Exemples de choses que tu peux configurer dedans :
-
-Option	Description
-Port	Port d’écoute du serveur (ex: 22 ou 4242)
-PermitRootLogin	Autoriser ou non root à se connecter
-PasswordAuthentication	Autoriser les mots de passe
-AllowUsers	Qui peut se connecter
-UsePAM	Utiliser PAM pour l’authentification
-
-	Résumé :
-	--------
-
-Fichier	Rôle	Utilisé par	Direction
-ssh_config	Client	ssh (sortant)	Tu → une autre machine
-sshd_config	Serveur	sshd (entrant)	Une autre machine → toi
-
-**********************************************************************************************************************

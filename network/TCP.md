@@ -1,55 +1,55 @@
-			TCP (Transmission Control Protocol)
-******************************************************************************
+# TCP (Transmission Control Protocol)
 
-	Définition :
-	------------
+---
 
-TCP est un protocole de communication fiable utilisé pour transmettre des données sur un réseau.
-Il faitpartie de la suite de protocoles TCP/IP, qui est la base d’Internet.
+## Définition :
 
-	Fonctionnement :
-	----------------
+TCP est un protocole de communication fiable utilisé pour transmettre des données sur un réseau.  
+Il fait partie de la suite de protocoles TCP/IP, qui est la base d’Internet.
 
-    Connexion obligatoire :
+---
 
-        Avant d’envoyer des données, TCP établit une connexion entre les deux machines (client et serveur).
+## Fonctionnement :
 
-        Cela se fait par une procédure appelée handshake en 3 étapes (SYN, SYN-ACK, ACK).
+### Connexion obligatoire :
 
-    Transmission fiable :
+- Avant d’envoyer des données, TCP établit une connexion entre les deux machines (client et serveur).  
+- Cela se fait par une procédure appelée handshake en 3 étapes (SYN, SYN-ACK, ACK).
 
-        Les données sont découpées en paquets.
+### Transmission fiable :
 
-        Chaque paquet est numéroté.
+- Les données sont découpées en paquets.  
+- Chaque paquet est numéroté.  
+- Le récepteur envoie des accusés de réception (ACK).  
+- Si un paquet est perdu, il est renvoyé.
 
-        Le récepteur envoie des accusés de réception (ACK).
+### Contrôle de flux et de congestion :
 
-        Si un paquet est perdu, il est renvoyé.
+- TCP régule le débit pour éviter de saturer le réseau.
 
-    Contrôle de flux et de congestion :
+---
 
-        TCP régule le débit pour éviter de saturer le réseau.
+## 📦 Utilisations courantes :
 
-📦 Utilisations courantes :
-Application	Protocole utilisé
-Web (HTTP/HTTPS)	TCP
-Email (SMTP, IMAP)	TCP
-FTP (transfert)	TCP
+| Application        | Protocole utilisé |
+|--------------------|-------------------|
+| Web (HTTP/HTTPS)   | TCP               |
+| Email (SMTP, IMAP) | TCP               |
+| FTP (transfert)    | TCP               |
 
-	Avantages :
-	-----------
+---
 
-    Transmission fiable et ordonnée.
+## Avantages :
 
-    Contrôle des erreurs.
+- Transmission fiable et ordonnée.  
+- Contrôle des erreurs.  
+- Assure l’intégrité des données.
 
-    Assure l’intégrité des données.
+---
 
-	Inconvénients :
-	---------------
+## Inconvénients :
 
-    Plus lent que UDP (plus de vérifications).
+- Plus lent que UDP (plus de vérifications).  
+- Nécessite une connexion préalable.
 
-    Nécessite une connexion préalable.
-
-********************************************************************************************
+---
