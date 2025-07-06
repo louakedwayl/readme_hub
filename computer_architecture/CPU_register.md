@@ -8,11 +8,11 @@
 
 Les registres sont une mémoire volatile ultra-rapide située directement dans le CPU.
 
-    Volatile = ils perdent leur contenu quand le CPU est éteint ou redémarré.
+Volatile = ils perdent leur contenu quand le CPU est éteint ou redémarré.
 
-    Ultra-rapide = accès quasi instantané, bien plus rapide que la RAM.
+Ultra-rapide = accès quasi instantané, bien plus rapide que la RAM.
 
-    Ils stockent temporairement les données et adresses sur lesquelles le processeur travaille.
+Ils stockent temporairement les données et adresses sur lesquelles le processeur travaille.
 
 C’est la zone mémoire la plus proche du cœur du CPU, essentielle pour le traitement rapide des instructions.
 
@@ -66,8 +66,8 @@ Ici, tout se passe dans les registres, sans toucher à la RAM. C’est ultra rap
 
 ## 6. En résumé
 
-    Les registres sont au cœur du fonctionnement du CPU.
+Les registres sont au cœur du fonctionnement du CPU.
 
-    Leur architecture dépend du type de CPU (x86, ARM, etc.).
+Leur architecture dépend du type de CPU (x86, ARM, etc.).
 
-    Connaître leur rôle et nommage est indispensable pour programmer bas niveau ou optimiser du code.
+Connaître leur rôle et nommage est indispensable pour programmer bas niveau ou optimiser du code.
