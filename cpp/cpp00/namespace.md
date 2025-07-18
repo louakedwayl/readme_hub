@@ -1,6 +1,5 @@
 
 # Namespace
-***************************************************************************************************
 
 En C++, un namespace est un espace de noms qui permet d'organiser le code et d'éviter les conflits 
 de noms entre différentes parties d'un programme. Un namespace peut contenir des variables, 

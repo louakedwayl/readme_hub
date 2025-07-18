@@ -1,116 +1,105 @@
-                                            std::string
-*************************************************************************************************************
+# `std::string`
 
-1/ Introduction à std::string :
+## 1/ Introduction à `std::string` :
 -------------------------------
 
-    std::string est une classe de la bibliothèque standard C++ qui encapsule un tableau dynamique 
-de caractères (char * en interne). Elle offre une gestion automatique de la mémoire et fournit diverses 
-fonctionnalités pour manipuler des chaînes de caractères plus facilement qu'avec des char *.
+`std::string` est une classe de la bibliothèque standard C++ qui encapsule un tableau dynamique 
+de caractères (`char*` en interne). Elle offre une gestion automatique de la mémoire et fournit diverses 
+fonctionnalités pour manipuler des chaînes de caractères plus facilement qu'avec des `char*`.
 
- 1/ Gestion automatique de la mémoire : La taille de la chaîne s’ajuste dynamiquement selon le contenu.
- 2/ Fonctions membres riches : Des méthodes pour la modification, la recherche, la comparaison et la conversion.
- 3/ Sécurité et simplicité : Moins de risques d’erreurs comme les dépassements de tampon.
+### Avantages :
+1. **Gestion automatique de la mémoire** : La taille de la chaîne s’ajuste dynamiquement selon le contenu.  
+2. **Fonctions membres riches** : Méthodes pour modification, recherche, comparaison, conversion, etc.  
+3. **Sécurité et simplicité** : Moins de risques d’erreurs comme les dépassements de tampon.
 
-2/ Déclaration, Construction et Initialisation :
+---
+
+## 2/ Déclaration, Construction et Initialisation :
 ------------------------------------------------
 
-2.1. Inclusion et Déclaration:
-------------------------------
-
-    Exemple d'implementation de std::string :
-    -----------------------------------------
-
+#### 2.1 Inclusion et Déclaration :
+```cpp
 #include <iostream>
+#include <string>
 
 int main() {
-    std::string string = "Hello while";
-    std::cout << string << std::endl;
+    std::string str = "Hello while";
+    std::cout << str << std::endl;
     return 0;
 }
+```
+#### 2.2 Constructeurs :
+```cpp
+// 1. Constructeur par défaut : chaîne vide
+std::string s1;
 
-2.2 Constructeurs :
--------------------
+// 2. À partir d’un littéral C
+std::string s2("Hello While"); 
+std::string s2_alt = "Hello While";
 
-    std::string propose plusieurs constructeurs :
-
-    1/Constructeur par défaut : Crée une chaîne vide
-    --------------------------------------------------
-
-std::string s1;  // chaîne vide
-
-    2/Constructeur à partir d’un littéral : Permet d’initialiser avec une chaîne de caractères C
-    ---------------------------------------------------------------------------------------------
-
-std::string s2("Hello While");   ou  std::string s2 = "Hello While";
-
-    3/ Constructeur de copie : Crée une nouvelle chaîne en copiant une chaîne existante
-    -----------------------------------------------------------------------------------
-
+// 3. Constructeur de copie
 std::string s3(s2);
 
-    4/ Constructeur de répétition : Crée une chaîne contenant plusieurs occurrences d’un même caractère
-    ---------------------------------------------------------------------------------------------------
+// 4. Répétition d’un caractère
+std::string s4(10, '*');  // "**********"
+```
 
-std::string s4(10, '*');
+#### 2.3 Opérations et Fonctions Membres :
 
+| **Fonction**         | **Description**                                                   |
+|----------------------|--------------------------------------------------------------------|
+| `size()` / `length()`| Renvoie le nombre de caractères.                                  |
+| `empty()`            | Vérifie si la chaîne est vide.                                    |
+| `operator[]` / `at()`| Accès à un caractère par indice (`at()` vérifie les bornes).       |
+| `append()` / `+=`    | Ajoute du contenu à la fin de la chaîne.                          |
+| `insert()`           | Insère une sous-chaîne à une position donnée.                     |
+| `erase()`            | Supprime une partie de la chaîne.                                 |
+| `replace()`          | Remplace une portion par une autre chaîne.                        |
+| `clear()`            | Vide complètement la chaîne.                                      |
+| `find()`             | Recherche la position d'une sous-chaîne ou d’un caractère.        |
+| `rfind()`            | Recherche la dernière occurrence.                                 |
+| `substr()`           | Extrait une sous-chaîne.                                          |
+| `compare()`          | Compare deux chaînes.                                             |
 
-2.3 Opérations et Fonctions Membres :
--------------------------------------
+#### Exemples :
+```cpp
+std::string s = "Chaine de caractères";
 
-1/ size() / length() : Renvoient le nombre de caractères dans la chaîne.
+// Taille
+std::cout << "Taille : " << s.size() << std::endl;
 
-    std::string s = "Chaine de caratère";
-    std::cout << "Taille : " << s.size() << std::endl;
+// Vide ?
+if (s.empty()) std::cout << "La chaîne est vide" << std::endl;
 
-2/empty() : Vérifie si la chaîne est vide.
+// Accès par indice
+char c1 = s[0];
+char c2 = s.at(0);
 
-    if(s.empty()) {
-        std::cout << "La chaîne est vide" << std::endl;
-    }
+// Ajout
+s.append(" est géniale");
+s += " !";
 
-3/ operator[] et at() : Accès aux caractères par indice.
+// Insertion
+s.insert(6, "++");
 
-    char premier = s[0];         // accès direct (sans vérification)
-    char premierSecure = s.at(0);  // avec vérification d’indice
+// Suppression
+s.erase(0, 6);
 
-4/append() et operator+= : Ajouter du contenu à la fin de la chaîne.
+// Remplacement
+s.replace(0, 3, "XYZ");
 
-    s.append(" est génial");
-    s += " en C++";
+// Nettoyage
+s.clear();
 
-5/insert() : Insérer une sous-chaîne à une position donnée.
+// Recherche
+size_t pos = s.find("C++");
+if (pos != std::string::npos)
+    std::cout << "Trouvé à la position : " << pos << std::endl;
 
-    s.insert(3, "++");
+// Sous-chaîne
+std::string sub = s.substr(4, 3);
 
-6/erase() : Supprimer une partie ou l’intégralité de la chaîne.
-
-    s.erase(0, 2);  // supprime les deux premiers caractères
-
-7/replace() : Remplacer une portion de la chaîne par une autre.
-
-    s.replace(0, 3, "XYZ");
-
-8/clear() : Vider complètement la chaîne.
-
-    s.clear();
-
-9/ find() : Recherche la position d’une sous-chaîne ou d’un caractère.
-
-    size_t pos = s.find("C++");
-    if(pos != std::string::npos)
-        std::cout << "Trouvé à la position " << pos << std::endl;
-
-! : rfind() : Recherche depuis la fin.
-
-10/substr() : Extrait une sous-chaîne à partir d’un indice donné.
-
-std::string sub = s.substr(4, 3);  // extrait 3 caractères à partir de l'indice 4
-
-11/ compare() : Compare deux chaînes.
-
-    if(s.compare("Hello") == 0) {
-        std::cout << "Les chaînes sont égales" << std::endl;
-    }
-
-***********************************************************************************************************************
+// Comparaison
+if (s.compare("Hello") == 0)
+    std::cout << "Les chaînes sont égales" << std::endl;
+```

@@ -1,79 +1,75 @@
-			              stdio streams (Flux d'Entrée/Sortie Standard)
-********************************************************************************************************
+# Stdio Streams (Flux d'Entrée/Sortie Standard)
 
-	stdio vient de "Standard Input/Output" (Entrée/Sortie Standard).
+`stdio` vient de **"Standard Input/Output"** (Entrée/Sortie Standard).
 
-1/ Stdio en C :
+---
+
+## 1/ Stdio en C :
 ---------------
 
-En C, la bibliothèque stdio.h (Standard Input Output Header) fournit des fonctions pour gérer l’entrée et la sortie, comme :
+En C, la bibliothèque `stdio.h` (Standard Input Output Header) fournit des fonctions pour gérer l’entrée et la sortie, comme :
 
-    printf() → afficher du texte
-    scanf() → lire une entrée utilisateur
-    fopen() → ouvrir un fichier
-    fgets() → lire une ligne
+- `printf()` → afficher du texte  
+- `scanf()` → lire une entrée utilisateur  
+- `fopen()` → ouvrir un fichier  
+- `fgets()` → lire une ligne  
 
-2/ Stdio en C++ :
+---
+
+## 2/ Stdio en C++ :
 -----------------
 
-En C++, on n'utilise plus stdio.h mais plutôt iostream (input output stream), qui offre des alternativesmodernes comme :
+En C++, on n'utilise plus `stdio.h` mais plutôt **`<iostream>`** (input/output stream), qui offre des alternatives modernes comme :
 
-    std::cout (remplace printf())
-    std::cin (remplace scanf())
-    std::cerr pour afficher des erreurs (sortie d'erreur)
-    std::clog pour les messages de journalisation (sortie de log)
-    std::ifstream et std::ofstream (remplacent fopen() pour manipuler des fichiers)
+- `std::cout` (remplace `printf()`)  
+- `std::cin` (remplace `scanf()`)  
+- `std::cerr` → afficher des erreurs (sortie d'erreur)  
+- `std::clog` → messages de journalisation (sortie de log)  
+- `std::ifstream` / `std::ofstream` → manipuler des fichiers (remplacent `fopen()`)  
 
-Le namespace std (Standard) regroupe tous les éléments de la bibliothèque standard C++
-Les nouvelles bibliothèques de C++ (introduites avec le standard C++98) n'utilisent pas l'extension .h 
-pour différencier les fichiers C++ modernes des anciens fichiers C hérités.
+> Le namespace `std` (Standard) regroupe tous les éléments de la bibliothèque standard C++.  
+> Les nouvelles bibliothèques C++ (introduites avec C++98) **n'utilisent pas `.h`** pour différencier les versions modernes des anciennes bibliothèques C héritées.
 
-3/std::cout : character output :
+---
+
+## 3/ `std::cout` : character output
 --------------------------------
 
-	std::cout ou character output est un objet du namespace std, utilisé pour afficher des données à l'écran.
+`std::cout` (character output) est un objet du namespace `std` utilisé pour afficher des données à l'écran.
 
-Exemple : 
-
-   std::cout << "Bonjour, voici un exemple en C++!\n" << std::endl;
-
-std::cout peut écrire sur la console en utilisant la méthode write(), qui appartient 
-à la classe std::ostream.
-
-std::ostream::write() :
------------------------
-
-La méthode write() est une fonction membre de std::ostream permettant d'écrire des blocs de données brutes, principalement utilisées pour manipuler des chaînes de caractères en mode binaire.
-
-Ces deux lignes font exactement la même chose :
+### Exemple :
+```cpp
+std::cout << "Bonjour, voici un exemple en C++!\n" << std::endl;
+```
+#### Méthode write() :
+```cpp
+//std::cout peut écrire sur la console en utilisant la méthode write() de la classe std::ostream.
 
 std::cout << "Hello, world!";
 std::cout.write("Hello, world!", 13);
+```
+Ces deux lignes produisent le même résultat.
+### 4/ std::cin : character input
 
-4/std::cin : character input :
-------------------------------
+std::cin est un objet du namespace std, utilisé pour récupérer des données depuis l’entrée standard.
 
-std::cin (character input) est un objet du namespace std, utilisé pour récupérer des données depuis l’entrée standard
+#### Exemple :
+```cpp
+std::string nom;
+std::cout << "Entrez votre nom : ";
+std::cin >> nom;
+std::cout << "Bonjour, " << nom << " !" << std::endl;
+```
+⚠️ std::cin lit uniquement un mot.
+Pour lire une ligne entière (avec espaces), utilisez std::getline().
 
-Exemple :
+### 5/ std::cin.eof() :
 
-    std::string nom;
-    std::cout << "Entrez votre nom : ";
-    std::cin >> nom;
-    std::cout << "Bonjour, " << nom << " !" << std::endl;
+std::cin.eof() est une méthode qui permet de détecter la fin de l’entrée d’un flux de données (std::cin).
+Elle est utile pour la lecture de fichiers ou de données utilisateurs dont la taille n’est pas connue à l’avance.
 
-std::cin récupère une entrée utilisateur et l’assigne à la variable nom.
-Attention : std::cin ne prend qu'un seul mot (pour une phrase entière, utiliser std::getline()).
+#### Comportement :
 
-4/ std::cin.eof() :
--------------------
+Retourne true → si la fin du flux est atteinte
 
-std::cin.eof() est une méthode qui permet de détecter la fin d'entrée d'un flux de données standard (std::cin). 
-Elle est particulièrement utile lors de la lecture de fichiers ou d'entrées utilisateur lorsque l'on ne sait pas 
-à l'avance combien de données seront fournies.
-
-La méthode std::cin.eof() retourne un booléen : true si la fin du flux d'entrée a été atteinte.
-
-                                                false sinon.
-
-********************************************************************************************************
+Retourne false → sinon
