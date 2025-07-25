@@ -1,49 +1,47 @@
-					std::distance
-************************************************************************************************
+# `std::distance`
 
-std::distance est un algorithme de la bibliothèque standard C++ défini dans l'en-tête <iterator>.
-Il permet de calculer la distance (ou le nombre d'éléments) entre deux itérateurs d’un conteneur.
-Cet algorithme est très utilisé pour obtenir le nombre d'éléments entre deux positions dans une collection,
-que ce soit dans un tableau, un vecteur, une liste, etc.
+`std::distance` est un **algorithme de la bibliothèque standard C++** défini dans l'en-tête `<iterator>`.  
+Il permet de **calculer la distance (nombre d'éléments)** entre deux itérateurs d’un conteneur.  
 
-1/ Prototype de la fonction :
------------------------------
+Cet algorithme est très utilisé pour **obtenir le nombre d'éléments** entre deux positions dans une collection  
+(`vector`, `list`, `array`, etc.).
 
+---
+
+## 1/ Prototype de la fonction :
+```cpp
 template <typename InputIterator>
 typename std::iterator_traits<InputIterator>::difference_type
 distance(InputIterator first, InputIterator last);
+```
 
-3/ Paramètres :
-----------------
+## 2/ Paramètres :
 
-    first : l'itérateur de départ (inclus dans le calcul).
+first : itérateur de départ (inclus dans le calcul).
 
-    last : l'itérateur de fin (exclu du calcul).
+last : itérateur de fin (exclu du calcul).
 
-4/ Retour :
-------------
+## 3/ Retour :
 
-La fonction retourne un entier signé de type difference_type, qui représente le nombre d'éléments entre les itérateurs.
-Ce type est défini par le conteneur et peut être un ptrdiff_t ou tout autre type compatible avec le calcul de la différence 
-entre deux itérateurs.
+Retourne un entier signé de type difference_type, représentant le nombre d'éléments entre les deux itérateurs.
 
-5/ Comportement :
------------------
+Ce type est défini par le conteneur (souvent ptrdiff_t).
 
-    std::distance calcule la distance entre les deux itérateurs, c'est-à-dire le nombre d'éléments que l'on traverse 
-pour aller de first à last.
+## 4/ Comportement :
 
-    Cette fonction peut être utilisée avec tous les types d'itérateurs : InputIterator, BidirectionalIterator, RandomAccessIterator, etc.
+std::distance compte le nombre d'éléments parcourus de first à last.
 
-        Pour des itérateurs à accès aléatoire (comme ceux de std::vector), la distance est calculée en temps constant O(1).
+Compatible avec tous les types d'itérateurs :
 
-        Pour des itérateurs bidirectionnels (comme ceux de std::list), la distance est calculée en temps linéaire O(n).
+RandomAccessIterator (ex: std::vector) → O(1) (calcul direct).
 
-6/ Exemples d’utilisation :
----------------------------
+BidirectionalIterator (ex: std::list) ou InputIterator → O(n) (parcours complet).
 
-Exemple 1 : Calcul de la distance entre deux itérateurs d’un std::vector
+## 5/ Exemple d’utilisation :
 
+### Exemple 1 : Calcul de la distance entre deux itérateurs d’un std::vector
+
+```cpp
 #include <iostream>
 #include <vector>
 #include <iterator> // pour std::distance
@@ -55,10 +53,17 @@ int main()
     auto begin = v.begin();  // itérateur sur le premier élément
     auto end = v.end();      // itérateur sur la position après le dernier élément
 
-    // Calculer la distance entre les itérateurs
     std::cout << "La distance entre begin et end est : "
               << std::distance(begin, end) << std::endl;  // Affiche 5
     return 0;
 }
+```
 
-*************************************************************************************************************
+## 6/ Points clés :
+
+Temps constant avec les itérateurs à accès aléatoire (vector, deque).
+
+Temps linéaire avec les listes ou conteneurs chaînés (list).
+
+Indispensable pour calculer le nombre d'éléments entre deux positions sans écrire de boucle.
+

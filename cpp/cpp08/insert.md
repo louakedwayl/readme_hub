@@ -1,140 +1,115 @@
-					Insert
-************************************************************************************************************************
+# `insert` en C++
 
-La méthode insert :
--------------------
+## La méthode `insert` :
 
-1/ Insérer un seul élément à une position donnée :
---------------------------------------------------
+La méthode `insert` permet d’**ajouter des éléments à une position donnée** dans un conteneur (vector, deque, list, etc.), sans écraser les éléments existants.  
+Elle est **très flexible** et prend plusieurs formes.
 
+---
+
+## 1/ Insérer un seul élément à une position donnée :
+```cpp
 container.insert(position, value);
 
     position : un itérateur indiquant où l'élément doit être inséré.
 
     value : l'élément à insérer.
+```
 
-Exemple :
+### Exemple :
 
+```cpp
 #include <vector>
 #include <iostream>
 
 int main() 
 {
-    std::vector<int> v;
-    v.push_back(1);
-    v.push_back(2);
-    v.push_back(3);
-
-    // Positionner l'itérateur sur le début du vecteur
-    std::vector<int>::iterator it = v.begin();
+    std::vector<int> v = {1, 2, 3};
 
     // Insérer '0' au début
-    v.insert(it, 0);
+    v.insert(v.begin(), 0);
 
-    // Afficher le vecteur
-    for (std::vector<int>::iterator it = v.begin(); it != v.end(); ++it) {
-        std::cout << *it << " ";
-    }
-    // Résultat : 0 1 2 3
-    return 0;
+    for (auto it = v.begin(); it != v.end(); ++it)
+        std::cout << *it << " ";  // Résultat : 0 1 2 3
 }
+```
 
-2/ Insérer plusieurs éléments à une position donnée :
------------------------------------------------------
+### 2/ Insérer plusieurs éléments à une position donnée :
 
 container.insert(position, n, value);
 
-    position : l'itérateur indiquant où commencer l'insertion.
+n : le nombre d'éléments à insérer.
 
-    n : le nombre d'éléments à insérer.
+value : la valeur de chaque élément inséré.
 
-    value : la valeur de chaque élément inséré.
+### Exemple :
 
-Exemple :
-
+```cpp
 #include <vector>
 #include <iostream>
 
 int main() 
 {
-    std::vector<int> v;
-    v.push_back(1);
-    v.push_back(2);
-    v.push_back(3);
+    std::vector<int> v = {1, 2, 3};
 
     // Insérer deux éléments '5' à la fin du vecteur
     v.insert(v.end(), 2, 5);
 
-    // Afficher le vecteur
-    for (std::vector<int>::iterator it = v.begin(); it != v.end(); ++it) {
-        std::cout << *it << " ";
-    }
-    // Résultat : 1 2 3 5 5
-    return 0;
+    for (auto it = v.begin(); it != v.end(); ++it)
+        std::cout << *it << " ";  // Résultat : 1 2 3 5 5
 }
+```
 
-3/ Insérer une plage d'éléments (un range d'itérateurs) :
----------------------------------------------------------
+### 3/ Insérer une plage d'éléments (range d'itérateurs) :
 
 container.insert(position, begin, end);
 
-    position : l'itérateur où commencer l'insertion.
+begin, end : itérateurs représentant la plage d’éléments à insérer.
 
-    begin et end : les itérateurs représentant la plage des éléments à insérer.
+### Exemple :
 
-Exemple avec des itérateurs :
------------------------------
-
+```cpp
 #include <vector>
 #include <iostream>
 
 int main() {
-    std::vector<int> v1;
-    v1.push_back(1);
-    v1.push_back(2);
-    v1.push_back(3);
-
-    std::vector<int> v2;
-    v2.push_back(4);
-    v2.push_back(5);
-    v2.push_back(6);
+    std::vector<int> v1 = {1, 2, 3};
+    std::vector<int> v2 = {4, 5, 6};
 
     // Insérer les éléments de v2 à la fin de v1
     v1.insert(v1.end(), v2.begin(), v2.end());
 
-    // Afficher le vecteur
-    for (std::vector<int>::iterator it = v1.begin(); it != v1.end(); ++it) {
-        std::cout << *it << " ";
-    }
-    // Résultat : 1 2 3 4 5 6
-    return 0;
+    for (auto it = v1.begin(); it != v1.end(); ++it)
+        std::cout << *it << " ";  // Résultat : 1 2 3 4 5 6
 }
+```
 
-Explication :
--------------
+### Explication :
 
-    Insérer un seul élément : La méthode insert permet d'ajouter un élément à une position donnée sans supprimer aucun élément existant.
-Elle déplace les éléments après l'endroit d'insertion.
+Insérer un seul élément : Ajoute un élément sans écraser les autres, en décalant les éléments après la position d’insertion.
 
-    Insérer plusieurs éléments : Il est possible d'ajouter plusieurs copies du même élément en spécifiant le nombre n à insérer.
+Insérer plusieurs éléments : Ajoute plusieurs copies du même élément.
 
-    Insérer une plage d'éléments : On peut insérer plusieurs éléments à partir d'une autre collection,
-définie par une plage d'itérateurs, entre begin et end.
+Insérer une plage d’éléments : Ajoute tous les éléments d’une autre collection (via ses itérateurs).
 
-En résumé :
------------
+### Notes importantes :
 
-La méthode insert permet d'ajouter des éléments dans un conteneur à une position donnée (comme au début, au milieu ou à la fin).
-Elle est flexible et permet d'ajouter une ou plusieurs copies du même élément ou une plage d'éléments d'un autre conteneur.
+#### Sur std::vector :
 
-Notes supplémentaires :
------------------------
+L’insertion peut entraîner un réallouement si la capacité doit être augmentée → coût en performance (copie/déplacement des éléments).
 
-    Sur std::vector : L'insertion d'éléments peut entraîner le déplacement de données si la capacité du vecteur doit être augmentée pour 
-accueillir de nouveaux éléments. Cela peut être coûteux en termes de performance, surtout si de nombreuses insertions sont effectuées 
-dans un grand vecteur.
+#### Sur std::list :
 
-    Sur std::list : L'insertion est généralement plus rapide (O(1)) car elle ne nécessite pas de déplacer les éléments,
-mais l'itérateur spécifié doit indiquer une position valide dans la liste.
+L’insertion est généralement rapide (O(1)) car elle ne déplace pas les éléments (les éléments sont reliés par des pointeurs).
 
-****************************************************************************************************************************************
+### En résumé :
+
+insert est une méthode puissante et flexible :
+
+Ajout d’un seul élément.
+
+Ajout de plusieurs copies du même élément.
+
+Ajout d’une plage d’éléments d’un autre conteneur.
+
+Elle fonctionne sur vector, deque et list, mais son coût dépend du type de conteneur utilisé.

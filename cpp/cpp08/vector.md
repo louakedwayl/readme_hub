@@ -1,133 +1,135 @@
-					std::vector
-************************************************************************************************
+# `std::vector`
 
-1/ Qu'est-ce qu'un std::vector ?
---------------------------------
+## 1/ Qu'est-ce qu'un `std::vector` ?
 
-Un vector en C++ est un tableau dynamique :
+Un **`std::vector`** est un **tableau dynamique** de la **STL** :  
+- Sa taille **peut changer automatiquement** (agrandir ou réduire).  
+- Les données sont **stockées en mémoire contiguë** (comme un tableau classique).  
+- Il combine la **simplicité** d'un tableau et la **flexibilité** d'une liste.  
 
-    Sa taille peut changer automatiquement (agrandir ou réduire).
+> **En-tête nécessaire :** `#include <vector>`
 
-    Il est stocké en mémoire contiguë (comme un tableau classique).
+---
 
-    Il appartient à la STL (#include <vector>).
-
-✅ Il combine la simplicité d'un tableau avec la flexibilité d'une liste.
-
-2/ Syntaxe de base :
---------------------
-
+## 2/ Syntaxe de base :
+```cpp
 #include <vector>
 #include <iostream>
 
-int main() 
-{
-    std::vector<int> numbers; // Déclaration d'un vector vide
+int main() {
+    std::vector<int> numbers; // Vector vide
 
-    numbers.push_back(5); // Ajouter un élément à la fin
+    numbers.push_back(5);
     numbers.push_back(10);
     numbers.push_back(15);
 
     for (size_t i = 0; i < numbers.size(); ++i)
         std::cout << numbers[i] << " ";
 }
+```
 
-Sortie :
+### Sortie :
 
+```bash
 5 10 15
+```
 
-3/ Principales méthodes de std::vector :
-----------------------------------------
+## 3/ Principales méthodes de std::vector :
 
-Méthode				Description
-------------------------------------------------------------------------------------------------------
-push_back(x)			Ajoute x à la fin.
-pop_back()			Supprime le dernier élément.
-size()				Retourne le nombre d'éléments.
-empty()				Vérifie si le vector est vide (true ou false).
-clear()				Supprime tous les éléments.
-at(index)			Accès sécurisé avec vérification des bornes.
-front()				Retourne la première valeur.
-back()				Retourne la dernière valeur.
-insert(position, value)		Insère un élément à une position donnée.
-erase(position)			Supprime un élément à une position donnée.
-resize(n)			Change la taille du vector à n.
-reserve(n)			Réserve au moins n éléments pour éviter plusieurs reallocations.
+| Méthode                  | Description                                  |
+|--------------------------|----------------------------------------------|
+| `push_back(x)`           | Ajoute `x` à la fin                          |
+| `pop_back()`             | Supprime le dernier élément                  |
+| `size()`                 | Retourne le nombre d'éléments                |
+| `empty()`                | Vérifie si le vector est vide                |
+| `clear()`                | Supprime tous les éléments                   |
+| `at(index)`              | Accès sécurisé avec vérification des bornes  |
+| `front()`                | Retourne le premier élément                  |
+| `back()`                 | Retourne le dernier élément                  |
+| `insert(position, value)`| Insère un élément à une position donnée      |
+| `erase(position)`        | Supprime un élément à une position donnée    |
+| `resize(n)`              | Change la taille du vector                   |
+| `reserve(n)`             | Réserve un espace mémoire (optimisation)     |
 
-4/ Accès aux éléments :
------------------------
 
-Deux façons :
+## 4/ Accès aux éléments :
 
-Type d'accès		Exemple		Remarque
-Indice direct		vec[i]		Pas de vérification de dépassement de borne.
-Accès sécurisé		vec.at(i)	Lève une exception std::out_of_range si mauvais indice.
+| Type d'accès      | Exemple      | Remarque                                     |
+|-------------------|-------------|---------------------------------------------|
+| **Indice direct** | `vec[i]`    | Pas de vérification de dépassement          |
+| **Accès sécurisé**| `vec.at(i)` | Lève `std::out_of_range` si l’indice invalide |
 
-5/ Parcourir un vector :
-------------------------
+## 5/ Parcourir un vector :
 
-Avec une boucle classique :
+### Boucle classique :
 
+```cpp
 for (size_t i = 0; i < vec.size(); ++i)
     std::cout << vec[i];
+```
 
-Avec un itérateur :
+### Avec itérateur :
 
+```cpp
 for (std::vector<int>::iterator it = vec.begin(); it != vec.end(); ++it)
     std::cout << *it;
 
-6/ Fonctionnement interne :
----------------------------
+// Boucle range-based (C++11+) :
 
-    Un vector utilise un tableau alloué dynamiquement.
+for (int n : vec)
+    std::cout << n;
+```
 
-    Lorsqu'il dépasse sa capacité (capacity), il double (généralement) sa taille automatiquement.
+## 6/ Fonctionnement interne :
 
-    Cela implique des reallocations (copier tout vers un nouvel espace mémoire).
+std::vector utilise un tableau dynamique.
 
-    Réserver de l’espace avec reserve() peut optimiser si tu sais combien d'éléments tu auras !
+Lorsque sa capacité (capacity) est dépassée, il réalloue (généralement en doublant la taille).
 
-7/ Exemples pratiques :
------------------------
+Cela implique de copier les anciens éléments → coût en performance.
 
-Ajouter et trier
+Astuce : utiliser reserve() si on connaît à l’avance le nombre d’éléments.
 
+## 7/ Exemples pratiques :
+
+### Trier un vector :
+
+```cpp
 #include <vector>
 #include <algorithm>
-
 std::vector<int> v = {4, 1, 8, 3};
-std::sort(v.begin(), v.end()); // Trie croissant : 1 3 4 8
+std::sort(v.begin(), v.end()); // 1 3 4 8
+```
 
-Fusionner deux vectors
+### Fusionner deux vectors :
+
+```cpp
 
 std::vector<int> a = {1, 2, 3};
 std::vector<int> b = {4, 5};
+a.insert(a.end(), b.begin(), b.end()); // {1, 2, 3, 4, 5}
+```
 
-a.insert(a.end(), b.begin(), b.end()); // a = {1, 2, 3, 4, 5}
+### Retirer les éléments pairs :
 
-Retirer tous les éléments pairs
-
+```cpp
 std::vector<int> v = {1, 2, 3, 4, 5};
 v.erase(std::remove_if(v.begin(), v.end(), [](int x){ return x % 2 == 0; }), v.end());
 // v = {1, 3, 5}
+```
 
-8/ Avantages et inconvénients :
--------------------------------
+## 8/ Avantages et inconvénients :
 
-Avantages			Inconvénients
------------------------------------------------------------------------------------
-Accès rapide (O(1))		Insertion/suppression lente au milieu (O(n))
-Redimensionnement automatique	Reallocation coûteuse quand capacity est dépassée
-Facile à utiliser		Peut gaspiller un peu de mémoire (capacity > size)
+| Avantages                    | Inconvénients                                  |
+|-----------------------------|-----------------------------------------------|
+| Accès rapide **O(1)**       | Insertion/suppression au milieu **O(n)**      |
+| Redimensionnement automatique | Réallocations coûteuses si `capacity` dépasse |
+| Facile à utiliser           | Peut réserver plus de mémoire que nécessaire  |
 
+## 9/ Résumé :
 
-9/ Résumé :
------------
+std::vector = tableau dynamique flexible et performant pour les accès aléatoires.
 
-    vector = tableau dynamique flexible et rapide pour les accès.
+Idéal quand on a besoin de croissance dynamique et d’un accès rapide.
 
-    Utilisé quand on a besoin de croissance dynamique et accès rapide.
-
-    Attention à ne pas abuser des insertions/suppressions au milieu.
-
-****************************************************************************************************
+⚠️ Éviter les insertions/suppressions au milieu (coûteuses).

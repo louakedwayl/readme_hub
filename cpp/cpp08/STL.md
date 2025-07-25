@@ -1,105 +1,89 @@
-					Standard Template Library) en C++
-************************************************************************************************************************************
+# Standard Template Library (STL) en C++
 
-1/ Introduction :
------------------
+## 1/ Introduction :
 
-La Standard Template Library (STL) est une bibliothèque C++ standardisée qui fournit :
+La **Standard Template Library (STL)** est une **bibliothèque C++ standardisée** qui fournit :
 
-    des conteneurs (structures de données),
+- **Conteneurs** : structures de données génériques.  
+- **Algorithmes** : recherche, tri, manipulation.  
+- **Itérateurs** : pour parcourir les conteneurs.  
+- **Foncteurs** : objets fonctions pour personnaliser les comportements.  
 
-    des algorithmes (recherche, tri, manipulation),
+La STL est **générique** (basée sur `template<typename T>`), ce qui la rend **flexible** et **performante**.
 
-    des itérateurs (pour parcourir les conteneurs),
+---
 
-    des foncteurs (objets fonctions).
+## 2/ Les Conteneurs (Containers) :
 
-Elle est générique : basée sur des templates (template<typename T>), ce qui la rend très flexible et performante.
+Les **conteneurs** stockent et organisent les données.
 
-2/ Les Conteneurs (Containers) :
---------------------------------
+- **`vector`** : tableau dynamique (accès rapide par index).  
+- **`list`** : liste doublement chaînée.  
+- **`deque`** : double-ended queue (ajout/suppression aux deux extrémités).  
+- **`set`** : ensemble de valeurs **uniques** (triées).  
+- **`map`** : table **clé-valeur** (triée).  
 
-Les conteneurs stockent des données. 
+---
 
-    vector : tableau dynamique.
+## 3/ Les Algorithmes :
 
-    list : liste chaînée double.
+La STL propose de nombreux **algorithmes génériques** :
 
-    deque : double-ended queue .
+- **Recherche** : `find`, `binary_search`, `count`.  
+- **Tri** : `sort`, `stable_sort`.  
+- **Modification** : `copy`, `swap`, `reverse`.  
+- **Tests** : `all_of`, `any_of`, `none_of`.  
+- **Autres** : `accumulate` (somme), `transform`, `fill`.  
 
-    set : ensemble de valeurs uniques.
+Ils sont **souvent utilisés avec des itérateurs**.
 
-    map : table de hachage clé-valeur.
+---
 
+## 4/ Les Itérateurs :
 
-3/ Les Algorithmes :
---------------------
+Les **itérateurs** permettent de parcourir les conteneurs.  
 
-La STL propose de nombreux algorithmes génériques :
+### Types d'itérateurs :
+- **InputIterator** : lecture (ex : `istream_iterator`).  
+- **OutputIterator** : écriture (ex : `ostream_iterator`).  
+- **ForwardIterator** : avance uniquement.  
+- **BidirectionalIterator** : avance et recule (ex : `list`).  
+- **RandomAccessIterator** : accès direct (ex : `vector`).  
 
-    Recherche : find, binary_search, count
+**Exemple :**
 
-    Tri : sort, stable_sort
-
-    Modification : copy, swap, reverse
-
-    Test : all_of, any_of, none_of
-
-    Autres : accumulate (somme), transform, fill
-
-Ils sont souvent utilisés avec des itérateurs.
-
-4/ Les Itérateurs :
--------------------
-
-Les itérateurs permettent de parcourir les conteneurs.
-
-Types d'itérateurs :
-
-    InputIterator : lecture (ex : istream_iterator)
-
-    OutputIterator : écriture (ex : ostream_iterator)
-
-    ForwardIterator : avance seulement
-
-    BidirectionalIterator : avance et recule (ex : list)
-
-    RandomAccessIterator : accès direct (ex : vector)
-
-Exemple :
----------
-
+```cpp
 std::vector<int> v = {1, 2, 3, 4};
 for (std::vector<int>::iterator it = v.begin(); it != v.end(); ++it)
     std::cout << *it << std::endl;
+```
 
-5/ Les Foncteurs (Function Objects) :
--------------------------------------
+## 5/ Les Foncteurs (Function Objects) :
 
 Un foncteur est un objet qui se comporte comme une fonction.
 
-Exemple simple :
-----------------
+### Exemple simple :
 
+```cpp
 struct MultiplyByTwo 
 {
     int operator()(int x) const { return x * 2; }
 };
 
 MultiplyByTwo m;
+
 std::cout << m(10); // affiche 20
+```
 
-Utilisés souvent dans les algorithmes pour personnaliser les opérations (ex : sort avec un comparateur).
+Utilisés souvent dans les algorithmes (ex : sort avec comparateur personnalisé).
 
-3/ Avantages de la STL :
-------------------------
+## 6/ Avantages de la STL :
 
- Gain de temps : pas besoin de réécrire des structures de données.
+Gain de temps : structures prêtes à l’emploi.
 
- Efficacité : les implémentations sont très optimisées.
+Efficacité : implémentations hautement optimisées.
 
- Sécurité : réduit les erreurs de gestion mémoire.
- 
- Flexibilité : grâce aux templates.
+Sécurité : réduit les erreurs de gestion mémoire.
 
-****************************************************************************************************************************************
+Flexibilité : grâce aux templates.
+

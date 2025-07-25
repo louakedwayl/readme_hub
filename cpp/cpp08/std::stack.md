@@ -1,158 +1,118 @@
-							std::stack
-************************************************************************************************************************
-Introduction
+# `std::stack`
 
-std::stack est un adaptateur de conteneur dans la bibliothèque standard C++ qui permet de manipuler une structure de données de type pile 
-(LIFO : Last In, First Out). La pile permet d'ajouter des éléments au sommet et d'en retirer du sommet. 
-C'est un conteneur de type wrapper qui utilise un autre conteneur comme std::deque ou std::vector pour stocker les données 
-sous-jacentes, mais les éléments ne sont accessibles qu'au sommet de la pile.
+## Introduction
+`std::stack` est un **adaptateur de conteneur** de la bibliothèque standard C++ qui implémente une **pile**  
+(**LIFO : Last In, First Out**).  
+Seul l’élément **au sommet** est accessible, ce qui rend `std::stack` idéal pour les scénarios où l’on doit  
+gérer les données dans l’ordre inverse de leur insertion (ex : algorithmes DFS, backtracking, analyse syntaxique).
 
-Fonctionnalités principales de std::stack
+---
 
-    Push : Ajoute un élément au sommet de la pile.
+## Fonctionnalités principales
+- **`push`** : Ajoute un élément au sommet.  
+- **`pop`** : Retire l’élément au sommet.  
+- **`top`** : Accède à l’élément au sommet (sans le retirer).  
+- **`empty`** : Vérifie si la pile est vide.  
+- **`size`** : Retourne le nombre d’éléments dans la pile.
 
-    Pop : Retire l'élément au sommet de la pile.
+---
 
-    Top : Accède à l'élément au sommet de la pile sans le retirer.
+## 1/ Déclaration et inclusion
+Pour utiliser `std::stack` :  
 
-    Empty : Vérifie si la pile est vide.
-
-    Size : Retourne le nombre d'éléments dans la pile.
-
-1/ Déclaration et inclusion :
------------------------------
-
-Pour utiliser std::stack, il faut inclure l'en-tête <stack>.
-
+```cpp
 #include <stack>
-
-2/ Syntaxe de base :
---------------------
-
 std::stack<T> stack_name;  // Crée une pile vide de type T
 
-    T est le type des éléments contenus dans la pile.
+    T = type des éléments (int, string, classe personnalisée, etc.).
 
-    Par défaut, std::stack utilise std::deque comme conteneur sous-jacent.
+    Par défaut, std::stack utilise std::deque comme conteneur sous-jacent (modifiable : ex std::vector).
+```
 
-std::stack existe uniquement en tant que template dans la bibliothèque standard C++.
-Cela signifie que vous devez spécifier un type d'élément pour la pile lorsque vous la déclarez.
+## 2/ Opérations de base
 
-Le type d'élément peut être n'importe quel type valide, comme int, std::string, double, ou même un type personnalisé.
+### a. push(value) :
 
-Syntaxe de déclaration :
-------------------------
-
-std::stack<T> stack_name;
-
-Où T est le type des éléments à stocker dans la pile.
-
-3/ Opérations de base :
------------------------
-
-a : push(value) :
------------------
-
-Ajoute un élément au sommet de la pile.
+Ajoute un élément au sommet.
 
 std::stack<int> stack;
-stack.push(5);   // Ajoute 5 au sommet de la pile
-stack.push(10);  // Ajoute 10 au sommet de la pile
+stack.push(5);
+stack.push(10);  // Pile = [5, 10]
 
-b : pop() :
------------
+### b. pop() :
 
-Retire l'élément au sommet de la pile. Cette opération ne renvoie rien, mais modifie l'état de la pile.
+Retire l’élément au sommet (ne retourne rien).
 
-stack.pop();  // Retire l'élément au sommet (10 dans ce cas)
+stack.pop();  // Retire 10
 
-c : top() :
-------------
+### c. top() :
 
-Accède à l'élément au sommet de la pile sans le retirer. Cette opération retourne une référence à l'élément du sommet.
+Accède à l’élément au sommet sans le retirer.
 
-int topValue = stack.top();  // Accède au sommet de la pile sans le retirer
-std::cout << "Top element: " << topValue << std::endl; // Affiche 5
+int topValue = stack.top();
+std::cout << "Sommet : " << topValue << std::endl;
 
-d : empty() :
--------------
+### d. empty() :
 
-Vérifie si la pile est vide. Retourne true si la pile est vide, sinon false.
+Vérifie si la pile est vide.
 
-if (stack.empty()) {
-    std::cout << "La pile est vide." << std::endl;
-} else {
-    std::cout << "La pile n'est pas vide." << std::endl;
-}
+if (stack.empty()) std::cout << "Pile vide\n";
 
-e : size() :
-------------
+### e. size() :
 
-Retourne le nombre d'éléments dans la pile.
+Retourne le nombre d’éléments.
 
-std::cout << "La pile contient " << stack.size() << " éléments." << std::endl;
+```cpp
+std::cout << "Nombre d'éléments : " << stack.size() << std::endl;
+```
 
-4/ Exemple complet :
---------------------
+## 3/ Exemple complet
 
-Voici un exemple complet d'utilisation de std::stack :
-
+```cpp
 #include <iostream>
 #include <stack>
 
 int main() {
     std::stack<int> pile;
 
-    // Ajouter des éléments
     pile.push(10);
     pile.push(20);
     pile.push(30);
 
-    // Accéder au sommet
-    std::cout << "Élément au sommet : " << pile.top() << std::endl;  // 30
+    std::cout << "Sommet : " << pile.top() << std::endl;  // 30
 
-    // Retirer l'élément au sommet
     pile.pop();
-    std::cout << "Après pop, élément au sommet : " << pile.top() << std::endl;  // 20
+    std::cout << "Après pop, sommet : " << pile.top() << std::endl;  // 20
 
-    // Vérifier si la pile est vide
-    if (pile.empty()) {
-        std::cout << "La pile est vide." << std::endl;
-    } else {
-        std::cout << "La pile n'est pas vide." << std::endl;
-    }
-
-    // Taille de la pile
-    std::cout << "La pile contient " << pile.size() << " éléments." << std::endl;
+    std::cout << "La pile contient " << pile.size() << " éléments.\n";
 
     return 0;
 }
+```
 
-5/ Remarques importantes :
---------------------------
+## 4/ Remarques importantes
 
-    Conteneur sous-jacent :
+Conteneur sous-jacent :
+Par défaut : std::deque. Peut être remplacé par std::vector :
 
-        Par défaut, std::stack utilise un std::deque pour stocker les éléments.
-Toutefois, vous pouvez spécifier un autre conteneur en argument template, comme std::vector, en définissant un type personnalisé :
+std::stack<int, std::vector<int>> stack_with_vector;
 
-    std::stack<int, std::vector<int>> stack_with_vector;
+Pas d’accès aux éléments intermédiaires :
+Seul le sommet est accessible (pas de [] ou d’itérateurs).
 
-    Pas d'accès aux éléments intermédiaires :
+### Usage typique :
 
-        Contrairement à d'autres conteneurs comme std::vector ou std::list, vous ne pouvez pas accéder aux éléments autres que le sommet 
-de la pile. Cela fait de std::stack une structure de données adaptée aux scénarios où l'accès séquentiel au dernier élément inséré 
-est nécessaire (par exemple, les algorithmes de parcours en profondeur, le retour de fonctions récursives, etc.).
+Idéal pour les scénarios nécessitant une gestion LIFO :
 
-    Usage courant :
+Parcours en profondeur (DFS).
 
-        std::stack est utilisé dans des contextes où vous avez besoin de suivre un ordre d'insertion dans un programme. Par exemple, dans les algorithmes de parcours en profondeur (DFS), analyse syntaxique, et autres tâches nécessitant une gestion LIFO des éléments.
+Retour arrière (backtracking).
 
-6/ Exemple d'utilisation dans un algorithme de parcours en profondeur (DFS) :
------------------------------------------------------------------------------
+Analyse syntaxique.
 
-Voici un exemple d'utilisation de std::stack dans un algorithme de parcours en profondeur dans un graphe :
+## 5/ Exemple pratique : DFS avec std::stack
 
+```cpp
 #include <iostream>
 #include <stack>
 #include <vector>
@@ -180,21 +140,20 @@ void dfs(int start, const std::vector<std::vector<int>>& adj) {
 
 int main() {
     std::vector<std::vector<int>> adj = {
-        {1, 2},    // voisins de 0
-        {0, 3},    // voisins de 1
-        {0, 3},    // voisins de 2
-        {1, 2, 4}, // voisins de 3
-        {3}        // voisins de 4
+        {1, 2}, {0, 3}, {0, 3}, {1, 2, 4}, {3}
     };
 
-    dfs(0, adj);  // Lancer DFS à partir du noeud 0
-
-    return 0;
+    dfs(0, adj);
 }
+```
 
-Dans cet exemple, std::stack est utilisé pour implémenter le parcours en profondeur d'un graphe.
-Conclusion
+### Conclusion
 
-std::stack est un conteneur très pratique pour les applications nécessitant une structure de données LIFO, comme les parcours de graphes ou les algorithmes où l'ordre d'insertion est essentiel.
+std::stack = pile LIFO simple et efficace.
 
-*******************************************************************************************************************************************
+Insertions/Suppressions rapides au sommet.
+
+Pas d’accès aléatoire : uniquement le sommet.
+
+Parfait pour les algorithmes nécessitant une structure LIFO (DFS, backtracking, undo/redo).
+
