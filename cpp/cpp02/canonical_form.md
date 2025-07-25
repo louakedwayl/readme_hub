@@ -1,34 +1,30 @@
-			Forme canonique
-************************************************************
+# Forme canonique
 
-1/ Introduction :
------------------
+## 1/ Introduction :
 
 En C++, la forme canonique est un ensemble minimal de méthodes qu’une classe 
 doit implémenter pour gérer correctement ses ressources, en particulier 
 lorsqu’elle possède des allocations dynamiques. 
 
 Ce concept a été introduit par James Coplien dans son livre 
-"Advanced C++: Programming Styles and Idioms" (1992).
+*"Advanced C++: Programming Styles and Idioms"* (1992).
 
-2/ La Forme Canonique de Coplien :
-----------------------------------
+## 2/ La Forme Canonique de Coplien :
 
 La forme canonique repose sur quatre méthodes essentielles :
 
-1/ Le constructeur par défaut : Permet d'initialiser l'objet.
-
-2/ Le destructeur : Libère les ressources lorsque l'objet est détruit.
-
-3/ Le constructeur de copie : Permet de créer un nouvel objet en copiant un autre.
-
-4/ L’opérateur d’affectation (=) : Permet d'affecter un objet à un autre après leur création.
+1. **Le constructeur par défaut** : Permet d'initialiser l'objet.
+2. **Le destructeur** : Libère les ressources lorsque l'objet est détruit.
+3. **Le constructeur de copie** : Permet de créer un nouvel objet en copiant un autre.
+4. **L’opérateur d’affectation (`=`)** : Permet d'affecter un objet à un autre après leur création.
 
 Ces méthodes garantissent que la classe gère correctement ses ressources, en évitant notamment les fuites mémoire et les double suppressions.
 
-Exemple de classe respectant la Forme Canonique :
--------------------------------------------------
+---
 
+## Exemple de classe respectant la Forme Canonique :
+
+```cpp
 class Warrior 
 {
 private:
@@ -54,7 +50,7 @@ public:
     Warrior& operator=(const Warrior& other) 
     { 
         if (this != &other) 
-	{  // Éviter l’auto-affectation
+        {  // Éviter l’auto-affectation
             delete[] name;  // Libérer l’ancienne mémoire
             name = new char[strlen(other.name) + 1];  // Nouvelle allocation mémoire
             strcpy(name, other.name);
@@ -63,7 +59,7 @@ public:
         return *this;
     }
 
-    // 5/Destructeur
+    // 5/ Destructeur
     ~Warrior() 
     {
         delete[] name;  // Libération de la mémoire allouée
@@ -72,8 +68,8 @@ public:
     // Méthode d'affichage
     void display() const 
     {
-        std::cout << "Warrior: " << (name ? name : "Unknown") << ",
-		Strength: " << strength << std::endl;
+        std::cout << "Warrior: " << (name ? name : "Unknown") 
+                  << ", Strength: " << strength << std::endl;
     }
 };
 
@@ -92,5 +88,4 @@ int main()
 
     return 0;
 }
-
-********************************************************************************************
+```
