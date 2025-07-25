@@ -1,66 +1,60 @@
-				Dynamic Cast
-******************************************************************************************************
+# Dynamic Cast
 
-Cours sur dynamic_cast en C++ :
--------------------------------
+## Cours sur `dynamic_cast` en C++ :
 
-En C++, dynamic_cast est un opérateur utilisé pour effectuer un cast dynamique, principalement dans les situations où vous 
-travaillez avec des hiérarchies de classes polymorphiques (c’est-à-dire, des classes qui contiennent au moins une fonction virtuelle).
+En C++, **`dynamic_cast`** est un opérateur utilisé pour effectuer un **cast dynamique**, principalement dans les situations où vous travaillez avec des **hiérarchies de classes polymorphiques** (c’est-à-dire, des classes qui contiennent au moins une fonction virtuelle).
 
-Il permet de faire une conversion sécurisée entre types dérivés et types de base. Cela permet d'éviter les erreurs lors de la conversion de types et d'assurer que le type auquel vous essayez de cast est bien le type attendu.
+Il permet de faire une **conversion sécurisée** entre types dérivés et types de base.  
+Cela évite les erreurs lors de la conversion et garantit que le type cible est bien celui attendu.
 
-1/ Contexte et but de dynamic_cast :
-------------------------------------
+---
 
-Le polymorphisme permet à une fonction ou à un objet de se comporter de différentes manières en fonction du type réel de l'objet. 
-Cependant, lorsque vous travaillez avec des types dérivés et des pointeurs ou références vers des types de base, vous pouvez rencontrer des problèmes lorsque vous essayez de convertir un pointeur de type de base en un pointeur vers un type dérivé.
+## 1 Contexte et but de `dynamic_cast` :
 
-C'est ici qu'intervient dynamic_cast, qui permet de vérifier dynamiquement (au moment de l'exécution) si la conversion est valide.
+Le polymorphisme permet à une fonction ou à un objet de se comporter différemment selon le type réel de l'objet.  
+Cependant, lors de l’utilisation de **pointeurs ou références vers un type de base**, il peut être nécessaire de vérifier dynamiquement si un objet est bien du type dérivé attendu.
 
-2/ Syntaxe de dynamic_cast :
-----------------------------
+**`dynamic_cast`** permet de **vérifier dynamiquement** (à l’exécution) si la conversion est valide.
 
+---
+
+## 2 Syntaxe de `dynamic_cast` :
+
+```cpp
 dynamic_cast<new_type>(expression)
+```
 
-    new_type : le type vers lequel vous souhaitez effectuer la conversion.
+new_type : le type vers lequel on souhaite convertir.
 
-    expression : l'expression qui est un pointeur ou une référence à un objet du type d'origine.
+expression : un pointeur ou une référence vers un objet.
 
-Il peut être utilisé de deux façons :
+### Deux utilisations principales :
 
-    Avec des pointeurs : dynamic_cast<Type*>(ptr)
+Avec des pointeurs : dynamic_cast<Type*>(ptr)
 
-    Avec des références : dynamic_cast<Type&>(ref)
+Avec des références : dynamic_cast<Type&>(ref)
 
-3/ Fonctionnement :
--------------------
+## 3 Fonctionnement :
 
-Cas 1 : Cast entre pointeurs
+### Cas 1 : Cast entre pointeurs
 
-Lorsque vous utilisez dynamic_cast sur un pointeur, il renverra :
+Si la conversion réussit → retourne un pointeur vers le type demandé.
 
-    Un pointeur vers le type demandé si la conversion est valide.
+Si la conversion échoue → retourne nullptr.
 
-    nullptr si la conversion échoue.
+### Cas 2 : Cast entre références
 
-Cas 2 : Cast entre références
+Si la conversion échoue → lance une exception std::bad_cast.
 
-Lorsqu’il est utilisé sur une référence, si la conversion échoue, une exception de type std::bad_cast est levée.
+## 4 Conditions pour utiliser dynamic_cast :
 
-4/ Conditions pour utiliser dynamic_cast :
-------------------------------------------
+Polymorphisme : La classe de base doit contenir au moins une méthode virtuelle (ex : destructeur virtuel).
 
-    Polymorphisme : Vous devez travailler avec une hiérarchie de classes polymorphiques. 
-Cela signifie que la classe de base doit avoir au moins une fonction virtuelle (même si c’est un destructeur virtuel).
+Sécurité d’exécution : Contrairement à static_cast, dynamic_cast vérifie le type réel à l'exécution avant de faire la conversion.
 
-    Sécurité à l'exécution : Contrairement à static_cast, dynamic_cast fait un contrôle à l'exécution pour 
-s'assurer que le cast est valide. Il permet de prévenir des erreurs à l’exécution.
+## 5 Exemple de dynamic_cast :
 
-5/ Exemple de dynamic_cast :
-----------------------------
-
-Prenons un exemple simple avec une hiérarchie de classes :
-
+```cpp
 #include <iostream>
 
 class Animal 
@@ -99,7 +93,8 @@ int main()
     if (chat) 
     {
         chat->parler();
-    } else 
+    } 
+    else 
     {
         std::cout << "Le cast a échoué." << std::endl;  // Affiche "Le cast a échoué."
     }
@@ -107,5 +102,12 @@ int main()
     delete animal;
     return 0;
 }
+```
 
-*****************************************************************************************************************************
+### En résumé :
+
+dynamic_cast permet de vérifier dynamiquement les conversions entre types dans une hiérarchie polymorphique.
+
+Avec pointeurs → retourne nullptr si le cast échoue.
+
+Avec références → lance une exception std::bad_cast si le cast échoue.
