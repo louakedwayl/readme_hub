@@ -1,45 +1,46 @@
-        clock() , clock_t et CLOCKS_PER_SEC (C++)
-***********************************************************************
+# `clock()`, `clock_t` et `CLOCKS_PER_SEC` (C++)
 
-Objectif :
-----------
+## Objectif :
+Mesurer le **temps d'exécution d’un bloc de code** (**CPU time**) en **microsecondes** ou **secondes**.
 
-    Mesurer le temps d'exécution d’un bloc de code (CPU time) en **microsecondes** ou **secondes**.
+---
 
-1/ Les éléments à connaître :
------------------------------
+## 1/ Les éléments à connaître :
 
-    clock_t
+### `clock_t`
+- Type défini dans `<ctime>`.
+- Sert à stocker le nombre de **ticks CPU** (unités de temps processeur).
 
-* Type défini dans <ctime>.
-* Utilisé pour stocker le nombre de "ticks" de processeur (temps CPU).
+### `clock()`
+- Fonction qui retourne le nombre de **ticks CPU** écoulés depuis le début du programme.
+- Prototype :  
+```cpp
+  clock_t clock();
+```
 
-    clock()
+Retourne un entier représentant des ticks.
 
-* Fonction qui retourne le nombre de **ticks CPU** depuis le début du programme.
-* Prototype : clock_t clock();
-* Valeur retournée : un nombre entier représentant des "ticks".
+### CLOCKS_PER_SEC
 
-    CLOCKS_PER_SEC
+Constante définie dans <ctime>.
 
-* Constante définie aussi dans <ctime>.
-* Indique le nombre de ticks par seconde.
-* Permet de convertir les ticks en secondes.
+Indique le nombre de ticks par seconde.
 
+Utilisée pour convertir des ticks en secondes.
 
-2/ Formule de conversion :
---------------------------
+### 2/ Formule de conversion :
+
+Pour obtenir la durée en secondes :
 
 double seconds = (double)(end - start) / CLOCKS_PER_SEC;
 
-    Ou pour des **microsecondes** :
+Pour obtenir la durée en microsecondes :
 
 double microseconds = (double)(end - start) / CLOCKS_PER_SEC * 1e6;
 
+## 3/ Exemple complet :
 
-3/ Exemple complet :
---------------------
-
+```cpp
 #include <iostream>
 #include <ctime>
 #include <vector>
@@ -61,15 +62,13 @@ int main()
 
     return 0;
 }
+```
 
-Résumé :
---------
+### Résumé :
 
-| Élément          | Description                                                |
-| ---------------- | ---------------------------------------------------------- |
-| clock()          | Donne le temps CPU actuel en ticks                         |
-| clock_t          | Type pour stocker la valeur de `clock`                     |
-| CLOCKS_PER_SEC   | Nombre de ticks par seconde (souvent 1 000 000 sur Linux)  |
-|  Important       | Ne donne pas l'heure réelle, mais le **temps CPU utilisé** |
-
-*********************************************************************************************************************
+| Élément           | Description                                          |
+|-------------------|------------------------------------------------------|
+| `clock()`         | Donne le temps CPU actuel en **ticks**               |
+| `clock_t`         | Type pour stocker la valeur de `clock`               |
+| `CLOCKS_PER_SEC`  | Nombre de ticks par seconde (souvent **1 000 000** sur Linux) |
+| **Important**     | Ne donne pas l'heure réelle, mais le **temps CPU utilisé** |
