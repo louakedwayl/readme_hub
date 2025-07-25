@@ -1,17 +1,16 @@
-				Gestion des exceptions en C++ — try / catch
-************************************************************************************************************************************
+# Gestion des exceptions en C++ — try / catch
 
-🚀 Qu’est-ce qu’une exception ? :
----------------------------------
+## 🚀 Qu’est-ce qu’une exception ? :
 
-Une exception est un mécanisme qui permet de gérer les erreurs ou les situations anormales pendant l’exécution du programme.
+Une **exception** est un mécanisme qui permet de **gérer les erreurs** ou les situations anormales pendant l’exécution du programme.  
 
-Quand un problème survient, on peut lancer (throw) une exception.
-Si elle n'est pas attrapée (catch), le programme se termine brutalement.
+Quand un problème survient, on peut **lancer** (`throw`) une exception.  
+Si elle n'est pas **attrapée** (`catch`), le programme se **termine brutalement**.
 
-🟢 Syntaxe générale :
----------------------
+---
 
+## 🟢 Syntaxe générale :
+```cpp
 try
 {
     // Code qui pourrait générer une exception
@@ -20,10 +19,11 @@ catch (const TypeException &e)
 {
     // Code pour gérer l'exception
 }
+```
 
-🔥 Exemple simple :
--------------------
+### Exemple simple :
 
+```cpp
 #include <iostream>
 #include <exception>
 
@@ -41,36 +41,33 @@ int main()
     std::cout << "Le programme continue." << std::endl;
     return 0;
 }
+```
 
-Résultat :
-----------
+### Résultat :
 
 Erreur attrapée : Une erreur est survenue !
-
 Le programme continue.
 
-Pourquoi utiliser try / catch ? :
----------------------------------
+### Pourquoi utiliser try / catch ? :
 
-✅ Pour empêcher que le programme plante brutalement en cas d'erreur
-✅ Pour récupérer et traiter l'information sur l'erreur
-✅ Pour protéger les zones critiques du programme
+Empêcher que le programme plante brutalement en cas d'erreur
 
-Le mécanisme complet :
-----------------------
+Récupérer et traiter l'information sur l'erreur
 
-    throw → Permet de lancer une exception
+Protéger les zones critiques du programme
 
-    try → Permet de protéger un bloc de code
+### Le mécanisme complet :
 
-    catch → Permet de attraper l'exception et d'agir
+throw → Permet de lancer une exception.
 
+try → Protège un bloc de code.
 
-🧩 Plusieurs catch :
---------------------
+catch → Attrape l'exception et agit en conséquence.
+
+### Plusieurs catch :
 
 On peut attraper plusieurs types d’exceptions :
-
+```cpp
 try
 {
     // Code qui peut générer plusieurs types d'exceptions
@@ -87,13 +84,13 @@ catch (const std::exception &e)
 {
     std::cerr << "Autre erreur : " << e.what() << std::endl;
 }
+```
 
+### Attraper toutes les exceptions :
 
-Attraper toutes les exceptions :
---------------------------------
+Il existe un catch spécial qui attrape n'importe quelle exception :
 
-Il existe un catch spécial qui attrape n'importe quelle exception (même sans info) :
-
+```cpp
 try
 {
     // Code
@@ -102,12 +99,13 @@ catch (...)
 {
     std::cerr << "Une exception inconnue a été attrapée." << std::endl;
 }
+```
 
-Créer sa propre exception :
----------------------------
+### Créer sa propre exception :
 
-Tu peux aussi créer ta propre classe d'exception en héritant de std::exception :
+On peut créer une classe d’exception en héritant de std::exception :
 
+```cpp
 #include <exception>
 
 class MyException : public std::exception
@@ -118,9 +116,11 @@ public:
         return "Ceci est une exception personnalisée.";
     }
 };
+```
 
-Puis l'utiliser :
+### Utilisation :
 
+```cpp
 try
 {
     throw MyException();
@@ -129,45 +129,39 @@ catch (const MyException &e)
 {
     std::cerr << e.what() << std::endl;
 }
+```
 
-Les arguments de catch :
-------------------------
+### Les arguments de catch :
 
-Quand on écrit un bloc catch, on doit indiquer le type d’exception qu’on veut attraper.
-Cet argument détermine ce qu’on attrape et comment on y accède.
+Quand on écrit un bloc catch, on doit indiquer le type d’exception que l’on veut attraper.
 
-📌 Structure d'un argument de catch :
--------------------------------------
+### Structure :
 
+```cpp
 catch (const TypeException &e)
+```
 
-Décomposition :
----------------
+| Élément          | Signification                                                                     |
+|------------------|-----------------------------------------------------------------------------------|
+| **TypeException** | Type de l'exception à attraper (ex : `std::exception`, `std::runtime_error`).     |
+| **const**         | L’exception est en lecture seule → on ne peut pas la modifier.                   |
+| **&**             | Passage par référence → évite la copie de l’objet (plus performant).             |
+| **e**             | Nom de la variable représentant l'exception (accès au message via `e.what()`).   |
 
-+----------------+-------------------------------------------------------------------------------------------+
-| Élément       | Signification                                                                              |
-+---------------+--------------------------------------------------------------------------------------------+
-| TypeException | Le type de l'exception que l'on souhaite attraper (ex : std::exception, std::runtime_error)|
-| const         | L'exception est passée en constante → on ne pourra pas la modifier.                        |
-| &             | Passage par référence → évite de faire une copie de l'objet (plus performant).             |
-| e             | Nom de la variable qui représente l'exception attrapée. Accès aux infos avec .what().      |
-+----------------+-------------------------------------------------------------------------------------------+
- 
 
-Exemple
+### Exemple :
 
+```cpp
 catch (const std::exception &e)
 {
     std::cerr << "Erreur : " << e.what() << std::endl;
 }
+```
 
-Ici, on attrape toutes les exceptions qui héritent de std::exception.
-e est une référence constante vers l'exception, et on peut afficher son message avec e.what().
+### Exemple avec plusieurs types :
 
-🔥 Exemple avec plusieurs types :
----------------------------------
-
-catch (const std::out_of_range &e) // Attrape uniquement les exceptions out_of_range
+```cpp
+catch (const std::out_of_range &e) // Attrape uniquement out_of_range
 {
     std::cerr << "Erreur hors limites : " << e.what() << std::endl;
 }
@@ -175,5 +169,4 @@ catch (const std::exception &e) // Attrape les autres exceptions standard
 {
     std::cerr << "Erreur : " << e.what() << std::endl;
 }
-
-**************************************************************************************************************************************
+```
