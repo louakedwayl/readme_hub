@@ -10,8 +10,9 @@
 
 ---
 
-## 📁 Structure d’un projet avec Docker Compose
+# 📁 Structure d’un projet avec Docker Compose
 
+```bash
 my-app/
 ├── docker-compose.yml
 ├── backend/
@@ -19,8 +20,7 @@ my-app/
 ├── frontend/
 │ └── Dockerfile
 └── db/ 
-souvent pas besoin de Dockerfile, image officielle utilisée)
-
+```
 ---
 
 ## Fichier `docker-compose.yml`
