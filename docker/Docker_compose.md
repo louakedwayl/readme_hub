@@ -10,7 +10,7 @@
 
 ---
 
-# 📁 Structure d’un projet avec Docker Compose
+## 📁 Structure d’un projet avec Docker Compose
 
 ```bash
 my-app/
