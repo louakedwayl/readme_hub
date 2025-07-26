@@ -18,8 +18,8 @@ my-app/
 │ └── Dockerfile
 ├── frontend/
 │ └── Dockerfile
-└── db/ (souvent pas besoin de Dockerfile, image officielle utilisée)
-
+└── db/ 
+souvent pas besoin de Dockerfile, image officielle utilisée)
 
 ---
 
