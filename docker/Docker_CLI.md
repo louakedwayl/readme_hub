@@ -1,158 +1,156 @@
-Docker CLI ?
-************************************************************************************************
+# Docker CLI
 
-Docker CLI est l’interface en ligne de commande qui permet d’interagir avec Docker Engine.
-C’est par elle que tu peux créer, gérer, et superviser les conteneurs, images, volumes, réseaux, etc.
+---
 
-	2/ Installation :
-	-----------------
+## 1. Qu’est-ce que Docker CLI ?
 
-    Docker CLI s’installe automatiquement avec Docker Engine.
+**Docker CLI** est l’interface en ligne de commande qui permet d’interagir avec **Docker Engine**.  
+C’est par elle que tu peux **créer, gérer et superviser** les conteneurs, images, volumes, réseaux, etc.
 
-    Sur Linux, tu peux vérifier la version avec :
+---
 
-    docker --version
+## 2. Installation
 
-    Sur Windows/Mac, Docker Desktop inclut Docker CLI.
+- **Docker CLI** s’installe automatiquement avec **Docker Engine**.  
+- Sur **Linux**, tu peux vérifier la version avec :  
+```bash
+docker --version
+```
+Sur Windows/Mac, Docker Desktop inclut Docker CLI.
 
-	3/ Commandes de base
-	--------------------
-
-	a) docker run
+## 3. Commandes de base
+### a. docker run
 
 Créer et lancer un conteneur à partir d’une image.
-
+```bash
 docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
+```
 
-	Exemple :
-	---------
-
+### Exemple :
+```bash
 docker run -it ubuntu /bin/bash
+```
 
-    -it : interactive + tty (terminal)
+-it : mode interactif + terminal
 
-    ubuntu : image officielle Ubuntu
+ubuntu : image officielle Ubuntu
 
-    /bin/bash : commande à lancer dans le conteneur
+/bin/bash : commande à lancer dans le conteneur
 
-	b) docker ps
-	
-Liste les conteneurs en cours d’exécution.
+### b. docker ps
 
-	docker ps
-
+Liste les conteneurs en cours d’exécution :
+```bash
+docker ps
+```
 Avec -a pour voir tous les conteneurs (arrêtés ou pas) :
+```bash
+docker ps -a
+```
+### c. docker images
 
-	docker ps -a
-
-	c) docker images
-
-Liste les images Docker locales.
-
-	docker images
-
-d) docker stop et docker kill
+Liste les images Docker locales :
+```bash
+docker images
+```
+### d. docker stop et docker kill
 
 Arrêter un conteneur proprement :
-
-	docker stop <container_id|name>
-
+```bash
+docker stop <container_id|name>
+```
 Forcer l’arrêt immédiat :
+```bash
+docker kill <container_id|name>
+```
+### e. docker rm
 
-	docker kill <container_id|name>
-
-e) docker rm
-
-	Supprimer un ou plusieurs conteneurs (doivent être arrêtés) :
-
+Supprimer un ou plusieurs conteneurs (doivent être arrêtés) :
+```bash
 docker rm <container_id|name>
+```
 
-f) docker rmi
+### f. docker rmi
 
-	Supprimer une ou plusieurs images locales :
-
+Supprimer une ou plusieurs images locales :
+```bash
 docker rmi <image_id|name>
+```
+### g. docker exec
 
-g) docker exec
-
-	Exécuter une commande dans un conteneur en cours d’exécution.
-
+Exécuter une commande dans un conteneur en cours d’exécution :
+```bash
 docker exec -it <container_id|name> /bin/bash
+```
+## 4. Gestion des volumes
+## a. Créer un volume
 
-	4/ Gestion des volumes :
-	------------------------
+```bash
+docker volume create mon_volume
+```
 
-a) Créer un volume
+### b. Lister les volumes
 
-	docker volume create mon_volume
+```bash
+docker volume ls
+```
 
-b) Lister les volumes
+### c. Utiliser un volume dans un conteneur
 
-	docker volume ls
+```bash
+docker run -v mon_volume:/data ubuntu
+```
 
-c) Utiliser un volume dans un conteneur
+## 5. Gestion des réseaux
+### a. Lister les réseaux
 
-	docker run -v mon_volume:/data ubuntu
-
-	5/ Gestion des réseaux :
-	------------------------
-
-a) Lister les réseaux
-
+```bash
 docker network ls
-
-b) Créer un réseau
-
+```
+### b. Créer un réseau
+```bash
 docker network create mon_reseau
+```
 
-c) Connecter un conteneur à un réseau
+### c. Connecter un conteneur à un réseau
 
+```bash
 docker network connect mon_reseau mon_conteneur
+```
 
-	6/ Autres commandes utiles :
-	----------------------------
+## 6. Autres commandes utiles
 
-    docker logs <container> : voir les logs d’un conteneur
+docker logs <container> : voir les logs d’un conteneur
 
-    docker inspect <container|image> : infos détaillées JSON
+docker inspect <container|image> : infos détaillées (JSON)
 
-    docker build -t mon_image . : construire une image depuis un Dockerfile
+docker build -t mon_image . : construire une image depuis un Dockerfile
 
-    docker pull <image> : télécharger une image depuis Docker Hub
+docker pull <image> : télécharger une image depuis Docker Hub
 
-    docker push <image> : envoyer une image vers un registre
+docker push <image> : envoyer une image vers un registre
 
-	7/ Exemple complet :
-	--------------------
+## 7. Exemple complet
 
 Lancer un conteneur nginx en mode détaché avec un port exposé :
-
+```bash
 docker run -d -p 8080:80 --name mon_nginx nginx
+```
+-d : mode détaché (background)
 
-    -d : mode détaché (background)
+-p 8080:80 : mappe le port 8080 de la machine hôte au port 80 du conteneur
 
-    -p 8080:80 : mappe le port 8080 de la machine hôte au port 80 du conteneur
+--name : nom du conteneur
 
-    --name : nom du conteneur
-
-Tu peux ensuite vérifier :
+### Tu peux ensuite vérifier :
 
 docker ps
 curl http://localhost:8080
 
-	8/ Astuces :
-	------------
+## 8. Astuces
 
-    Utilise docker-compose pour gérer plusieurs conteneurs plus facilement (avec un fichier YAML).
+Utilise docker-compose pour gérer plusieurs conteneurs plus facilement (avec un fichier YAML).
 
-    Utilise docker system prune pour nettoyer les conteneurs/images inutilisés.
+Utilise docker system prune pour nettoyer les conteneurs/images inutilisés.
 
-    Pense à vérifier régulièrement la taille de tes images.
-
-	Conclusion :
-	------------
-
-Docker CLI est un outil puissant qui te permet de tout faire avec Docker, de la création 
-à la gestion avancée des conteneurs et ressources.
-
-************************************************************************************************
+Pense à vérifier régulièrement la taille de tes images.

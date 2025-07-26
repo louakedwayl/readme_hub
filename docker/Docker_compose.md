@@ -1,33 +1,34 @@
-			Docker Compose
-******************************************************************************
+# Docker Compose
 
-Qu’est-ce que Docker Compose ?
-------------------------------
+---
 
-	Docker Compose est un outil qui permet de définir et de gérer des applications multi-conteneurs Docker à l’aide 
-d’un fichier de configuration unique : docker-compose.yml.
+## Qu’est-ce que Docker Compose ?
 
-    Exemple : Une application web avec un conteneur pour le backend, un pour la base de données, et un pour le frontend.
+**Docker Compose** est un outil qui permet de définir et de gérer des **applications multi-conteneurs Docker** à l’aide d’un fichier de configuration unique : `docker-compose.yml`.
 
-📁 Structure d’un projet avec Docker Compose
+**Exemple :** Une application web avec un conteneur pour le backend, un pour la base de données, et un pour le frontend.
+
+---
+
+## 📁 Structure d’un projet avec Docker Compose
 
 my-app/
 ├── docker-compose.yml
 ├── backend/
-│   └── Dockerfile
+│ └── Dockerfile
 ├── frontend/
-│   └── Dockerfile
+│ └── Dockerfile
 └── db/ (souvent pas besoin de Dockerfile, image officielle utilisée)
 
-	Fichier docker-compose.yml :
-	----------------------------
 
-Le fichier docker-compose.yml permet de décrire les services, volumes, réseaux, etc.
+---
 
+## Fichier `docker-compose.yml`
 
-	Exemple de base :
-	-----------------
+Le fichier `docker-compose.yml` permet de **décrire les services, volumes, réseaux, etc.**
 
+### Exemple de base :
+```yaml
 version: "3.8"
 
 services:
@@ -51,84 +52,83 @@ services:
 
 volumes:
   db-data:
+```
 
-Commandes principales :
------------------------
-	
-	Démarrer les services :
-	-----------------------
+### Commandes principales
 
+Démarrer les services :
+```bash
 docker-compose up
+```
 
-	Détaché (en arrière-plan) :
-	---------------------------
-
+Détaché (en arrière-plan) :
+```bash
 docker-compose up -d
+```
 
-	Stopper les services :
-	----------------------
-
+Stopper les services :
+```bash
 docker-compose down
-
-	Rebuild les images :
-	--------------------
-
+```
+Rebuild les images :
+```bash
 docker-compose up --build
+```
 
-	Voir les logs :
-	---------------
-
+Voir les logs :
+```bash
 docker-compose logs
-
-	Voir les conteneurs en cours :
-	------------------------------
-
+```
+Voir les conteneurs en cours :
+```bash
 docker-compose ps
+```
 
-	depends_on :
-	------------
+**depends_on**
 
-Cela indique qu’un service dépend d’un autre. Cela ne garantit pas que le service dépendant est "prêt",
-seulement qu’il est lancé en premier. Pour attendre que la base soit disponible,
-il faut un script "wait-for-it" ou équivalent.
+Cela indique qu’un service dépend d’un autre.
 
-	Volumes et données persistantes :
-	---------------------------------
+⚠️ Attention : cela ne garantit pas que le service dépendant est "prêt", seulement qu’il est lancé en premier.
+Pour attendre que la base soit disponible, il faut un script "wait-for-it" ou équivalent.
 
+Volumes et données persistantes
+
+```yaml
 volumes:
   - db-data:/var/lib/postgresql/data
-
+```
 Un volume nommé (db-data) permet de conserver les données entre les redémarrages du conteneur.
 
-	Réseaux personnalisés (optionnel) :
-	-----------------------------------
+### Réseaux personnalisés (optionnel)
 
 Docker Compose crée automatiquement un réseau, mais tu peux le configurer :
-
+```yaml
 networks:
   mynetwork:
+```
 
 Et l’utiliser dans les services :
 
+```yaml
 services:
   web:
     networks:
       - mynetwork
+```
 
-	Bonnes pratiques :
-	------------------
+### Bonnes pratiques
 
-    Utilise .env pour stocker les variables sensibles ou réutilisables.
+Utilise .env pour stocker les variables sensibles ou réutilisables.
 
-    Ne pas versionner les données dans volumes.
+Ne pas versionner les données dans les volumes.
 
-    Utilise depends_on avec précaution (utiliser un script d’attente si besoin).
+Utilise depends_on avec précaution (ajouter un script d’attente si besoin).
 
-    Découpe bien les services (db, backend, frontend, etc.).
+Découpe bien les services (db, backend, frontend, etc.).
 
-	Exemple complet : Application Flask + PostgreSQL :
-	--------------------------------------------------
+### Exemple complet : Application Flask + PostgreSQL
 
+```yaml
 version: '3.8'
 
 services:
@@ -152,5 +152,4 @@ services:
 
 volumes:
   db-data:
-
-****************************************************************************************************
+```

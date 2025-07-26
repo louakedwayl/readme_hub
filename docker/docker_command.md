@@ -1,73 +1,76 @@
-		Commandes Docker essentielles
-************************************************************************************************
+# Commandes Docker essentielles
 
-	Gestion des images :
-	-------------------- 
+---
 
-    docker pull <image>
-    Télécharge une image depuis un registre (ex: Docker Hub).
+## Gestion des images
 
-    docker images
-    Liste toutes les images Docker locales.
+### `docker pull <image>`
+Télécharge une image depuis un registre (ex: Docker Hub).
 
-    docker rmi <image>
-    Supprime une ou plusieurs images locales.
+### `docker images`
+Liste toutes les images Docker locales.
 
-	Gestion des conteneurs :
-	------------------------
+### `docker rmi <image>`
+Supprime une ou plusieurs images locales.
 
-    docker run <image>
-    Crée et lance un conteneur à partir d’une image.
+---
 
-    docker ps
-    Liste les conteneurs en cours d’exécution.
+## Gestion des conteneurs
 
-    docker ps -a
-    Liste tous les conteneurs, même arrêtés.
+### `docker run <image>`
+Crée et lance un conteneur à partir d’une image.
 
-    docker stop <container_id|name>
-    Arrête un conteneur en cours d’exécution.
+### `docker ps`
+Liste les conteneurs en cours d’exécution.
 
-    docker start <container_id|name>
-    Démarre un conteneur arrêté.
+### `docker ps -a`
+Liste tous les conteneurs, même arrêtés.
 
-    docker restart <container_id|name>
-    Redémarre un conteneur.
+### `docker stop <container_id|name>`
+Arrête un conteneur en cours d’exécution.
 
-    docker rm <container_id|name>
-    Supprime un conteneur arrêté.
+### `docker start <container_id|name>`
+Démarre un conteneur arrêté.
 
-	Construction d’images :
-	-----------------------
+### `docker restart <container_id|name>`
+Redémarre un conteneur.
 
-    docker build -t <nom_image> <chemin>
-    Construit une image à partir d’un Dockerfile.
+### `docker rm <container_id|name>`
+Supprime un conteneur arrêté.
 
-	Interaction avec un conteneur :
-	-------------------------------
+---
 
-    docker exec -it <container_id|name> bash
-    Ouvre un terminal interactif dans un conteneur en cours d’exécution.
+## Construction d’images
 
-    docker logs <container_id|name>
-    Affiche les logs d’un conteneur.
+### `docker build -t <nom_image> <chemin>`
+Construit une image à partir d’un Dockerfile.
 
-	Nettoyage :
-	-----------
+---
 
-    docker system prune
-    Supprime tous les conteneurs arrêtés, images non utilisées, réseaux inutilisés, etc.
+## Interaction avec un conteneur
 
-	Autres commandes utiles :
-	-------------------------
+### `docker exec -it <container_id|name> bash`
+Ouvre un terminal interactif dans un conteneur en cours d’exécution.
 
-    docker info
-    Affiche des informations sur l’installation Docker.
+### `docker logs <container_id|name>`
+Affiche les logs d’un conteneur.
 
-    docker version
-    Affiche la version de Docker installée.
+---
 
-    docker inspect <container_id|image_id>
-    Donne des détails techniques sur un conteneur ou une image.
+## Nettoyage
 
-***********************************************************************************************************************
+### `docker system prune`
+Supprime tous les conteneurs arrêtés, images non utilisées, réseaux inutilisés, etc.
+
+---
+
+## Autres commandes utiles
+
+### `docker info`
+Affiche des informations sur l’installation Docker.
+
+### `docker version`
+Affiche la version de Docker installée.
+
+### `docker inspect <container_id|image_id>`
+Donne des détails techniques sur un conteneur ou une image.
