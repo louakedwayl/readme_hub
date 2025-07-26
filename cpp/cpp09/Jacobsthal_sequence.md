@@ -1,5 +1,4 @@
 # La suite de Jacobsthal
-*******************************************************************************************
 
 ## C'est quoi la suite de Jacobsthal ?
 La suite de Jacobsthal est une série de nombres qui suivent une règle simple :  

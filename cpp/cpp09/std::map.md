@@ -1,58 +1,63 @@
-						std::map
-*************************************************************************************************************************
+# `std::map`
 
-Qu’est-ce que std::map ? :
---------------------------
+## Qu’est-ce que `std::map` ?
 
-std::map est un conteneur associatif qui stocke des paires clé/valeur triées selon la clé. Chaque clé est unique.
-Il utilise un arbre binaire équilibré (Red-Black Tree) pour organiser les données.
+`std::map` est un **conteneur associatif** qui stocke des **paires clé/valeur** triées selon la clé.  
+Chaque clé est **unique**.  
+Il utilise un **arbre binaire équilibré** (Red-Black Tree) pour organiser les données.
 
-Syntaxe :
----------
+---
 
+## Syntaxe :
+```cpp
 std::map<Clé, Valeur> monMap;
+```
 
-Opérations de base :
---------------------
+### Opérations de base :
 
-Insertion :
------------
+### Insertion :
 
+```cpp
 std::map<std::string, int> ageMap;
 ageMap["Alice"] = 25;
 ageMap.insert(std::make_pair("Bob", 30));
+```
 
-Accès :
--------
+## Accès :
 
+```cpp
 int age = ageMap["Alice"]; // insère "Alice" si elle n'existe pas
+```
 
-Recherche :
------------
+### Recherche :
 
+```cpp
 std::map<std::string, int>::iterator it = ageMap.find("Bob");
 if (it != ageMap.end()) 
 {
     std::cout << "Bob a " << it->second << " ans." << std::endl;
 }
+```
 
-Suppression :
--------------
+### Suppression :
 
+```cpp
 ageMap.erase("Bob");
+```
 
-Parcours :
-----------
+### Parcours :
 
+```cpp
 std::map<std::string, int>::iterator it;
 for (it = ageMap.begin(); it != ageMap.end(); ++it) 
 {
     std::cout << it->first << " : " << it->second << std::endl;
 }
+```
 
-Exemple :
----------
+### Exemple complet :
 
+```cpp
 #include <iostream>
 #include <map>
 #include <string>
@@ -83,10 +88,11 @@ int main()
 
     return 0;
 }
+```
 
-Comparateur personnalisé (tri différent) :
-------------------------------------------
+### Comparateur personnalisé (tri différent) :
 
+```cpp
 struct CompareLongueur 
 {
     bool operator()(const std::string& a, const std::string& b) const {
@@ -106,17 +112,16 @@ int main() {
 
     return 0;
 }
+```
 
-Résumé des fonctions utiles :
------------------------------
+### Résumé des fonctions utiles de `std::map`
 
-Méthode			Description
-insert(pair)		Insère une paire clé/valeur
-find(clé)		Renvoie un itérateur vers la clé
-erase(clé ou it)	Supprime une entrée
-begin() / end()		Accès aux extrémités pour le parcours
-empty()			Vérifie si la map est vide
-size()			Retourne le nombre d'éléments
-clear()			Vide la map
-
-*************************************************************************************************************************************
+| Méthode            | Description                         |
+|--------------------|-------------------------------------|
+| `insert(pair)`     | Insère une paire clé/valeur         |
+| `find(clé)`        | Renvoie un itérateur vers la clé    |
+| `erase(clé/it)`    | Supprime une entrée                 |
+| `begin()` / `end()`| Accès aux extrémités pour le parcours |
+| `empty()`          | Vérifie si la map est vide          |
+| `size()`           | Retourne le nombre d'éléments       |
+| `clear()`          | Vide la map                         |

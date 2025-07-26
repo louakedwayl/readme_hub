@@ -1,34 +1,32 @@
-            Tick
-**************************************************************
+# Tick
 
-Un tick de processeur (ou "horloge" du processeur) est une unité de temps très courte correspondant 
-à un cycle d’horloge du CPU, c'est le temps minimal entre deux action successives dans un cpu 
+Un **tick** de processeur (ou "horloge" du processeur) est une **unité de temps très courte** correspondant à un **cycle d’horloge du CPU**.  
+C'est le temps minimal entre deux actions successives dans un processeur.
 
-Explication simple :
---------------------
+---
 
-Le processeur fonctionne comme une montre très rapide qui bat à un rythme constant,
-par exemple 3 GHz (gigahertz), ce qui signifie :
+## Explication simple :
 
-    3 GHz = 3 000 000 000 ticks par seconde
+Le processeur fonctionne comme une **montre très rapide** qui bat à un rythme constant.  
+Par exemple, **3 GHz (gigahertz)** signifie :
 
-Chaque tick permet au processeur de faire une ou plusieurs petites opérations (selon l'architecture).
+3 GHz = 3 000 000 000 ticks par seconde
 
-Exemple :
----------
 
-    Si ton processeur tourne à 2.5 GHz, cela veut dire :
+Chaque tick permet au processeur de faire **une ou plusieurs petites opérations** (selon l'architecture).
 
-        Il y a 2.5 milliards de ticks par seconde.
+---
 
-        Une opération qui prend 500 000 000 ticks dure environ 0.2 seconde.
+## Exemple :
 
-Utilité d’un tick :
--------------------
+Si ton processeur tourne à **2.5 GHz**, cela veut dire :
 
-    En programmation bas-niveau (comme avec clock() en C), les ticks servent à mesurer le temps d’exécution 
-d’un programme ou d’un algorithme.
+- Il y a **2.5 milliards de ticks par seconde**.
+- Une opération qui prend **500 000 000 ticks** dure environ **0.2 seconde**.
 
-    Ils permettent aussi d’évaluer les performances d’un code ou d’un système.
+---
 
-*******************************************************************************************
+## Utilité d’un tick :
+
+- En **programmation bas-niveau** (comme avec `clock()` en C), les ticks servent à **mesurer le temps d’exécution d’un programme ou d’un algorithme**.
+- Ils permettent aussi **d’évaluer les performances d’un code** ou d’un système.
