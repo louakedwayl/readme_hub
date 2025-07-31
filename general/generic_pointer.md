@@ -1,15 +1,18 @@
-				Generic pointer
-****************************************************************************************
+# Fork Syscall
+---
 
-	Un pointeur générique en C est généralement un pointeur de type void*.
-Il peut stocker l'adresse de n'importe quel type de donnée.
+## 1. Définition de `fork`
 
-	Étant donné qu'un pointeur générique ne contient aucune information sur 
-le type de données auquel il pointe, il est impossible de le déférencer directement.
-Pour l'utiliser, il faut le convertir explicitement (cast) vers le type approprié. 
+Lorsque vous appelez `fork()`, le système d’exploitation crée un **processus enfant** à partir  
+du processus parent.  
+Le processus enfant est une **copie quasi-identique** du parent.
 
-int x = 42;
-void* p = &x;
-int y = *(int*)p;  // Conversion explicite en int*
+---
 
-*****************************************************************************************
+## 2. Fonctionnement de `fork`
+
+Lorsqu’un programme appelle `fork()`, il est exécuté **une seule fois** mais retourne **deux fois** :
+
+- **Dans le processus parent** : `fork()` retourne le **PID du processus enfant**.  
+- **Dans le processus enfant** : `fork()` retourne **0**.  
+- **En cas d’échec** (par exemple, manque de ressources) : `fork()` retourne **-1** dans le parent et ne crée pas de processus enfant.

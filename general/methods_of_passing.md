@@ -1,30 +1,32 @@
-						Methods of Passing in langage C
-***********************************************************************************
+# Methods of Passing in langage C
+---
 
-	En langage C il y a deux methodes de passage de parametre a une fonction.
+En langage C, il existe **deux méthodes principales** de passage de paramètres à une fonction.
 
-1/ Le passage par valeur :
---------------------------
+---
 
-	Le passage par valeurs consiste a transmetre a la fonction une copie de la valeur
-passe en parametre . Les modifications apportes dans cette fonction ne modifieras pas
-la variable originel.
+## 1/ Le passage par valeur
 
-2/ Le passage par adresse :
----------------------------
+Le passage par valeur consiste à transmettre à la fonction **une copie de la valeur** passée en paramètre.  
+Les modifications apportées dans cette fonction **ne modifieront pas** la variable originale.
 
-	Le passage par adresse consiste a transmetre a la fonction qui copie de l adresse
-du pointeur transmis en parametre. On pourras alors faire des modifications sur la
-zone memoire pointe par le pointeur mais pas faire de modifications sur le pointeur
-lui meme.
+---
 
-3/ Modifications du pointeur passe en parametre :
--------------------------------------------------
+## 2/ Le passage par adresse
 
-	Pour pouvoir modifier un pointeur passe en parametre a une fonction on doit faire
-passer un pointeur sur pointeur.
-A ce moment la on pourras modifier la zone pointe par le pointeur soit le pointeur
-lui meme . Cela est utile pour modifier la valeur d un pointeur et non pas la zone sur
-laquelle pointe ce pointeur
+Le passage par adresse consiste à transmettre à la fonction **une copie de l’adresse** du pointeur passé en paramètre.  
+On pourra alors faire des modifications sur la **zone mémoire pointée** par le pointeur,  
+mais **pas** modifier le pointeur lui-même.
 
-***********************************************************************************
+---
+
+## 3/ Modifications du pointeur passé en paramètre
+
+Pour pouvoir **modifier un pointeur** passé en paramètre à une fonction,  
+on doit passer **un pointeur sur pointeur**.  
+
+Ainsi, on pourra modifier :  
+- la zone pointée par le pointeur,  
+- **ou le pointeur lui-même**.  
+
+Cela est utile pour changer la valeur d’un pointeur et non seulement la zone sur laquelle il pointe.
