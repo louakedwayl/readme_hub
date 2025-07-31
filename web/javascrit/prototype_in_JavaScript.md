@@ -110,12 +110,62 @@ const p2 = new Person("Bob");
 p2.sayHello(); // "Bonjour, je m'appelle Bob"
 ```
 
-## 6. Conclusion
+## 6. Conclusion : Pourquoi les méthodes sont mises dans le prototype et pas directement dans l’objet ou dans la classe elle-même ?
 
-Prototype en JavaScript : un objet servant de modèle pour d’autres objets.
+### 1. Pour économiser de la mémoire
 
-Classe de base en C++ : un modèle statique permettant de partager des méthodes et attributs aux classes dérivées.
+Si on faisait ça :
 
-Ressemblance : Les deux permettent de partager des comportements et d’organiser le code.
+```js
+function Person(name) {
+  this.name = name;
+  this.sayHello = function() {
+    console.log("Bonjour, je m'appelle " + this.name);
+  };
+}
+```
+Chaque fois que tu fais new Person("Alice"), puis new Person("Bob"), la fonction sayHello est recréée à chaque fois en mémoire.
 
-Différence : JavaScript est beaucoup plus flexible (ajout/retrait dynamique), tandis que C++ est statiquement typé et compilé.
+💥 Résultat : si tu crées 1000 personnes, tu as 1000 fonctions identiques en mémoire = gaspillage.
+
+### 2. Le prototype permet de partager une seule méthode entre toutes les instances
+
+```js
+function Person(name) {
+  this.name = name;
+}
+
+Person.prototype.sayHello = function() {
+  console.log("Bonjour, je m'appelle " + this.name);
+};
+```
+
+Là, la méthode sayHello n’est créée qu’une seule fois, dans Person.prototype, et toutes les instances l’utilisent via la chaîne de prototypes.
+
+✅ Économie de mémoire, ✅ performance, ✅ logique partagée.
+
+### Et avec la syntaxe class ?
+
+```js
+class Person {
+  constructor(name) {
+    this.name = name;
+  }
+
+  sayHello() {
+    console.log("Bonjour, je m'appelle " + this.name);
+  }
+}
+```
+
+Même si on dirait que sayHello est “dans la classe”, JavaScript place en réalité cette méthode dans Person.prototype.
+
+C’est du sucre syntaxique, pour que ça ressemble à d’autres langages comme Java ou C++, mais en coulisse, ça reste du prototype.
+
+### 🧩 Résumé
+
+| Approche                        | Mémoire utilisée | Partage entre instances | Recommandée ? |
+|---------------------------------|------------------|------------------------|---------------|
+| **Définir la méthode dans `this`** (dans le constructeur) | Haute            | ❌ Non (chaque instance a sa propre copie) | ❌ Non |
+| **Définir la méthode dans le `prototype`**              | Faible           | ✅ Oui (une seule méthode partagée)        | ✅ Oui |
+
