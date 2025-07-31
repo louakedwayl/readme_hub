@@ -83,6 +83,59 @@ extends permet de créer une sous-classe.
 
 super() doit être appelé dans le constructeur de la sous-classe avant d’utiliser this.
 
+### Pourquoi on doit appeler super() ?
+
+Quand tu fais class Chien extends Animal, ta classe hérite des propriétés et méthodes d’Animal.
+
+Le constructeur de la sous-classe doit d’abord exécuter le constructeur de la classe parente (Animal), sinon l’objet n’est pas correctement initialisé.
+
+C’est ce que fait super(). Il appelle le constructeur du parent.
+
+## 2. Pourquoi avant this ?
+
+En JavaScript, dans une sous-classe, this n’existe pas tant que super() n’a pas été appelé.
+Donc si tu essaies de faire this.nom = "Rex" avant super(), ça provoque une erreur.
+
+## 3. Exemple qui marche :
+
+```js
+class Animal {
+  constructor(nom) {
+    this.nom = nom;
+  }
+}
+
+class Chien extends Animal {
+  constructor(nom, race) {
+    super(nom); // Appelle le constructeur d'Animal -> this existe maintenant
+    this.race = race; // Maintenant on peut utiliser this
+  }
+}
+
+const c = new Chien("Rex", "Berger");
+console.log(c.nom);  // Rex
+console.log(c.race); // Berger
+```
+
+## 4. Exemple qui ne marche pas :
+
+```js
+class Chien extends Animal {
+  constructor(nom, race) {
+    this.race = race; // ❌ Erreur : impossible d’utiliser this avant super()
+    super(nom);
+  }
+}
+```
+
+Cela lève :
+
+ReferenceError: Must call super constructor in derived class before accessing 'this'
+
+### 👉 En résumé :
+
+Dans une classe qui hérite (extends), super() doit être le premier appel dans le constructeur, sinon this n’existe pas encore.
+
 ### Méthodes Statiques
 
 Les méthodes statiques sont appelées sur la classe elle-même, pas sur ses instances :
