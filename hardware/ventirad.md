@@ -1,7 +1,5 @@
 # 🌀 Ventirad — Ventilateur + Radiateur (Cooling Fan + Heatsink)
 
-
-
 ## 📌 Définition
 
 Le **ventirad** est un système de refroidissement actif combinant un **radiateur (heatsink)** et un **ventilateur (fan)**.  
@@ -13,25 +11,23 @@ En anglais c’est souvent appelé cooling fan + heatsink ou juste air cooler
 
 Le ventirad, c’est un système composé de deux éléments principaux :
 
-    Le radiateur (heatsink)
-    Une pièce en métal (généralement en aluminium ou cuivre) avec plein de petites ailettes.
-    Son rôle : absorber la chaleur du CPU et l’étaler sur une large surface.
+Le radiateur (heatsink)
+Une pièce en métal (généralement en aluminium ou cuivre) avec plein de petites ailettes.
+Son rôle : absorber la chaleur du CPU et l’étaler sur une large surface.
 
-    Le ventilateur (fan)
-    Un ventilateur fixé sur le radiateur qui souffle de l’air pour évacuer la chaleur accumulée sur les ailettes.
+Le ventilateur (fan)
+Un ventilateur fixé sur le radiateur qui souffle de l’air pour évacuer la chaleur accumulée sur les ailettes.
 
-Pourquoi cette combinaison ?
+### Pourquoi cette combinaison ?
 
 La chaleur du CPU passe dans le radiateur, puis le ventilateur aide à la dissiper dans l’air ambiant. Sans ventilateur, la chaleur resterait coincée, le CPU surchaufferait.
 En résumé :
 
-    Radiateur = surface qui capte et dissipe la chaleur
+Radiateur = surface qui capte et dissipe la chaleur
 
-    Ventilateur = souffle l’air pour accélérer la dissipation
+Ventilateur = souffle l’air pour accélérer la dissipation
 
-    Ventirad = radiateur + ventilateur montés ensemble
-
-
+Ventirad = radiateur + ventilateur montés ensemble
 
 ---
 
