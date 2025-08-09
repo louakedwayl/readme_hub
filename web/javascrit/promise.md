@@ -2,9 +2,37 @@
 
 ## 1. Introduction
 
-En JavaScript, une **Promesse** (`Promise`) est un objet qui représente **la valeur d’une opération asynchrone**, qui peut être disponible maintenant, plus tard, ou jamais.
+Une promesse en JavaScript, c’est un objet qui représente une opération en cours et qui donnera un résultat plus tard :
+
+✅ soit la promesse réussit → elle donne une valeur (resolve).
+
+❌ soit la promesse échoue → elle donne une erreur (reject).
+
+En attendant, elle est “en attente” (pending).
+
+📌 En très simple :
+
+Une promesse = “Je te promets de te donner une réponse plus tard (succès ou erreur)”.
 
 Les promesses sont utilisées pour gérer l’asynchronisme **sans tomber dans le “callback hell”**.
+
+
+```scss
+          ┌─────────────┐
+          │   pending   │   ← (promesse créée, pas encore terminée)
+          └──────┬──────┘
+                 │
+      ┌──────────┴──────────┐
+      │                     │
+      ▼                     ▼
+┌─────────────┐      ┌─────────────┐
+│  fulfilled  │      │  rejected   │
+│ (succès)    │      │ (erreur)    │
+└─────────────┘      └─────────────┘
+       │                    │
+       ▼                    ▼
+  .then(...)           .catch(...)
+```
 
 ---
 
