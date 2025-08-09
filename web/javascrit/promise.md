@@ -10,7 +10,7 @@ Une promesse en JavaScript, c’est un objet qui représente une opération en c
 
 En attendant, elle est “en attente” (pending).
 
-📌 En très simple :
+### 📌 En très simple :
 
 Une promesse = “Je te promets de te donner une réponse plus tard (succès ou erreur)”.
 
