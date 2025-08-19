@@ -1,92 +1,90 @@
-					les images Docker
-************************************************************************************************************************
+# Les images Docker
+---
 
-	1/ Qu’est-ce qu’une image Docker ?
-	----------------------------------
+## 1/ Qu’est-ce qu’une image Docker ?
 
 Une image Docker est un package léger, autonome et exécutable qui contient tout ce qu’il faut pour exécuter une application :
 
-    Le système de fichiers (binaires, bibliothèques, fichiers de configuration, etc.)
+- Le système de fichiers (binaires, bibliothèques, fichiers de configuration, etc.)
+- Le code source ou le code compilé de l’application
+- Les dépendances nécessaires (librairies, runtimes, etc.)
+- Les instructions d’exécution (commande par défaut, variables d’environnement)
 
-    Le code source ou le code compilé de l’application
+👉 Une image est comme un **instantané immuable** de cet environnement.
 
-    Les dépendances nécessaires (librairies, runtimes, etc.)
+---
 
-    Les instructions d’exécution (commande par défaut, variables d’environnement)
+## 2/ Image vs Conteneur :
 
-Une image est comme un instantané immuable de cet environnement.
+- **Image** : un modèle statique → elle ne change pas et sert de base pour créer des conteneurs.  
+- **Conteneur** : une instance en cours d’exécution créée à partir d’une image.  
+  Il peut avoir un état dynamique (fichiers modifiés, processus en cours).
 
-	2/ Image vs Conteneur :
-	-----------------------
+---
 
-    Une image est une modèle statique : elle ne change pas et sert de base pour créer des conteneurs.
+## 3/ Comment sont construites les images ?
 
-    Un conteneur est une instance en cours d’exécution créée à partir d’une image.
-Il peut avoir un état dynamique (fichiers modifiés, processus en cours).
+Les images sont créées en suivant un **Dockerfile**, un fichier texte qui décrit étape par étape la construction :
 
-	3/ Comment sont construites les images ?
-	----------------------------------------
+- Quelle image de base utiliser (ex : `Ubuntu`, `Alpine`)
+- Quelles commandes exécuter (installer paquets, copier fichiers)
+- Quelle commande lancer par défaut au démarrage du conteneur
 
-Les images sont créées en suivant un Dockerfile, un fichier texte qui décrit étape par étape la construction :
+---
 
-    Quelle image de base utiliser (ex : Ubuntu, Alpine)
+## 4/ Structure en couches (layers) :
 
-    Quelles commandes exécuter (installer paquets, copier fichiers)
+Les images Docker sont composées de plusieurs **couches (layers)** superposées :
 
-    Quelle commande lancer par défaut au démarrage du conteneur
+- Chaque commande dans le `Dockerfile` (ex : `RUN apt-get install`, `COPY main.cpp`) crée une nouvelle couche.
+- Ces couches sont empilées, ce qui permet de réutiliser les parties communes entre plusieurs images.
+- Cela rend le **stockage** et la **distribution** plus efficaces.
 
-	4/ Structure en couches (layers) :
-	----------------------------------
+---
 
-Les images Docker sont composées de plusieurs couches (layers) superposées :
+## 5/ Stockage et partage :
 
-Chaque commande dans le Dockerfile (ex : RUN apt-get install, COPY main.cpp) crée une nouvelle couche
+- Les images sont stockées localement dans le moteur Docker (**daemon**) sur ta machine.
+- Elles peuvent être **poussées (uploadées)** et **téléchargées (pull)** depuis des registres publics ou privés comme Docker Hub.
 
-Ces couches sont empilées, ce qui permet de réutiliser les parties communes entre plusieurs images
+### Exemple :
 
-Cela rend le stockage et la distribution plus efficaces
+```bash
+docker pull ubuntu:20.04
+docker push mon_compte/mon_image:version1
+```
 
-	5/ Stockage et partage :
-	------------------------
+## 6/ Comment utiliser une image ?
 
-Les images sont stockées localement dans le moteur Docker (daemon) sur ta machine
+Pour lancer un conteneur basé sur une image :
 
-Elles peuvent être poussées (uploadées) et téléchargées (pull) depuis des registres publics ou privés comme Docker Hub
-
-    Exemple :
-    ---------
-
-    docker pull ubuntu:20.04
-    docker push mon_compte/mon_image:version1
-
-	6/ Comment utiliser une image ?
-	-------------------------------
-
-    Pour lancer un conteneur basé sur une image :
-
+```bash
 docker run nom_image
+```
 
-	Pour lister les images locales :
+Pour lister les images locales :
 
+```bash
 docker images
+```
 
-	Pour supprimer une image :
+Pour supprimer une image :
 
-    docker rmi nom_image
+```bash
+docker rmi nom_image
+```
 
-	7/ Bonnes pratiques :
-	---------------------
+## 7/ Bonnes pratiques :
 
-    Utiliser des images de base légères (ex : Alpine) quand c’est possible
+Utiliser des images de base légères (ex : Alpine) quand c’est possible.
 
-    Minimiser le nombre de couches en regroupant les commandes RUN
+Minimiser le nombre de couches en regroupant les commandes RUN.
 
-    Nettoyer les fichiers temporaires dans les images pour réduire leur taille
+Nettoyer les fichiers temporaires dans les images pour réduire leur taille.
 
-    Utiliser des images multi-étapes pour séparer la compilation et le runtime
+Utiliser des images multi-étapes pour séparer la compilation et le runtime.
 
-	8/ Exemple simple de Dockerfile :
-	---------------------------------
+## 8/ Exemple simple de Dockerfile :
 
 FROM ubuntu:20.04
 RUN apt-get update && apt-get install -y g++
@@ -95,12 +93,11 @@ COPY main.cpp .
 RUN g++ main.cpp -o hello
 CMD ["./hello"]
 
-Résumé
+### Résumé
 
-    Une image Docker est un environnement complet et portable pour exécuter une application.
+Une image Docker est un environnement complet et portable pour exécuter une application.
 
-    Elle est construite en couches à partir d’un Dockerfile.
+Elle est construite en couches à partir d’un Dockerfile.
 
-    Tu peux créer des conteneurs à partir de ces images pour exécuter tes programmes.
+Tu peux créer des conteneurs à partir de ces images pour exécuter tes programmes.
 
-***********************************************************************************************************
