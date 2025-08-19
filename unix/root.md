@@ -1,91 +1,57 @@
-                        root
-**************************************************************************************************
+# L’utilisateur root
 
-Qu’est-ce que l’utilisateur root ?
-----------------------------------
+## Qu’est-ce que root ?
 
-    root est le super-utilisateur par défaut sur les systèmes Unix/Linux.
+- `root` est le super-utilisateur par défaut sur les systèmes Unix/Linux.
+- Il possède tous les droits : lire, écrire, modifier, supprimer n’importe quel fichier ou configuration.
+- C’est l’administrateur système par excellence.
 
-    Il a tous les droits sur le système : peut lire, écrire, modifier, supprimer n’importe quel fichier ou configuration.
+## Pourquoi ne pas utiliser root tout le temps ?
 
-    C’est l’administrateur système par excellence.
+- Une erreur peut endommager gravement le système.
+- Si root est compromis, tout le système l’est également.
+- Les distributions Linux recommandent d’utiliser des comptes standards avec `sudo` pour limiter les risques.
 
-Pourquoi ne pas utiliser root tout le temps ?
----------------------------------------------
+## Mot de passe root et Debian (exemple pratique)
 
-    Utiliser root pour toutes les tâches est dangereux :
+- Sur Debian moderne :
+  - Tu définis un mot de passe utilisateur, pas forcément celui de root.
+  - Le compte root est souvent désactivé (pas de mot de passe défini).
+  - Les opérations administratives passent par `sudo`.
+- Si tu fais `su` sans mot de passe root défini, cela ne fonctionnera pas.
 
-        Une erreur peut casser le système.
+### Définir ou changer le mot de passe root
 
-        C’est un vecteur de faille de sécurité (si root est compromis, tout est compromis).
+```bash
+sudo passwd root
+```
 
-    C’est pour cela que la plupart des distributions Linux encouragent l’usage de comptes utilisateurs standards avec sudo.
+Active ou modifie le mot de passe root.
 
-Mot de passe root et Debian (exemple pratique) :
-------------------------------------------------
+Après définition, su peut être utilisé pour passer en root.
 
-    Sur Debian moderne, lors de l’installation :
+## Différence entre root, sudo et su
 
-        Tu définis un mot de passe utilisateur, pas forcément un mot de passe root.
+| Commande | Description | Usage principal | Mot de passe demandé |
+|----------|-------------|----------------|--------------------|
+| root     | Super-utilisateur avec tous les droits | Compte système complet | Mot de passe root (parfois désactivé) |
+| sudo     | Exécute une commande en root sans changer de session | Élévation temporaire de privilèges | Mot de passe de l’utilisateur courant |
+| su       | Change d’utilisateur avec session shell complète | Ouvre une session shell sous un autre utilisateur | Mot de passe de l’utilisateur ciblé |
 
-        Le compte root est souvent désactivé par défaut, c’est-à-dire qu’il n’a pas de mot de passe défini.
+### Pourquoi Debian désactive root ?
 
-        Tu utilises donc sudo pour les opérations nécessitant les droits d’administration.
+Pour plus de sécurité.
 
-    Si tu essaies de faire su sans avoir défini de mot de passe root, cela ne fonctionnera pas car root n’a pas de mot de passe.
+Encourage l’usage de sudo afin de limiter les risques d’erreurs et d’accès non surveillés.
 
-Comment gérer le mot de passe root ?
--------------------------------------
+### Résumé
 
-    Pour définir ou changer le mot de passe root, utilise :
+root = super-utilisateur, tous les droits.
 
-    sudo passwd root
+Sur Debian, root est souvent désactivé par défaut.
 
-    Cela active ou modifie le mot de passe root.
+Utilise ton compte utilisateur + sudo pour les commandes administratives.
 
-    Une fois défini, tu peux utiliser su pour passer en root.
+Tu peux activer root avec sudo passwd root.
 
-Différence entre root, sudo, et su
-----------------------------------
-
-Commande :  
-root  
-sudo  
-su  
-
-Description :  
-- root : Super-utilisateur avec tous les droits  
-- sudo : Exécute une commande en root sans changer de session  
-- su : Change d’utilisateur avec session shell complète  
-
-Usage principal :  
-- root : Compte système complet  
-- sudo : Élévation temporaire de privilèges  
-- su : Ouvre une session shell sous un autre utilisateur  
-
-Mot de passe demandé :  
-- root : Mot de passe root (parfois désactivé)  
-- sudo : Mot de passe de l’utilisateur courant  
-- su : Mot de passe de l’utilisateur cibl
-
-ourquoi Debian désactive root ?
---------------------------------
-
-    Pour plus de sécurité.
-
-    Pour que l’administrateur utilise sudo, limitant ainsi les risques d’erreurs et les accès non surveillés.
-
-Résumé
--------
-
-    root = super-utilisateur, tous les droits.
-
-    Sur Debian, root est souvent désactivé par défaut, pas de mot de passe root.
-
-    Tu utilises ton compte utilisateur + sudo pour les commandes administratives.
-
-    Tu peux activer root en définissant un mot de passe avec sudo passwd root.
-
-    su permet de changer d’utilisateur si tu as le mot de passe de cet utilisateur (ex : root).
-
-******************************************************************************************************************
+su permet de changer d’utilisateur si tu connais le mot de passe (ex. root).

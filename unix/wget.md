@@ -1,59 +1,66 @@
-            Cours : Utilisation de la commande wget
-*******************************************************************************************
+# Utilisation de la commande wget
 
-    1/ Qu’est-ce que wget ?
-    -----------------------
+## 1. Qu’est-ce que wget ?
 
-wget est un outil en ligne de commande Unix/Linux qui permet de télécharger des fichiers depuis Internet. Il fonctionne avec plusieurs protocoles comme HTTP, HTTPS, et FTP.
+`wget` est un outil en ligne de commande Unix/Linux qui permet de télécharger des fichiers depuis Internet.  
+Il fonctionne avec plusieurs protocoles comme **HTTP**, **HTTPS**, et **FTP**.  
 
-C’est un utilitaire puissant, simple à utiliser, et très utile pour automatiser des téléchargements dans des scripts.
+- Non interactif par défaut, conçu pour fonctionner dans des scripts ou en ligne de commande sans intervention humaine.
+- Simple et puissant, utile pour automatiser des téléchargements.
 
-wget ne demande pas de validations interactives par défaut. C’est un outil non interactif, conçu pour fonctionner dans des scripts ou en ligne de commande sans intervention humaine.
+---
 
-    2/ Syntaxe de base :
-    --------------------
+## 2. Syntaxe de base
 
+```bash
 wget [options] URL
+```
 
-4/ Commandes et options principales
+## 3. Commandes et options principales
 
-    Télécharger un fichier :
-
+Télécharger un fichier :
+```bash
 wget http://exemple.com/fichier.zip
+```
 
-    Changer le nom du fichier téléchargé :
-
+Changer le nom du fichier téléchargé :
+```bash
 wget -O nouveau_nom.zip http://exemple.com/fichier.zip
+```
 
-    Télécharger en arrière-plan :
-
+Télécharger en arrière-plan :
+```bash
 wget -b http://exemple.com/fichier.zip
+```
 
 Le téléchargement continue en tâche de fond et écrit un fichier wget-log.
 
-    Reprendre un téléchargement interrompu :
-
+Reprendre un téléchargement interrompu :
+```bash
 wget -c http://exemple.com/fichier.zip
+```
 
-    Téléchargement récursif (pour un site entier) :
-
+Téléchargement récursif (pour un site entier) :
+```bash
 wget -r http://exemple.com/dossier/
-
-    Limiter la vitesse de téléchargement :
-
+```
+Limiter la vitesse de téléchargement :
+```bash
 wget --limit-rate=200k http://exemple.com/fichier.zip
+```
+Télécharger plusieurs fichiers listés dans un fichier texte :
+Supposons que liste.txt contient plusieurs URLs, une par ligne.
 
-    Télécharger plusieurs fichiers listés dans un fichier texte :
-    Supposons que liste.txt contient plusieurs URLs, une par ligne.
-
+```bash
 wget -i liste.txt
+```
 
-    Ne pas télécharger certains fichiers ou dossiers :
-    Avec des options de filtre comme --reject ou --accept.
+Ne pas télécharger certains fichiers ou dossiers :
+Avec des options de filtre comme --reject ou --accept.
 
-    3/ Exemple de script avec wget :
-    --------------------------------
+## 4. Exemple de script avec wget
 
+```bash
 #!/bin/bash
 
 url="http://exemple.com/backup.tar.gz"
@@ -64,21 +71,18 @@ if [ $? -eq 0 ]; then
 else
   echo "Erreur lors du téléchargement."
 fi
+```
 
-    6/ Cas d’utilisation courants :
-    -------------------------------
+## 5. Cas d’utilisation courants
 
-    Télécharger un fichier rapidement depuis le terminal.
+Télécharger un fichier rapidement depuis le terminal.
 
-    Automatiser des sauvegardes ou récupérations régulières.
+Automatiser des sauvegardes ou récupérations régulières.
 
-    Récupérer des sites entiers pour une consultation hors-ligne.
+Récupérer des sites entiers pour une consultation hors-ligne.
 
-    Tester l’accessibilité d’un serveur ou d’une URL.
+Tester l’accessibilité d’un serveur ou d’une URL.
 
-    7/ Alternatives :
-    -----------------
+## 6. Alternatives
 
-    curl : autre outil de téléchargement en ligne de commande, plus polyvalent mais souvent un peu plus complexe.
-
-********************************************************************************************************************
+curl : autre outil de téléchargement en ligne de commande, plus polyvalent mais souvent un peu plus complexe.

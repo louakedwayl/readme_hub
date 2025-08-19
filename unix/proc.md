@@ -1,144 +1,133 @@
-	/proc – Le pseudo-système de fichiers de Linux
-************************************************************************************
+# /proc – Le pseudo-système de fichiers de Linux
 
-	1/ Qu’est-ce que /proc ? :
-	--------------------------
+---
 
-/proc est un système de fichiers virtuel (aussi appelé procfs) qui permet de communiquer avec 
-le noyau Linux et d’obtenir des informations sur les processus et le système.
+## 1. Qu’est-ce que /proc ?
 
-Il ne contient pas de fichiers réels sur disque, mais des fichiers dynamiques générés en temps réel 
-par le noyau.
+`/proc` est un système de fichiers virtuel (procfs) qui permet de communiquer avec le noyau Linux et d’obtenir des informations sur les processus et le système.  
 
-	2/ Caractéristiques de /proc :
-	------------------------------
+Il ne contient pas de fichiers réels sur disque, mais des fichiers dynamiques générés en temps réel par le noyau.
 
-    Monté automatiquement sur /proc (souvent dans le fstab).
+---
 
-    Réactualisé en direct : les fichiers changent selon l’état du système.
+## 2. Caractéristiques de /proc
 
-    Accès en lecture simple : via cat, less, ou des scripts.
+- Monté automatiquement sur `/proc` (souvent dans le `fstab`).  
+- Réactualisé en direct : les fichiers changent selon l’état du système.  
+- Accès en lecture simple : via `cat`, `less`, ou des scripts.
 
-	3/ Structure du dossier /proc :
-	-------------------------------
+---
 
+## 3. Structure du dossier /proc
+
+```bash
 ls /proc
+```
 
-On y trouve :
-
-	A. Dossiers numériques (/proc/[PID]/) :
-	---------------------------------------
+### A. Dossiers numériques (/proc/[PID]/)
 
 Chaque dossier correspond à un processus en cours (son PID).
 
-Exemple :
+### Exemple : /proc/1/ contient les infos sur le processus 1, souvent systemd ou init.
 
-/proc/1/
+### Fichiers et sous-dossiers utiles :
 
-Contient les infos sur le processus 1, souvent systemd ou init.
+cmdline → commande lancée
 
-Sous-dossiers et fichiers utiles :
+cwd → répertoire courant
 
-    cmdline → commande lancée
+exe → chemin de l'exécutable
 
-    cwd → répertoire courant
+fd/ → descripteurs de fichiers ouverts
 
-    exe → chemin de l'exécutable
+status → statut détaillé
 
-    fd/ → descripteurs de fichiers ouverts
+stat → infos chiffrées (CPU, état, threads, etc.)
 
-    status → statut détaillé
+maps → mémoire virtuelle
 
-    stat → infos chiffrées (CPU, état, threads, etc.)
+### B. Fichiers système (globaux)
 
-    maps → mémoire virtuelle
+#### Exemples :
 
-	B. Fichiers système (globaux) :
-	-------------------------------
+/proc/cpuinfo → détails sur les processeurs
 
-Exemples :
-----------
+/proc/meminfo → mémoire RAM utilisée
 
-    /proc/cpuinfo → détails sur les processeurs
+/proc/uptime → temps depuis le démarrage
 
-    /proc/meminfo → mémoire RAM utilisée
+/proc/version → version du noyau
 
-    /proc/uptime → temps depuis le démarrage
+/proc/filesystems → systèmes de fichiers supportés
 
-    /proc/version → version du noyau
+## 4. Exemples de commandes utiles
 
-    /proc/filesystems → systèmes de fichiers supportés
-
-	4/ Exemples de commandes utiles :
-	---------------------------------
-
-	Informations système :
-	----------------------
+### Informations système
 
 cat /proc/cpuinfo       # Infos CPU
 cat /proc/meminfo       # Infos mémoire
 cat /proc/uptime        # Durée depuis le boot
 cat /proc/version       # Version du noyau
 
-	Voir les infos d’un processus :
-	-------------------------------
+### Infos sur un processus
 
 ps aux                   # Voir tous les processus
-ls /proc/$$              # Voir les infos de ton shell actuel
+ls /proc/$$              # Infos du shell actuel
 cat /proc/$$/status      # Infos détaillées (PID, état, mémoire, etc.)
 ls /proc/$$/fd           # Fichiers ouverts
 
     $$ = PID du shell courant
 
-	5/ Interaction avec /proc :
-	---------------------------
+## 5. Interaction avec /proc
 
-Lire un fichier dans /proc :
+Lire un fichier :
 
+```bash
 cat /proc/1/cmdline
+```
 
 Lister les fichiers ouverts d’un processus :
 
+```bash
 ls -l /proc/1234/fd
+```
 
 Changer des paramètres du noyau :
 
-Certains fichiers dans /proc/sys/ sont écrits par l’admin système.
-
-Exemple : activer l’IP forwarding
-
+```bash
 echo 1 > /proc/sys/net/ipv4/ip_forward
+````
 
-→ Mais la méthode moderne, plus sûre, passe par sysctl :
+Méthode moderne plus sûre :
 
+```bash
 sudo sysctl net.ipv4.ip_forward=1
+```
 
-	6/ Utilisation en programmation (bonus avancé) :
-	------------------------------------------------
+## 6. Utilisation en programmation
 
-Tu peux parcourir /proc depuis un programme C/C++ pour obtenir des infos système.
+Parcourir /proc depuis un programme C/C++ pour obtenir des infos système.
+
 Exemple : ouvrir /proc/self/status pour lire les infos du processus courant.
 
-	7/ Sécurité et permissions :
-	----------------------------
+## 7. Sécurité et permissions
 
-    Tu ne peux lire /proc/[PID]/ que si :
+Lecture de /proc/[PID]/ possible si :
 
-        Tu es propriétaire du processus,
+Tu es propriétaire du processus, ou
 
-        ou tu es root.
+Tu es root
 
-    Certains fichiers sont protégés pour éviter des fuites d’infos sensibles.
+Certains fichiers sont protégés pour éviter des fuites d’infos sensibles.
 
-	8/ Résumé :
-	-----------
+## 8. Résumé
 
-Élément	Contenu
-/proc/[PID]/	Infos sur un processus spécifique
-/proc/cpuinfo	Infos sur les CPU
-/proc/meminfo	Utilisation de la mémoire
-/proc/uptime	Temps écoulé depuis le démarrage
-/proc/sys/	Paramètres système modifiables
-Utilisé par	ps, top, htop, Docker, systemd, outils d’analyse système
+| Élément        | Contenu                                           |
+|----------------|-------------------------------------------------|
+| /proc/[PID]/   | Infos sur un processus spécifique               |
+| /proc/cpuinfo  | Infos sur les CPU                                |
+| /proc/meminfo  | Utilisation de la mémoire                        |
+| /proc/uptime   | Temps écoulé depuis le démarrage                |
+| /proc/sys/     | Paramètres système modifiables                  |
 
-*****************************************************************************************
+**Utilisé par :** `ps`, `top`, `htop`, Docker, systemd, outils d’analyse système

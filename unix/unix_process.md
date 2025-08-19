@@ -1,56 +1,39 @@
-				Unix Process
-****************************************************************************************************
+# Unix Process
 
-	Un processus est une instance en cours d'exécution d'un programme. 
-Lorsqu'un programme est lancé sur un ordinateur, il est chargé en mémoire et devient un processus. 
-Lorsqu'un processus enfant termine son exécution, le kernell envoie un signal SIGCHLD à son processus parent. Ce signal indique au parent que l'enfant a fini et le parent va récupérer son code de sortie (via fonction wait() par exemple), et apres avoir reçu cette exite code le kernell va liberer les ressources allouées à ce processus enfant, c'est a dire les rendre de nouveaux disponible pour 
-un nouveau processus.
+Un processus est une instance en cours d'exécution d'un programme.  
+Lorsqu'un programme est lancé sur un ordinateur, il est chargé en mémoire et devient un processus.  
 
-****************************************************************************************************
+Lorsqu'un **processus enfant** termine son exécution, le **kernel** envoie un signal `SIGCHLD` à son **processus parent**.  
+Ce signal indique au parent que l'enfant a fini et permet au parent de récupérer le **code de sortie** (via la fonction `wait()` par exemple).  
+Une fois le code de sortie récupéré, le kernel libère les ressources allouées à ce processus enfant, les rendant disponibles pour de nouveaux processus.
 
+---
 
-Statut du Processus : Indique l'état actuel du processus, par exemple :
------------------------------------------------------------------------
+## Statut du Processus
 
-Exécution (Running) : Le processus est actuellement en cours d'exécution sur le processeur.
+Indique l'état actuel du processus, par exemple :
 
-En attente (Waiting/Blocked) : Le processus attend une ressource ou un événement pour continuer.
+- **Exécution (Running)** : Le processus est actuellement en cours d'exécution sur le processeur.
+- **En attente (Waiting / Blocked)** : Le processus attend une ressource ou un événement pour continuer.
+- **Arrêté (Stopped)** : Le processus est suspendu (généralement par un signal `SIGSTOP`).
+- **Zombie** : Le processus a terminé son exécution, mais son entrée n’a pas encore été supprimée de la table des processus par le parent.
 
-Arrêté (Stopped) : Le processus est suspendu (généralement par un signal SIGSTOP).
+---
 
-Zombie : Le processus a terminé son exécution, mais son entrée n’a pas encore été supprimée  de la table des processus par le processus parent (lorsqu'il attend que le parent lise son statut de terminaison).
+## Orphan Process
 
-Orphan process :
-------------------------------------------------------------------------
+Un processus **orphelin** est un processus qui reste en exécution après la fin de son processus parent.  
+Il ne peut donc plus signaler sa fin à son parent.  
 
-    Un processus orphelin est un processus qui reste en exécution après la fin
- de son processus parent ce qui fait que le processus ne peut plus signaler la fin 
-de son exécution à son parent.. Lorsqu'une telle situation se produit, le processus
- orphelin est adopté par systemd ou init (PID 1), ce qui assure sa gestion 
-jusqu'à la fin de son exécution. Une fois que le processus orphelin se termine, init va
- récupérer le code de sortie du processus orphelin à l'aide de la fonction wait() ou waitpid(),
- de la même manière que le parent d'un processus normal.
+- Dans ce cas, le processus orphelin est adopté par `systemd` ou `init` (PID 1), qui gère sa terminaison.
+- Une fois terminé, `init` récupère le **code de sortie** via `wait()` ou `waitpid()`, de la même manière qu’un parent normal.
+- Le rôle de `init` (ou `systemd`) est donc de "nettoyer" ces processus orphelins pour éviter qu'ils restent dans la table des processus en tant que **zombies**.
 
-	Le rôle de init (ou systemd) est de prendre en charge ces processus orphelins
- pour les "nettoyer" une fois qu'ils ont terminé leur exécution. Cela permet d'éviter
- que ces processus restent dans la table des processus en tant que zombies.
+---
 
-Zombie process :
----------------------------------------------------------------------------
+## Zombie Process
 
-	Un processus zombie est un processus qui a terminé son exécution, mais dont 
-l'entrée dans la table des processus n'a pas encore été supprimée. Cela se produit parce 
-que son processus parent n'a pas encore récupéré son exit code via un syscall.
+Un processus **zombie** est un processus qui a terminé son exécution, mais dont l’entrée dans la table des processus n’a pas encore été supprimée.  
 
-
-
-
-
-
-
-
-
-
-
-
-**************************************************************************************************
+- Cela se produit lorsque le **processus parent** n’a pas encore récupéré le **exit code** via un syscall.
+- Les zombies restent listés dans la table des processus mais ne consomment pas de ressources CPU ou mémoire significatives.
