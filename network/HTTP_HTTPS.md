@@ -120,11 +120,12 @@ Accept: text/html
 
 ### 🔹 Réponse du serveur
 
+```HTTP
 HTTP/1.1 200 OK
 Content-Type: text/html
 Content-Length: 1256
 <html> <head><title>Exemple</title></head> <body><h1>Bonjour !</h1></body> </html> 
-
+```
 9. Conclusion
 
     HTTP/HTTPS est la base de la communication web.
