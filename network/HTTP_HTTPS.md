@@ -64,9 +64,9 @@ Une réponse HTTP est composée de 3 parties :
 <Version> <Code statut> <Message>
 ```
 Exemple :
-
+```shell
 HTTP/1.1 200 OK
-
+```
 ### 2. En-têtes (headers)
 - Informations sur la réponse :
 - `Content-Type: text/html`
@@ -110,16 +110,16 @@ HTTP/1.1 200 OK
 ## 8. Exemple complet
 
 ### Requête envoyée par le client
-
+```shell
 GET /page.html HTTP/1.1
 Host: www.exemple.com
 
 User-Agent: Mozilla/5.0
 Accept: text/html
-
+```
 ### Réponse du serveur
 
-```HTTP
+```shell
 HTTP/1.1 200 OK
 Content-Type: text/html
 Content-Length: 1256
