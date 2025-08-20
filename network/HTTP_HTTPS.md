@@ -59,7 +59,8 @@ GET /index.html HTTP/1.1
 Une réponse HTTP est composée de 3 parties :
 
 ### 1. Ligne de statut
-```http
+
+```shell
 <Version> <Code statut> <Message>
 ```
 Exemple :
