@@ -24,13 +24,13 @@
 Une requête HTTP est composée de 3 parties :
 
 ### 🔹 1. Ligne de requête
-
+```shell
 <Méthode> <Ressource> <Version>
-
+```
 Exemple :
-
+```shell
 GET /index.html HTTP/1.1
-
+```
 ### 🔹 2. En-têtes (headers)
 - Fournissent des informations supplémentaires :
 - `Host: www.exemple.com`
