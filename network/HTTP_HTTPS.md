@@ -55,9 +55,10 @@ GET /index.html HTTP/1.1
 ---
 
 ## 5. Structure d'une réponse HTTP
+
 Une réponse HTTP est composée de 3 parties :
 
-### 🔹 1. Ligne de statut
+### 1. Ligne de statut
 
 <Version> <Code statut> <Message>
 
@@ -65,13 +66,13 @@ Exemple :
 
 HTTP/1.1 200 OK
 
-### 🔹 2. En-têtes (headers)
+### 2. En-têtes (headers)
 - Informations sur la réponse :
 - `Content-Type: text/html`
 - `Content-Length: 1234`
 - `Set-Cookie: id=42`
 
-### 🔹 3. Corps (body)
+### 3. Corps (body)
 - Contient la ressource demandée : HTML, JSON, image, etc.
 
 ---
@@ -107,7 +108,7 @@ HTTP/1.1 200 OK
 
 ## 8. Exemple complet
 
-### 🔹 Requête envoyée par le client
+### Requête envoyée par le client
 
 GET /page.html HTTP/1.1
 Host: www.exemple.com
@@ -115,7 +116,7 @@ Host: www.exemple.com
 User-Agent: Mozilla/5.0
 Accept: text/html
 
-### 🔹 Réponse du serveur
+### Réponse du serveur
 
 ```HTTP
 HTTP/1.1 200 OK
