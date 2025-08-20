@@ -4,9 +4,9 @@
 - **HTTP** (HyperText Transfer Protocol) : protocole de communication entre un **client** (navigateur, application) et un **serveur** (site web, API).
 - **HTTPS** : version sécurisée de HTTP, où les échanges sont chiffrés grâce au protocole **TLS/SSL**.
 - Utilisé pour :
-  - Consulter des sites web
-  - Envoyer des données (formulaires, API REST)
-  - Télécharger ou téléverser des fichiers
+- Consulter des sites web
+- Envoyer des données (formulaires, API REST)
+- Télécharger ou téléverser des fichiers
 
 ---
 
@@ -14,9 +14,9 @@
 1. Le **client** envoie une **requête HTTP** au serveur.
 2. Le **serveur** traite la requête et renvoie une **réponse HTTP**.
 3. La réponse contient généralement :
-   - Un **code de statut** (succès, erreur, redirection…)
-   - Des **en-têtes** (headers)
-   - Un **corps** (HTML, JSON, image, etc.)
+- Un **code de statut** (succès, erreur, redirection…)
+- Des **en-têtes** (headers)
+- Un **corps** (HTML, JSON, image, etc.)
 
 ---
 
@@ -31,12 +31,11 @@ Exemple :
 
 GET /index.html HTTP/1.1
 
-
 ### 🔹 2. En-têtes (headers)
 - Fournissent des informations supplémentaires :
-  - `Host: www.exemple.com`
-  - `User-Agent: Mozilla/5.0`
-  - `Accept: text/html`
+- `Host: www.exemple.com`
+- `User-Agent: Mozilla/5.0`
+- `Accept: text/html`
 
 ### 🔹 3. Corps (body)
 - Contient des données (présent uniquement pour certaines méthodes comme `POST` ou `PUT`).
@@ -66,12 +65,11 @@ Exemple :
 
 HTTP/1.1 200 OK
 
-
 ### 🔹 2. En-têtes (headers)
 - Informations sur la réponse :
-  - `Content-Type: text/html`
-  - `Content-Length: 1234`
-  - `Set-Cookie: id=42`
+- `Content-Type: text/html`
+- `Content-Length: 1234`
+- `Set-Cookie: id=42`
 
 ### 🔹 3. Corps (body)
 - Contient la ressource demandée : HTML, JSON, image, etc.
@@ -79,21 +77,22 @@ HTTP/1.1 200 OK
 ---
 
 ## 6. Codes de statut HTTP
-- **1xx** : Information
-- **2xx** : Succès  
-  - `200 OK` → succès
-  - `201 Created` → ressource créée
-- **3xx** : Redirection  
-  - `301 Moved Permanently`
-  - `302 Found`
-- **4xx** : Erreur côté client  
-  - `400 Bad Request`
-  - `401 Unauthorized`
-  - `403 Forbidden`
-  - `404 Not Found`
-- **5xx** : Erreur côté serveur  
-  - `500 Internal Server Error`
-  - `503 Service Unavailable`
+
+### **1xx** : Information
+### **2xx** : Succès  
+- `200 OK` → succès
+- `201 Created` → ressource créée
+### **3xx** : Redirection  
+- `301 Moved Permanently`
+- `302 Found`
+### **4xx** : Erreur côté client  
+- `400 Bad Request`
+- `401 Unauthorized`
+- `403 Forbidden`
+- `404 Not Found`
+### **5xx** : Erreur côté serveur  
+- `500 Internal Server Error`
+- `503 Service Unavailable`
 
 ---
 
@@ -113,10 +112,8 @@ HTTP/1.1 200 OK
 GET /page.html HTTP/1.1
 Host: www.exemple.com
 
-
 User-Agent: Mozilla/5.0
 Accept: text/html
-
 
 ### 🔹 Réponse du serveur
 
@@ -128,8 +125,8 @@ Content-Length: 1256
 ```
 9. Conclusion
 
-    HTTP/HTTPS est la base de la communication web.
+HTTP/HTTPS est la base de la communication web.
 
-    Les requêtes permettent au client d’interagir avec le serveur.
+Les requêtes permettent au client d’interagir avec le serveur.
 
-    HTTPS est indispensable aujourd’hui pour garantir la sécurité des échanges.
+HTTPS est indispensable aujourd’hui pour garantir la sécurité des échanges.
