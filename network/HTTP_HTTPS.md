@@ -24,13 +24,13 @@
 Une requête HTTP est composée de 3 parties :
 
 ### 🔹 1. Ligne de requête
-
+```shell
 <Méthode> <Ressource> <Version>
-
+```
 Exemple :
-
+```shell
 GET /index.html HTTP/1.1
-
+```
 ### 🔹 2. En-têtes (headers)
 - Fournissent des informations supplémentaires :
 - `Host: www.exemple.com`
@@ -60,12 +60,13 @@ Une réponse HTTP est composée de 3 parties :
 
 ### 1. Ligne de statut
 
+```shell
 <Version> <Code statut> <Message>
-
+```
 Exemple :
-
+```shell
 HTTP/1.1 200 OK
-
+```
 ### 2. En-têtes (headers)
 - Informations sur la réponse :
 - `Content-Type: text/html`
@@ -109,22 +110,22 @@ HTTP/1.1 200 OK
 ## 8. Exemple complet
 
 ### Requête envoyée par le client
-
+```shell
 GET /page.html HTTP/1.1
 Host: www.exemple.com
 
 User-Agent: Mozilla/5.0
 Accept: text/html
-
+```
 ### Réponse du serveur
 
-```HTTP
+```shell
 HTTP/1.1 200 OK
 Content-Type: text/html
 Content-Length: 1256
 <html> <head><title>Exemple</title></head> <body><h1>Bonjour !</h1></body> </html> 
 ```
-9. Conclusion
+## 9. Conclusion
 
 HTTP/HTTPS est la base de la communication web.
 
