@@ -1,4 +1,4 @@
-# Cours : DOMTokenList en JavaScript
+# DOMTokenList en JavaScript
 
 ## 1. Définition
 Un **DOMTokenList** est un objet JavaScript représentant une collection de chaînes de texte (appelées *tokens*).  
