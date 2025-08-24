@@ -1,4 +1,4 @@
-# Cours : classList.toggle en JavaScript
+# classList.toggle
 
 ## 1. Définition
 La méthode **`toggle`** est utilisée avec `element.classList`.  
