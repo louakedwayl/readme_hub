@@ -2,8 +2,9 @@
 
 En JavaScript, lorsqu'on interagit avec le **DOM** (Document Object
 Model), on manipule souvent des **collections** d'éléments.\
-Une **collection** est une structure de données qui ressemble à un
-tableau, mais qui n'est **pas un vrai tableau**.
+Une collection est un objet semblable à un tableau : elle est indexée 
+et possède une longueur, mais elle ne dispose pas de toutes les méthodes 
+des vrais tableaux (Array).
 
 ------------------------------------------------------------------------
 
@@ -14,7 +15,7 @@ du DOM**.\
 Elle permet d'accéder aux éléments par **index** (`collection[0]`) et
 possède une **longueur** (`collection.length`).
 
-⚠️ Attention : contrairement aux vrais tableaux (`Array`), les
+⚠️ Attention : contrairement aux tableaux (`Array`), les
 collections n'ont pas toutes les méthodes comme `.map()`, `.filter()` ou
 `.reduce()`.
 
