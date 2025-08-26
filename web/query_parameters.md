@@ -8,8 +8,9 @@ Les **query parameters** sont des informations supplémentaires ajoutées à une
 
 Une URL avec query parameters se présente ainsi :
 
+```shell
 https://exemple.com/ressource?param1=valeur1&param2=valeur2
-
+```
 
 - `?` : indique le **début des paramètres de requête**.  
 - `param1=valeur1` : premier paramètre et sa valeur.  
