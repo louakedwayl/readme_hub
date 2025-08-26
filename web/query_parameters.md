@@ -22,9 +22,9 @@ https://exemple.com/ressource?param1=valeur1&param2=valeur2
 ### Exemple concret
 
 URL :  
-
+```shell
 https://jsonplaceholder.typicode.com/posts?_limit=5&_page=2
-
+```
 
 - `_limit=5` → limite la réponse à 5 éléments.  
 - `_page=2` → récupère la **deuxième page** des résultats.  
