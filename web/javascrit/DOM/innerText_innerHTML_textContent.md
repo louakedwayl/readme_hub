@@ -17,6 +17,13 @@
 </script>
 ```
 
+* Le contenu est considéré comme du texte brut.
+* Les balises sont affichées telles quelles et non interprétées.
+
+```js
+div.innerText = "<b>Bonjour</b>";
+// Affiche : <b>Bonjour</b> (le texte, pas en gras)
+```
 ---
 
 ## 2. Qu’est-ce que `textContent` ?
@@ -55,6 +62,13 @@
 </script>
 ```
 
+* Le contenu est interprété comme du HTML.
+* Donc si tu mets une balise dans la chaîne, elle sera rendue dans la page.
+
+```js
+div.innerHTML = "<b>Bonjour</b>";
+// Affiche : Bonjour (en gras)
+```
 ---
 
 ## 4. Différences principales
