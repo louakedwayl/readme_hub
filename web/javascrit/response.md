@@ -72,7 +72,45 @@ fetch('https://jsonplaceholder.typicode.com/users')
 
 ---
 
-## 5. Conclusion
+## 5. Méthode `json()` de l'objet Response
+
+La méthode **`response.json()`** permet de **lire le corps d'une réponse HTTP et de le transformer en objet JavaScript**.  
+
+- Elle retourne une **promesse**, donc il faut utiliser **`await`** ou **`.then()`** pour accéder aux données.  
+- Très pratique pour récupérer directement le contenu JSON d'une API.
+
+### Exemple avec `.then()`
+
+```javascript
+fetch('https://jsonplaceholder.typicode.com/users')
+  .then(response => response.json()) // transforme le corps en JSON
+  .then(data => {
+    console.log('Données reçues :', data);
+  })
+  .catch(error => console.error(error));
+```
+
+### Exemple avec async/await
+
+```javascript
+async function getUsers() {
+    try {
+        const response = await fetch('https://jsonplaceholder.typicode.com/users');
+        const data = await response.json(); // lit le JSON directement
+        console.log(data);
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+getUsers();
+```
+
+### . Astuce :
+ 
+.json() ne lit que le corps de la réponse. Pour vérifier le succès de la requête, il est souvent utile de contrôler response.ok ou response.status avant d’appeler .json().
+
+## 6. Conclusion
 
 L'objet **`Response`** est essentiel pour travailler avec **Fetch** et manipuler les réponses HTTP. Il permet :
 - de vérifier le statut de la requête,
