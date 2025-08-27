@@ -16,6 +16,8 @@
   elem.innerText = 'Bonjour';  // remplace le texte affiché
 </script>
 ```
+---
+### Exemple
 
 * Le contenu est considéré comme du texte brut.
 * Les balises sont affichées telles quelles et non interprétées.
@@ -61,6 +63,8 @@ div.innerText = "<b>Bonjour</b>";
   elem.innerHTML = 'Bonjour <strong>tout le monde</strong>';
 </script>
 ```
+---
+### Exemple
 
 * Le contenu est interprété comme du HTML.
 * Donc si tu mets une balise dans la chaîne, elle sera rendue dans la page.
