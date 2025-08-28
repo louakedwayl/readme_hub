@@ -139,11 +139,41 @@ form.addEventListener("submit", (event) => {
 
 ---
 
+## 8. Hiérarchie complète des objets DOM
+
+Chaque élément dans le DOM hérite d'une chaîne d'objets. Voici la chaîne complète pour les éléments et le document :
+
+### Pour un élément HTML, ex: `<div>`
+
+```
+divElement → HTMLDivElement → HTMLElement → Element → Node → EventTarget → Object
+```
+
+### Pour le document
+
+```
+document → HTMLDocument → Document → Node → EventTarget → Object
+```
+
+* `document` n’est pas un `HTMLElement`, mais c’est un objet (`Object`).
+* `HTMLElement` est la base pour tous les éléments HTML (`<div>`, `<input>`, `<label>`, ...).
+* Tous héritent finalement de `Object`.
+
+### Exemple en JavaScript
+
+```js
+const input = document.createElement("input");
+console.log(input instanceof HTMLInputElement); // true
+console.log(input instanceof HTMLElement);      // true
+console.log(input instanceof Element);          // true
+console.log(input instanceof Node);             // true
+console.log(input instanceof Object);           // true
+```
+
+---
+
 ### ✅ Résumé
 
 * JavaScript est **faiblement typé**, on n’écrit pas le type des variables.
 * Le **DOM** est manipulé via `document` et ses méthodes (`createElement`, `appendChild`, etc.).
-* Les éléments sont des objets : `Element` et `HTMLElement`.
-* Pour le contenu textuel : `textContent`, `innerText`, `innerHTML`.
-* Pour récupérer la saisie de l’utilisateur, utiliser `input.value` ou les événements de formulaire.
-
+* Les éléments sont des objets : `Element` et \`HTMLEleme
