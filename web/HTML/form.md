@@ -12,7 +12,7 @@ Un formulaire peut contenir des **champs de saisie**, des **boutons**, des **men
 - Les éléments visibles d’un formulaire sont : `<input>`, `<textarea>`, `<select>`, `<button>`, etc.  
 - `<form>` sert **à regrouper ces éléments** et à définir **comment envoyer ou traiter les données** (via `action`, `method` ou événements JavaScript).  
 
-💡 En pratique :  
+### En pratique :  
 On peut techniquement créer un "formulaire" avec seulement des `<input>` et `<label>` sans `<form>`.  
 
 ### Mais sans `<form>` :  
