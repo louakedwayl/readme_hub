@@ -145,9 +145,3 @@ Les commentaires ne s’affichent pas sur la page :
 * Indenter correctement le code pour le rendre lisible.
 
 ---
-
-## 7. Ressources pour aller plus loin
-
-* [MDN Web Docs – HTML](https://developer.mozilla.org/fr/docs/Web/HTML)
-* [W3Schools – HTML Tutorial](https://www.w3schools.com/html/)
-
