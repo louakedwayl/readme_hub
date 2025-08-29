@@ -1,4 +1,3 @@
-
 # Les Tableaux en JavaScript : Dynamiques et Flexibles
 
 En JavaScript, les **tableaux** (_arrays_) sont **dynamiques**.  
@@ -54,7 +53,47 @@ let mix = [42, "texte", true, {nom: "Alice"}, [1, 2]];
 
 ---
 
-## 5. Comparaison avec d'autres langages
+## 5. Méthode `map()`
+
+La méthode **`map()`** permet de **transformer chaque élément d’un tableau** et de créer un **nouveau tableau** avec les valeurs transformées.
+
+### Syntaxe
+```js
+const newArray = array.map((element, index, array) => {
+  // retourner la valeur transformée
+});
+```
+
+- `element` → élément courant du tableau  
+- `index` → indice de l’élément courant (optionnel)  
+- `array` → tableau original (optionnel)
+
+### Exemple simple
+```js
+const numbers = [1, 2, 3, 4];
+const squares = numbers.map(num => num * num);
+console.log(squares); // [1, 4, 9, 16]
+console.log(numbers); // [1, 2, 3, 4] (original non modifié)
+```
+
+### Exemple avec objets
+```js
+const users = [
+  { name: "Alice", age: 25 },
+  { name: "Bob", age: 30 }
+];
+
+const names = users.map(user => user.name);
+console.log(names); // ["Alice", "Bob"]
+```
+
+💡 **Points clés**  
+- `map()` **ne modifie pas le tableau original**, il retourne un **nouveau tableau**.  
+- Très utile pour **transformer ou extraire des données** d’un tableau.
+
+---
+
+## 6. Comparaison avec d'autres langages
 
 | Langage        | Tableau classique | Dynamique ? |
 |----------------|------------------|-------------|
@@ -63,6 +102,4 @@ let mix = [42, "texte", true, {nom: "Alice"}, [1, 2]];
 | **JavaScript** | Oui               | ✅          |
 
 > **En résumé :** Les tableaux en JavaScript sont **plus proches des listes dynamiques** dans d’autres langages.  
-Ils offrent une grande flexibilité et facilitent la manipulation des données.
-
----
+Ils offrent une grande flexibilité et facilitent la manipulation des données. La méthode `map()` est un outil puissant pour transformer et manipuler facilement les éléments d’un tableau.
