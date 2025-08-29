@@ -2,6 +2,26 @@
 
 En JavaScript, un **événement** est une action qui se produit dans le navigateur, déclenchée par l’utilisateur ou le système, et qui peut être **écoutée** via un **Event Listener**.
 
+Chaque événement traverse le DOM en descendant depuis le document jusqu’à l’élément cible"
+
+Le DOM est comme un arbre : le document est la racine, les éléments sont les branches et feuilles.
+
+Quand un événement se produit (ex : clic sur un bouton), il parcourt ce chemin dans l’arbre depuis la racine jusqu’à l’élément où le clic a eu lieu.
+
+## Phases de propagation des événements
+
+1. **Phase de capture** :  
+   L’événement descend depuis le `document` jusqu’à l’élément cible.
+
+2. **Phase cible** :  
+   L’événement est sur l’élément où il s’est produit.
+
+3. **Phase de bouillonnement (bubbling)** :  
+   L’événement remonte depuis l’élément cible jusqu’au `document`.
+
+> Par défaut, `addEventListener` écoute pendant la phase de bouillonnement.  
+> Si tu mets `{ capture: true }` ou `true` en troisième argument, l’écouteur s’exécutera pendant la phase de capture (avant que l’événement n’atteigne la cible).
+
 ---
 
 ## 1️⃣ Mouse Events (Événements souris)
