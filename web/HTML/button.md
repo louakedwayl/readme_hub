@@ -34,7 +34,7 @@ Elle peut être utilisée pour **soumettre un formulaire**, **réinitialiser un 
 <button type="submit">Envoyer</button>
 ```
 
-Par défaut, un <button> sans type défini est considéré comme type="submit" dans un formulaire.
+Par défaut, un element <button> sans type défini est considéré comme type="submit" dans un formulaire.
 
 2. **Reset** : réinitialise le formulaire.  
 
