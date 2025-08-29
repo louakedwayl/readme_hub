@@ -6,6 +6,20 @@ La balise `<form>` permet de créer un **formulaire** dans une page web, utilis�
 
 Un formulaire peut contenir des **champs de saisie**, des **boutons**, des **menus déroulants**, des **cases à cocher**, et d’autres éléments interactifs.
 
+### À propos de la balise `<form>`
+
+- La balise `<form>` **ne crée aucun champ visible**.  
+- Les éléments visibles d’un formulaire sont : `<input>`, `<textarea>`, `<select>`, `<button>`, etc.  
+- `<form>` sert **à regrouper ces éléments** et à définir **comment envoyer ou traiter les données** (via `action`, `method` ou événements JavaScript).  
+
+💡 En pratique :  
+On peut techniquement créer un "formulaire" avec seulement des `<input>` et `<label>` sans `<form>`.  
+
+### Mais sans `<form>` :  
+- Pas d’envoi automatique des données au serveur (`submit`).  
+- On perd les événements globaux comme `submit` ou `reset`.  
+- L’accessibilité peut être moins bonne.
+
 ---
 
 ## 🛠️ Structure de base
