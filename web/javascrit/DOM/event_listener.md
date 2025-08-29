@@ -159,3 +159,94 @@ element.addEventListener("click", (event) => {
     un parent).
 
 ------------------------------------------------------------------------
+
+## ✋ Arrêter la propagation d’un événement : `stopPropagation`
+
+Parfois, un événement déclenché sur un élément **remonte ou descend dans l’arbre DOM** et peut déclencher d’autres listeners.  
+Pour **empêcher cette propagation**, on utilise la méthode **`event.stopPropagation()`**.
+
+### Exemple : éviter que le clic sur un bouton déclenche le listener du parent
+
+```html
+<div id="parent" style="padding:20px; background:lightblue;">
+  Parent
+  <button id="child">Enfant</button>
+</div>
+
+<script>
+  const parent = document.getElementById("parent");
+  const child = document.getElementById("child");
+
+  parent.addEventListener("click", () => {
+    console.log("Clic sur le parent !");
+  });
+
+  child.addEventListener("click", (event) => {
+    console.log("Clic sur l’enfant !");
+    event.stopPropagation(); // Empêche le clic de remonter au parent
+  });
+</script>
+```
+
+### Résultat :
+
+Cliquer sur le parent affiche "Clic sur le parent !".
+
+Cliquer sur l’enfant affiche seulement "Clic sur l’enfant !".
+
+Grâce à stopPropagation, le listener du parent n’est pas déclenché.
+
+### Notes importantes
+
+stopPropagation() n’empêche pas l’exécution du listener courant, seulement la propagation aux autres éléments.
+
+Pour empêcher aussi l’action par défaut du navigateur (ex : suivre un lien, soumettre un formulaire), utiliser event.preventDefault().
+
+---
+
+## 🚫 Empêcher le comportement par défaut : `preventDefault()`
+
+Certains éléments HTML ont un **comportement par défaut** lorsqu’un événement survient.  
+
+### Exemples :  
+
+- Cliquer sur un lien `<a>` ouvre la page cible  
+- Soumettre un formulaire recharge la page  
+
+Pour **empêcher ce comportement**, on utilise **`event.preventDefault()`**.
+
+### Exemple : bloquer l’ouverture d’un lien
+
+```html
+<a href="https://example.com" id="link">Clique-moi</a>
+
+<script>
+  const link = document.getElementById("link");
+
+  link.addEventListener("click", (event) => {
+    event.preventDefault(); // Empêche l'ouverture de la page
+    console.log("Lien cliqué, mais page non chargée !");
+  });
+</script>
+```
+
+### Résultat :
+
+Cliquer sur le lien n’ouvre pas example.com.
+
+Le message "Lien cliqué, mais page non chargée !" est affiché dans la console.
+
+###  Notes importantes
+
+preventDefault() n’arrête pas la propagation de l’événement.
+
+## Pour empêcher à la fois la propagation et le comportement par défaut, on peut combiner avec stopPropagation() :
+
+```js
+element.addEventListener("click", (event) => {
+  event.preventDefault();
+  event.stopPropagation();
+});
+```
+
+---
