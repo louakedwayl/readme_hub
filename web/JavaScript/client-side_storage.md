@@ -18,7 +18,7 @@ Les principaux types de stockage côté client sont **cookies**, **localStorage*
   - Préférences utilisateur simples (langue, thème).
   - Suivi et analytics.
 - **Cas d’usage dans les jeux** :
-  - Rarement pour l’état du jeu, sauf si le serveur doit suivre la session du joueur.
+  - Rarement pour l’état du jeu, sauf si le serveur doit suivre la session du joueur comme sur un jeu multijoueur.
 
 ---
 
