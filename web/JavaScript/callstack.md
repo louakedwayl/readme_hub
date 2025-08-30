@@ -196,9 +196,90 @@ Toutes les microtasks sont vidées **avant de passer à la moindre macro-task**.
   - **Macro-tasks** (Timers, events) → traitées ensuite.  
 - Le navigateur/Node.js ajoute aussi une étape de **rendering** après chaque cycle.
 
+La Call Stack est vidée (tout le code synchrone est exécuté).
+
+On exécute toutes les microtasks (jusqu’à ce qu’il n’en reste plus).
+
+Ensuite, l’Event Loop prend une seule macro-task dans la Task Queue.
+
+Donc, s’il reste plusieurs macro-tâches (par exemple plusieurs setTimeout programmés), elles attendent leur tour.
+Elles ne seront pas toutes exécutées dans le même cycle, mais une par une à chaque tour suivant, après avoir vérifié à nouveau la pile et les microtasks.
+
+C’est ce mécanisme qui fait que les microtasks (promises) ont toujours une priorité plus élevée que les macrotasks (timers, événements, etc.).
+
+---
+## 5. Microtasks en JavaScript
+
+Les **microtasks** sont des tâches asynchrones ayant une **priorité plus élevée** que les macro-tasks. Elles sont toujours exécutées **avant toute macro-task** lorsque la Call Stack est vide.
+
 ---
 
-## 5. Schéma simplifié de l’Event Loop
+## 1️⃣ Principales sources de microtasks
+- **Promesses résolues** (`Promise.then`, `catch`, `finally`)  
+- `async/await` (le code après `await` devient une microtask)  
+- `queueMicrotask(callback)`  
+
+> Toutes ces tâches sont placées dans la **microtask queue**.
+
+---
+
+## 2️⃣ Règles d’exécution
+- Lorsque la **Call Stack** est vide, l’Event Loop vide **toutes les microtasks** présentes dans la queue, **avant** de passer à la macro-task suivante.  
+- Les microtasks s’exécutent dans l’ordre dans lequel elles ont été programmées.
+
+---
+
+## 3️⃣ Points importants
+- Elles permettent de gérer des opérations asynchrones **rapidement**, sans attendre un timer ou un événement.  
+- La microtask queue peut s’accumuler si de nombreuses promesses sont résolues rapidement.  
+- Une microtask peut en créer d’autres, qui seront exécutées **dans le même cycle** avant la macro-task.
+
+---
+
+## 6 Macro-tasks en JavaScript
+
+Dans la **macro-task queue** (ou **task queue**), on retrouve les **tâches asynchrones classiques** qui ne sont pas des microtasks. Ces tâches sont planifiées par certaines API ou événements du navigateur ou de Node.js.
+
+---
+
+## 1️⃣ Timers
+- `setTimeout(callback, delay)`  
+- `setInterval(callback, delay)`  
+
+> Chaque callback de timer planifié finit dans la macro-task queue.
+
+---
+
+## 2️⃣ Événements utilisateur
+- Événements DOM tels que :  
+  - `click`  
+  - `keydown`  
+  - `mousemove`  
+- Lorsque l’utilisateur interagit avec la page, le callback associé est placé dans la macro-task queue.
+
+---
+
+## 3️⃣ I/O (Node.js)
+En environnement Node.js, certaines opérations asynchrones d’entrée/sortie finissent dans la macro-task queue :  
+- Lecture/écriture de fichiers (`fs.readFile`)  
+- Réponses réseau (`http`, `net`)
+
+---
+
+## 4️⃣ Autres APIs
+- `setImmediate()` (Node.js)  
+- `requestAnimationFrame()` : bien qu’il ne soit pas exactement une macro-task normale, il est exécuté avant le rendu visuel et peut être considéré comme une “task spéciale” liée au frame.
+
+---
+
+## 🔑 Points importants
+- À **chaque cycle de l’Event Loop**, **une seule macro-task** est retirée et exécutée.  
+- Après son exécution, toutes les **microtasks** en attente sont traitées avant de passer à la macro-task suivante.  
+- Les macro-tasks peuvent s’accumuler dans la file si beaucoup d’événements ou timers sont programmés.
+
+---
+
+## 6. Schéma simplifié de l’Event Loop
 
 ```
         ┌─────────────┐
