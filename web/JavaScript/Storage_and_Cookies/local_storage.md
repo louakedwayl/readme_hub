@@ -2,6 +2,7 @@
 
 Le **Local Storage** est une API Web qui permet de stocker des données localement dans le navigateur. Contrairement aux cookies, les données du Local Storage :
 
+* Le localStorage est composé de paires clé-valeur créées par le site ou l’application web et stockées dans le navigateur. Chaque localStorage est lié à un nom de domaine.
 * sont persistantes (restent même après la fermeture du navigateur)
 * ont une taille beaucoup plus grande (\~5 Mo selon le navigateur)
 * ne sont pas envoyées au serveur à chaque requête HTTP
