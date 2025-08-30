@@ -2,6 +2,7 @@
 
 Le **Session Storage** est une API Web similaire au **Local Storage**, mais avec quelques différences clés :
 
+* Le sessionStorage est composé de paires clé-valeur créées par le site ou l’application web et stockées dans le navigateur. Chaque sessionStorage est lié à un nom de domaine.
 * Les données sont stockées **côté client** dans le navigateur.
 * Les données **durent uniquement pendant la session** (elles disparaissent lorsque l’onglet ou le navigateur est fermé).
 * Les données sont **isolées par onglet** : chaque onglet a son propre Session Storage.
