@@ -64,7 +64,8 @@ Error: Oups
 JavaScript est **monothread** : il ne peut exécuter qu’une seule chose à la fois sur la **call stack**.  
 Pour gérer l’asynchrone, il utilise le mécanisme de l’**Event Loop**.
 
-### Les 3 éléments principaux
+## Les 3 éléments principaux
+---
 
 # 🔄 Cycle de l’Event Loop en JavaScript
 
