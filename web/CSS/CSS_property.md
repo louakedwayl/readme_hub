@@ -54,7 +54,7 @@ JavaScript :
         div.style.color = "blue";
         div.style.margin = "20px";
 ```
-5️⃣ Résumé
+## 5️⃣ Résumé
 
 Chaque élément HTML possède toutes les propriétés CSS, mais elles peuvent être :
 
@@ -66,7 +66,7 @@ Chaque élément HTML possède toutes les propriétés CSS, mais elles peuvent �
 
   Pour connaître l’état actuel de toutes les propriétés, utilisez getComputedStyle(element).
 
-🔹 Conclusion
+ ## Conclusion
 
 Même si vous ne définissez aucune propriété CSS, chaque élément HTML a un style complet calculé, grâce aux valeurs initiales, héritées et aux styles par défaut du navigateur.
 Cela permet aux navigateurs de rendre chaque élément de manière cohérente et prévisible.
