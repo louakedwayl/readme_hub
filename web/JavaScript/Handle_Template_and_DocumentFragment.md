@@ -14,9 +14,6 @@ Un `<template>` est un **élément HTML spécial** dont le contenu n’est **pas
   </div>
 </template>
 ```
-```js
-tpl = document.getElementById("todolist-layout") // récupère l’élément <template> dans le DOM.
-```
 
 ```js
 const tpl = document.getElementById("todolist-layout");
