@@ -1,4 +1,23 @@
-# La Pile d’Exécution et l’Asynchrone en JavaScript
+# Event Loop
+
+## Introduction
+
+L’Event Loop est le mécanisme central qui permet à JavaScript d’être monothread tout en gérant l’asynchrone.
+Il coordonne l’exécution du code synchronisé, le traitement des microtasks, la gestion des macro-tasks, et la mise à jour de l’interface (rendering).
+En résumé, c’est la boucle infinie qui régule l’ordre d’exécution dans l’environnement JavaScript.
+
+### Donc, quand on parle de :
+
+```shell
+Call Stack
+
+Microtask Queue
+
+Macro-task Queue
+
+Phase de rendu
+```
+tout cela fait partie d’un même cycle orchestré par l’Event Loop.
 
 ## 1. La pile d’exécution (Call Stack)
 
