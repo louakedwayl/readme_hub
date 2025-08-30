@@ -17,9 +17,9 @@ Chaque élément HTML possède un ensemble de propriétés CSS, même si vous ne
 - Chaque élément possède **toutes les propriétés CSS dans un état par défaut**.
 - Exemple : un `<div>` possède `color`, `font-size`, `display`, `margin`, etc., même si vous ne définissez aucune valeur.
 - L’état par défaut provient de plusieurs sources :
-  1. **User Agent Stylesheet** : le style par défaut défini par le navigateur (ex : `display: block` pour `<div>`).
-  2. **Valeurs héritées** : certaines propriétés comme `color` ou `font-family` sont transmises des éléments parents.
-  3. **Valeurs initiales** : si aucune valeur n’est héritée ni définie, la propriété prend sa **valeur initiale** définie par le standard CSS.
+  - 1. **User Agent Stylesheet** : le style par défaut défini par le navigateur (ex : `display: block` pour `<div>`).
+  - 2. **Valeurs héritées** : certaines propriétés comme `color` ou `font-family` sont transmises des éléments parents.
+  - 3. **Valeurs initiales** : si aucune valeur n’est héritée ni définie, la propriété prend sa **valeur initiale** définie par le standard CSS.
 
 ---
 
