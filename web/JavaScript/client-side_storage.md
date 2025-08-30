@@ -42,48 +42,54 @@ localStorage.setItem("paddlePosition", 120);
 
 // Récupérer la position
 const position = localStorage.getItem("paddlePosition");
+```
+## 3️⃣ sessionStorage
 
-3️⃣ sessionStorage
+### Objectif : Stockage temporaire limité à l’onglet ou la fenêtre en cours.
 
-    Objectif : Stockage temporaire limité à l’onglet ou la fenêtre en cours.
+### Caractéristiques :
 
-    Caractéristiques :
+- Accessible via JavaScript.
 
-        Accessible via JavaScript.
+- Effacé à la fermeture de l’onglet/fenêtre.
 
-        Effacé à la fermeture de l’onglet/fenêtre.
+- Taille limite ~5 Mo.
 
-        Taille limite ~5 Mo.
+### Cas d’usage général :
 
-    Cas d’usage général :
+Informations temporaires pendant une session (panier temporaire, formulaire en cours).
 
-        Informations temporaires pendant une session (panier temporaire, formulaire en cours).
+Données qui n’ont pas besoin de persister après fermeture de l’onglet.
 
-        Données qui n’ont pas besoin de persister après fermeture de l’onglet.
+### Cas d’usage dans les jeux :
 
-    Cas d’usage dans les jeux :
+Suivi temporaire de l’état du jeu, score en cours ou position d’objets pour la session actuelle.
 
-        Suivi temporaire de l’état du jeu, score en cours ou position d’objets pour la session actuelle.
-
+```js
 // Exemple : sauvegarder la position de la raquette pour la session en cours
 sessionStorage.setItem("paddlePosition", 120);
 
 // Récupérer la position
 const position = sessionStorage.getItem("paddlePosition");
+```
 
-4️⃣ Tableau récapitulatif
-Stockage	Persistance	Accessible par JS	Envoyé au serveur	Cas d’usage général	Cas d’usage dans les jeux
-Cookies	Selon expires	Oui (sauf HttpOnly)	Oui	Sessions, authentification, suivi	Rare, suivi de session côté serveur
-localStorage	Permanent	Oui	Non	Préférences, données volumineuses	Progression joueur, état du jeu entre sessions
-sessionStorage	Onglet/fenêtre	Oui	Non	Informations temporaires	État temporaire du jeu pendant la session
-✅ Recommandations
+## 4️⃣ Tableau récapitulatif
 
-    Pour un jeu web comme Pong : localStorage pour la position de la raquette et l’état persistant, sessionStorage pour l’état temporaire.
+| Stockage        | Persistance         | Accessible par JS | Envoyé au serveur | Cas d’usage général                         | Cas d’usage dans les jeux                             |
+|-----------------|---------------------|------------------|-------------------|---------------------------------------------|-------------------------------------------------------|
+| **Cookies**     | Selon `expires`     | Oui (sauf HttpOnly) | Oui               | Sessions, authentification, suivi           | Rare, suivi de session côté serveur                   |
+| **localStorage**| Permanent           | Oui              | Non               | Préférences, données volumineuses           | Progression joueur, état du jeu entre sessions        |
+| **sessionStorage** | Onglet/fenêtre   | Oui              | Non               | Informations temporaires                    | État temporaire du jeu pendant la session             |
 
-    Pour applications web en général :
 
-        Cookies → sessions et authentification.
+### Recommandations
 
-        localStorage → préférences persistantes et données volumineuses côté client.
+Pour un jeu web comme Pong : localStorage pour la position de la raquette et l’état persistant, sessionStorage pour l’état temporaire.
 
-        sessionStorage → informations temporaires liées à la session de l’utilisateur.
+Pour applications web en général :
+
+Cookies → sessions et authentification.
+
+localStorage → préférences persistantes et données volumineuses côté client.
+
+sessionStorage → informations temporaires liées à la session de l’utilisateur.
