@@ -65,32 +65,77 @@ JavaScript est **monothread** : il ne peut exécuter qu’une seule chose à la 
 Pour gérer l’asynchrone, il utilise le mécanisme de l’**Event Loop**.
 
 ### Les 3 éléments principaux
+# 🔄 Cycle de l’Event Loop en JavaScript
 
-1. **Call Stack**  
-   La pile où s’exécute le code.
-
-2. **Task Queue (macro-tâches)**  
-   - Contient les callbacks de `setTimeout`, `setInterval`, `setImmediate`, les événements DOM, etc.
-   - Ce sont les "grosses tâches".
-
-3. **Microtask Queue**  
-   - Contient les callbacks de `Promise.then`, `async/await`, `queueMicrotask`.
-   - Prioritaire par rapport à la task queue.
+L’**Event Loop** est le mécanisme qui coordonne l’exécution du code, la gestion des opérations asynchrones et la mise à jour de l’interface utilisateur.  
+Il fonctionne comme une boucle infinie qui suit un cycle précis :  
 
 ---
 
-### Cycle de l’Event Loop
-
-L’event loop fonctionne en boucle infinie et suit ce processus :
-
-1. **Exécuter tout le code synchronisé** dans la call stack.  
-2. Quand la pile est vide :  
-   - Traiter **toutes les microtasks** de la microtask queue.  
-   - Puis prendre **une seule macro-tâche** de la task queue.  
-3. **Mettre à jour le rendu (rendering)** s’il y a des changements visuels.  
-4. Retour à l’étape 1.
+## 1. Exécution du code synchrone dans la Call Stack
+- Tout le code **synchronisé** (les instructions et fonctions immédiates) est placé dans la **pile d’exécution** (*Call Stack*).  
+- Le moteur JavaScript exécute ces instructions de manière **séquentielle**, sans interruption.  
+- Tant que la pile n’est pas vide, aucune autre tâche ne peut être exécutée.
 
 ---
+
+## 2. Traitement des files d’attente lorsque la Call Stack est vide
+Une fois la pile vidée, l’Event Loop consulte les files d’attente :  
+
+### a) Microtask Queue
+- Contient principalement les **Promesses résolues** (`Promise.then`, `catch`, `finally`, `async/await`) et `queueMicrotask`.  
+- Toutes les microtâches présentes sont **exécutées en entier** avant de passer à une autre étape.  
+- Elles ont une **priorité plus élevée** que les macro-tâches.  
+
+### b) Task Queue (Macro-task Queue)
+- Contient les tâches planifiées par des API comme `setTimeout`, `setInterval`, ou par des événements utilisateurs (clics, entrées clavier).  
+- À chaque cycle, **une seule macro-tâche est extraite et exécutée**.  
+- Après son exécution, le moteur retourne immédiatement vérifier la **microtask queue** avant d’enchaîner avec une nouvelle macro-tâche.  
+
+---
+
+## 3. Phase de rendu (Rendering)
+- Une fois les tâches exécutées, le navigateur peut mettre à jour l’affichage.  
+- Cela inclut le recalcul des styles, la mise en page (layout) et le rendu visuel (paint).  
+- Cette phase n’est pas garantie à chaque cycle, mais elle se produit régulièrement (en général toutes les ~16 ms pour viser 60 FPS).  
+
+---
+
+## 4. Boucle infinie
+- Après la phase de rendu, le cycle recommence à l’étape 1.  
+- Ce processus se répète indéfiniment tant que l’application est en cours d’exécution.  
+
+---
+
+## 📝 Schéma simplifié du cycle
+
+```shell
+      ┌───────────────────────────────┐
+      │        Call Stack              │
+      │  (code synchrone exécuté)      │
+      └───────────────┬───────────────┘
+                      │ pile vide ?
+                      ▼
+          ┌───────────────────────────┐
+          │     Microtask Queue       │
+          │ (Promises, microtasks...) │
+          └───────────────┬──────────┘
+                          │ terminée ?
+                          ▼
+          ┌───────────────────────────┐
+          │      Task Queue           │
+          │ (Timers, events, I/O...)  │
+          └───────────────┬──────────┘
+                          │ 1 seule tâche
+                          ▼
+          ┌───────────────────────────┐
+          │   Phase de rendu (UI)     │
+          │ (recalcul styles, paint)  │
+          └───────────────┬──────────┘
+                          │
+                          ▼
+                     Recommence
+```
 
 ### Exemple 1 : setTimeout vs Promises
 
