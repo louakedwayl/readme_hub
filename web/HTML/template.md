@@ -51,7 +51,7 @@ Il faut cloner ce contenu avant de l’insérer dans le DOM.
 
 Après exécution, le <div class="card"> sera visible dans la page.
 
-## 3️⃣ Avantages du <template>
+## 3️⃣ Avantages du `<template>`
 
 Réutilisable : le même template peut être cloné plusieurs fois.
 
