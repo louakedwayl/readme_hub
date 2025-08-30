@@ -42,6 +42,25 @@ const clone = tpl.content.cloneNode(true);
 document.body.appendChild(clone);
 ```
 
+## Cloner un DocumentFragment
+
+Un DocumentFragment est réutilisable et le clonage permet d’insérer plusieurs copies du même contenu sans modifier l’original.
+
+### Exemple :
+
+```js
+const frag = tpl.content;
+
+for (let i = 0; i < 3; i++) {
+    const clone = frag.cloneNode(true); // clone indépendant
+    document.body.appendChild(clone);   // ajoute chaque clone au DOM
+}
+```
+
+- Chaque clone est indépendant du fragment original.
+- Les modifications sur un clone n’affectent pas les autres clones ni le fragment original.
+
+
 ## 3. Event Delegation
 
 Comme on ne peut pas écouter d’événements sur un DocumentFragment, on utilise souvent l’event delegation :
