@@ -85,7 +85,7 @@ items.forEach(name => {
 
 ### Résultat :
 
-Une liste <ul> contenant les trois éléments : Pomme, Banane, Cerise.
+Une liste `<ul>` contenant les trois éléments : Pomme, Banane, Cerise.
 
 ### Conclusion
 
