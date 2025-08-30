@@ -65,6 +65,7 @@ JavaScript est **monothread** : il ne peut exécuter qu’une seule chose à la 
 Pour gérer l’asynchrone, il utilise le mécanisme de l’**Event Loop**.
 
 ### Les 3 éléments principaux
+
 # 🔄 Cycle de l’Event Loop en JavaScript
 
 L’**Event Loop** est le mécanisme qui coordonne l’exécution du code, la gestion des opérations asynchrones et la mise à jour de l’interface utilisateur.  
