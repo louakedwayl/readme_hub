@@ -22,7 +22,7 @@ console.log(tpl); // <template id="todolist-layout">...</template>
 
 ## 2. DocumentFragment
 
-Le contenu d’un `<template>` est un DocumentFragment :
+Le contenu d’un `<template>` est un `DocumentFragment` :
 
 C’est un conteneur léger, hors du DOM, où on peut préparer des éléments avant de les insérer.
 
