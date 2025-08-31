@@ -1,7 +1,10 @@
 # La Console en JavaScript : `console.log` et ses Variantes
 
 ## Introduction
-En JavaScript, l'objet **`console`** est utilisé pour afficher des informations, aider au débogage et interagir avec les outils de développement du navigateur ou l'environnement Node.js.
+
+En JavaScript, l’objet global **console** est fourni par l’environnement d’exécution (navigateur ou Node.js) pour permettre la sortie d’informations et le débogage.
+
+l'objet **`console`** est utilisé pour afficher des informations, aider au débogage et interagir avec les outils de développement du navigateur ou l'environnement Node.js.
 
 La méthode la plus connue est **`console.log()`**, mais il en existe d'autres très utiles.
 
