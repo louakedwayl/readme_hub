@@ -143,18 +143,7 @@ let strLength: number = (someValue as string).length;
 
 ---
 
-## 8. Opérateur de chaînage optionnel
-
-Permet d'accéder à des propriétés qui pourraient être nulles ou undefined :
-
-```ts
-const person: Person | null = null;
-console.log(person?.name); // undefined, pas d'erreur
-```
-
----
-
-## 9. Conclusion
+## 8. Conclusion
 
 TypeScript offre une **sécurité de type** et des fonctionnalités avancées pour rendre le code plus fiable et lisible.
 En maîtrisant ces bases, vous pouvez commencer à écrire des applications TypeScript robustes et maintenables.
