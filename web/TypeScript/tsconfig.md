@@ -40,19 +40,19 @@ Un fichier `tsconfig.json` ressemble à ceci :
 
 ## 3. Options principales de compilerOptions
 
-| Option              | Description                                                         |
-| ------------------- | ------------------------------------------------------------------- |
-| `target`            | Version JavaScript générée (`es5`, `es6`, `es2017`, `esnext`, etc.) |
-| `module`            | Système de modules utilisé (`commonjs`, `es6`, `amd`, `umd`, etc.)  |
-| `strict`            | Active toutes les vérifications strictes (type safety)              |
-| `outDir`            | Dossier de sortie pour les fichiers compilés                        |
-| `rootDir`           | Dossier racine du code source                                       |
-| `sourceMap`         | Génère des fichiers `.map` pour le debug                            |
-| `esModuleInterop`   | Permet l’import des modules CommonJS de manière compatible ES6      |
-| `resolveJsonModule` | Permet d’importer des fichiers JSON                                 |
-| `noImplicitAny`     | Génère une erreur si une variable est de type `any` implicite       |
-| `strictNullChecks`  | Vérifie que `null` et `undefined` sont gérés correctement           |
-
+| Option              | Description                                                            |
+| ------------------- | -----------------------------------------------------------------------|
+| `target`            | Version JavaScript générée (`es5`, `es6`, `es2017`, `esnext`, etc.)    |
+| `module`            | Système de modules utilisé (`commonjs`, `es6`, `amd`, `umd`, etc.)     |
+| `strict`            | Active toutes les vérifications strictes (type safety)                 |
+| `outDir`            | Dossier de sortie pour les fichiers compilés                           |
+| `rootDir`           | Dossier racine du code source                                          |
+| `sourceMap`         | Génère des fichiers `.map` pour le debug                               |
+| `esModuleInterop`   | Permet l’import des modules CommonJS de manière compatible ES6         |
+| `resolveJsonModule` | Permet d’importer des fichiers JSON                                    |
+| `noImplicitAny`     | Génère une erreur si une variable est de type `any` implicite          |
+| `strictNullChecks`  | Vérifie que `null` et `undefined` sont gérés correctement              |
+| `noEmitOnError`     |Empêche la génération de fichiers .js si TypeScript détecte des erreurs |
 ---
 
 ## 4. Exemple minimal
