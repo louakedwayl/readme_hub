@@ -16,115 +16,121 @@
 my-app/
 ├── docker-compose.yml
 ├── backend/
-│ └── Dockerfile
+│   └── Dockerfile
 ├── frontend/
-│ └── Dockerfile
-└── db/ 
+│   └── Dockerfile
+└── db/
 ```
+
 ---
 
 ## Fichier `docker-compose.yml`
 
 Le fichier `docker-compose.yml` permet de **décrire les services, volumes, réseaux, etc.**
 
-### Exemple de base :
-```yaml
-version: "3.8"
+---
 
+### 1. version
+
+```yaml
+version: "3.9"
+```
+
+* Indique la version du format Docker Compose utilisée.
+* Certaines fonctionnalités dépendent de la version choisie.
+
+---
+
+### 2. services
+
+C’est le cœur du fichier. Chaque service correspond généralement à un conteneur Docker.
+
+```yaml
 services:
   web:
-    build: ./backend
+    image: nginx:latest
     ports:
-      - "8000:8000"
-    volumes:
-      - ./backend:/app
-    depends_on:
-      - db
+      - "80:80"
+```
 
-  db:
-    image: postgres:13
-    environment:
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: mydb
-    volumes:
-      - db-data:/var/lib/postgresql/data
+#### Options fréquentes pour un service :
 
+* **image** : image Docker à utiliser (`nginx`, `postgres`, etc.)
+* **build** : construire l’image depuis un `Dockerfile`
+* **ports** : mappe un port du conteneur vers ton hôte (`hôte:conteneur`)
+* **volumes** : persister des données ou partager des fichiers
+* **environment** : variables d’environnement
+* **depends\_on** : indiquer qu’un service doit démarrer après un autre
+* **networks** : connecter le service à un réseau Docker
+
+---
+
+### 3. volumes
+
+```yaml
 volumes:
   db-data:
 ```
 
-### Commandes principales
+* Permet de créer un stockage persistant indépendant du cycle de vie des conteneurs.
+* Idéal pour les bases de données ou fichiers qui doivent survivre aux redémarrages.
 
-Démarrer les services :
-```bash
-docker-compose up
-```
+---
 
-Détaché (en arrière-plan) :
-```bash
-docker-compose up -d
-```
+### 4. networks
 
-Stopper les services :
-```bash
-docker-compose down
-```
-Rebuild les images :
-```bash
-docker-compose up --build
-```
-
-Voir les logs :
-```bash
-docker-compose logs
-```
-Voir les conteneurs en cours :
-```bash
-docker-compose ps
-```
-
-**depends_on**
-
-Cela indique qu’un service dépend d’un autre.
-
-⚠️ Attention : cela ne garantit pas que le service dépendant est "prêt", seulement qu’il est lancé en premier.
-Pour attendre que la base soit disponible, il faut un script "wait-for-it" ou équivalent.
-
-Volumes et données persistantes
-
-```yaml
-volumes:
-  - db-data:/var/lib/postgresql/data
-```
-Un volume nommé (db-data) permet de conserver les données entre les redémarrages du conteneur.
-
-### Réseaux personnalisés (optionnel)
-
-Docker Compose crée automatiquement un réseau, mais tu peux le configurer :
 ```yaml
 networks:
-  mynetwork:
+  frontend:
+  backend:
 ```
 
-Et l’utiliser dans les services :
+* Permet de créer des réseaux Docker personnalisés pour isoler ou relier des services.
 
-```yaml
-services:
-  web:
-    networks:
-      - mynetwork
+---
+
+### 5. configs / secrets (optionnel)
+
+* **configs** : injecter des fichiers de configuration dans un conteneur
+* **secrets** : stocker des informations sensibles de façon sécurisée
+
+---
+
+## Commandes principales
+
+```bash
+docker-compose up           # Démarrer les services
+docker-compose up -d        # Démarrer en arrière-plan
+docker-compose down         # Arrêter et supprimer les services
+docker-compose up --build   # Rebuild des images
+docker-compose logs         # Voir les logs
+docker-compose ps           # Voir les conteneurs en cours
 ```
+
+---
 
 ### Bonnes pratiques
 
-Utilise .env pour stocker les variables sensibles ou réutilisables.
+* Utilise un fichier `.env` pour les variables sensibles ou réutilisables.
+* Ne pas versionner les données dans les volumes.
+* Découpe bien les services (db, backend, frontend…).
+* Pour `depends_on`, ajouter un script d’attente si le service dépendant doit être prêt avant de démarrer.
 
-Ne pas versionner les données dans les volumes.
+---
 
-Utilise depends_on avec précaution (ajouter un script d’attente si besoin).
+### Schéma type d’architecture multi-conteneurs
 
-Découpe bien les services (db, backend, frontend, etc.).
+```bash
+my-app/
+├── frontend/   # Conteneur web / interface utilisateur
+├── backend/    # Conteneur serveur / API
+└── db/         # Conteneur base de données
+```
+
+* Tous les services peuvent communiquer via un **réseau Docker**.
+* La base de données utilise un **volume** pour persister les données.
+
+---
 
 ### Exemple complet : Application Flask + PostgreSQL
 
