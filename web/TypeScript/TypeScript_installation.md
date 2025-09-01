@@ -1,157 +1,78 @@
-# Installation de TypeScript
+# Installation de TypeScript (version simple)
 
-## 1. Pré-requis
+## 1. Pourquoi installer TypeScript ?
 
-Avant d'installer TypeScript, il faut avoir installé **Node.js** et
-**npm** (Node Package Manager).
+TypeScript est un langage que **le navigateur et Node.js ne comprennent
+pas directement**.\
+Il faut donc un outil pour **transformer ton code TypeScript (`.ts`) en
+JavaScript (`.js`)**.
 
-### Vérifier si Node.js est installé
-
-``` bash
-node -v
-```
-
-Exemple de résultat :
-
-    v20.10.0
-
-### Vérifier si npm est installé
-
-``` bash
-npm -v
-```
-
-Exemple de résultat :
-
-    10.2.3
-
-Si tu n'as pas Node.js, télécharge-le depuis
-[nodejs.org](https://nodejs.org).
+Cet outil s'appelle **`tsc`** (TypeScript Compiler).
 
 ------------------------------------------------------------------------
 
-## 2. Installer TypeScript globalement
-
-Pour utiliser TypeScript partout sur ta machine :
+## 2. Installation globale
 
 ``` bash
 npm install -g typescript
 ```
 
-### Vérifier l'installation
+-   Permet d'utiliser `tsc` **n'importe où** sur ton ordinateur.\
+-   Pratique pour tester rapidement des fichiers `.ts`.\
+-   **Limitation** : tous les projets utilisent la même version de
+    TypeScript.
+
+Vérifier l'installation :
 
 ``` bash
 tsc -v
 ```
 
-Exemple de résultat :
-
-    Version 5.4.2
-
 ------------------------------------------------------------------------
 
-## 3. Utiliser TypeScript dans un projet
+## 3. Initialiser un projet
 
-### a) Initialiser un projet Node.js
+Avant d'installer TypeScript dans un projet, il faut créer un projet
+Node.js :
 
 ``` bash
 npm init -y
 ```
 
-Cela crée un fichier `package.json`.
+-   Cela crée un fichier **`package.json`**\
+-   Ce fichier contient la configuration et les dépendances du projet
 
-### b) Installer TypeScript localement
+------------------------------------------------------------------------
+
+## 4. Installation locale dans le projet
 
 ``` bash
 npm install --save-dev typescript
 ```
 
-> 💡 Bonne pratique : installer TypeScript **en local** pour chaque
-> projet.
+-   Ajoute TypeScript **uniquement pour ce projet**\
+-   Permet de **fixer une version spécifique** de TypeScript\
+-   Utile quand plusieurs personnes travaillent sur le même projet
 
-------------------------------------------------------------------------
-
-## 4. Configuration de TypeScript
-
-Génère un fichier de configuration `tsconfig.json` :
-
-``` bash
-npx tsc --init
-```
-
-Exemple de `tsconfig.json` minimal :
-
-``` json
-{
-  "compilerOptions": {
-    "target": "es6",
-    "module": "commonjs",
-    "strict": true,
-    "outDir": "dist"
-  },
-  "include": ["src"]
-}
-```
-
-------------------------------------------------------------------------
-
-## 5. Compiler un fichier TypeScript
-
-### Créer un fichier `src/index.ts`
-
-``` ts
-let message: string = "Hello TypeScript!";
-console.log(message);
-```
-
-### Compiler le fichier
+Compiler avec la version locale :
 
 ``` bash
 npx tsc
 ```
 
-Un dossier `dist` est créé avec le fichier compilé `index.js` :
-
-``` js
-let message = "Hello TypeScript!";
-console.log(message);
-```
-
 ------------------------------------------------------------------------
 
-## 6. Exécuter le code
+## 5. Résumé
 
-Avec Node.js :
+  ------------------------------------------------------------------------
+  Installation                     Où ?                 Pourquoi ?
+  -------------------------------- -------------------- ------------------
+  Globale                          Sur ton PC           Tester vite et
+                                                        utiliser `tsc`
+                                                        partout
 
-``` bash
-node dist/index.js
-```
-
-Résultat attendu :
-
-    Hello TypeScript!
-
-------------------------------------------------------------------------
-
-## 7. Bonus : Exécuter TypeScript sans compilation
-
-Avec **ts-node** (pratique pour le développement rapide) :
-
-``` bash
-npm install --save-dev ts-node
-```
-
-Exécuter directement :
-
-``` bash
-npx ts-node src/index.ts
-```
-
-------------------------------------------------------------------------
-
-## Conclusion
-
--   **`npm install -g typescript`** → installation globale\
--   **`npx tsc --init`** → configuration du projet\
--   **`npx tsc`** → compilation `.ts` → `.js`\
--   **`node dist/index.js`** → exécution
+  Locale                           Dans le projet       Garantir la
+                                                        version exacte de
+                                                        TypeScript pour le
+                                                        projet
+  ------------------------------------------------------------------------
