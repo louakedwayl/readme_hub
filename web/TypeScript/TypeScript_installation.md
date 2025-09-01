@@ -64,15 +64,9 @@ npx tsc
 
 ## 5. Résumé
 
-  ------------------------------------------------------------------------
-  Installation                     Où ?                 Pourquoi ?
-  -------------------------------- -------------------- ------------------
-  Globale                          Sur ton PC           Tester vite et
-                                                        utiliser `tsc`
-                                                        partout
+| Installation | Où ?           | Pourquoi ?                                   |
+|-------------|----------------|---------------------------------------------|
+| Globale     | Sur ton PC     | Tester vite et utiliser `tsc` partout      |
+| Locale      | Dans le projet | Garantir la version exacte de TypeScript pour le projet |
 
-  Locale                           Dans le projet       Garantir la
-                                                        version exacte de
-                                                        TypeScript pour le
-                                                        projet
-  ------------------------------------------------------------------------
+
