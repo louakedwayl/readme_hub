@@ -3,8 +3,25 @@
 Le fichier **`tsconfig.json`** est le fichier de configuration principal de TypeScript. Il permet de **définir les options de compilation**, les fichiers inclus/exclus et le comportement général du compilateur `tsc`.
 
 ---
+## 1. Création du fichier tsconfig.json
 
-## 1. Pourquoi utiliser un tsconfig.json ?
+Il y a deux façons principales de créer un fichier tsconfig.json :
+
+## 1.1 Avec TypeScript installé
+
+Si TypeScript est installé (localement ou globalement), exécute :
+
+```bash
+npx tsc --init
+```
+## 1.2 si TypeScript est installé globalement :
+
+```bash
+tsc --init
+```
+Cette commande crée un tsconfig.json avec des options par défaut que tu pourras ensuite modifier.
+
+## 2. Pourquoi utiliser un tsconfig.json ?
 
 * Pour **centraliser les options de compilation**.
 * Pour indiquer au compilateur **quels fichiers compiler**.
@@ -12,7 +29,7 @@ Le fichier **`tsconfig.json`** est le fichier de configuration principal de Type
 
 ---
 
-## 2. Structure de base
+## 3. Structure de base
 
 Un fichier `tsconfig.json` ressemble à ceci :
 
@@ -38,7 +55,7 @@ Un fichier `tsconfig.json` ressemble à ceci :
 
 ---
 
-## 3. Options principales de compilerOptions
+## 4. Options principales de compilerOptions
 
 | Option              | Description                                                            |
 | ------------------- | -----------------------------------------------------------------------|
@@ -55,7 +72,7 @@ Un fichier `tsconfig.json` ressemble à ceci :
 | `noEmitOnError`     |Empêche la génération de fichiers .js si TypeScript détecte des erreurs |
 ---
 
-## 4. Exemple minimal
+## 5. Exemple minimal
 
 ```json
 {
@@ -76,7 +93,7 @@ Un fichier `tsconfig.json` ressemble à ceci :
 
 ---
 
-## 5. Quelques conseils
+## 6. Quelques conseils
 
 * Toujours **mettre `rootDir` et `outDir`** pour séparer code source et code compilé.
 * Utiliser `strict` pour profiter au maximum de la sécurité des types.
@@ -84,7 +101,7 @@ Un fichier `tsconfig.json` ressemble à ceci :
 
 ---
 
-## 6. Commande TypeScript
+## 7. Commande TypeScript
 
 Avec un `tsconfig.json` :
 
