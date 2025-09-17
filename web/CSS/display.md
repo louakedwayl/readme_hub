@@ -1,168 +1,163 @@
-# 🎨 Les Pseudo-éléments en CSS
+# 🎨 La propriété CSS `display`
 
-Les **pseudo-éléments** en CSS permettent de **styliser une partie spécifique d’un élément**, ou d’ajouter du contenu généré sans l’inclure directement dans le HTML.  
-Ils commencent par `::` (double deux-points).
-
----
-
-## 1. Différence avec les pseudo-classes
-
-- **Pseudo-classes (`:`)** : ciblent un **état** d’un élément (ex. `:hover`, `:first-child`).  
-- **Pseudo-éléments (`::`)** : ciblent une **partie précise** d’un élément (ex. `::before`, `::first-line`).  
-
-👉 Exemple :  
-
-```css
-p::first-line {
-  color: red;
-}
-```
-
-Ici, seule la première ligne du paragraphe sera rouge.
+La propriété **`display`** définit la manière dont un élément HTML est affiché dans la page, c’est-à-dire son **mode de rendu** et son **comportement dans le flux**.  
+C’est une des propriétés CSS les plus utilisées pour construire des mises en page.
 
 ---
 
-## 2. Syntaxe générale
+## 1. Syntaxe
 
 ```css
-sélecteur::pseudo-élément {
-  propriété: valeur;
+element {
+  display: valeur;
 }
 ```
 
 ---
 
-## 3. Les pseudo-éléments courants
+## 2. Les principales valeurs de `display`
 
-### 3.1 `::before`
-- Ajoute du contenu **avant** le contenu de l’élément.
-- Nécessite `content`.
+### 2.1 `block`
+- L’élément occupe **toute la largeur disponible**.  
+- Il commence **toujours sur une nouvelle ligne**.  
+- On peut définir `width`, `height`, `margin`, `padding`.  
+- Exemples : `<div>`, `<p>`, `<h1>`...
 
 ```css
-h1::before {
-  content: "🔥 ";
+div {
+  display: block;
 }
 ```
 
 ---
 
-### 3.2 `::after`
-- Ajoute du contenu **après** l’élément.
-- Très utile pour des décorations.
+### 2.2 `inline`
+- L’élément occupe seulement **la largeur de son contenu**.  
+- Il **ne commence pas** sur une nouvelle ligne.  
+- Impossible de définir `width` ou `height`.  
+- Exemples : `<span>`, `<a>`, `<strong>`...
 
 ```css
-h1::after {
-  content: " ✅";
+span {
+  display: inline;
 }
 ```
 
 ---
 
-### 3.3 `::first-line`
-- Cible la **première ligne** d’un élément block.
+### 2.3 `inline-block`
+- Mélange des deux : se comporte comme `inline` (reste sur la même ligne),  
+  mais accepte `width`, `height`, `margin`, `padding`.  
+- Très utile pour aligner plusieurs boîtes horizontalement.
 
 ```css
-p::first-line {
-  font-weight: bold;
-  color: blue;
+button {
+  display: inline-block;
 }
 ```
 
 ---
 
-### 3.4 `::first-letter`
-- Cible la **première lettre** d’un texte.
-- Idéal pour créer des effets typographiques (lettrines).
+### 2.4 `none`
+- L’élément est **complètement retiré du flux**.  
+- Il ne prend **aucune place** (contrairement à `visibility: hidden` qui cache mais garde l’espace).
 
 ```css
-p::first-letter {
-  font-size: 2em;
-  color: crimson;
+#popup {
+  display: none;
 }
 ```
 
 ---
 
-### 3.5 `::selection`
-- Cible la partie du texte **sélectionnée par l’utilisateur**.
+### 2.5 `flex`
+- Active le **mode flexbox** sur le conteneur.  
+- Permet d’aligner et de répartir facilement les éléments enfants.  
 
 ```css
-p::selection {
-  background: yellow;
-  color: black;
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 ```
 
 ---
 
-### 3.6 `::marker`
-- Cible le **marqueur** des listes (`<ul>` et `<ol>`).
+### 2.6 `grid`
+- Active le **mode CSS Grid Layout**.  
+- Permet de créer des grilles bidimensionnelles (lignes + colonnes).  
 
 ```css
-li::marker {
-  color: red;
-  font-size: 1.2em;
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 ```
 
 ---
 
-### 3.7 `::placeholder`
-- Cible le texte d’indication dans un champ `<input>` ou `<textarea>`.
+### 2.7 `inline-flex` et `inline-grid`
+- Même principe que `flex` et `grid`, mais le conteneur reste **en ligne** dans le flux.  
 
 ```css
-input::placeholder {
-  color: gray;
-  font-style: italic;
+nav {
+  display: inline-flex;
 }
 ```
 
 ---
 
-## 4. Exemple complet
+### 2.8 Autres valeurs utiles
+- **`table`**, `table-row`, `table-cell` : reproduisent le comportement d’un tableau HTML.  
+- **`list-item`** : affiche comme un élément de liste (avec un marqueur).  
+- **`run-in`**, `contents`, `flow-root` : plus rares et utilisés dans des cas spécifiques.  
+
+---
+
+## 3. Exemple comparatif
 
 ```html
-<h1>Titre</h1>
-<p>Bonjour, ceci est un exemple avec des pseudo-éléments.</p>
-<ul>
-  <li>Élément 1</li>
-  <li>Élément 2</li>
-</ul>
-<input placeholder="Entrez votre nom">
+<div class="block">Block</div>
+<span class="inline">Inline</span>
+<div class="inline-block">Inline-block</div>
 ```
 
 ```css
-h1::before {
-  content: "👉 ";
+.block {
+  display: block;
+  background: lightblue;
+  width: 200px;
+  height: 50px;
 }
 
-h1::after {
-  content: " 👈";
+.inline {
+  display: inline;
+  background: pink;
+  width: 200px; /* Ignoré */
+  height: 50px; /* Ignoré */
 }
 
-p::first-letter {
-  font-size: 2em;
-  color: crimson;
-}
-
-p::selection {
-  background: yellow;
-}
-
-li::marker {
-  color: green;
-}
-
-input::placeholder {
-  color: gray;
-  font-style: italic;
+.inline-block {
+  display: inline-block;
+  background: lightgreen;
+  width: 200px;
+  height: 50px;
 }
 ```
 
 ---
 
-## 5. Résumé
+## 4. Résumé
 
-- Les pseudo-éléments permettent de **cibler une partie précise** d’un élément.  
-- Les plus utilisés : `::before`, `::after`, `::first-line`, `::first-letter`.  
-- Ils sont très utiles pour la **décoration** et l’**amélioration de l’expérience utilisateur**.  
+- `block` → occupe toute la largeur.  
+- `inline` → reste dans le flux du texte, pas de `width/height`.  
+- `inline-block` → en ligne mais redimensionnable.  
+- `none` → l’élément disparaît.  
+- `flex` → active flexbox.  
+- `grid` → active grid.  
+- Variantes : `inline-flex`, `inline-grid`, `table`, `list-item`...
+
+---
+
+👉 En résumé, `display` contrôle **comment un élément est affiché** et c’est la **clé de toute mise en page CSS**.  
