@@ -1,19 +1,14 @@
-# CSS - Sélecteurs Combinators
+# CSS – Sélecteurs Combinators
 
-En CSS, les **combinators** sont des opérateurs qui permettent de **cibler les éléments en fonction de leur relation dans le DOM**. Ils sont essentiels pour appliquer des styles précis selon la hiérarchie et la position des éléments.
+Les **combinators** en CSS permettent de **cibler des éléments selon leur relation dans le DOM**.  
+Ils affinent la sélection pour appliquer des styles précis.
 
-## Sommaire
+---
 
-1. [Sélecteur enfant direct `>`](#sélecteur-enfant-direct-)
-2. [Sélecteur frère immédiat `+`](#sélecteur-frère-immédiat-)
-3. [Sélecteur frère général `~`](#sélecteur-frère-général-)
-4. [Sélecteur descendant (espace)](#sélecteur-descendant-espace)
-5. [Résumé visuel](#résumé-visuel)
+## 1. Sélecteur enfant direct `>`
 
-## Sélecteur enfant direct `>`
-
-* Cible uniquement les **enfants directs** d’un élément.
-* Syntaxe :
+✔ Cible uniquement les **enfants directs** d’un élément.  
+❌ Ne sélectionne pas les descendants plus profonds.
 
 ```css
 div > p {
@@ -21,12 +16,23 @@ div > p {
 }
 ```
 
-* Exemple : seul le `<p>` directement à l’intérieur d’un `<div>` sera rouge. Les `<p>` plus profondément imbriqués ne le seront pas.
+**Schéma :**
 
-## Sélecteur frère immédiat `+`
+```html
+<div>
+  <p>✅ Sélectionné</p>
+  <span>
+    <p>❌ Non sélectionné</p>
+  </span>
+</div>
+```
 
-* Cible **le premier frère immédiat** après un élément.
-* Syntaxe :
+---
+
+## 2. Sélecteur frère immédiat `+`
+
+✔ Cible **le premier frère immédiat** qui suit un élément.  
+❌ Ignore les autres frères.
 
 ```css
 h2 + p {
@@ -34,12 +40,20 @@ h2 + p {
 }
 ```
 
-* Exemple : seul le `<p>` qui suit immédiatement un `<h2>` sera en gras.
+**Schéma :**
 
-## Sélecteur frère général `~`
+```html
+<h2>Titre</h2>
+<p>✅ Ce paragraphe est sélectionné</p>
+<p>❌ Celui-ci ne l'est pas</p>
+```
 
-* Cible **tous les éléments frères** qui viennent **après** un élément, au même niveau hiérarchique.
-* Syntaxe :
+---
+
+## 3. Sélecteur frère général `~`
+
+✔ Cible **tous les frères suivants** d’un élément (au même niveau).  
+❌ Ne sélectionne pas les éléments qui précèdent.
 
 ```css
 h2 ~ p {
@@ -47,12 +61,20 @@ h2 ~ p {
 }
 ```
 
-* Exemple : tous les `<p>` qui suivent un `<h2>` au même niveau seront bleus.
+**Schéma :**
 
-## Sélecteur descendant (espace)
+```html
+<h2>Titre</h2>
+<p>✅ Sélectionné</p>
+<p>✅ Sélectionné</p>
+<p>✅ Sélectionné</p>
+```
 
-* Cible tous les descendants d’un élément, **pas seulement les enfants directs**.
-* Syntaxe :
+---
+
+## 4. Sélecteur descendant (espace ` `)
+
+✔ Cible **tous les descendants**, peu importe leur niveau.  
 
 ```css
 div p {
@@ -60,15 +82,28 @@ div p {
 }
 ```
 
-* Exemple : tous les `<p>` à l’intérieur d’un `<div>`, même profondément imbriqués, auront une taille de 16px.
+**Schéma :**
 
-## Résumé visuel
+```html
+<div>
+  <p>✅ Sélectionné</p>
+  <span>
+    <p>✅ Sélectionné aussi</p>
+  </span>
+</div>
+```
 
-| Sélecteur    | Signification                            |
-| ------------ | ---------------------------------------- |
-| `>`          | enfant direct                            |
-| `+`          | frère immédiat                           |
-| `~`          | frère général (tous les suivants)        |
-| ` ` (espace) | descendant (tous les éléments imbriqués) |
+---
 
-Les combinators permettent donc d’écrire du CSS plus précis et efficace pour styliser vos pages web.
+## 5. Résumé visuel
+
+| Sélecteur    | Signification                         |
+| ------------ | ------------------------------------- |
+| `>`          | Enfant direct                         |
+| `+`          | Frère immédiat                        |
+| `~`          | Tous les frères suivants              |
+| ` ` (espace) | Descendant (tous les niveaux imbriqués)|
+
+---
+
+✅ Les combinators permettent donc d’écrire du CSS **plus précis et efficace** pour styliser vos pages web.
