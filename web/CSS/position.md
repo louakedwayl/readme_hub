@@ -176,3 +176,58 @@ Absolute container
 </body>
 </html>
 ```
+
+## 5. La propriété `z-index`
+
+
+`z-index` permet de contrôler **l’ordre d’empilement** des éléments positionnés. Plus la valeur est élevée, **plus l’élément sera au premier plan**.
+
+
+### 5.1 Règles importantes
+- Fonctionne uniquement sur les éléments **positionnés** (`relative`, `absolute`, `fixed`, `sticky`), pas sur `static`.
+- Peut être **positif, négatif ou zéro**.
+- L’élément avec `z-index` plus élevé sera affiché **au-dessus des autres éléments**.
+
+
+### 5.2 Exemple
+```html
+<div class="box box1">Box 1</div>
+<div class="box box2">Box 2</div>
+```
+
+
+```css
+.box {
+position: absolute;
+width: 150px;
+height: 100px;
+color: white;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+
+.box1 {
+background: red;
+top: 20px;
+left: 20px;
+z-index: 1; /* derrière Box 2 */
+}
+
+
+.box2 {
+background: blue;
+top: 50px;
+left: 50px;
+z-index: 5; /* au-dessus de Box 1 */
+}
+```
+
+
+Ici, `.box2` sera **au-dessus de `.box1`**, même si elle est définie après dans le HTML.
+
+
+### 5.3 Astuces
+- Les éléments sans `z-index` explicite sont empilés selon **l’ordre HTML**.
+- Les `z-index` fonctionnent **par contexte de stacking** : un parent avec `z-index` crée un nouveau contexte, ce qui peut influencer les enfants.
