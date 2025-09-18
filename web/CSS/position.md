@@ -45,16 +45,77 @@ Pour les éléments positionnés (`relative`, `absolute`, `fixed`, `sticky`), on
 
 ## 2. Exemple HTML complet
 ```html
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exemple CSS Position</title>
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  .static {
+    background: gray;
+    color: white;
+    padding: 20px;
+  }
+  .relative {
+    background: blue;
+    color: white;
+    padding: 20px;
+    position: relative;
+    top: 20px;
+    left: 30px;
+  }
+  .absolute-container {
+    position: relative;
+    background: lightgray;
+    padding: 20px;
+    margin: 10px 0;
+  }
+  .absolute {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: red;
+    color: white;
+    padding: 10px;
+  }
+  .sticky {
+    position: sticky;
+    top: 0;
+    background: orange;
+    color: white;
+    padding: 20px;
+  }
+  .fixed {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background: green;
+    color: white;
+    padding: 20px;
+  }
+</style>
+</head>
+<body>
+
 <div class="static">Static</div>
 <div class="relative">Relative</div>
 <div class="absolute-container">
 Absolute container
 <div class="absolute">Absolute</div>
 </div>
-<div style="height:300px"></div> <!-- espace pour scroll -->
+<div style="height:300px"></div>
 <div class="sticky">Sticky</div>
 <div style="height:300px"></div>
 <div class="fixed">Fixed</div>
+
+</body>
+</html>
+
 ```
 
 
