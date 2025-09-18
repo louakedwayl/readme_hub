@@ -42,3 +42,20 @@ Pour les éléments positionnés (`relative`, `absolute`, `fixed`, `sticky`), on
 | absolute  | Oui         | Oui            | Ancêtre positionné  |
 | fixed     | Oui         | Oui            | Fenêtre             |
 | sticky    | Oui         | Non (jusqu’au déclenchement) | Défilement + conteneur |
+
+## 2. Exemple HTML complet
+```html
+<div class="static">Static</div>
+<div class="relative">Relative</div>
+<div class="absolute-container">
+Absolute container
+<div class="absolute">Absolute</div>
+</div>
+<div style="height:300px"></div> <!-- espace pour scroll -->
+<div class="sticky">Sticky</div>
+<div style="height:300px"></div>
+<div class="fixed">Fixed</div>
+```
+
+
+
