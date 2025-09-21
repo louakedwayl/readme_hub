@@ -12,24 +12,12 @@ contenu **à l'intérieur de chaque cellule de la grille**.
 
 ## 2. Valeurs possibles
 
-  -----------------------------------------------------------------------
-  Valeur                                         Effet
-  ---------------------------------------------- ------------------------
-  `start`                                        Aligne les éléments en
-                                                 haut de leur cellule
-
-  `end`                                          Aligne les éléments en
-                                                 bas de leur cellule
-
-  `center`                                       Centre les éléments
-                                                 verticalement dans leur
-                                                 cellule
-
-  `stretch`                                      (par défaut) Étire les
-                                                 éléments pour remplir
-                                                 toute la hauteur de la
-                                                 cellule
-  -----------------------------------------------------------------------
+| Valeur   | Effet |
+|----------|-------|
+| `start`  | Aligne les éléments en haut de leur cellule |
+| `end`    | Aligne les éléments en bas de leur cellule |
+| `center` | Centre les éléments verticalement dans leur cellule |
+| `stretch`| (par défaut) Étire les éléments pour remplir toute la hauteur de la cellule |
 
 ------------------------------------------------------------------------
 
