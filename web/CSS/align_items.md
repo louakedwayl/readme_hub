@@ -93,3 +93,42 @@ contenu **à l'intérieur de chaque cellule de la grille**.
 ✅ Combiner avec `justify-items` pour un contrôle **horizontal** et
 obtenir un centrage parfait\
 ✅ Pour un contrôle individuel sur un élément, utiliser **`align-self`**
+
+## 7. Focus sur `align-self`
+
+La propriété **`align-self`** permet de **surcharger** la valeur de `align-items`, mais **pour un seul élément**.
+
+Autrement dit :
+- `align-items` = règle globale pour **tous les éléments** de la grille  
+- `align-self` = règle spécifique à **un seul élément**
+
+---
+
+### Exemple d’utilisation
+
+```css
+.grid {
+  display: grid;
+  grid-template-rows: 100px;
+  align-items: start; /* aligne tous les éléments en haut */
+}
+
+.item.special {
+  align-self: end; /* cet élément précis sera aligné en bas */
+}
+```
+Résultat :
+
+Tous les éléments sont alignés en haut
+
+Sauf celui avec la classe .special qui se place en bas
+
+---
+
+### Bonnes pratiques
+
+✅ Utiliser align-items pour définir l’alignement vertical global
+✅ Utiliser align-self uniquement pour un élément particulier
+✅ align-self accepte les mêmes valeurs que align-items : start, end, center, stretch
+
+
