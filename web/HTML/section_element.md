@@ -25,6 +25,42 @@ ce cas, préférez `<div>`).
 
 ------------------------------------------------------------------------
 
+------------------------------------------------------------------------
+
+## 2.1. Pourquoi un titre est important ?
+
+Un `<section>` sans titre perd sa valeur sémantique.\
+- **Accessibilité :** les lecteurs d'écran utilisent les titres pour
+naviguer rapidement entre sections.\
+- **Structure claire :** le titre indique le sujet de la section et la
+rend compréhensible.\
+- **SEO :** les moteurs de recherche comprennent mieux le contenu si
+chaque section a un titre.
+
+### Exemple correct :
+
+``` html
+<section>
+  <h2>Derniers articles</h2>
+  <p>Voici une sélection de mes derniers articles de blog.</p>
+</section>
+```
+
+### Exemple incorrect :
+
+``` html
+<section>
+  <p>Voici une sélection de mes derniers articles de blog.</p>
+</section>
+```
+
+Dans cet exemple, un `<div>` serait plus approprié car la section n'a
+pas de titre.
+
+------------------------------------------------------------------------
+
+
+
 ## 3. Exemple simple
 
 ``` html
