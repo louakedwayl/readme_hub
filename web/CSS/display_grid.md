@@ -113,3 +113,7 @@ grid-template-rows: repeat(2, 100px);
 * Compatible avec Flexbox.
 * Responsive design simplifié.
 * Placement précis et alignement facile.
+
+## 9. Ressource
+
+- Pour s'entrainer Avec Grid Garden https://cssgridgarden.com/
