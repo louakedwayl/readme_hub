@@ -84,7 +84,7 @@ En hauteur, il occupe seulement la première ligne.
 
 ---
 
-## 4.2. Utilisation de grid-column-start / grid-column-end et grid-row-start / grid-row-end
+### 4.2. Utilisation de grid-column-start / grid-column-end et grid-row-start / grid-row-end
 
 On peux contrôler séparément le début et la fin de chaque élément sur la grille.
 ```css
