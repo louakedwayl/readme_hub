@@ -15,7 +15,7 @@ CSS Grid est un système de mise en page bidimensionnel pour le web, ce qui sign
 
 ## 3. Usage
 
-### 3.1 Créer une grille 
+- Créer une grille 
 ---
 ```css
 .container {
@@ -24,7 +24,7 @@ display: grid;
 ```
 ---
 
-### 3.2 Définir les colonnes et lignes
+- Définir les colonnes et lignes
 ---
 ```css
 .container-columns-rows {
@@ -36,7 +36,7 @@ gap: 10px; /* espace de 10px entre lignes et colonnes */
 ```
 ---
 
-### 3.2 Séparer gap vertical et horizontal
+- Séparer gap vertical et horizontal
 ---
 ```css
 .container-gap {
