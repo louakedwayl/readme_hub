@@ -21,7 +21,7 @@ place dans la grille explicite
 ### Définition
 
 Définit la taille des **lignes implicites** (celles créées
-automatiquement lorsque vous placez un élément sur une ligne qui
+automatiquement lorsque on place un élément sur une ligne qui
 n'existe pas encore).
 
 ### Syntaxe
