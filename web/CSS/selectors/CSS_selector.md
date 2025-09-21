@@ -1,13 +1,13 @@
-# 🎯 Sélecteurs CSS et sélecteurs d’attribut
+# Sélecteurs CSS et sélecteurs d’attribut
 
-## 📌 Introduction
+## Introduction
 
 Les **sélecteurs CSS** permettent de choisir quels éléments HTML seront stylés.  
 Les **sélecteurs d’attribut** sont un type de sélecteur qui cible les éléments en fonction de leurs **attributs et valeurs**.
 
 ---
 
-## 🛠️ Types de sélecteurs CSS
+## Types de sélecteurs CSS
 
 ### 1. Sélecteur par type
 
@@ -59,7 +59,7 @@ Sélectionne tous les éléments.
 
 ---
 
-## 🛠️ Sélecteurs d’attribut
+## Sélecteurs d’attribut
 
 Permettent de cibler les éléments en fonction de leurs **attributs** et valeurs.
 
@@ -129,7 +129,7 @@ a[href*="example"] {
 
 ---
 
-## 💡 Astuces
+## Astuces
 
 - Les sélecteurs d’attribut sont **très puissants** pour cibler des éléments sans ajouter de classes ou d’ids.  
 - On peut **combiner sélecteurs** :
@@ -151,3 +151,6 @@ button[type="submit"] {
 
 ---
 
+## Ressources
+
+- Pour s'entrainer CSS diner https://flukeout.github.io/
