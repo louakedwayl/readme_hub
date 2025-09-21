@@ -53,15 +53,14 @@ CSS Grid permet de nommer les lignes et colonnes en utilisant des crochets [] po
 }
 ```
 
-Utilisation dans un élément :
+- Utilisation dans un élément :
 ```css
 .item {
   grid-column: start-col / end-col; /* occupe toute la largeur */
   grid-row: top-row; /* se place sur la première ligne */
 }
 ```
-Avantage : utiliser des noms rend le code plus lisible et plus facile à maintenir.
-Exemple : au lieu d’écrire grid-column: 1 / 3;, on peut écrire grid-column: start-col / end-col;.
+
 ---
 
 ### Unités utiles :
