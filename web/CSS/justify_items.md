@@ -88,3 +88,40 @@ la largeur\
 ✅ Combiner avec `align-items` pour gérer **l'alignement vertical**\
 ✅ Pour un contrôle individuel, utiliser la propriété **`justify-self`**
 sur un seul élément
+
+## 7. `justify-self`
+
+La propriété **`justify-self`** permet de **surcharger** la valeur de `justify-items` mais **pour un seul élément**.
+
+Autrement dit :
+- `justify-items` = règle globale pour **tous les éléments** de la grille
+- `justify-self` = règle spécifique à **un seul élément**
+
+---
+
+### Exemple d’utilisation
+
+```css
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  justify-items: start; /* aligne tous les éléments à gauche */
+}
+
+.item.special {
+  justify-self: end; /* cet élément précis sera aligné à droite */
+}
+```
+### Résultat :
+
+    Tous les éléments sont alignés à gauche
+
+    Sauf celui avec la classe .special qui se place à droite
+---
+
+### Bonnes pratiques
+
+✅ Utiliser justify-items pour définir l’alignement global
+✅ Utiliser justify-self uniquement si un élément doit avoir un alignement différent
+✅ justify-self accepte les mêmes valeurs que justify-items : start, end, center, stretch
+
