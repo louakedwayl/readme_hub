@@ -63,17 +63,17 @@ Exemple correct :
 
 ## 5. Bon usage des balises sémantiques
 
-  Balise                        Usage recommandé
-  ----------------------------- ------------------------------------------------------
-  `<header>`                    En-tête de page ou de section
-  `<nav>`                       Liens de navigation principaux
-  `<main>`                      Contenu principal de la page (unique)
-  `<section>`                   Regroupe un contenu sur un même thème, avec un titre
-  `<article>`                   Contenu autonome qui peut exister hors contexte
-  `<aside>`                     Contenu complémentaire ou secondaire
-  `<footer>`                    Pied de page ou de section
-  `<figure>` + `<figcaption>`   Image ou illustration avec légende
-  `<time>`                      Représente une date ou une heure
+| Balise                      | Usage recommandé |
+|-----------------------------|-----------------|
+| `<header>`                  | En-tête de page ou de section |
+| `<nav>`                     | Liens de navigation principaux |
+| `<main>`                    | Contenu principal de la page (unique) |
+| `<section>`                 | Regroupe un contenu sur un même thème, avec un titre |
+| `<article>`                 | Contenu autonome qui peut exister hors contexte |
+| `<aside>`                   | Contenu complémentaire ou secondaire |
+| `<footer>`                  | Pied de page ou de section |
+| `<figure>` + `<figcaption>` | Image ou illustration avec légende |
+| `<time>`                    | Représente une date ou une heure |
 
 ------------------------------------------------------------------------
 
