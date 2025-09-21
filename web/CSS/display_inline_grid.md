@@ -21,20 +21,11 @@ flux en bloc.
 
 ## 2. 🧩 Différence entre `grid` et `inline-grid`
 
-  -------------------------------------------------------------------------
-  Propriété      `grid` (ou `display: grid`) `inline-grid`
-  -------------- --------------------------- ------------------------------
-  Comportement   Agit comme un **bloc**      Agit comme un **élément
-  externe        (occupe toute la largeur    inline** (s'ajuste à son
-                 dispo par défaut)           contenu)
-
-  Alignement     Peut être centré avec       Peut être aligné dans une
-  dans un parent `margin: auto`              ligne de texte, ou avec
-                                             `vertical-align`
-
-  Utilisation    Layout principal d'une page Petites grilles intégrées dans
-  typique        ou d'une section            un texte ou un composant
-  -------------------------------------------------------------------------
+| Propriété        | `grid` (ou `display: grid`)                           | `inline-grid`                               |
+|------------------|-----------------------------------------------------|---------------------------------------------|
+| **Comportement externe** | Agit comme un **bloc** (occupe toute la largeur dispo par défaut) | Agit comme un **élément inline** (s'ajuste à son contenu) |
+| **Alignement dans un parent** | Peut être centré avec `margin: auto`              | Peut être aligné dans une ligne de texte, ou avec `vertical-align` |
+| **Utilisation typique** | Layout principal d'une page ou d'une section           | Petites grilles intégrées dans un texte ou un composant |
 
 ------------------------------------------------------------------------
 
