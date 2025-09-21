@@ -42,6 +42,26 @@ row-gap: 15px; /* espace entre les lignes */
 column-gap: 20px; /* espace entre les colonnes */
 }
 ```
+- Nommer une ligne ou une colonne
+
+CSS Grid permet de nommer les lignes et colonnes en utilisant des crochets [] pour pouvoir s'y référer plus tard avec grid-column ou grid-row.
+```css
+.container-named {
+  display: grid;
+  grid-template-columns: [start-col] 1fr [middle-col] 2fr [end-col];
+  grid-template-rows: [top-row] 100px [bottom-row] 100px;
+}
+```
+
+Utilisation dans un élément :
+```css
+.item {
+  grid-column: start-col / end-col; /* occupe toute la largeur */
+  grid-row: top-row; /* se place sur la première ligne */
+}
+```
+Avantage : utiliser des noms rend le code plus lisible et plus facile à maintenir.
+Exemple : au lieu d’écrire grid-column: 1 / 3;, on peut écrire grid-column: start-col / end-col;.
 ---
 
 ### Unités utiles :
