@@ -84,7 +84,30 @@ En hauteur, il occupe seulement la première ligne.
 
 ---
 
-### 4.2. Utilisation de `span` (s’étendre sur plusieurs cellules)
+## 4.2. Utilisation de grid-column-start / grid-column-end et grid-row-start / grid-row-end
+
+On peux contrôler séparément le début et la fin de chaque élément sur la grille.
+```css
+.item2 {
+  grid-column-start: 2;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
+```
+.item2 commence à la colonne 2 et finit à la colonne 4 (soit 2 colonnes de large).
+Il commence à la ligne 1 et finit à la ligne 3 (soit 2 lignes de haut).
+
+C’est exactement équivalent à :
+
+.item2 {
+  grid-column: 2 / 4;
+  grid-row: 1 / 3;
+}
+
+---
+
+### 4.3. Utilisation de `span` (s’étendre sur plusieurs cellules)
 
 Plutôt que de compter les lignes manuellement, tu peux dire :  
 > "cet élément doit **s’étendre sur X colonnes ou lignes**".
@@ -104,7 +127,7 @@ Plutôt que de compter les lignes manuellement, tu peux dire :
 
 ---
 
-### 4.3. Placement simplifié avec `grid-area` (shorthand)
+### 4.4. Placement simplifié avec `grid-area` (shorthand)
 
 Tu peux combiner **row** et **column** dans une seule propriété :
 
@@ -127,7 +150,7 @@ grid-area: row-start / column-start / row-end / column-end;
 
 ---
 
-### 4.4. Nommer des zones avec `grid-template-areas`
+### 4.5. Nommer des zones avec `grid-template-areas`
 
 Tu peux aussi créer des **zones nommées** pour placer les éléments plus facilement :
 
