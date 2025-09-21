@@ -24,7 +24,7 @@ display: grid;
 ```
 ---
 
-## 3.2 Définir les colonnes et lignes
+### 3.2 Définir les colonnes et lignes
 
 ```css
 .container-columns-rows {
@@ -34,7 +34,9 @@ grid-template-rows: 100px 100px; /* 2 lignes de 100px */
 gap: 10px; /* espace de 10px entre lignes et colonnes */
 }
 ```
-## 3.2 Séparer gap vertical et horizontal
+---
+
+### 3.2 Séparer gap vertical et horizontal
 
 ```css
 .container-gap {
@@ -43,6 +45,7 @@ row-gap: 15px; /* espace entre les lignes */
 column-gap: 20px; /* espace entre les colonnes */
 }
 ```
+---
 
 ### Unités utiles :
 
