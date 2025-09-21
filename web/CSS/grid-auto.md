@@ -157,15 +157,8 @@ doit rester prédictible
 
 ## 7. Résumé (Cheat Sheet)
 
-  --------------------------------------------------------------------------------
-  Propriété             Rôle                        Exemple
-  --------------------- --------------------------- ------------------------------
-  `grid-auto-rows`      Taille des lignes           `grid-auto-rows: 100px;`
-                        implicites                  
-
-  `grid-auto-columns`   Taille des colonnes         `grid-auto-columns: 150px;`
-                        implicites                  
-
-  `grid-auto-flow`      Direction et remplissage    `grid-auto-flow: row dense;`
-                        automatique                 
-  --------------------------------------------------------------------------------
+| Propriété         | Rôle                        | Exemple                        |
+|------------------|---------------------------|--------------------------------|
+| `grid-auto-rows` | Taille des lignes implicites | `grid-auto-rows: 100px;`       |
+| `grid-auto-columns` | Taille des colonnes implicites | `grid-auto-columns: 150px;` |
+| `grid-auto-flow` | Direction et remplissage automatique | `grid-auto-flow: row dense;` |
