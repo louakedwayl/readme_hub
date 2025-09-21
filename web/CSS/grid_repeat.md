@@ -132,15 +132,8 @@ grid-template-columns: repeat(2, 150px) 1fr;
 
 ## 9. Résumé / Cheat Sheet
 
-  -----------------------------------------------------------------------------------------
-  Utilisation             Exemple                                   Effet
-  ----------------------- ----------------------------------------- -----------------------
-  Colonnes fixes          `repeat(3, 200px)`                        3 colonnes de 200 px
-
-  Colonnes flexibles      `repeat(4, 1fr)`                          4 colonnes partageant
-                                                                    l'espace
-
-  Colonnes responsive     `repeat(auto-fit, minmax(200px, 1fr))`    Colonnes qui
-                                                                    s'ajoutent/s'adaptent
-                                                                    selon la largeur
-  -----------------------------------------------------------------------------------------
+| Utilisation          | Exemple                                   | Effet                                    |
+|---------------------|-------------------------------------------|-----------------------------------------|
+| Colonnes fixes      | `repeat(3, 200px)`                        | 3 colonnes de 200 px                    |
+| Colonnes flexibles  | `repeat(4, 1fr)`                          | 4 colonnes partageant l'espace          |
+| Colonnes responsive | `repeat(auto-fit, minmax(200px, 1fr))`    | Colonnes qui s'ajoutent/s'adaptent selon la largeur |
