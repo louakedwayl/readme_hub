@@ -2,7 +2,7 @@
 
 ## 1. Introduction
 
-En CSS Grid, vous définissez généralement vos **lignes** et **colonnes**
+En CSS Grid, On définit généralement les **lignes** et les **colonnes**
 explicitement via `grid-template-rows` et `grid-template-columns`.\
 Mais que se passe-t-il lorsqu'un élément a besoin d'une **ligne ou
 colonne supplémentaire** qui n'a pas été définie ?\
