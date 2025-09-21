@@ -86,18 +86,8 @@ ce cas, préférez `<div>`).
 
 ## 6. Comparaison rapide avec d'autres balises
 
-  -----------------------------------------------------------------------
-  Balise                                           Rôle
-  ------------------------------------------------ ----------------------
-  `<div>`                                          Conteneur générique
-                                                   sans signification
-                                                   sémantique
-
-  `<article>`                                      Contenu autonome qui
-                                                   peut exister en dehors
-                                                   de la page
-
-  `<section>`                                      Regroupe un contenu
-                                                   lié par un même sujet,
-                                                   avec un titre
-  -----------------------------------------------------------------------
+| Balise      | Rôle |
+|-------------|------|
+| `<div>`     | Conteneur générique sans signification sémantique |
+| `<article>` | Contenu autonome qui peut exister en dehors de la page |
+| `<section>` | Regroupe un contenu lié par un même sujet, avec un titre |
