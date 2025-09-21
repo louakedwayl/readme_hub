@@ -16,7 +16,7 @@ CSS Grid est un système de mise en page bidimensionnel pour le web, ce qui sign
 ## 3. Usage
 
 ### 3.1 Créer une grille 
-
+---
 ```css
 .container {
 display: grid;
@@ -25,7 +25,7 @@ display: grid;
 ---
 
 ### 3.2 Définir les colonnes et lignes
-
+---
 ```css
 .container-columns-rows {
 display: grid;
@@ -37,7 +37,7 @@ gap: 10px; /* espace de 10px entre lignes et colonnes */
 ---
 
 ### 3.2 Séparer gap vertical et horizontal
-
+---
 ```css
 .container-gap {
 display: grid;
@@ -62,17 +62,77 @@ column-gap: 20px; /* espace entre les colonnes */
   gap: 20px;
 }
 ```
+---
 
 ## 4. Placer les éléments dans la grille
 
+Une fois qu’une **grille est définie** avec `grid-template-columns` et `grid-template-rows`, tu peux **placer tes éléments enfants** en précisant **sur quelles lignes** ils doivent commencer et finir.
+
+---
+
+### 4.1. Placement avec `grid-column` et `grid-row`
+
+Chaque cellule d’une grille est délimitée par des **lignes de grille** (grid lines).  
+Ces lignes sont numérotées à partir de **1**, horizontalement (colonnes) et verticalement (lignes).
+
 ```css
 .item1 {
-  grid-column: 1 / 3;
-  grid-row: 1 / 2;
+  grid-column: 1 / 3; /* de la ligne 1 à la ligne 3 → occupe 2 colonnes */
+  grid-row: 1 / 2;   /* de la ligne 1 à la ligne 2 → occupe 1 ligne */
 }
 ```
 
-On peut aussi utiliser `grid-area` pour nommer des zones :
+👉 Ici, `.item1` s’étend de la **colonne 1** à la **colonne 3** (donc deux colonnes de large).  
+En hauteur, il occupe seulement la première ligne.
+
+---
+
+### 4.2. Utilisation de `span` (s’étendre sur plusieurs cellules)
+
+Plutôt que de compter les lignes manuellement, tu peux dire :  
+> "cet élément doit **s’étendre sur X colonnes ou lignes**".
+
+```css
+.item2 {
+  grid-column: 2 / span 2; /* commence à la ligne 2 et occupe 2 colonnes */
+}
+
+.item3 {
+  grid-row: 1 / span 3; /* commence à la ligne 1 et occupe 3 lignes */
+}
+```
+
+➡️ `.item2` s’étend sur **2 colonnes**.  
+➡️ `.item3` s’étend sur **3 lignes de hauteur**.
+
+---
+
+### 4.3. Placement simplifié avec `grid-area` (shorthand)
+
+Tu peux combiner **row** et **column** dans une seule propriété :
+
+```css
+.item4 {
+  grid-area: 1 / 2 / 3 / 4;
+}
+```
+
+Cela correspond à :  
+```css
+grid-row: 1 / 3;
+grid-column: 2 / 4;
+```
+
+📖 Ordre des valeurs dans `grid-area` :  
+```
+grid-area: row-start / column-start / row-end / column-end;
+```
+
+---
+
+### 4.4. Nommer des zones avec `grid-template-areas`
+
+Tu peux aussi créer des **zones nommées** pour placer les éléments plus facilement :
 
 ```css
 .container {
@@ -83,11 +143,25 @@ On peut aussi utiliser `grid-area` pour nommer des zones :
     "footer footer footer";
 }
 
-.header { grid-area: header; }
+.header  { grid-area: header; }
 .sidebar { grid-area: sidebar; }
-.main { grid-area: main; }
-.footer { grid-area: footer; }
+.main    { grid-area: main; }
+.footer  { grid-area: footer; }
 ```
+
+➡️ C’est très lisible :  
+- `header` occupe toute la première ligne.  
+- `sidebar` occupe la première colonne de la 2e ligne.  
+- `main` occupe les deux dernières colonnes de la 2e ligne.  
+- `footer` occupe toute la 3e ligne.
+
+---
+
+✅ **Résumé** :  
+- `grid-column` et `grid-row` → placement précis par lignes.  
+- `span` → étendre sur plusieurs colonnes ou lignes.  
+- `grid-area` → version raccourcie (ou zones nommées pour plus de lisibilité).
+---
 
 ## 5. Alignement dans Grid
 
