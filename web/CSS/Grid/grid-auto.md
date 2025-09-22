@@ -2,7 +2,7 @@
 
 ## 1. Introduction
 
-En CSS Grid, On définit généralement les **lignes** et les **colonnes**
+En CSS Grid, vous définissez généralement vos **lignes** et **colonnes**
 explicitement via `grid-template-rows` et `grid-template-columns`.\
 Mais que se passe-t-il lorsqu'un élément a besoin d'une **ligne ou
 colonne supplémentaire** qui n'a pas été définie ?\
@@ -21,7 +21,7 @@ place dans la grille explicite
 ### Définition
 
 Définit la taille des **lignes implicites** (celles créées
-automatiquement lorsque vous placez un élément sur une ligne qui
+automatiquement lorsque on place un élément sur une ligne qui
 n'existe pas encore).
 
 ### Syntaxe
@@ -70,28 +70,12 @@ placés **dans la grille implicite**.
 
 ### Valeurs possibles
 
-  -----------------------------------------------------------------------
-  Valeur                                             Effet
-  -------------------------------------------------- --------------------
-  `row` (défaut)                                     Remplit les lignes
-                                                     d'abord, crée de
-                                                     nouvelles lignes si
-                                                     nécessaire
-
-  `column`                                           Remplit les colonnes
-                                                     d'abord, crée de
-                                                     nouvelles colonnes
-                                                     si nécessaire
-
-  `row dense`                                        Même que `row` mais
-                                                     essaie de **remplir
-                                                     les trous** dans la
-                                                     grille
-
-  `column dense`                                     Même que `column`
-                                                     mais essaie de
-                                                     remplir les trous
-  -----------------------------------------------------------------------
+| Valeur         | Effet                                                                 |
+|----------------|----------------------------------------------------------------------|
+| `row` (défaut) | Remplit les lignes d'abord, crée de nouvelles lignes si nécessaire  |
+| `column`       | Remplit les colonnes d'abord, crée de nouvelles colonnes si nécessaire |
+| `row dense`    | Même que `row` mais essaie de **remplir les trous** dans la grille  |
+| `column dense` | Même que `column` mais essaie de remplir les trous                  |
 
 ### Exemple
 
@@ -157,15 +141,8 @@ doit rester prédictible
 
 ## 7. Résumé (Cheat Sheet)
 
-  --------------------------------------------------------------------------------
-  Propriété             Rôle                        Exemple
-  --------------------- --------------------------- ------------------------------
-  `grid-auto-rows`      Taille des lignes           `grid-auto-rows: 100px;`
-                        implicites                  
-
-  `grid-auto-columns`   Taille des colonnes         `grid-auto-columns: 150px;`
-                        implicites                  
-
-  `grid-auto-flow`      Direction et remplissage    `grid-auto-flow: row dense;`
-                        automatique                 
-  --------------------------------------------------------------------------------
+| Propriété         | Rôle                        | Exemple                        |
+|------------------|---------------------------|--------------------------------|
+| `grid-auto-rows` | Taille des lignes implicites | `grid-auto-rows: 100px;`       |
+| `grid-auto-columns` | Taille des colonnes implicites | `grid-auto-columns: 150px;` |
+| `grid-auto-flow` | Direction et remplissage automatique | `grid-auto-flow: row dense;` |
