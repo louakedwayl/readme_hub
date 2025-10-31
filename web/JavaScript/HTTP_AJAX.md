@@ -1,4 +1,4 @@
-# Cours : HTTP et AJAX
+# HTTP et AJAX
 
 ## 1. HTTP (HyperText Transfer Protocol)
 
