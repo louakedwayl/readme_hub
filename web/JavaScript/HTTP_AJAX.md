@@ -19,21 +19,20 @@ Il permet de **demander et recevoir des informations** sur le web.
 | DELETE  | Supprimer des données sur le serveur |
 
 ### Structure d'une requête HTTP
-\`\`\`http
+```shell
 GET /page.html HTTP/1.1
 Host: www.example.com
-\`\`\`
+```
 
 ### Structure d'une réponse HTTP
-\`\`\`http
+```shell
 HTTP/1.1 200 OK
 Content-Type: text/html
 
 <html>
   <body>Bonjour le monde !</body>
 </html>
-\`\`\`
-
+```
 ## 2. AJAX (Asynchronous JavaScript And XML)
 
 ### Définition
