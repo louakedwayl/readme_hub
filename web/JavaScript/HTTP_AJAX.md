@@ -62,7 +62,7 @@ fetch('https://api.exemple.com/data')
 ```
 
 ### Exemple avec \`XMLHttpRequest\` (ancienne méthode)
-\`\`\`javascript
+```javascript
 var xhr = new XMLHttpRequest();
 xhr.open('GET', 'https://api.exemple.com/data', true);
 xhr.onload = function() {
@@ -72,7 +72,7 @@ xhr.onload = function() {
   }
 };
 xhr.send();
-\`\`\`
+```
 
 ## 3. Différence entre HTTP classique et AJAX
 | Critère            | HTTP classique                   | AJAX                                 |
