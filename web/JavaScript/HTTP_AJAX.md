@@ -51,7 +51,7 @@ Même si le nom contient "XML", on utilise le plus souvent **JSON** aujourd’hu
 3. Le JavaScript met à jour **une partie de la page** avec ces données.
 
 ### Exemple avec \`fetch\` (JavaScript moderne)
-\`\`\`javascript
+```javascript
 fetch('https://api.exemple.com/data')
   .then(response => response.json()) // Convertit la réponse en JSON
   .then(data => {
@@ -59,7 +59,7 @@ fetch('https://api.exemple.com/data')
     document.getElementById('contenu').innerText = data.message;
   })
   .catch(error => console.error('Erreur:', error));
-\`\`\`
+```
 
 ### Exemple avec \`XMLHttpRequest\` (ancienne méthode)
 \`\`\`javascript
