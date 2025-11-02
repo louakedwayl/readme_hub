@@ -11,10 +11,10 @@ La méthode `http.createServer` est la fonction principale pour créer un serveu
 ## 2. Importer le module `http`
 ```js
 const http = require('http');
-
+```
 Le module http est un module natif de Node.js. Il contient plusieurs fonctionnalités pour créer un serveur et faire des requêtes HTTP.
-3. Création d’un serveur avec createServer
-
+## 3. Création d’un serveur avec createServer
+```js
 const server = http.createServer((req, res) => {
   // req = objet représentant la requête entrante
   // res = objet permettant d’envoyer une réponse
