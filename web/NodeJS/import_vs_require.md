@@ -43,10 +43,10 @@ ou fichier avec extension .mjs
 Modules chargés asynchroniquement et supportent le tree-shaking.
 
 ## Syntaxe :
-
+```js
 import fs from 'fs'; // module système
 import { greet } from './myModule.js'; // module local
-
+```
 ## Exporter un module :
 
 ```js
