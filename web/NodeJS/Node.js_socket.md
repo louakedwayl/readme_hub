@@ -209,3 +209,103 @@ Si tu veux, je peux :
 * ou convertir ce cours en un fichier `README.md` téléchargeable.
 
 Dis‑moi ce que tu veux que j'ajoute.
+
+---
+
+## 13. Connexion à partir d'une URL (HTTP / HTTPS / TCP brut)
+
+Souvent tu disposes d'une **URL** (ex : `http://example.com:8080/path` ou `https://example.com/path`) et tu veux savoir comment te connecter avec Node.js. Voici un ajout pratique au cours expliquant comment **extraire host/port** et choisir la bonne méthode (TCP brut, TLS ou modules `http`/`https`).
+
+### Extraire host et port depuis une URL
+
+```js
+const { URL } = require('url');
+
+function parseUrl(urlStr) {
+  const u = new URL(urlStr);
+  const host = u.hostname; // example.com
+  const port = u.port || (u.protocol === 'https:' ? '443' : '80');
+  const protocol = u.protocol; // 'http:' ou 'https:' ou autre
+  return { host, port: Number(port), protocol, pathname: u.pathname + u.search };
+}
+
+console.log(parseUrl('http://example.com:8080/path?x=1'));
+// { host: 'example.com', port: 8080, protocol: 'http:', pathname: '/path?x=1' }
+```
+
+### Se connecter en TCP brut et parler HTTP (exemple pédagogique)
+
+> Attention : cet exemple montre comment construire une requête HTTP manuellement sur une socket TCP. En pratique, utilise `http`/`https` pour la plupart des cas.
+
+```js
+const net = require('net');
+const { URL } = require('url');
+
+const urlStr = 'http://example.com:80/path';
+const { host, port, pathname } = parseUrl(urlStr);
+
+const sock = net.createConnection({ host, port }, () => {
+  console.log('Connecté TCP à', host + ':' + port);
+  sock.write(`GET ${pathname} HTTP/1.1
+Host: ${host}
+Connection: close
+
+`);
+});
+
+sock.setEncoding('utf8');
+sock.on('data', d => process.stdout.write(d));
+sock.on('end', () => console.log('
+Fin de la réponse'));
+```
+
+### Se connecter en TLS pour HTTPS
+
+Pour HTTPS, il faut établir une connexion TLS plutôt qu'une connexion TCP non chiffrée :
+
+```js
+const tls = require('tls');
+const { host, port, pathname } = parseUrl('https://example.com/');
+
+const s = tls.connect({ host, port }, () => {
+  console.log('Connecté TLS — négociation OK');
+  s.write(`GET ${pathname} HTTP/1.1
+Host: ${host}
+Connection: close
+
+`);
+});
+
+s.setEncoding('utf8');
+s.on('data', d => process.stdout.write(d));
+s.on('error', e => console.error('Erreur TLS:', e.message));
+```
+
+### Utiliser `http` / `https` (recommandé pour les requêtes HTTP normales)
+
+```js
+const http = require('http');
+const https = require('https');
+
+function fetchUrl(urlStr) {
+  const lib = urlStr.startsWith('https:') ? https : http;
+  lib.get(urlStr, (res) => {
+    res.setEncoding('utf8');
+    res.on('data', chunk => process.stdout.write(chunk));
+    res.on('end', () => console.log('
+Réponse terminée'));
+  }).on('error', (err) => console.error('Erreur HTTP:', err.message));
+}
+
+fetchUrl('http://example.com/');
+```
+
+### Cas particuliers
+
+* **URL sans port** : on choisit `80` pour `http:` et `443` pour `https:` par défaut.
+* **Proxies / HTTP tunnels** : si tu dois traverser un proxy HTTP, il peut être nécessaire d'envoyer une requête `CONNECT` ou d'utiliser la configuration proxy du module `http`/`https` ou d'un client (ex : `axios` avec `https-proxy-agent`).
+* **SNI (Server Name Indication)** : pour TLS, Node.js envoie automatiquement le nom d'hôte dans la négociation TLS (SNI) quand `host` est fourni.
+
+---
+
+Si tu veux, j'ajoute ces exemples dans le README final, je génère un fichier `README.md` téléchargeable, ou j'adapte le code pour une URL précise que tu veux tester (par ex. `https://example.com`). Dis‑moi ce que tu veux que j'ajoute.
