@@ -1,4 +1,5 @@
 ## 1. recherche sur une string :
 
-https://invisible-characters.com/
-https://holloway.nz/steg/
+https://invisible-characters.com // caractere invisible \
+https://holloway.nz/steg/    // WhiteSpace analysis\
+https://www.metadata2go.cb // methadonnes \
