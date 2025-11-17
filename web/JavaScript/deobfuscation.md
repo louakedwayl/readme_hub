@@ -115,10 +115,7 @@ C'est souvent la méthode la plus efficace.
 ### 4.2 Déobfuscation automatique
 
 Outils utiles :\
-- **de4js** (excellent pour les obfuscations classiques)\
-- **JSNice**\
-- **Unminify**\
-- **AST Explorer**
+- **https://www.dcode.fr/desobfuscateur-javascript** tester sur root me c est pas mal
 
 ------------------------------------------------------------------------
 
