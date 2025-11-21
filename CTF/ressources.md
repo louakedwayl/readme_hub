@@ -6,3 +6,4 @@ https://www.dcode.fr/miniature-exif // extraire miniature dans une image \
 https://datarecovery.com/rd/default-passwords/ //default password \
 https://www.dcode.fr/desobfuscateur-javascript //desobfucation js \
 https://www.dcode.fr/analyse-spectrale // analyse spectral audio\
+https://yellow-dots-decoder.mathieurenaud.fr/ // yellowdots
