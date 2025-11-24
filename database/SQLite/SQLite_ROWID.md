@@ -1,4 +1,4 @@
-# 🏷️ Comprendre le ROWID en SQLite
+# Comprendre le ROWID (Raw identifier) en SQLite
 ## Cours complet et clair
 
 # ⭐ 1. Qu’est-ce que le ROWID ?
