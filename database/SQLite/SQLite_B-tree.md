@@ -34,7 +34,9 @@ SQLite utilise des B-trees pour stocker :
 B-tree de degré 3 (chaque nœud peut contenir 2 à 3 clés) :
 ```
         [10 | 20]
-       /    |       [5 | 7] [12 | 15] [25 | 30]
+       /     |     \
+   [5 | 7] [12 | 15] [25 | 30]
+
 ```
 - Chaque nœud contient plusieurs clés triées  
 - Les feuilles sont toutes au même niveau  
