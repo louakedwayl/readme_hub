@@ -4,6 +4,10 @@
 
 Le sticky bit sert UNIQUEMENT sur un répertoire partagé pour empêcher les utilisateurs de supprimer les fichiers des autres.
 
+t indique que le sticky bit est actif et que le fichier/dossier est exécutable, tandis que T indique que le sticky bit est actif mais que le fichier/dossier n’est pas exécutable.
+
+Le sticky bit ne s’applique que sur le dernier groupe de permissions, c’est-à-dire “others” (ni propriétaire, ni groupe).
+
 ## Table des matières
 1. [Introduction](#introduction)
 2. [Les permissions Linux : rappel](#les-permissions-linux--rappel)
