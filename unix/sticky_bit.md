@@ -1,5 +1,9 @@
 # Cours complet sur le Sticky Bit sous Linux
 
+### Résumé en une phrase:
+
+Le sticky bit sert UNIQUEMENT sur un répertoire partagé pour empêcher les utilisateurs de supprimer les fichiers des autres.
+
 ## Table des matières
 1. [Introduction](#introduction)
 2. [Les permissions Linux : rappel](#les-permissions-linux--rappel)
