@@ -89,3 +89,7 @@ Enfant (id, nom, parent_id)
 
 Le MCD est un **outil fondamental en conception de bases de données**.
 Il permet de visualiser clairement **les entités, leurs attributs et leurs relations**, et sert de base pour le modèle logique et physique de la base de données.
+
+## 8. Ressource
+
+https://perso.univ-lemans.fr/~cpiau/BD/SQL_PAGES/SQL0.html
