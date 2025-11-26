@@ -1,4 +1,4 @@
-# Cours : Modèle Logique de Données (MLD)
+# Modèle Logique de Données (MLD)
 
 ## 1. Définition
 
