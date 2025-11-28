@@ -9,6 +9,18 @@ base**.\
 Elles ne font pas partie de la norme SQL, mais sont essentielles pour
 tirer le meilleur de SQLite.
 
+La commande PRAGMA foreign_keys = ON; (souvent utilisée dans SQLite) sert à activer la vérification des clés étrangères dans la base de données.
+
+### 📌 Explication simple
+
+Dans SQLite :
+
+Par défaut, les contraintes de clés étrangères ne sont pas appliquées 
+
+```bash
+PRAGMA foreign_keys = ON;
+```
+
 ------------------------------------------------------------------------
 
 # 🔍 1. Qu'est‑ce qu'un PRAGMA ?
