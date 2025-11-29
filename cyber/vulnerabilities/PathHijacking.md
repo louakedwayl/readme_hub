@@ -279,3 +279,5 @@ Pour éviter ce type d'attaque :
 -   OWASP: Path Injection\
 -   Linux Privilege Escalation - PATH Hijacking\
 -   GTFOBins - PATH Hijacking Examples
+
+  **⚠️ Avertissement :** Ce document est à usage éducatif uniquement. L'exploitation de vulnérabilités sur des systèmes sans autorisation est illégale.
