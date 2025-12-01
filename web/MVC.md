@@ -68,7 +68,7 @@ class UserController {
     showUserProfile(id) {
         const user = this.userModel.getUser(id);
         this.userView.render(user);
-    }
+    }https://meta.intra.42.fr/articles/evaluations-in-paris#-valuations-distance
 }
 ```
 
