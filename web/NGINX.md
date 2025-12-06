@@ -10,11 +10,14 @@ notamment pour les sites à fort trafic.
 
 # 🔥 1. Qu'est-ce que Nginx ?
 
-Nginx est un serveur web capable de : - Servir des fichiers statiques
-(HTML, images, CSS...) - Gérer un très grand nombre de connexions
-simultanées - Fonctionner comme **reverse proxy** - Faire du **load
-balancing** - Gérer le **HTTPS / TLS** - Servir de **proxy pour apps
-Node.js, PHP-FPM, Python, etc.**
+Nginx est un serveur web capable de :
+
+- **Fichiers statiques** : servir HTML, images, CSS…
+- **Connexions simultanées** : gérer un grand nombre de connexions
+- **Reverse proxy** : acheminer les requêtes vers d’autres serveurs
+- **Load balancing** : équilibrer la charge entre plusieurs serveurs
+- **HTTPS / TLS** : gérer les certificats et la sécurité
+- **Proxy pour apps** : Node.js, PHP-FPM, Python, etc.
 
 Son architecture est **évènementielle** (asynchrone), ce qui le rend
 extrêmement performant.
