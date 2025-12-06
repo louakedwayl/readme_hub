@@ -36,19 +36,13 @@ consommation RAM - Parfait pour les gros volumes de trafic
 
 ## 📌 3.1 Architecture
 
-  ------------------------------------------------------------------------
-  Fonctionnement                **Nginx**            **Apache**
-  ----------------------------- -------------------- ---------------------
-  Architecture                  Évènementielle       Multi-processus /
-                                (asynchrone)         multi-thread
+| Fonctionnement   | **Nginx**                | **Apache**            |
+|-----------------|--------------------------|----------------------|
+| Architecture     | Évènementielle (asynchrone) | Multi-processus / multi-thread |
+| Performance      | Très élevée même sous forte charge | Diminue quand le trafic monte |
+| Consommation RAM | Très faible              | Plus élevée          |
+| Scalabilité      | Excellente               | Bonne                |
 
-  Performance                   Très élevée même     Diminue quand le
-                                sous forte charge    trafic monte
-
-  Consommation RAM              Très faible          Plus élevée
-
-  Scalabilité                   Excellente           Bonne
-  ------------------------------------------------------------------------
 
 ## 📌 3.2 Fichiers statiques
 
@@ -57,14 +51,11 @@ consommation RAM - Parfait pour les gros volumes de trafic
 
 ## 📌 3.3 Reverse proxy
 
-  ------------------------------------------------------------------------
-  Fonctionnalité                       Nginx            Apache
-  ------------------------------------ ---------------- ------------------
-  Reverse proxy                        Intégré, très    Via modules, moins
-                                       performant       performant
+| Fonctionnalité  | Nginx                  | Apache                   |
+|-----------------|-----------------------|--------------------------|
+| Reverse proxy   | Intégré, très performant | Via modules, moins performant |
+| Load balancing  | Oui                   | Oui                      |
 
-  Load balancing                       Oui              Oui
-  ------------------------------------------------------------------------
 
 ## 📌 3.4 .htaccess
 
