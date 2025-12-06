@@ -11,13 +11,15 @@ Créé en 1995 par l'Apache Software Foundation, il a longtemps été le
 
 # 🔥 1. Qu'est-ce qu'Apache ?
 
-Apache est un serveur web capable de : - Servir des fichiers statiques
-(HTML, images...) - Exécuter du code dynamique via des modules (PHP,
-Python...) - Gérer la réécriture d'URL via `.htaccess` - Être étendu
-avec des centaines de modules - Fonctionner comme proxy ou reverse proxy
+Apache est un serveur web capable de : 
 
-Son architecture est **process/thread-based**, ce qui le rend très
-flexible mais moins performant que Nginx sous forte charge.
+- Servir des fichiers statiques (HTML, images…)
+- Exécuter du code dynamique via des modules (PHP, Python…)
+- Gérer la réécriture d'URL via `.htaccess`
+- Être étendu avec des centaines de modules
+- Fonctionner comme proxy ou reverse proxy
+
+Son architecture est **process/thread-based**, ce qui le rend très flexible mais moins performant que Nginx sous forte charge.
 
 ------------------------------------------------------------------------
 
@@ -52,14 +54,12 @@ Modules**) :
 
 ## 📌 3.1 Architecture
 
-  Fonctionnement            **Apache**          **Nginx**
-  ------------------------- ------------------- --------------
-  Modèle                    Processus/threads   Évènementiel
-  Mémoire                   Plus élevée         Très faible
-  Performance sous charge   Diminue             Excellente
-  Scalabilité               Bonne               Très élevée
-
-------------------------------------------------------------------------
+| Fonctionnement           | **Apache**          | **Nginx**           |
+|--------------------------|-------------------|-------------------|
+| Modèle                   | Processus/threads | Évènementiel       |
+| Mémoire                  | Plus élevée       | Très faible        |
+| Performance sous charge  | Diminue           | Excellente         |
+| Scalabilité              | Bonne             | Très élevée        |
 
 ## 📌 3.2 .htaccess
 
