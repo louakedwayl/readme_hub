@@ -85,11 +85,11 @@ if ($a === $b) {
 
 ## 5. Opérateurs logiques
 
-| Opérateur | Nom         | Exemple            |            |         |   |         |
-| --------- | ----------- | ------------------ | ---------- | ------- | - | ------- |
-| `&&`      | ET logique  | `$a > 0 && $b > 0` |            |         |   |         |
-| `         |             | `                  | OU logique | `$a > 0 |   | $b > 0` |
-| `!`       | NON logique | `!$isValid`        |            |         |   |         |
+| Opérateur | Nom         | Exemple            | 
+| --------- | ----------- | ------------------ | 
+| `&&`      | ET logique  | `$a > 0 && $b > 0` | 
+| `||`      | OU logique  | `$a==42||$a <= 0   |
+| `!`       | NON logique | `!$isValid`        |
 
 ### Exemple
 
