@@ -10,6 +10,15 @@ Ce cours présente tout ce qu'il faut savoir pour maîtriser les tableaux en PHP
 
 ## 1. Création d'un tableau
 
+### 1.0. Tableau vide
+
+Déclarer un tableau vide 
+
+```php
+$array = [];
+
+```
+
 ### 1.1. Tableau indexé
 
 Un tableau indexé utilise des indices numériques (0, 1, 2...).
