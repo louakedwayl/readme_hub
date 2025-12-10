@@ -93,23 +93,12 @@ require_once "config.php"; // Ignoré la 2e fois
 
 # 5. Résumé comparatif
 
-  -------------------------------------------------------------------------
-  Fonction          Fichier introuvable  Double inclusion  Usage principal
-  ----------------- -------------------- ----------------- ----------------
-  `include`         Warning              Oui               Fichiers
-                                                           optionnels
-
-  `require`         Fatal error          Oui               Fichiers
-                                                           indispensables
-
-  `include_once`    Warning              ❌ Empêché        Fichiers
-                                                           optionnels mais
-                                                           uniques
-
-  `require_once`    Fatal error          ❌ Empêché        Fichiers
-                                                           essentiels et
-                                                           uniques
-  -------------------------------------------------------------------------
+| Fonction        | Fichier introuvable | Double inclusion | Usage principal                       |
+|-----------------|----------------------|------------------|----------------------------------------|
+| `include`       | Warning              | Oui              | Fichiers optionnels                    |
+| `require`       | Fatal error          | Oui              | Fichiers indispensables                |
+| `include_once`  | Warning              | ❌ Empêché       | Fichiers optionnels mais uniques       |
+| `require_once`  | Fatal error          | ❌ Empêché       | Fichiers essentiels et uniques         |
 
 # 6. Bonnes pratiques
 
