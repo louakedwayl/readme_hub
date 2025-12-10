@@ -54,6 +54,33 @@ Quand le fichier est **indispensable au fonctionnement** :\
 - autoload\
 - fonctions essentielles
 
+Si on require un fichier qui ne contient aucune balise <?php ... ?>, alors PHP l’affiche tel quel.
+
+### Exemple :
+
+index.php
+```php
+<?php
+require 'texte.txt';
+echo "Fin";
+```
+
+texte.txt
+```bash
+Coucou je suis du texte brut
+```
+
+➡️ Résultat dans le navigateur :
+```bash
+Coucou je suis du texte brut
+Fin
+```
+Because :
+
+PHP n’exécute que le code entre <?php ... ?>.
+
+Tout ce qui est en dehors de balises PHP est considéré comme du HTML / texte normal, donc il est envoyé tel quel au navigateur.
+
 # 3. `include_once`
 
 ### ✔️ Définition
