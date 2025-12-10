@@ -18,6 +18,13 @@ Il existe deux façons de déclarer un type nullable en PHP :
 - Utiliser le point d'interrogation avant le type
 - Utiliser une union de types avec null
 
+```php
+function foo(?string $name): ?int
+{
+    // ...
+}
+```
+
 ## Pourquoi Utiliser les Types Nullables ?
 
 ### Clarté du Code
