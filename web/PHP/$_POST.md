@@ -69,11 +69,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 # 🔹 7. GET vs POST
 
-  Critère            GET      POST
-  ------------------ -------- -------
-  Données visibles   Oui      Non
-  Quantité           Limité   Large
-  Sécurité           Faible   Bonne
+| Critère          | GET     | POST   |
+|------------------|---------|--------|
+| Données visibles | Oui     | Non    |
+| Quantité         | Limité  | Large  |
+| Sécurité         | Faible  | Bonne  |
 
 ------------------------------------------------------------------------
 
