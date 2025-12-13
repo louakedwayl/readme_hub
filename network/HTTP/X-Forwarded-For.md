@@ -1,4 +1,4 @@
-# Cours : X-Forwarded-For
+# X-Forwarded-For
 
 ## 1. Introduction
 
@@ -153,6 +153,3 @@ Forwarded: for=203.0.113.45;proto=https;by=150.172.238.178
 > **X-Forwarded-For ≠ IP réelle**
 > **X-Forwarded-For = information transmise par un intermédiaire de confiance**
 
----
-
-Fin du cours.
