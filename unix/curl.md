@@ -1,8 +1,10 @@
-# curl
+# cURL (Client for URLs)
 ******************************************************************************
 
-## 1/ Qu’est-ce que curl ?
-curl (Client URL) est un outil en ligne de commande pour transférer des données avec des URL.  
+cURL est un client multiprotocole.
+
+## 1/ Qu’est-ce que cURL ?
+cURL (Client URL) est un outil en ligne de commande pour transférer des données avec des URL.  
 Il supporte de nombreux protocoles, notamment HTTP, HTTPS, FTP, SMTP, et bien d’autres.
 
 Contrairement à wget, qui est spécialisé dans le téléchargement de fichiers, curl est plus polyvalent et permet aussi d’envoyer des requêtes, d’interagir avec des API, etc.
@@ -78,9 +80,9 @@ response=$(curl -s -H "Authorization: Bearer TOKEN" $url)
 echo "Réponse de l’API : $response"
 ```
 
-## 6/ Différences entre curl et wget
+## 6/ Différences entre cURL et wget
 
-| Fonctionnalité          | curl                  | wget                       |
+| Fonctionnalité          | cURL                  | wget                       |
 |-------------------------|---------------------|----------------------------|
 | Téléchargement simple    | Oui                  | Oui                        |
 | Téléchargement récursif  | Non                  | Oui                        |
