@@ -131,21 +131,14 @@ curl -I http://example.com
 
 ## 5. Exemples pratiques
 
-### 5.1 Challenge Root-Me (User-Agent)
-
-```bash
-# Le serveur attend User-Agent: admin
-curl -A "admin" http://challenge.root-me.org/web-serveur/ch2/
-```
-
-### 5.2 Contourner une restriction de Referer
+### 5.1 Contourner une restriction de Referer
 
 ```bash
 # Certains sites vérifient que tu viens de leur propre site
 curl -e "https://site-autorise.com" http://example.com/page-protegee
 ```
 
-### 5.3 Simuler un navigateur mobile
+### 5.2 Simuler un navigateur mobile
 
 ```bash
 curl -A "Mozilla/5.0 (iPhone; CPU iPhone OS 14_0 like Mac OS X)" http://example.com
