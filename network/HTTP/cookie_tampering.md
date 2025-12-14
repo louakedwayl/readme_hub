@@ -140,5 +140,3 @@ $_SESSION['role'] = 'user';
 > Toute donnée stockée côté client doit être considérée comme **non fiable**.
 
 ---
-
-📌 Fin du cours
