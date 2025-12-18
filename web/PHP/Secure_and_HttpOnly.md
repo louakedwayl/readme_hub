@@ -140,10 +140,10 @@ ini_set('session.cookie_secure', 1); // uniquement en HTTPS
 
 ## 7. Bonnes pratiques
 
-✅ Toujours utiliser `HttpOnly`
-✅ Toujours utiliser `Secure` en HTTPS
-✅ Ne jamais stocker de données sensibles dans un cookie
-✅ Associer avec `SameSite`
+✅ Toujours utiliser `HttpOnly`\
+✅ Toujours utiliser `Secure` en HTTPS\
+✅ Ne jamais stocker de données sensibles dans un cookie\
+✅ Associer avec `SameSite`\
 
 ---
 
