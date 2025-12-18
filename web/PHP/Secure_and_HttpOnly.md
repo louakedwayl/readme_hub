@@ -143,7 +143,7 @@ ini_set('session.cookie_secure', 1); // uniquement en HTTPS
 ✅ Toujours utiliser `HttpOnly`\
 ✅ Toujours utiliser `Secure` en HTTPS\
 ✅ Ne jamais stocker de données sensibles dans un cookie\
-✅ Associer avec `SameSite`\
+✅ Associer avec `SameSite`
 
 ---
 
