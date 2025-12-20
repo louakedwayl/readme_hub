@@ -100,7 +100,32 @@ unlink("/tmp/monsocket"); // supprimer le fichier du socket
 
 ---
 
-## 8. Conclusion
+## 8. Difference entre Pipe et Unix Domain Socket
+
+## 8.1 Pipe
+
+Sert à communiquer entre processus (IPC).
+Classiquement unidirectionnel : un processus écrit, l’autre lit.
+Exemples : pipe() en C ou | en shell.
+Les named pipes (FIFO) peuvent être utilisés entre processus non liés, mais restent généralement unidirectionnels par défaut.
+
+# 8.2 Unix Domain Socket
+
+Aussi pour la communication entre processus, mais sur le même système (comme les pipes).
+Peut être bidirectionnel : les deux processus peuvent lire et écrire sur le même socket.
+Plus flexible que les pipes : supporte la communication stream (type TCP) ou datagram (type UDP).
+Peut aussi transmettre des descripteurs de fichiers, ce que les pipes ne peuvent pas faire.
+### En résumé
+
+| Caractéristique       | Pipe                           | Unix Domain Socket       |
+|-----------------------|--------------------------------|-------------------------|
+| Direction             | Unidirectionnel (FIFO peut aider) | Bidirectionnel possible |
+| Type                  | Stream                          | Stream ou Datagram      |
+| Transmission fichiers | ❌                               | ✅                       |
+| Entre processus       | Oui                             | Oui                     |
+| Même machine          | Oui                             | Oui                     |
+
+## 9. Conclusion
 
 Les **sockets Unix** sont un outil puissant pour la communication locale entre processus.
 Elles combinent la simplicité des pipes avec la flexibilité des sockets réseau, tout en étant plus rapides et sécurisées pour les échanges sur une même machine.
