@@ -104,17 +104,18 @@ unlink("/tmp/monsocket"); // supprimer le fichier du socket
 
 ## 8.1 Pipe
 
-Sert à communiquer entre processus (IPC).
-Classiquement unidirectionnel : un processus écrit, l’autre lit.
-Exemples : pipe() en C ou | en shell.
+Sert à communiquer entre processus (IPC).\
+Classiquement unidirectionnel : un processus écrit, l’autre lit.\
+Exemples : pipe() en C ou | en shell.\
 Les named pipes (FIFO) peuvent être utilisés entre processus non liés, mais restent généralement unidirectionnels par défaut.
 
 # 8.2 Unix Domain Socket
 
-Aussi pour la communication entre processus, mais sur le même système (comme les pipes).
-Peut être bidirectionnel : les deux processus peuvent lire et écrire sur le même socket.
-Plus flexible que les pipes : supporte la communication stream (type TCP) ou datagram (type UDP).
+Aussi pour la communication entre processus, mais sur le même système (comme les pipes).\
+Peut être bidirectionnel : les deux processus peuvent lire et écrire sur le même socket.\
+Plus flexible que les pipes : supporte la communication stream (type TCP) ou datagram (type UDP).\
 Peut aussi transmettre des descripteurs de fichiers, ce que les pipes ne peuvent pas faire.
+
 ### En résumé
 
 | Caractéristique       | Pipe                           | Unix Domain Socket       |
