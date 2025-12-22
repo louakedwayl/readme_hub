@@ -6,8 +6,10 @@ En programmation orientée objet (POO) en PHP, les spécificateurs d'accès
 permettent de contrôler la visibilité des propriétés et des méthodes
 d'une classe.
 
-Ils servent à : - Protéger les données - Organiser le code - Respecter
-l'encapsulation
+Ils servent à : 
+- Protéger les données \
+- Organiser le code \
+- Respecter l'encapsulation
 
 ------------------------------------------------------------------------
 
