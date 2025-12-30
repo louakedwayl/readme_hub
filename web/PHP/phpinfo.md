@@ -1,4 +1,4 @@
-# La fonction `phpinfo()`
+# Cours PHP – La fonction `phpinfo()`
 
 ## 1. Qu’est-ce que `phpinfo()` ?
 
@@ -11,6 +11,8 @@ Elle est très utilisée pour :
 * Vérifier les extensions installées
 * Inspecter les variables de configuration (`php.ini`)
 * Déboguer la configuration serveur
+
+**Important : Pour accéder à `phpinfo()` via un navigateur, le fichier PHP qui l’appelle doit exister dans le répertoire du serveur web** (DocumentRoot, par défaut `/var/www/html/` pour Apache sur Debian/Ubuntu).
 
 ---
 
@@ -121,6 +123,8 @@ phpinfo(INFO_MODULES);
 * `phpinfo()` est **un outil essentiel pour vérifier et déboguer la configuration PHP**.
 * Il doit **être utilisé avec précaution** et jamais laissé accessible sur un serveur en production.
 * Utile pour les débutants comme pour les développeurs confirmés afin de **comprendre l’environnement PHP** dans lequel ils travaillent.
+
+**Rappel important** : pour le voir dans le navigateur, **le fichier `.php` qui contient `phpinfo()` doit exister dans le répertoire du serveur web** (par défaut `/var/www/html/`).
 
 ---
 
