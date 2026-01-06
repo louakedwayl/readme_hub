@@ -50,7 +50,7 @@ USE nom_de_la_base;
 
 ---
 
-## 5. Exemple complet
+## 5. Exemple complet avec valeurs par défaut
 
 ```sql
 -- Créer une base si elle n'existe pas
@@ -59,14 +59,20 @@ CREATE DATABASE IF NOT EXISTS boutique_db CHARACTER SET utf8mb4 COLLATE utf8mb4_
 -- Sélectionner la base pour créer des tables
 USE boutique_db;
 
--- Créer une table
+-- Créer une table avec valeurs par défaut
 CREATE TABLE clients (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nom VARCHAR(50) NOT NULL,
     email VARCHAR(100) NOT NULL,
-    date_inscription TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    date_inscription TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- valeur par défaut automatique
+    statut VARCHAR(20) DEFAULT 'actif'                   -- valeur par défaut personnalisée
 );
 ```
+
+💡 Explications :
+
+* `DEFAULT CURRENT_TIMESTAMP` : si aucune date n’est fournie lors de l’insertion, MySQL utilise automatiquement la date/heure actuelle.
+* `DEFAULT 'actif'` : si aucun statut n’est précisé lors de l’insertion, MySQL prend automatiquement la valeur `'actif'`.
 
 ---
 
@@ -75,6 +81,7 @@ CREATE TABLE clients (
 * Utiliser des noms explicites pour vos bases de données.
 * Toujours définir `CHARACTER SET` et `COLLATE` pour éviter des problèmes d’encodage.
 * Préférer `IF NOT EXISTS` pour éviter les erreurs lors de scripts réutilisables.
+* Définir des **valeurs par défaut (`DEFAULT`)** pour simplifier les insertions et éviter les valeurs NULL non souhaitées.
 * Séparer les bases de données par application ou service pour plus de clarté et de sécurité.
 
 ---
@@ -85,6 +92,7 @@ CREATE TABLE clients (
 * `IF NOT EXISTS` évite les erreurs si la base existe.
 * `CHARACTER SET` et `COLLATE` contrôlent l’encodage et le tri des caractères.
 * Après création, utilisez `USE nom_de_la_base;` pour travailler avec cette base.
+* Dans les tables, `DEFAULT` permet de définir une valeur par défaut pour une colonne si aucune valeur n’est spécifiée.
 
 ---
 
