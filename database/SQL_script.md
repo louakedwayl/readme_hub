@@ -34,9 +34,28 @@ INSERT INTO etudiants (id, nom, prenom, age) VALUES (2, 'Martin', 'Paul', 24);
 SELECT * FROM etudiants;
 ```
 
-## 3. Commandes SQL principales
+## 3. Exécuter un script SQL
 
-### 3.1. Commandes de définition (DDL)
+Pour exécuter un script SQL, il faut utiliser un **client SQL** ou un outil de gestion de base de données (ex. MySQL Workbench, pgAdmin, SQL Server Management Studio). Voici comment faire :
+
+1. **Ouvrir le client SQL**.
+2. **Se connecter à la base de données**.
+3. **Charger le script** depuis le fichier `.sql`.
+4. **Exécuter le script** pour que toutes les commandes soient appliquées dans la base.
+
+Exemple avec MySQL en ligne de commande :
+
+```bash
+mysql -u utilisateur -p nom_base < script.sql
+```
+
+Cela exécute toutes les commandes contenues dans `script.sql` sur la base `nom_base`.
+
+---
+
+## 4. Commandes SQL principales
+
+### 4.1. Commandes de définition (DDL)
 
 | Commande          | Description                  | Exemple                                         |
 | ----------------- | ---------------------------- | ----------------------------------------------- |
@@ -46,7 +65,7 @@ SELECT * FROM etudiants;
 | `DROP TABLE`      | Supprime une table           | `DROP TABLE etudiants;`                         |
 | `DROP DATABASE`   | Supprime une base de données | `DROP DATABASE école;`                          |
 
-### 3.2. Commandes de manipulation (DML)
+### 4.2. Commandes de manipulation (DML)
 
 | Commande      | Description                     | Exemple                                                 |
 | ------------- | ------------------------------- | ------------------------------------------------------- |
@@ -54,7 +73,7 @@ SELECT * FROM etudiants;
 | `UPDATE`      | Modifie des données existantes  | `UPDATE etudiants SET age = 23 WHERE id = 1;`           |
 | `DELETE`      | Supprime des données            | `DELETE FROM etudiants WHERE id = 2;`                   |
 
-### 3.3. Commandes de requête (DQL)
+### 4.3. Commandes de requête (DQL)
 
 | Commande   | Description              | Exemple                                                                            |
 | ---------- | ------------------------ | ---------------------------------------------------------------------------------- |
@@ -63,7 +82,7 @@ SELECT * FROM etudiants;
 | `ORDER BY` | Tri des résultats        | `SELECT * FROM etudiants ORDER BY nom ASC;`                                        |
 | `JOIN`     | Combine plusieurs tables | `SELECT e.nom, c.nom_cours FROM etudiants e JOIN cours c ON e.id = c.id_etudiant;` |
 
-### 3.4. Commandes de contrôle (TCL)
+### 4.4. Commandes de contrôle (TCL)
 
 | Commande    | Description                                        |
 | ----------- | -------------------------------------------------- |
@@ -75,19 +94,18 @@ Exemple :
 
 ```sql
 BEGIN;
-
 INSERT INTO etudiants (id, nom) VALUES (4, 'Lemoine');
 ROLLBACK; -- annule l'insertion
 ```
 
-### 3.5. Commandes de contrôle d’accès (DCL)
+### 4.5. Commandes de contrôle d’accès (DCL)
 
 | Commande | Description       | Exemple                                      |
 | -------- | ----------------- | -------------------------------------------- |
 | `GRANT`  | Donne des droits  | `GRANT SELECT ON etudiants TO user_test;`    |
 | `REVOKE` | Retire des droits | `REVOKE SELECT ON etudiants FROM user_test;` |
 
-## 4. Bonnes pratiques pour les scripts SQL
+## 5. Bonnes pratiques pour les scripts SQL
 
 1. **Commentaires**
    Utiliser `--` pour des commentaires sur une ligne ou `/* ... */` pour des commentaires multi-lignes.
@@ -110,7 +128,7 @@ ROLLBACK; -- annule l'insertion
 5. **Tester sur une base de données de test**
    Ne jamais exécuter un script directement sur une base de production sans validation.
 
-## 5. Exemple complet d’un script SQL
+## 6. Exemple complet d’un script SQL
 
 ```sql
 -- Création de la base
@@ -140,3 +158,7 @@ UPDATE etudiants SET age = 25 WHERE nom = 'Durand';
 -- Suppression d’un enregistrement
 DELETE FROM etudiants WHERE nom = 'Martin';
 ```
+
+---
+
+**Note :** Après avoir créé ce script, utilisez un client SQL pour l'exécuter et appliquer toutes les commandes dans votre base de données.
