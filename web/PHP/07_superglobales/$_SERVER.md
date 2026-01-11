@@ -2,6 +2,7 @@
 
 ## 1️⃣ Introduction
 
+`$_SERVER` est modifié automatiquement par le serveur web dès qu'il reçoit la requête.
 `$_SERVER` est une **superglobale PHP** qui contient des informations sur :
 
 * la requête HTTP
