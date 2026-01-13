@@ -5,6 +5,17 @@
 La méthode **fetch()** permet de récupérer **une seule ligne** de
 résultat après l'exécution d'une requête SQL avec PDO.
 
+### Que fait fetch()
+
+fetch() lit une seule ligne du résultat à la fois
+
+La première fois qu’on appelle fetch(), elle retourne la première ligne
+
+La deuxième fois, elle retourne la deuxième ligne
+
+Et ainsi de suite jusqu’à ce qu’il n’y ait plus de lignes (retourne false)
+
+
 Elle s'utilise toujours après :
 
 ``` php
