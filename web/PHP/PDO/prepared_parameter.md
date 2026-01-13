@@ -1,6 +1,7 @@
 # Les Paramètres Préparés en PDO
 
-Paramètre préparé : valeur placeholder dans une requête SQL, commençant par : pour les paramètres nommés, remplacée par la valeur réelle lors de l’exécution avec PDO.
+Paramètre préparé : valeur placeholder dans une requête SQL,\
+commençant par `:` pour les paramètres nommés, remplacée par la valeur réelle lors de l’exécution avec PDO.
 
 ## 1. Qu’est-ce qu’un paramètre préparé ?
 
