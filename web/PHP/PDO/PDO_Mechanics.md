@@ -1,28 +1,70 @@
-# PDO et PDOStatement
+# PDO & Data Handling: Technical Reference
 
-## 1. Introduction : Qui fait quoi ?
+## 1. HTTP Data Handling (Frontend to Backend)
 
-En PHP, quand on travaille avec une base de données, on manipule deux objets bien distincts. Il est crucial de ne pas mélanger leurs rôles.
+La méthode de récupération coté PHP dépend strictement du Header `Content-Type` envoyé par le client.
 
-### L'Analogie du Restaurant 👨‍🍳
-* **La Classe `PDO` (Le Manager / Le Restaurant)** : C'est l'établissement lui-même. Il ouvre la porte (connexion), gère les transactions et prépare les commandes.
-* **La Classe `PDOStatement` (Le Bon de Commande)** : C'est une commande spécifique pour une table précise. Une fois que le Manager a créé le bon, c'est ce bon qui voyage, qui reçoit les ingrédients (paramètres) et qui revient avec le plat (données).
+| Client JS (Method) | Header Envoyé | Superglobale PHP | Action requise |
+| :--- | :--- | :--- | :--- |
+| **`new FormData()`** | `multipart/form-data` | `$_POST` | Aucune (Natif) |
+| **JSON** | `application/json` | **Vide** | `json_decode(file_get_contents('php://input'), true)` |
 
 ---
 
-## 2. L'Objet `PDO` (Le Patron)
+## 2. PDO vs PDOStatement
 
-C'est ton point d'entrée. Tu l'instancies une seule fois au début du script (via `Database::getConnection()`).
+Deux classes distinctes gèrent l'interaction BDD.
 
-**Ses méthodes principales :**
-* `prepare()` : La plus importante. Elle fabrique un objet `PDOStatement`.
-* `beginTransaction()`, `commit()`, `rollBack()` : Pour gérer les transactions bancaires/complexes.
-* `lastInsertId()` : Pour récupérer l'ID qui vient d'être créé.
+### A. Classe `PDO` (Connection Layer)
+Représente la connexion active.
+* **Rôle** : Configuration, Transactions, Préparation des requêtes.
+* **Méthode clé** : `$pdo->prepare($sql)` -> Retourne un objet `PDOStatement`.
+
+### B. Classe `PDOStatement` (Query Layer)
+Représente une requête préparée spécifique.
+* **Rôle** : Binding des paramètres, Exécution, Récupération des résultats (Cursor).
+* **Cycle de vie** : `Prepare` -> `Bind` -> `Execute` -> `Fetch`.
+
+---
+
+## 3. Méthodes de Récupération (Fetch API)
+
+Ces méthodes s'appellent sur l'objet `$statement` **après** un `$statement->execute()`.
+
+### `fetch()`
+Récupère la **prochaine ligne** du jeu de résultats.
+* **Retour** : `array` (mixte par défaut) ou `false` (si fin de curseur).
+* **Usage** : Boucles `while`, ou récupération d'une entité complète (`SELECT *`).
+
+### `fetchColumn()`
+Récupère **une seule colonne** de la prochaine ligne (la 1ère par défaut).
+* **Retour** : `string|int|float|bool` (scalaire) ou `false`.
+* **Usage** : Vérifications d'existence (`SELECT 1`), Compteurs (`COUNT`), Récupération d'un champ unique (Password hash).
+
+### `fetchAll()`
+Récupère **toutes les lignes restantes** dans un tableau multidimensionnel.
+* **Retour** : `array` (d'arrays).
+* **Usage** : Listes complètes à envoyer en JSON ou à itérer.
+* **Note** : Gourmand en RAM sur les gros volumes.
+
+### `rowCount()`
+Retourne le nombre de lignes affectées par la dernière opération SQL.
+* **Retour** : `int`.
+* **Usage** : Pour `UPDATE`, `DELETE`, `INSERT`. (Pas fiable sur `SELECT` selon les drivers SGBD).
+
+---
+
+## 4. Snippet : Flux de vérification (Best Practice)
 
 ```php
-// $pdo est un objet de la classe PDO
-$pdo = new PDO(...); 
-
-// Le Manager crée un Bon de Commande (Statement)
-// $stmt devient un objet de la classe PDOStatement
-$stmt = $pdo->prepare("SELECT * FROM users WHERE id = :id");
+public function userExists(string $email): bool
+{
+    // 1. Prepare (PDO)
+    $stmt = $this->pdo->prepare("SELECT 1 FROM users WHERE email = :email LIMIT 1");
+    
+    // 2. Execute (PDOStatement) - Retourne bool (Succès technique)
+    $stmt->execute([':email' => $email]);
+    
+    // 3. Fetch (PDOStatement) - Retourne valeur ou false
+    return (bool) $stmt->fetchColumn();
+}
