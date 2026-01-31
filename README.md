@@ -1,1 +1,3 @@
-Bonjour et bienvenue sur mon dépôt GitHub ! Vous y trouverez une large gamme de cours couvrant divers sujets en informatique. Que vous débutiez ou que vous souhaitiez approfondir vos compétences, j'espère que ces ressources vous seront utiles. Si vous appréciez le contenu ou le trouvez utile, n'hésitez pas à donner une étoile au dépôt. Merci pour votre soutien ! 🚀
+This GitHub repository contains a wide range of computer science courses and resources.
+It covers multiple topics, from programming fundamentals to advanced concepts.
+The goal is to centralize learning materials in a clear and organized way.
