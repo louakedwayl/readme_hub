@@ -1,5 +1,7 @@
 # Les boucles en Python
 
+En Python, les boucles ne nécessitent pas de parenthèses — contrairement à C ou JavaScript.
+
 ## 1) Qu'est-ce qu'une boucle ?
 
 Une boucle permet de répéter un bloc de code plusieurs fois sans le réécrire. Python propose deux types de boucles : `for` et `while`.
