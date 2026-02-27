@@ -1,5 +1,7 @@
 # Les conditions en Python
 
+En Python, les conditions ne nécessitent pas de parenthèses — contrairement à C ou JavaScript.
+
 ## 1) Qu'est-ce qu'une condition ?
 
 Une condition permet d'exécuter un bloc de code uniquement si une expression est vraie. C'est la base de toute logique en programmation.
