@@ -57,7 +57,7 @@ chmod o-r fichier.py    # retirer lecture aux autres
 chmod a+x script.py     # exécution pour tout le monde
 ```
 
-Sans préciser la cible, `a` est appliqué par défaut :
+Quand on ne précise pas de cible, la permission est appliquée à tous les utilisateurs (user, group et others).
 
 ```bash
 chmod +x script.py      # équivalent à chmod a+x — exécution pour tout le monde
