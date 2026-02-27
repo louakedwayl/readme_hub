@@ -60,7 +60,18 @@ chmod a+x script.py     # exécution pour tout le monde
 Sans préciser la cible, `a` est appliqué par défaut :
 
 ```bash
-chmod +x script.py      # équivalent à chmod a+x script.py
+chmod +x script.py      # équivalent à chmod a+x — exécution pour tout le monde
+chmod u+x script.py     # exécution pour le propriétaire seulement
+```
+
+Différence concrète :
+
+```bash
+chmod +x script.py
+# -rwxr-xr-x  → user, group et others ont tous x
+
+chmod u+x script.py
+# -rwxr--r--  → seulement user a x
 ```
 
 ---
