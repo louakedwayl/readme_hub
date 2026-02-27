@@ -1,5 +1,7 @@
 # Les variables en Python
 
+Python est un langage à typage dynamique — le type d'une variable est déterminé à l'exécution et peut changer au cours du programme.
+
 ## 1) Qu'est-ce qu'une variable ?
 
 Une variable est une boîte qui stocke une valeur en mémoire. On lui donne un nom pour pouvoir la réutiliser.
