@@ -4,7 +4,7 @@
 
 pip est le gestionnaire de paquets officiel de Python. Il permet d'installer, mettre à jour et supprimer des bibliothèques externes depuis le dépôt officiel **PyPI** (Python Package Index).
 
-C'est l'équivalent de `apt` pour Linux, mais pour les bibliothèques Python.
+C'est l'équivalent de `apt` pour Linux ou de npm pour nodeJs, mais pour les bibliothèques Python.
 
 ---
 
