@@ -1,5 +1,90 @@
 # Introduction au langage Python
 
+## 0) Où on écrit du Python ?
+
+Tu écris ton code dans un fichier avec l'extension `.py`
+
+Exemple :
+
+```
+mon_programme.py
+```
+
+### Créer un fichier Python (Linux / 42)
+
+Dans le terminal :
+
+```bash
+touch mon_programme.py
+```
+
+Puis tu l'ouvres avec :
+
+```bash
+nano mon_programme.py
+```
+
+```bash
+vim mon_programme.py
+```
+
+```bash
+code mon_programme.py   # si tu utilises VS Code
+```
+
+### Exemple de code dans le fichier
+
+Dans `mon_programme.py` :
+
+```python
+print("Salut Wayl")
+```
+
+### Exécuter un fichier Python
+
+```bash
+python3 mon_programme.py
+```
+
+Affiche :
+
+```
+Salut Wayl
+```
+
+### Mode exécutable (comme en C)
+
+1. Ajouter en première ligne du fichier :
+
+```python
+#!/usr/bin/env python3
+
+print("Hello")
+```
+
+2. Donner les droits :
+
+```bash
+chmod +x mon_programme.py
+```
+
+3. Lancer :
+
+```bash
+./mon_programme.py
+```
+
+### Résumé
+
+| Action | Commande |
+|---|---|
+| Créer fichier | `touch test.py` |
+| Écrire dedans | `nano test.py` |
+| Exécuter | `python3 test.py` |
+| Mode exécutable | `chmod +x test.py` puis `./test.py` |
+
+---
+
 ## 1) Qu'est-ce que Python ?
 
 Python est un langage de programmation interprété, simple à lire et très utilisé dans :
