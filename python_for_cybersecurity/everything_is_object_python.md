@@ -97,21 +97,7 @@ print(isinstance(MaClasse(), object))  # True
 
 ---
 
-## 7. Lien avec `all_thing_is_obj` (ex02)
-
-```python
-def all_thing_is_obj(object: any) -> int:
-    """Prints the type of the object and returns 42."""
-    # type() fonctionne sur TOUT car tout est objet
-    print(type(object))
-    return 42
-```
-
-L'exercice exploite directement ce principe : peu importe ce que tu passes, `type()` peut toujours répondre.
-
----
-
-## 8. Résumé
+## 7. Résumé
 
 | Élément | Type |
 |---|---|
