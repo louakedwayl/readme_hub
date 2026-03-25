@@ -2,188 +2,107 @@
 
 ## Définition
 
-En Python, un **cast** est appelé plus précisément une **conversion de type**.
+Une **conversion de type** consiste à transformer une valeur d'un type vers un autre type à l'aide d'une fonction.
 
-Cela consiste à transformer une valeur d’un type vers un autre type.
+```python
+x = "42"
+y = int(x)  # str → int
+```
 
-Exemple :
+## Pourquoi convertir ?
+
+- Faire un calcul avec un nombre écrit sous forme de texte
+- Transformer un nombre en texte pour l'afficher
+- Convertir un entier en nombre décimal
+
+## Les fonctions de conversion
+
+### `int()` — vers entier
 
 ```python
 x = "42"
 y = int(x)
+print(y)         # 42
+print(type(y))   # <class 'int'>
+```
 
-Ici :
+### `float()` — vers nombre à virgule
 
-x est une chaîne de caractères (str)
-y devient un entier (int)
-Pourquoi convertir ?
-
-On convertit une valeur quand son type ne correspond pas à ce qu’on veut faire.
-
-Par exemple :
-
-faire un calcul avec un nombre écrit sous forme de texte,
-transformer un nombre en texte pour l’afficher,
-convertir un entier en nombre décimal.
-Les conversions les plus courantes
-int()
-
-int() sert à convertir une valeur en entier.
-
-x = "42"
-y = int(x)
-
-print(y)
-print(type(y))
-
-Résultat :
-
-42
-<class 'int'>
-float()
-
-float() sert à convertir une valeur en nombre à virgule.
-
+```python
 x = "3.14"
 y = float(x)
+print(y)         # 3.14
+print(type(y))   # <class 'float'>
+```
 
-print(y)
-print(type(y))
+### `str()` — vers texte
 
-Résultat :
-
-3.14
-<class 'float'>
-str()
-
-str() sert à convertir une valeur en texte.
-
+```python
 x = 42
 y = str(x)
+print(y)         # 42
+print(type(y))   # <class 'str'>
+```
 
-print(y)
-print(type(y))
+### `bool()` — vers booléen
 
-Résultat :
+```python
+print(bool(1))          # True
+print(bool(0))          # False
+print(bool("bonjour"))  # True
+print(bool(""))         # False
+```
 
-42
-<class 'str'>
-bool()
+Règle : une valeur "vide" donne `False`, une valeur "non vide" donne `True`.
 
-bool() sert à convertir une valeur en booléen : True ou False.
+## Conversions courantes
 
-print(bool(1))
-print(bool(0))
-print(bool("bonjour"))
-print(bool(""))
+| De       | Vers    | Exemple                        | Résultat |
+|----------|---------|--------------------------------|----------|
+| `str`    | `int`   | `int("21")`                    | `21`     |
+| `str`    | `float` | `float("19.99")`               | `19.99`  |
+| `int`    | `str`   | `str(10)`                      | `"10"`   |
+| `int`    | `float` | `float(10)`                    | `10.0`   |
+| `float`  | `int`   | `int(3.9)`                     | `3`      |
 
-Résultat :
+**Attention :** `int()` ne fait pas un arrondi. Il enlève la partie décimale.
 
-True
-False
-True
-False
+## Conversions impossibles
 
-En général :
+Toutes les conversions ne sont pas possibles :
 
-une valeur “vide” donne souvent False
-une valeur “non vide” donne souvent True
-Conversions simples
-De str vers int
-age = "21"
-age_int = int(age)
-De str vers float
-prix = "19.99"
-prix_float = float(prix)
-De int vers str
-n = 10
-texte = str(n)
-De int vers float
-n = 10
-f = float(n)
+```python
+int("bonjour")  # Erreur
+float("abc")    # Erreur
+```
 
-Résultat :
+Si la valeur ne représente pas un nombre, Python lève une erreur.
 
-10.0
-De float vers int
-x = 3.9
-y = int(x)
-print(y)
+## Cas pratique : `sys.argv`
 
-Résultat :
+Les arguments reçus via `sys.argv` sont toujours des `str` :
 
-3
-
-Attention : int() ne fait pas un arrondi.
-Il enlève simplement la partie décimale.
-
-Point important
-
-Toutes les conversions ne sont pas possibles.
-
-Exemple :
-
-int("bonjour")
-
-Cela provoque une erreur, car "bonjour" ne représente pas un nombre.
-
-De la même façon :
-
-float("abc")
-
-provoque aussi une erreur.
-
-Exemple avec les arguments Python
-
-Quand on récupère une valeur avec sys.argv, elle arrive sous forme de texte.
-
-import sys
-
-print(sys.argv[1])
-print(type(sys.argv[1]))
-
-Si on lance :
-
-python3 test.py 42
-
-alors sys.argv[1] vaut "42".
-
-Si on veut l’utiliser comme un nombre :
-
+```python
 import sys
 
 n = int(sys.argv[1])
 print(n + 1)
+```
 
-Ici, int() convertit l’argument en entier.
+```bash
+python3 test.py 42
+# Résultat : 43
+```
 
-Différence entre Python et le C
+## Différence avec le C
 
-En C, on parle souvent de cast.
+En C, on parle de **cast**. En Python, on parle de **conversion de type** car on utilise des fonctions (`int()`, `float()`, `str()`, `bool()`).
 
-En Python, on parle plutôt de conversion de type, car on utilise des fonctions comme :
+## Résumé
 
-int()
-float()
-str()
-bool()
-
-Donc l’idée est proche du cast, mais en Python on écrit la conversion avec des fonctions.
-
-Résumé
-
-Une conversion de type permet de transformer une valeur en un autre type.
-
-Les conversions les plus utilisées sont :
-
-int()
-float()
-str()
-bool()
-
-Exemples :
-
+```python
 int("42")      # 42
 float("3.14")  # 3.14
 str(42)        # "42"
 bool(0)        # False
+```
