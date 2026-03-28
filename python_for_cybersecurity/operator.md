@@ -68,7 +68,7 @@ Ils assignent une valeur à une variable, avec possibilité de combiner une opé
 
 | Opérateur | Équivalent à | Exemple |
 |-----------|-------------|---------|
-| `=` | — | `x = 5` |
+| `=` | `=` | `x = 5` |
 | `+=` | `x = x + 3` | `x += 3` |
 | `-=` | `x = x - 3` | `x -= 3` |
 | `*=` | `x = x * 3` | `x *= 3` |
