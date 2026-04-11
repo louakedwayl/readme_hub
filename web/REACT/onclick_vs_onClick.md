@@ -1,4 +1,4 @@
-# 🆚 onClick en HTML vs JSX (React)
+# onClick en HTML vs JSX (React)
 
 ## 🔹 Définition
 
