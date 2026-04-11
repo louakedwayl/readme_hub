@@ -11,12 +11,12 @@ Un **Fragment** permet de **regrouper plusieurs éléments JSX** sans ajouter de
 En JSX, un composant doit retourner **un seul élément parent**.
 
 ❌ Ceci ne marche pas :
-
+```jsx
 return (
   <h1>Title</h1>
   <p>Text</p>
 );
-
+```
 👉 Il y a plusieurs éléments au même niveau.
 
 ---
