@@ -11,8 +11,6 @@ Par exemple :
 - le passage de la souris
 - l’envoi d’un formulaire
 
-En React, on utilise les listeners avec des **attributs spéciaux** sur les balises JSX.
-
 ---
 
 ## 🔹 Exemple simple
@@ -32,26 +30,31 @@ function App() {
 ## 🔹 Les listeners les plus connus
 
 ### onClick
+Réagit à un clic de l’utilisateur.
 ```jsx
 <button onClick={handleClick}>Clique</button>
 ```
 
 ### onChange
+Réagit quand la valeur d’un input change.
 ```jsx
 <input onChange={handleChange} />
 ```
 
 ### onSubmit
+Réagit à l’envoi d’un formulaire.
 ```jsx
 <form onSubmit={handleSubmit}></form>
 ```
 
 ### onMouseEnter
+Réagit quand la souris entre sur un élément.
 ```jsx
 <div onMouseEnter={handleEnter}></div>
 ```
 
 ### onMouseLeave
+Réagit quand la souris quitte un élément.
 ```jsx
 <div onMouseLeave={handleLeave}></div>
 ```
