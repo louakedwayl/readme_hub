@@ -22,20 +22,21 @@ return (
 ---
 
 ## 🔹 Solution : utiliser un Fragment
-
+```jsx
 return (
   <>
     <h1>Title</h1>
     <p>Text</p>
   </>
 );
+```
 
 👉 Ici, `<> </>` est un **Fragment**
 
 ---
 
 ## 🔹 Alternative (version longue)
-
+```jsx
 import React from "react";
 
 return (
@@ -44,6 +45,7 @@ return (
     <p>Text</p>
   </React.Fragment>
 );
+```
 
 ---
 
