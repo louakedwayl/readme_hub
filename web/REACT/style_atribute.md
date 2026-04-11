@@ -7,6 +7,8 @@ En JSX, l’attribut `style` permet d’ajouter du style directement à un élé
 Contrairement au HTML classique, on n’écrit pas le CSS sous forme de texte.
 En JSX, on écrit le style sous forme d’**objet JavaScript**.
 
+L’attribut style utilise un objet JavaScript que tu écris directement. Cet objet est un objet littéral (non nommé) dans lequel chaque propriété CSS devient une propriété JavaScript en camelCase, et React utilise cet objet pour appliquer le style à l’élément.
+
 ---
 
 ## 🔹 Exemple simple
