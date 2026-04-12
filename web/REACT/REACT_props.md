@@ -1,99 +1,84 @@
-# 📦 Les props en React
+# Les Props en React
 
-## 🔹 Définition
+## C'est quoi ?
 
-Un **props** (propriété) est une **donnée passée à un composant**.
+**Props** = abréviation de *properties*. Ce sont les **données qu'un composant parent envoie à un composant enfant**.
 
-👉 Les props permettent de rendre les composants **dynamiques et réutilisables**.
-
----
-
-## 🔹 Exemple simple
+Analogie : un composant est une fonction. Les props sont ses arguments.
 
 ```jsx
-<Title text="Bonjour" />
+<Title color="red">Mon titre</Title>
 ```
 
-👉 Ici :
-- `text` = props
-- `"Bonjour"` = valeur
+Ici, `Title` reçoit deux props : `color` et `children`.
 
 ---
 
-## 🔹 Récupérer les props
+## Pourquoi ça existe
+
+Sans props, tous les composants seraient figés. Les props permettent de **réutiliser un même composant avec des données différentes**.
+
+Un seul composant `Button`, cent boutons différents.
+
+---
+
+## Règle fondamentale
+
+React passe **toujours un seul argument** au composant : un objet appelé `props`, qui contient **toutes** les valeurs transmises.
 
 ```jsx
 function Title(props) {
-  return <h1>{props.text}</h1>;
+  // props = { color: "red", children: "Mon titre" }
 }
 ```
 
-👉 `props` est un objet qui contient toutes les propriétés
+Jamais deux arguments. Jamais.
 
 ---
 
-## 🔹 Déstructuration (recommandé)
+## Destructuring (standard)
+
+Au lieu d'écrire `props.color`, `props.children`, on extrait directement :
 
 ```jsx
-function Title({ text }) {
-  return <h1>{text}</h1>;
-}
+function Title({ color, children }) { ... }
 ```
 
-👉 On récupère directement la propriété
+C'est plus court, c'est le standard de l'écosystème.
 
 ---
 
-## 🔹 Plusieurs props
+## `children` : la prop spéciale
+
+Tout ce qui se trouve **entre les balises ouvrante et fermante** d'un composant est automatiquement passé dans la prop `children`.
 
 ```jsx
-<User name="Wayl" age={20} />
-```
-
-```jsx
-function User({ name, age }) {
-  return <p>{name} a {age} ans</p>;
-}
+<Title>Mon titre</Title>
+//      ^^^^^^^^^
+//      devient props.children
 ```
 
 ---
 
-## 🔹 Props dynamiques
+## Règle d'or : les props sont en lecture seule
 
-```jsx
-const name = "Wayl";
+Un composant **ne doit jamais modifier ses props**. Elles viennent d'en haut, elles ne se modifient que d'en haut. Pour gérer du changement interne, on utilise `state` (autre concept).
 
-<Title text={name} />
-```
-
-👉 On peut passer des variables avec `{}`
+C'est le principe du **flux de données unidirectionnel** : du parent vers l'enfant, jamais l'inverse.
 
 ---
 
-## 🔹 Rôle des props
+## Ce qu'on peut passer en prop
 
-- passer des données à un composant  
-- personnaliser l’affichage  
-- réutiliser un composant  
+N'importe quoi : strings, numbers, booleans, arrays, objects, fonctions, voire d'autres composants. Tout ce qui est valeur JavaScript.
 
 ---
 
-## 🔹 Important
+## À retenir
 
-👉 Les props sont **en lecture seule** (on ne les modifie pas)
-
----
-
-## 🔥 Résumé
-
-- props = données envoyées à un composant  
-- reçues en paramètre  
-- utilisées dans le JSX  
-- rendent les composants dynamiques  
-
----
-
-## 🎯 Version simple
-
-👉  
-> props = arguments d’un composant React
+1. Props = arguments d'un composant.
+2. React passe **un seul objet** `props`.
+3. Destructure tes props.
+4. `children` = contenu entre les balises.
+5. Les props sont **immuables** dans l'enfant.
+6. Flux : parent → enfant, jamais l'inverse.+
