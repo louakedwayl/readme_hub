@@ -1,35 +1,6 @@
-# ⚛️ Cours : useState en React
+# ⚛️ useState en React (avec explication détaillée)
 
-## 📌 Introduction
-
-`useState` est un **hook React** qui permet de gérer un **état (state)** dans un composant fonctionnel.
-
-👉 Il donne à ton composant une **mémoire dynamique**.
-
----
-
-## 🧠 Pourquoi useState ?
-
-Par défaut, un composant React :
-- affiche des données
-- mais **ne se souvient de rien**
-
-👉 `useState` permet de :
-- stocker une valeur
-- la modifier
-- déclencher un re-render automatique
-
----
-
-## ⚙️ Syntaxe
-
-```js
-const [state, setState] = useState(valeurInitiale)
-```
-
----
-
-## 🔥 Exemple simple
+## 📌 Exemple complet
 
 ```js
 import { useState } from 'react'
@@ -50,14 +21,72 @@ function Counter() {
 
 ---
 
-## ⚠️ Règles importantes
+## 🔍 Explication ligne par ligne
 
-- ❌ Ne jamais modifier directement
-- ✅ Toujours utiliser `setState`
+### 1️⃣ Import
+
+```js
+import { useState } from 'react'
+```
+
+On importe le hook `useState` depuis React.
 
 ---
 
-## 🧠 Mise à jour basée sur l’ancienne valeur
+### 2️⃣ Création du state
+
+```js
+const [count, setCount] = useState(0)
+```
+
+- `count` = valeur actuelle (0 au début)
+- `setCount` = fonction pour modifier la valeur
+
+---
+
+### 3️⃣ Affichage
+
+```js
+<p>{count}</p>
+```
+
+Affiche la valeur dans l’UI.
+
+---
+
+### 4️⃣ Bouton
+
+```js
+<button onClick={() => setCount(count + 1)}>
+```
+
+Quand tu cliques :
+- calcule `count + 1`
+- met à jour avec `setCount`
+
+---
+
+## 🔄 Cycle au clic
+
+1. count = 0
+2. clic
+3. setCount(1)
+4. React re-render
+5. UI mise à jour
+
+---
+
+## ⚠️ Mauvaise pratique
+
+```js
+count = count + 1
+```
+
+React ne détecte pas → pas de mise à jour
+
+---
+
+## ✅ Bonne pratique
 
 ```js
 setCount(prev => prev + 1)
@@ -65,23 +94,14 @@ setCount(prev => prev + 1)
 
 ---
 
-## 📦 Types possibles
-
-- Number
-- String
-- Boolean
-- Object (avec copie via spread)
-
----
-
 ## 🧠 Résumé
 
-- `useState` = mémoire du composant
-- `setState` = met à jour
-- changement = re-render
+- useState = mémoire
+- setState = update + render
+- ne jamais modifier directement
 
 ---
 
 ## 🚀 Conclusion
 
-`useState` est la base de React moderne.
+`useState` est la base des interfaces dynamiques en React.
