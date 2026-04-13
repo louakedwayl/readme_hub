@@ -2,7 +2,7 @@
 
 ## Pourquoi deux packages : `react` et `react-dom`
 
-React est conçu pour être **agnostique de la plateforme**.
+React peut être utilisé sur plusieurs types d’applications (web, mobile, etc.).
 
 - **`react`** = le moteur. Composants, hooks, JSX, état, virtual DOM. Ne sait rien du navigateur.
 - **`react-dom`** = le pont entre React et le **navigateur** (le vrai DOM).
