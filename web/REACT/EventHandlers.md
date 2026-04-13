@@ -1,104 +1,188 @@
-# Event Handlers
+# ⚛️ Cours : Les Event Handlers en React
 
-## Le concept
+## 📌 Introduction
 
-Une page web est **réactive** : elle répond aux actions de l'utilisateur (clic, frappe, scroll, survol…) et à certains événements système (chargement, erreur réseau…).
+Un **event handler** est une fonction exécutée lorsqu’un événement se produit dans l’interface.
 
-Pour qu'elle réagisse, il faut **écouter** les événements et **exécuter du code** quand ils se produisent.
-
-```
-Événement ──→ Listener (écoute) ──→ Handler (fonction) ──→ Action
-```
-
----
-
-## Vocabulaire
-
-| Terme | Définition |
-|---|---|
-| **Event** | Une action qui se produit (clic, frappe clavier, etc.) |
-| **Event listener** | Le mécanisme qui **écoute** un type d'événement sur un élément |
-| **Event handler** | La **fonction** exécutée quand l'événement se déclenche |
-
-En pratique, les deux termes sont souvent confondus. Le listener attache le handler à un élément.
+👉 Exemples :
+- clic (`click`)
+- saisie (`input`)
+- soumission (`submit`)
+- survol (`hover`)
 
 ---
 
-## En JavaScript natif
+## 🧠 Principe
+
+En React, on associe une fonction à un événement :
 
 ```js
-button.addEventListener('click', () => {
-  console.log('cliqué')
-})
+<button onClick={handleClick}>Click</button>
 ```
 
-- `addEventListener` → installe le listener
-- `'click'` → le type d'événement écouté
-- `() => {...}` → le handler
-
-Pour retirer :
-```js
-button.removeEventListener('click', maFonction)
-```
+👉 Quand l’utilisateur clique → `handleClick` est exécutée
 
 ---
 
-## En React
+## ⚙️ Syntaxe
 
-React expose les events via des **props** commençant par `on` :
+### 🔹 Nom des événements
 
-```jsx
-<button onClick={() => console.log('cliqué')}>OK</button>
-```
-
-Plus besoin de gérer `addEventListener` / `removeEventListener` : React s'en occupe automatiquement.
+En React :
+- `onclick` ❌
+- `onClick` ✅ (camelCase obligatoire)
 
 ---
 
-## L'event object
-
-Tout handler reçoit automatiquement un **objet** contenant les infos de l'événement :
+### 🔹 Fonction handler
 
 ```js
-button.addEventListener('click', (e) => {
-  console.log(e.target)   // élément cliqué
-  e.preventDefault()      // annule le comportement par défaut
-})
+const handleClick = () => {
+  console.log("Click")
+}
 ```
 
-Méthodes utiles :
-- `e.preventDefault()` → annule l'action par défaut du navigateur (ex : soumission de formulaire)
-- `e.stopPropagation()` → empêche l'événement de remonter aux éléments parents
+---
+
+## ⚠️ Erreur classique
+
+```js
+<button onClick={handleClick()}> ❌
+```
+
+👉 La fonction est exécutée immédiatement
+
+```js
+<button onClick={handleClick}> ✅
+```
+
+👉 On passe la fonction, React l’appellera plus tard
 
 ---
 
-## Événements les plus courants
+## 🧠 L’argument `event`
 
-| Catégorie | Événements |
-|---|---|
-| **Souris** | `click`, `dblclick`, `mouseenter`, `mouseleave` |
-| **Clavier** | `keydown`, `keyup` |
-| **Formulaire** | `change`, `input`, `submit`, `focus`, `blur` |
-| **Fenêtre** | `load`, `resize`, `scroll` |
+React passe automatiquement un argument :
 
----
+```js
+const handleClick = (e) => {
+  console.log(e)
+}
+```
 
-## Règles à retenir
-
-1. Un listener **écoute**, un handler **réagit**.
-2. Le handler reçoit toujours un **event object** en paramètre.
-3. En JS natif, pense à **retirer** les listeners quand ils ne servent plus (fuites mémoire).
-4. En React, les events sont en **camelCase** (`onClick`, pas `onclick`) et la gestion est automatique.
-5. **Ne jamais appeler** le handler au moment de l'attacher : passe la **référence**, pas le résultat.
-   ```jsx
-   onClick={handleClick}     // ✅ référence
-   onClick={handleClick()}   // ❌ appel immédiat
-   ```
+👉 `e` = objet événement (SyntheticEvent)
 
 ---
 
-## Résumé
+## ⚠️ Important : nombre d’arguments
 
-Les event listeners sont le **pont entre l'utilisateur et ton code**. Sans eux, une page est statique. Avec eux, elle devient interactive.
+👉 React passe **toujours 1 argument automatiquement** :
 
-React simplifie le mécanisme mais le concept reste identique à JS natif : on attache une fonction à un type d'événement, et elle s'exécute quand l'événement se produit.
+```js
+handleClick(event)
+```
+
+---
+
+## 🧩 Ajouter tes propres arguments
+
+Tu ne peux PAS faire :
+
+```js
+<button onClick={handleClick("Wayl")}> ❌
+```
+
+👉 ça exécute immédiatement
+
+---
+
+## ✅ Bonne méthode
+
+```js
+<button onClick={(e) => handleClick("Wayl", e)}>
+```
+
+👉 Ici :
+- tu contrôles les arguments
+- `e` est passé manuellement
+
+---
+
+## 🧪 Exemple complet
+
+```js
+function App() {
+
+  const handleClick = (name, e) => {
+    console.log("Nom :", name)
+    console.log("Event :", e)
+  }
+
+  return (
+    <button onClick={(e) => handleClick("Wayl", e)}>
+      Clique
+    </button>
+  )
+}
+```
+
+---
+
+## 📥 Input (très utilisé)
+
+```js
+const handleChange = (e) => {
+  console.log(e.target.value)
+}
+```
+
+```js
+<input onChange={handleChange} />
+```
+
+👉 `e.target.value` = valeur du champ
+
+---
+
+## 📤 Formulaire
+
+```js
+const handleSubmit = (e) => {
+  e.preventDefault()
+  console.log("Form envoyé")
+}
+```
+
+```js
+<form onSubmit={handleSubmit}>
+  <button type="submit">Envoyer</button>
+</form>
+```
+
+👉 empêche le rechargement de la page
+
+---
+
+## 🧠 Bonnes pratiques
+
+- nommer les fonctions `handleX`
+- éviter les fonctions trop lourdes dans le JSX
+- utiliser `() =>` seulement si nécessaire
+
+---
+
+## 🧠 Résumé
+
+- event handler = fonction déclenchée par un événement
+- React passe automatiquement **1 argument (event)**
+- tu peux ajouter d’autres arguments avec `() =>`
+- ne jamais appeler directement la fonction dans le JSX
+- très utilisé avec `useState`
+
+---
+
+## 🚀 Conclusion
+
+Les event handlers rendent ton app **interactive**.
+
+👉 C’est le lien entre l’utilisateur et ton code React.
