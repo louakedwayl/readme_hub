@@ -1,4 +1,4 @@
-# `useRef` — Référence persistante en React
+# useRef — Référence persistante en React
 
 ## 1. Définition
 
@@ -8,15 +8,15 @@
 
 `useRef` retourne un objet contenant une seule propriété :
 
-```js
+```javascript
 { current: valeurInitiale }
 ```
 
-`.current` est la propriété native et obligatoire — c'est là que la valeur est stockée et lue.
+- `.current` est la propriété qui contient la valeur stockée.
 
 ## 3. Accès et modification
 
-```js
+```javascript
 myRef.current        // lecture
 myRef.current = val  // modification
 ```
@@ -30,10 +30,10 @@ Modifier `.current` ne déclenche pas de re-render.
 - Accéder à des éléments du DOM
 - Conserver une valeur entre les renders
 
-## 5. Différence avec `useState`
+## 5. Différence avec useState
 
-| `useState` | `useRef` |
-|------------|----------|
+| useState | useRef |
+|----------|--------|
 | Déclenche un re-render | Ne déclenche pas de re-render |
 | Utilisé pour l'interface | Utilisé pour la logique interne |
 | Valeur affichée dans le JSX | Valeur non affichée |
@@ -46,17 +46,17 @@ Modifier `.current` ne déclenche pas de re-render.
 
 ## 7. Exemple général
 
-```jsx
+```javascript
 import { useRef } from 'react'
 
 function App() {
     const counter = useRef(0)
-
+    
     function increment() {
         counter.current += 1
         console.log(counter.current)
     }
-
+    
     return (
         <button onClick={increment}>
             Click
@@ -86,12 +86,62 @@ La valeur augmente à chaque clic — le composant ne se re-render pas.
 - Pour gérer un état visible à l'écran → utiliser `useState`
 - Quand un re-render est nécessaire → utiliser `useState`
 
+## 11. ⭐ L'attribut ref (très important)
+
+`ref` est l'attribut React qui permet de connecter un `useRef` à un élément du DOM.
+
+### Exemple :
+
+```javascript
+import { useRef } from 'react'
+
+function App() {
+    const myRef = useRef(null)
+    return <div ref={myRef}>Hello</div>
+}
+```
+
+### 🧠 Ce qui se passe
+
+1. React crée un objet `{ current: null }`
+2. Après le rendu, il met automatiquement : `myRef.current = <div>`
+
+### ⚙️ Rôle de ref
+
+| Élément | Rôle |
+|---------|------|
+| `useRef` | crée un objet persistant |
+| `ref={...}` | connecte cet objet au DOM |
+| `.current` | contient l'élément HTML réel |
+
+### 🔥 Exemple concret
+
+```javascript
+function App() {
+    const inputRef = useRef(null)
+    
+    function focusInput() {
+        inputRef.current.focus()
+    }
+    
+    return (
+        <>
+            <input ref={inputRef} />
+            <button onClick={focusInput}>
+                Focus
+            </button>
+        </>
+    )
+}
+```
+
 ## Résumé
 
 | Concept | Détail |
 |---------|--------|
 | `useRef` | Mémoire interne du composant |
-| `.current` | Contient la valeur |
+| `.current` | Contient la valeur ou le DOM |
+| `ref` | Lie React au DOM |
 | Re-render | Aucun |
 | Persistance | Survit entre les renders |
-| Usage | Logique interne et optimisation |
+| Usage | Logique interne + DOM access |
