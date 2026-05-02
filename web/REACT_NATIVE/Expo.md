@@ -36,6 +36,18 @@ cd monApp
 npm start
 ```
 
+### Ce que fait cette commande :
+
+- Crée un dossier monApp
+- installe React Native + Expo
+- configure tout automatiquement
+- prépare le projet pour Expo Go
+
+Le “keyword” (le package) pour créer un projet Expo, c’est :
+```bash
+create-expo-app
+```
+
 Cela crée un projet React Native déjà configuré avec Expo.
 
 ---
